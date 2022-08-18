@@ -17,7 +17,7 @@ const Home: NextPage = () => {
 
       <main className={styles.main}>
         <div className=" absolute top-0 left-0 w-screen overflow-hidden max-h-screen">
-          <div className="relative w-full h-screen border border-orange-400 xl:hidden">
+          <div className="relative w-full h-screen xl:hidden">
             <Image
               src={"/images/istanbul view.jpg"}
               layout="fill"
