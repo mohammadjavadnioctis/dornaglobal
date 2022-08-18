@@ -2,10 +2,9 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
-import logo from "../assets/images/logo png.png";
-import istanbul from "../assets/images/istanbul view.jpg";
+import logo from "/images/logo png.png";
+import istanbul from "/images/istanbul view.jpg";
 import React from "react";
-import Flip from "react-reveal/Flip";
 
 const Home: NextPage = () => {
   return (
@@ -19,7 +18,11 @@ const Home: NextPage = () => {
       <main className={styles.main}>
         <div className=" absolute top-0 left-0 w-screen overflow-hidden max-h-screen">
           <div className="relative w-full h-screen border border-orange-400 xl:hidden">
-            <Image src={istanbul} layout="fill" className="" />
+            <Image
+              src={"/images/istanbul view.jpg"}
+              layout="fill"
+              className=""
+            />
           </div>
           <div className="absolute overlay z-10 w-full h-full bg-black opacity-50"></div>
           <video
@@ -34,16 +37,14 @@ const Home: NextPage = () => {
         </div>
         <div className="w-[100%] relative z-20 md:w-[40%] h-full min-h-[50vh] -translate-y-12 max-h-screen ">
           <Image
-            src={logo}
+            src={"/images/logo png.png"}
             layout="fill"
             objectFit="cover"
             className={"max-h[300px]"}
           />
         </div>
-        <h1 className="!text-[#83773e] text-[40px] font-bold relative z-20">
-          <Flip left cascade>
-            Under Development
-          </Flip>
+        <h1 className="!text-[#83773e] text-[40px] font-bold relative z-20 text-center">
+          Under Development
         </h1>
       </main>
     </div>
