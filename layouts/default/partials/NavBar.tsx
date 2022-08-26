@@ -3,9 +3,10 @@ import React, { FC } from "react";
 
 const NavBar: FC = () => {
   return (
-    <div className="">
-      <MainMenu />
-    </div>
+    <nav className="flex">
+      <MainMenu ItemsClassNames="px-4" />
+      <div className="profile-item inline-block pl-4">profile</div>
+    </nav>
   );
 };
 

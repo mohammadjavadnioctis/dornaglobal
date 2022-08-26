@@ -1,4 +1,6 @@
 import React, { FC, ReactNode } from "react";
+import Header from "./partials/Header/Header";
+import TopBar from "./partials/Header/TopBar";
 import NavBar from "./partials/NavBar";
 
 interface DefaultLayoutType {
@@ -7,9 +9,9 @@ interface DefaultLayoutType {
 
 const DefaultLayout: FC<DefaultLayoutType> = ({ children }) => {
   return (
-    <div className="w-full container flex justify-between">
-      <div>LOGO</div>
-      <NavBar />
+    <div className="container m-auto">
+      <TopBar />
+      <Header />
       {children}
     </div>
   );
