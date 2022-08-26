@@ -1,4 +1,5 @@
 import React, { FC, ReactNode } from "react";
+import NavBar from "./partials/NavBar";
 
 interface DefaultLayoutType {
   children: ReactNode;
@@ -6,8 +7,9 @@ interface DefaultLayoutType {
 
 const DefaultLayout: FC<DefaultLayoutType> = ({ children }) => {
   return (
-    <div>
-      default layout
+    <div className="w-full container flex justify-between">
+      <div>LOGO</div>
+      <NavBar />
       {children}
     </div>
   );
