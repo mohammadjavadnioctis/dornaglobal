@@ -13,8 +13,13 @@ const MainMenu: FC<MainMenuType> = (props) => {
     <ul className={`${ItemsContainerClassNames}`}>
       {mainMenuData.map((menuItem) => {
         return (
-          <li key={menuItem.id} className={`${ItemsClassNames}`}>
-            <Link href={menuItem.href}>{menuItem.name}</Link>
+          <li
+            key={menuItem.id}
+            className={`${ItemsClassNames} w-full h-full flex items-center`}
+          >
+            <Link href={menuItem.href} passHref>
+              <a className="h-full flex items-center">{menuItem.name}</a>
+            </Link>
           </li>
         );
       })}

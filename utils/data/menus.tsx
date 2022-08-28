@@ -19,5 +19,10 @@ const mainMenuData = [
     href: "/properties/rent",
     id: 4,
   },
+  {
+    name: "Profile",
+    href: "/profile",
+    id: 5,
+  },
 ];
 export { mainMenuData };
