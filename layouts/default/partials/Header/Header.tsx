@@ -6,7 +6,7 @@ import TopBar from "./TopBar";
 
 const Header = () => {
   return (
-    <header>
+    <header className="absolute z-10 w-full">
       <TopBar />
       <div className="container header w-full border-2 border-primary flex justify-between">
         <div>
@@ -19,7 +19,7 @@ const Header = () => {
             />
           </Link>
         </div>
-        <NavBar ItemsClassNames="w-full whitespace-nowrap px-4 hover:text-primary transition-all" />
+        <NavBar ItemsClassNames="w-full whitespace-nowrap px-4 text-white hover:text-primary transition-all" />
       </div>
     </header>
   );
