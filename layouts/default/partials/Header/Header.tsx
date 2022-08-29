@@ -2,11 +2,13 @@ import Link from "next/link";
 import React from "react";
 import UiImage from "~/lib/Image";
 import NavBar from "../NavBar";
+import TopBar from "./TopBar";
 
 const Header = () => {
   return (
     <header>
-      <div className="header w-full border-2 border-primary flex justify-between">
+      <TopBar />
+      <div className="container header w-full border-2 border-primary flex justify-between">
         <div>
           <Link href="/home" className="cursor-pointer">
             <UiImage

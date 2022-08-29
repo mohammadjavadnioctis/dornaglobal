@@ -33,6 +33,6 @@ a {
 @tailwind components;
 @tailwind utilities;
 
-.m-container {
-  @apply max-w-6xl;
+.container {
+  @apply m-auto;
 }
