@@ -1,4 +1,5 @@
 import React, { FC, memo } from "react";
+import { isDev } from "~/utils/helpers";
 
 interface HeadPropsType {
   containerClassNames?: string;
@@ -23,5 +24,9 @@ const Head: FC<HeadPropsType> = memo((props) => {
     </div>
   );
 });
+
+if (isDev) {
+  Head.displayName = "head";
+}
 
 export default Head;
