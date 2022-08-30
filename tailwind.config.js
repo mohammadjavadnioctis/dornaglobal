@@ -35,6 +35,9 @@ module.exports = {
           800: "#957016",
           900: "#644B0F",
         },
+        subtitleColor: {
+          DEFAULT: "#7A7A7A",
+        },
       },
       fontFamily: {
         playfair: ["Playfair Display", ...defaultTheme.fontFamily.sans],
