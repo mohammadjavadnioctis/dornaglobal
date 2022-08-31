@@ -4,7 +4,7 @@ interface PropertyType {
   owner?: string;
   datePublished?: Date;
   details?: details;
-
+  id: string;
   // TODO: define dates for types where date is needed
 }
 

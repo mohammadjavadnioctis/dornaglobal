@@ -9,9 +9,9 @@ import FeaturedExclusives from "../Partials/FeaturedExclusives/FeaturedExclusive
 const Home = memo(() => {
   return (
     <>
-      <div className="w-full border-2 border-green-400">
+      <div className="w-full">
         <HomePageslider />
-        <main className={`container border-2 border-orange-400`}>
+        <main className={`container`}>
           <FeaturedExclusives />
         </main>
       </div>
