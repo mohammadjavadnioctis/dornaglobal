@@ -14,7 +14,7 @@ const Header = memo(() => {
         <div>
           <ListyourPropertyButton />
         </div>
-        <NavBar ItemsClassNames="w-full whitespace-nowrap px-4 text-white hover:text-primary transition-all" />
+        <NavBar ItemsClassNames="w-full whitespace-nowrap px-4 text-white hover:text-accent transition-all" />
       </div>
     </header>
   );

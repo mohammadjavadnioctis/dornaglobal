@@ -1,13 +1,20 @@
-import React from "react";
+import React, { FC, memo } from "react";
 import Head from "~/components/Head/Head";
 import PropertyCard from "~/components/PropertyCard/PropertyCard";
 import SamplePropertiesData from "~/utils/data/SampleProperties";
-const FeaturedExclusives = () => {
+import { isDev } from "~/utils/helpers";
+
+interface FeaturedExclusivesType {
+  title?: string;
+}
+
+const FeaturedExclusives: FC<FeaturedExclusivesType> = memo((props) => {
+  const { title = "Our Featured Exclusives" } = props;
   return (
     <section className="">
       <div></div>
       <Head
-        title="Our Featured EXclusives"
+        title={title}
         subtitle="CHOOSE FROM DIFFERENT LISTING TEMPLATES AND LAY THEM OUT AS LISTS OR GRIDS, FULL-WIDTH OR BOXED ​"
         subtitleClassNames="text-subtitleColor tracking-[1px] font-medium leading-[1.5rem] font-[Dosis,_sans-serif]"
         containerClassNames="max-w-[600px] mx-auto my-[60px]"
@@ -20,6 +27,10 @@ const FeaturedExclusives = () => {
       </div>
     </section>
   );
-};
+});
+
+if (isDev) {
+  FeaturedExclusives.displayName = "FeaturedExclusives";
+}
 
 export default FeaturedExclusives;

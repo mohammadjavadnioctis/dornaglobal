@@ -7,8 +7,8 @@ const useStyles = createStyles((theme) => ({
   root: {
     borderColor: "white",
     "&:hover": {
-      background: "#8b5cf6",
-      borderColor: "#8b5cf6",
+      background: "#E9C46A",
+      borderColor: "#E9C46A",
       color: "white",
     },
     transition: "all 0.1s linear ",

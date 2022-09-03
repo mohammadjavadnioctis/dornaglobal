@@ -14,12 +14,12 @@ const Head: FC<HeadPropsType> = memo((props) => {
     title,
     subtitle,
     titleClassnames,
-    subtitleClassNames,
-    containerClassNames,
+    subtitleClassNames = "text-subtitleColor tracking-[1px] font-medium leading-[1.5rem] font-[Dosis,_sans-serif]",
+    containerClassNames = "max-w-[600px] mx-auto my-[60px]",
   } = props;
   return (
     <div className={` ${containerClassNames} w-full text-center`}>
-      <h2 className={` ${titleClassnames} text-[40px]`}>{title}</h2>
+      <h2 className={` ${titleClassnames} text-[40px] mb-5`}>{title}</h2>
       <h5 className={`${subtitleClassNames}`}>{subtitle}</h5>
     </div>
   );
