@@ -2,8 +2,9 @@ import React, { memo, useEffect } from "react";
 import { isDev } from "~/utils/helpers";
 import { HomePageslider } from "../Partials";
 import FeaturedExclusives from "../Partials/FeaturedExclusives/FeaturedExclusives";
-import ExploreByNeighrbourhood from "../Partials/SellYourProperty/ExploreByNeighrbourhood/ExploreByNeighrbourhood";
+import ExploreByNeighrbourhood from "../Partials/ExploreByNeighrbourhood/ExploreByNeighrbourhood";
 import SellYourProperty from "../Partials/SellYourProperty/SellYourProperty";
+import Agents from "../Partials/Agents/Agents";
 
 // TODO: hide the environment variable inside the image tag url
 const Home = memo(() => {
@@ -16,6 +17,7 @@ const Home = memo(() => {
           <FeaturedExclusives title="Top Projects" />
           <SellYourProperty />
           <ExploreByNeighrbourhood />
+          <Agents />
         </main>
       </div>
     </>
