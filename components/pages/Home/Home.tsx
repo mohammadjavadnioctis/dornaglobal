@@ -1,6 +1,4 @@
 import React, { memo, useEffect } from "react";
-import UiImage from "~/lib/Image";
-import UiSlider from "~/lib/UiSlider";
 import { isDev } from "~/utils/helpers";
 import { HomePageslider } from "../Partials";
 import FeaturedExclusives from "../Partials/FeaturedExclusives/FeaturedExclusives";
