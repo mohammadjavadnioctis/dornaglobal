@@ -46,7 +46,7 @@ const Agents: FC = memo(() => {
       />
       <div className="flex justify-center items-center flex-wrap">
         {AgentsSampleData.map((agent) => {
-          return <AgentCard agent={agent} />;
+          return <AgentCard agent={agent} key={agent.id} />;
         })}
       </div>
     </div>

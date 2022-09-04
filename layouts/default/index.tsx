@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from "react";
-import Footer from "./partials/Footer/Footer";
+import Footer from "~/components/Footer/Footer";
+// import Footer from "./partials/Footer/Footer";
 import Header from "./partials/Header/Header";
 import TopBar from "./partials/Header/TopBar";
 import NavBar from "./partials/NavBar";

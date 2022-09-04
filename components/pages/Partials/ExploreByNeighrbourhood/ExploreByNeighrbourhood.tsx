@@ -20,6 +20,7 @@ const ExploreByNeighrbourhood: FC = memo(() => {
             <Card
               category={neightbourHood}
               size={index == 1 || index == 3 ? "medium" : "small"}
+              key={neightbourHood.id}
             />
           );
         })}

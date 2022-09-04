@@ -5,6 +5,7 @@ import FeaturedExclusives from "../Partials/FeaturedExclusives/FeaturedExclusive
 import ExploreByNeighrbourhood from "../Partials/ExploreByNeighrbourhood/ExploreByNeighrbourhood";
 import SellYourProperty from "../Partials/SellYourProperty/SellYourProperty";
 import Agents from "../Partials/Agents/Agents";
+import OurServices from "../Partials/OurServices/OurServices";
 
 // TODO: hide the environment variable inside the image tag url
 const Home = memo(() => {
@@ -18,6 +19,7 @@ const Home = memo(() => {
           <SellYourProperty />
           <ExploreByNeighrbourhood />
           <Agents />
+          <OurServices />
         </main>
       </div>
     </>

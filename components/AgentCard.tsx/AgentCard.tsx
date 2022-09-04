@@ -33,7 +33,7 @@ const AgentCard: FC<AgentCardType> = memo((props) => {
   const { classes } = useStyles();
 
   return (
-    <div className="w-full max-w-[300px] flex flex-col p-4 items-center hover:shadow-xl transition-all duration-300">
+    <div className="w-full max-w-[360px] flex flex-col p-4 items-center hover:shadow-xl transition-all duration-300">
       <div className="mb-8">
         <UiImage
           src={image!}
