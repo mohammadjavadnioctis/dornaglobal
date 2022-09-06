@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       </Head>
       <div className="min-h-screen">
         <HomePage />
-        <div className="h-screen"></div>
+        {/* <div className="h-screen"></div> */}
       </div>
     </div>
   );

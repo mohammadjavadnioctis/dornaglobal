@@ -8,6 +8,7 @@ import Agents from "../Partials/Agents/Agents";
 import OurServices from "../Partials/OurServices/OurServices";
 
 // TODO: hide the environment variable inside the image tag url
+
 const Home = memo(() => {
   return (
     <>
