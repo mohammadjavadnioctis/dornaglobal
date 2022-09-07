@@ -11,7 +11,6 @@ interface ServiceCardType {
 
 const ServiceCard: FC<ServiceCardType> = memo((props) => {
   const { name, description, image, id } = props;
-  console.log(image);
   return (
     <div className="w-full max-w-[360px] flex mb-5 p-4 ">
       <div className="h-full w-auto inline-flex">

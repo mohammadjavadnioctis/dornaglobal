@@ -14,6 +14,7 @@ const AgentsSampleData: AgentType[] = [
     office: "Company Agent , Cool Houses Inc",
     image:
       "https://firebasestorage.googleapis.com/v0/b/dorna-global.appspot.com/o/dev%2Fagent1.jpg?alt=media&token=5f0e04f7-feff-40c9-9574-a87c4318939c",
+    id: "1",
   },
   {
     name: "Justin",
@@ -24,6 +25,7 @@ const AgentsSampleData: AgentType[] = [
     office: "Company Agent , Cool Houses Inc",
     image:
       "https://firebasestorage.googleapis.com/v0/b/dorna-global.appspot.com/o/dev%2Fagent%202.jpg?alt=media&token=7ee69cd7-f0c2-4545-aea7-d5214fbf1945",
+    id: "2",
   },
   {
     name: "Lady",
@@ -34,6 +36,7 @@ const AgentsSampleData: AgentType[] = [
     office: "Company Agent , Cool Houses Inc",
     image:
       "https://firebasestorage.googleapis.com/v0/b/dorna-global.appspot.com/o/dev%2Fagent3.jpg?alt=media&token=7860f293-0ae1-4501-9e90-4d4a28eb2341",
+    id: "3",
   },
 ];
 
