@@ -3,7 +3,7 @@ module.exports = {
   Author: "MJ Rezai",
   locales: ["en, tr, ru, ar"],
   defaultLocale: "en",
-  supportMail: "dorna@global.com",
+  supportMail: "info@dornaglobal.com",
   supportPhoneNo: "(212) 123 45 67",
   defaultCurrency: {
     name: "TL",
