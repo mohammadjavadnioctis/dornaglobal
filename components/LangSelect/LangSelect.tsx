@@ -38,6 +38,10 @@ const SelectItem = forwardRef<HTMLDivElement, ItemProps>(
   )
 );
 
+if (isDev) {
+  SelectItem.displayName = "SelectItem";
+}
+
 const LangSelect: FC = () => {
   const [lang, setLang] = useState<string>("English");
   const { classes } = useStyles();

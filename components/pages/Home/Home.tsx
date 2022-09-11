@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import React, { memo, useEffect, FC } from "react";
 import { isDev } from "~/utils/helpers";
 import { HomePageslider } from "../Partials";
 import FeaturedExclusives from "../Partials/FeaturedExclusives/FeaturedExclusives";
@@ -6,17 +6,24 @@ import ExploreByNeighrbourhood from "../Partials/ExploreByNeighrbourhood/Explore
 import SellYourProperty from "../Partials/SellYourProperty/SellYourProperty";
 import Agents from "../Partials/Agents/Agents";
 import OurServices from "../Partials/OurServices/OurServices";
+import { PropertyType } from "~/utils/types";
 
 // TODO: hide the environment variable inside the image tag url
-
-const Home = memo(() => {
+interface HomepageType {
+  properties: PropertyType[];
+}
+const Home: FC<HomepageType> = memo((props) => {
+  const { properties } = props;
   return (
     <>
       <div className="w-full">
         <HomePageslider />
         <main className={``}>
-          <FeaturedExclusives />
-          <FeaturedExclusives title="Top Projects" />
+          <FeaturedExclusives properties={properties} title="Top Projects" />
+          <FeaturedExclusives
+            properties={properties}
+            title="Latest Properties"
+          />
           <SellYourProperty />
           <ExploreByNeighrbourhood />
           <Agents />

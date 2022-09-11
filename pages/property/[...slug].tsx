@@ -5,7 +5,16 @@ import SampleProperties2 from "~/utils/data/SampleProperties2.json";
 import fetchProperty from "~/utils/helpers/firebase/fetchProperty";
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { query } = context;
-  const fetchedProperty = await fetchProperty("5JAnhMSBW8BKyawenDSq");
+  let { slug } = query;
+  let propertyId = (() => {
+    if (slug && Array.isArray(slug)) {
+      return slug[0];
+    } else if (slug && typeof slug == "string") {
+      return slug;
+    }
+  })();
+  console.log("here is teh propertyId", propertyId);
+  const fetchedProperty = await fetchProperty(propertyId ?? "");
 
   return {
     props: {
@@ -25,7 +34,6 @@ interface PropertyPagesProps {
 
 const Property: FC<PropertyPagesProps> = (props) => {
   const { property } = props;
-  const { responsivePhotos } = property;
   // console.log("this is the property of the page", property);
   return (
     <div>
