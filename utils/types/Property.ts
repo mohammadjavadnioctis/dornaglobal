@@ -1,11 +1,50 @@
 interface PropertyType {
+  isFake?: boolean;
   title?: string;
-  images?: string[];
-  owner?: string;
-  datePublished?: Date;
-  details?: details;
-  id: string;
+  address?: Record<string, string>;
+  bathrooms?: number;
+  bedrooms?: number;
+  city?: string;
+  description?: string;
+  favoriteCount?: number;
+  hiResImageLink?: string;
+  propertyType?:
+    | "residential"
+    | "commercial"
+    | "land"
+    | "building"
+    | "tourismFacility";
+  propertyStatus?: "rental" | "sale";
+  propertyDealStatus?: "pending" | "negotiation" | "closed";
+  insights?: Record<string, string>;
+  latitude?: number;
+  loigitude?: number;
+  listingDataSource?: string;
+  listingProviderType?: "agent" | "customer" | "admin";
+  lotSize?: number;
+  livingSize?: number;
+  sizeUnis?: "sqrft";
+  nearbyProperties?: PropertyType[];
+  photos?: photos[];
+  price?: number;
+  primaryVideo?: "string";
+  yearBuilt?: number;
+
   // TODO: define dates for types where date is needed
+}
+
+interface photos {
+  caption?: string;
+  mixedSources: {
+    webp?: {
+      width: number;
+      url: string;
+    }[];
+    jpeg?: {
+      width: number;
+      url: string;
+    }[];
+  };
 }
 
 interface details {

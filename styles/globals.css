@@ -36,3 +36,11 @@ a {
 .container {
   @apply m-auto;
 }
+
+/* Thumbnalis slider Start */
+.thumbSlider {
+  position: absolute;
+  width: 100%;
+  height: 100% !important;
+}
+/* Thumbnalis slider End */

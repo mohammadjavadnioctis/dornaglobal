@@ -1,3 +1,4 @@
+import { Thumbs } from "swiper";
 import "swiper/css";
 import "swiper/css/autoplay";
 import "swiper/css/controller";
