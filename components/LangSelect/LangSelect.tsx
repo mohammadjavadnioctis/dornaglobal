@@ -78,7 +78,7 @@ const LangSelect: FC = () => {
 
 const data = [
   {
-    image: "https://countryflagsapi.com/svg/america",
+    image: "https://countryflagsapi.com/png/united kingdom",
     label: "English",
     value: "en",
     description: "",

@@ -2,20 +2,22 @@ import React, { FC, memo } from "react";
 import Divider from "~/components/Divider/Divider";
 import SumWithText from "~/components/SumWithText/SumWithText";
 import { isDev } from "~/utils/helpers";
-import { PropertyType } from "~/utils/types";
+import { AgentType, PropertyType } from "~/utils/types";
 import Description from "./partials/Description/Description";
 import Propertyslider from "./partials/Propertyslider";
 import SumWithIcons from "./partials/SumWithIcons/SumWithIcons";
 
 interface PropertyPageType {
   property: PropertyType;
+  agent: AgentType;
 }
 
 interface ImagesType {
   url: string;
 }
 const PropertyPage: FC<PropertyPageType> = memo((props) => {
-  const { property } = props;
+  const { property, agent } = props;
+  console.log("here is the agent baby", agent);
   const {
     photos,
     bedrooms,

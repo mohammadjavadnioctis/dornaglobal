@@ -1,4 +1,5 @@
 interface PropertyType {
+  agentId: string;
   isFake?: boolean;
   title?: string;
   address?: Record<string, string>;

@@ -15,7 +15,7 @@ const ExploreByNeighrbourhood: FC = memo(() => {
       />
 
       {/* the image gallery */}
-      <div className="container max-w-[990px] w-full min-h-[500px] grid grid-cols-[repeat(auto-fit,_320px)] auto-rows-[10px] justify-center">
+      <div className="container max-w-[990px] !px-0 w-full min-h-[500px] grid grid-cols-[repeat(auto-fit,_320px)] auto-rows-[10px] justify-center">
         {neightbourhoods.map((neightbourHood, index) => {
           return (
             <Card

@@ -39,7 +39,7 @@ const Propertyslider: FC<PropertysliderType> = memo((props) => {
               <UiSlider.Slide key={index}>
                 <div className="relative w-full h-full">
                   <UiImage
-                    className="rounded-lg"
+                    className="rounded-lg bg-neutral-300"
                     src={image}
                     alt={"property Image"}
                     objectFit="cover"

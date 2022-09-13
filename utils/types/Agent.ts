@@ -3,11 +3,11 @@ interface AgentType {
   surname?: string;
   position?: string;
   description?: string;
-  phoneNo?: string;
-  email?: string;
+  tel?: string;
+  mail?: string;
   office?: string;
   officeId?: string;
-  image?: string;
+  img?: string;
   id?: string;
 }
 
