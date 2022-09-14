@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, forwardRef } from "react";
 import NextImage, { ImageProps as NextImageProps } from "next/image";
 import { isDev } from "~/utils/helpers";
 
@@ -45,7 +45,7 @@ const aspectHClasses: Record<number, string> = {
   16: "aspect-h-16",
 };
 
-const UiImage: FC<UiImageProps> = (props) => {
+const UiImage: FC<UiImageProps> = forwardRef((props, ref) => {
   const { aspectW, aspectH, ...rest } = props;
 
   if (typeof aspectW === "number" && typeof aspectH === "number") {
@@ -66,7 +66,7 @@ const UiImage: FC<UiImageProps> = (props) => {
   }
 
   return <NextImage {...rest} />;
-};
+});
 
 if (isDev) {
   UiImage.displayName = "UiImage";

@@ -36,32 +36,30 @@ const Propertyslider: FC<PropertysliderType> = memo((props) => {
           modules={[FreeMode, Navigation, Thumbs]}
           className="mySwiper2"
         >
+          {isImageLoading && (
+            <div className="absolute inset-0 z-1 w-full h-full bg-white">
+              <div className="w-full h-full bg-gray-300 rounded animate-pulse-fast" />
+            </div>
+          )}
           {images.map((image, index) => {
             return (
-              <>
-                {isImageLoading && (
-                  <div className="absolute inset-0 z-1 w-full h-full bg-white">
-                    <div className="w-full h-full bg-gray-300 rounded animate-pulse-fast" />
-                  </div>
-                )}
-                <UiSlider.Slide key={index}>
-                  <div className="relative w-full h-full">
-                    <UiImage
-                      className="rounded-lg bg-neutral-300"
-                      src={image}
-                      alt={"property Image"}
-                      objectFit="cover"
-                      objectPosition="center"
-                      layout="fill"
-                      unoptimized={true}
-                      priority={index === 0}
-                      onLoad={() => {
-                        setIsImageLoading(false);
-                      }}
-                    />
-                  </div>
-                </UiSlider.Slide>
-              </>
+              <UiSlider.Slide key={index}>
+                <div className="relative w-full h-full">
+                  <UiImage
+                    className="rounded-lg bg-neutral-300"
+                    src={image}
+                    alt={"property Image"}
+                    objectFit="cover"
+                    objectPosition="center"
+                    layout="fill"
+                    unoptimized={true}
+                    priority={index === 0}
+                    onLoad={() => {
+                      setIsImageLoading(false);
+                    }}
+                  />
+                </div>
+              </UiSlider.Slide>
             );
           })}
 
@@ -82,32 +80,30 @@ const Propertyslider: FC<PropertysliderType> = memo((props) => {
           className="mySwiper thumbSlider"
           direction="vertical"
         >
+          {isVerticalSliderLoading && (
+            <div className="absolute inset-0 z-1 w-full h-full bg-white">
+              <div className="w-full h-full bg-gray-300 rounded animate-pulse-fast" />
+            </div>
+          )}
           {images.map((image, index) => {
             return (
-              <>
-                {isVerticalSliderLoading && (
-                  <div className="absolute inset-0 z-1 w-full h-full bg-white">
-                    <div className="w-full h-full bg-gray-300 rounded animate-pulse-fast" />
-                  </div>
-                )}
-                <UiSlider.Slide key={index}>
-                  <div className="relative w-full h-full">
-                    <UiImage
-                      className="rounded-lg"
-                      src={image}
-                      alt={"property Image"}
-                      objectFit="cover"
-                      objectPosition="center"
-                      layout="fill"
-                      unoptimized={true}
-                      priority={index === 0}
-                      onLoad={() => {
-                        setIsVerticalSliderLoading(false);
-                      }}
-                    />
-                  </div>
-                </UiSlider.Slide>
-              </>
+              <UiSlider.Slide key={index}>
+                <div className="relative w-full h-full">
+                  <UiImage
+                    className="rounded-lg"
+                    src={image}
+                    alt={"property Image"}
+                    objectFit="cover"
+                    objectPosition="center"
+                    layout="fill"
+                    unoptimized={true}
+                    priority={index === 0}
+                    onLoad={() => {
+                      setIsVerticalSliderLoading(false);
+                    }}
+                  />
+                </div>
+              </UiSlider.Slide>
             );
           })}
         </UiSlider>

@@ -1,4 +1,4 @@
-import { FC, memo, useEffect, useState } from "react";
+import { FC, forwardRef, memo, useEffect, useState } from "react";
 import { isDev } from "~/utils/helpers";
 // import { useTrans } from "@core/hooks";
 import UiImage from "lib/Image";
@@ -60,7 +60,7 @@ const footerNavigation = {
   ],
 };
 
-const FooterPartial: FC = memo(() => {
+const FooterPartial: FC = forwardRef((props, ref) => {
   const [isImageLoading, setIsImageLoading] = useState(true);
 
   const [domLoaded, setDomLoaded] = useState(false);

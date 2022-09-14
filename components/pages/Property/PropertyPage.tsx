@@ -1,5 +1,6 @@
 import React, { FC, memo } from "react";
 import Divider from "~/components/Divider/Divider";
+import SidebarAgentCard from "~/components/SidebarAgentCard/SidebarAgentCard";
 import SumWithText from "~/components/SumWithText/SumWithText";
 import { isDev } from "~/utils/helpers";
 import { AgentType, PropertyType } from "~/utils/types";
@@ -58,7 +59,9 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
         <div className="w-[70%] border-2 border-orange-400">
           <Description description={description!} />
         </div>
-        <div className="w-1/4 border-2 border-pink-400 h-[50vh] sticky top-0 right-0 self-start"></div>
+        <div className="w-1/4 border-2 border-pink-400 h-[50vh] sticky top-0 right-0 self-start">
+          <SidebarAgentCard agent={agent} />
+        </div>
       </div>
     </div>
   );

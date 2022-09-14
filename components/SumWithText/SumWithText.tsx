@@ -37,6 +37,7 @@ const SumWithText: FC<SumWithTextType> = memo((props) => {
               <Tag
                 text={tag}
                 wrapperClassNames={index == 0 ? "!bg-accent" : ""}
+                key={index}
               />
             ))}
           </div>
