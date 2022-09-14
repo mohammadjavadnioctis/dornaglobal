@@ -12,6 +12,8 @@ interface PropertysliderType {
 const Propertyslider: FC<PropertysliderType> = memo((props) => {
   const { images } = props;
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass>();
+  const [isImageLoading, setIsImageLoading] = useState(true);
+  const [isVerticalSliderLoading, setIsVerticalSliderLoading] = useState(true);
   return (
     <div className="container w-full min-h-[400px] max-h-[600px] overflow-hidden relative">
       <div className="w-full sm:aspect-w-3 sm:aspect-h-2 md:aspect-w-16 md:aspect-h-9 xl:aspect-none mt-4 xl:mt-0 xl:w-full xl:!h-[600px]">
@@ -36,20 +38,30 @@ const Propertyslider: FC<PropertysliderType> = memo((props) => {
         >
           {images.map((image, index) => {
             return (
-              <UiSlider.Slide key={index}>
-                <div className="relative w-full h-full">
-                  <UiImage
-                    className="rounded-lg bg-neutral-300"
-                    src={image}
-                    alt={"property Image"}
-                    objectFit="cover"
-                    objectPosition="center"
-                    layout="fill"
-                    unoptimized={true}
-                    priority={index === 0}
-                  />
-                </div>
-              </UiSlider.Slide>
+              <>
+                {isImageLoading && (
+                  <div className="absolute inset-0 z-1 w-full h-full bg-white">
+                    <div className="w-full h-full bg-gray-300 rounded animate-pulse-fast" />
+                  </div>
+                )}
+                <UiSlider.Slide key={index}>
+                  <div className="relative w-full h-full">
+                    <UiImage
+                      className="rounded-lg bg-neutral-300"
+                      src={image}
+                      alt={"property Image"}
+                      objectFit="cover"
+                      objectPosition="center"
+                      layout="fill"
+                      unoptimized={true}
+                      priority={index === 0}
+                      onLoad={() => {
+                        setIsImageLoading(false);
+                      }}
+                    />
+                  </div>
+                </UiSlider.Slide>
+              </>
             );
           })}
 
@@ -72,20 +84,30 @@ const Propertyslider: FC<PropertysliderType> = memo((props) => {
         >
           {images.map((image, index) => {
             return (
-              <UiSlider.Slide key={index}>
-                <div className="relative w-full h-full">
-                  <UiImage
-                    className="rounded-lg"
-                    src={image}
-                    alt={"property Image"}
-                    objectFit="cover"
-                    objectPosition="center"
-                    layout="fill"
-                    unoptimized={true}
-                    priority={index === 0}
-                  />
-                </div>
-              </UiSlider.Slide>
+              <>
+                {isVerticalSliderLoading && (
+                  <div className="absolute inset-0 z-1 w-full h-full bg-white">
+                    <div className="w-full h-full bg-gray-300 rounded animate-pulse-fast" />
+                  </div>
+                )}
+                <UiSlider.Slide key={index}>
+                  <div className="relative w-full h-full">
+                    <UiImage
+                      className="rounded-lg"
+                      src={image}
+                      alt={"property Image"}
+                      objectFit="cover"
+                      objectPosition="center"
+                      layout="fill"
+                      unoptimized={true}
+                      priority={index === 0}
+                      onLoad={() => {
+                        setIsVerticalSliderLoading(false);
+                      }}
+                    />
+                  </div>
+                </UiSlider.Slide>
+              </>
             );
           })}
         </UiSlider>
