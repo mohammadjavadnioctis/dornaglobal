@@ -9,12 +9,21 @@ import { PropertyType } from "~/utils/types";
 interface FeaturedExclusivesType {
   title?: string;
   properties: PropertyType[];
+  silmilar?: boolean;
+  slidesPerView?: number;
+  wrapperClassNames?: string;
 }
 
 const FeaturedExclusives: FC<FeaturedExclusivesType> = memo((props) => {
-  const { title = "Our Featured Exclusives", properties } = props;
+  const {
+    title = "Our Featured Exclusives",
+    properties,
+    silmilar = false,
+    slidesPerView = 4,
+    wrapperClassNames,
+  } = props;
   return (
-    <section className="container">
+    <section className={`container ${wrapperClassNames}`}>
       <div></div>
       <Head
         title={title}
@@ -24,7 +33,11 @@ const FeaturedExclusives: FC<FeaturedExclusivesType> = memo((props) => {
       />
 
       {/* TODO: create keys for this map */}
-      <PropertiesSlider properties={properties} />
+      <PropertiesSlider
+        properties={properties}
+        similar={silmilar}
+        slidesPerView={slidesPerView}
+      />
 
       {/* <div className="w-full justify-center grid grid-cols-2 gap-2 xl:grid-cols-[repeat(3,_minmax(0,_350px))] xl:gap-4">
         {SamplePropertiesData.map((property) => { */}

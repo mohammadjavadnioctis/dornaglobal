@@ -17,12 +17,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const fetchedProperty = await fetchProperty(propertyId ?? "");
   // @ts-ignore
   const { agentId } = fetchedProperty;
-  console.log("agent id ", agentId);
   const fetcehdAgent = await fetchAgent(agentId ?? "");
-
+  const fetchSimilarProperties = await fetchProperties();
   return {
     props: {
       property: fetchedProperty,
+      similarProperties: fetchSimilarProperties,
       agent: fetcehdAgent,
     },
   };
@@ -33,18 +33,25 @@ import { AgentType, PropertyType } from "~/utils/types";
 import Propertyslider from "~/components/pages/Property/partials/Propertyslider";
 import PropertyPage from "~/components/pages/Property/PropertyPage";
 import fetchAgent from "~/utils/helpers/firebase/fetchAgent";
+import fetchProperties from "~/utils/helpers/firebase/fetchProperties";
 
 interface PropertyPagesProps {
   property: PropertyType;
+  similarProperties: PropertyType[];
   agent: AgentType;
 }
 
 const Property: FC<PropertyPagesProps> = (props) => {
-  const { property, agent } = props;
+  const { property, agent, similarProperties } = props;
+
   console.log("this is the property of the page", property);
   return (
     <div>
-      <PropertyPage property={property} agent={agent} />
+      <PropertyPage
+        property={property}
+        agent={agent}
+        similarProperties={similarProperties}
+      />
     </div>
   );
 };

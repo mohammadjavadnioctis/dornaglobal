@@ -21,7 +21,6 @@ const SumWithIcons: FC<SumWithIconsType> = memo((props) => {
           featureValue={Object.values(feature)[0]!}
         />
       ))}
-      <Divider />
     </div>
   );
 });

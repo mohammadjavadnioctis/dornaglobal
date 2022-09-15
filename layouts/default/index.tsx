@@ -12,7 +12,7 @@ interface DefaultLayoutType {
 const DefaultLayout: FC<DefaultLayoutType> = ({ children }) => {
   return (
     <>
-      <div className="min-h-[100vh] m-auto overflow-x-hidden">
+      <div className="min-h-[100vh] m-auto">
         <Header />
         {children}
         <Footer />

@@ -8,9 +8,10 @@ import { BiCar } from "react-icons/bi";
 
 interface PropertyCardProps {
   property: PropertyType;
+  similar?: boolean;
 }
 
-const PropertyCard: FC<PropertyCardProps> = memo(({ property }) => {
+const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
   const {
     title,
     photos,
@@ -30,7 +31,10 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property }) => {
   //       }
   // });
   //     console.log('here is the images', images)
-
+  const img = similar
+    ? property.miniCardPhotos[0].url
+    : property.hiResImageLink;
+  console.log("here is teh image", img);
   return (
     <div className="group hover:shadow-lg transition-shadow">
       <div className="overflow-hidden">
@@ -38,21 +42,22 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property }) => {
           {/* This empty div is required for aspect ratio and next/image to work together. */}
           <div className={"overflow-hidden"}>
             <div className="relative w-full h-full transition ease-in-out duration-150 group-hover:opacity-75">
-              {!!hiResImageLink && hiResImageLink.length > 0 && (
-                <UiImage
-                  className="rounded-t-lg"
-                  src={hiResImageLink!}
-                  alt={title}
-                  objectFit="cover"
-                  objectPosition="center"
-                  layout="fill"
-                  unoptimized={true}
-                  // priority={preloadImage}
-                  // onLoadingComplete={() =>
-                  //     setIsImageLoading(false)
-                  // }
-                />
-              )}
+              {similar ||
+                (!!hiResImageLink && hiResImageLink.length > 0 && (
+                  <UiImage
+                    className="rounded-t-lg"
+                    src={img!}
+                    alt={title}
+                    objectFit="cover"
+                    objectPosition="center"
+                    layout="fill"
+                    unoptimized={true}
+                    // priority={preloadImage}
+                    // onLoadingComplete={() =>
+                    //     setIsImageLoading(false)
+                    // }
+                  />
+                ))}
             </div>
           </div>
         </div>

@@ -33,6 +33,8 @@ interface PropertyType {
   yearBuilt?: number;
   garage?: number;
   id: string;
+  miniCardPhotos: miniPhotos[];
+  nearbyHomes: PropertyType[];
 
   // TODO: define dates for types where date is needed
 }
@@ -67,6 +69,10 @@ interface features {
   noOfBathRooms?: number;
   noOfBedRooms?: number;
   noOfParkings?: number;
+}
+
+interface miniPhotos {
+  url: string;
 }
 
 export default PropertyType;
