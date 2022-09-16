@@ -13,7 +13,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return slug;
     }
   })();
-  console.log("here is teh propertyId", propertyId);
+  // console.log("here is teh propertyId", propertyId);
   const fetchedProperty = await fetchProperty(propertyId ?? "");
   // @ts-ignore
   const { agentId } = fetchedProperty;

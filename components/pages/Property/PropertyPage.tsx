@@ -1,7 +1,9 @@
 import React, { FC, memo } from "react";
 import Divider from "~/components/Divider/Divider";
+import PropertyDetails from "~/components/PropertyDetails/PropertyDetails";
 import SidebarAgentCard from "~/components/SidebarAgentCard/SidebarAgentCard";
 import SumWithText from "~/components/SumWithText/SumWithText";
+import { samplePropertyDetailsData } from "~/utils/data";
 import { isDev } from "~/utils/helpers";
 import { AgentType, PropertyType } from "~/utils/types";
 import FeaturedExclusives from "../Partials/FeaturedExclusives/FeaturedExclusives";
@@ -20,7 +22,7 @@ interface ImagesType {
 }
 const PropertyPage: FC<PropertyPageType> = memo((props) => {
   const { property, agent, similarProperties } = props;
-  console.log("here is the agent baby", agent);
+  // console.log("here is the agent baby", agent);
   const {
     photos,
     bedrooms,
@@ -61,8 +63,9 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
         <SumWithIcons features={[...SumWithIconsProps]} />
       </div>
       {/* The layout of the right sidebar and content */}
-      <div className=" container relative min-h-[80vh] flex justify-between border-green-400 border-2">
-        <div className="w-[74%] border-2 border-orange-400">
+      <div className=" container relative min-h-[80vh] flex justify-between">
+        <div className="w-[74%]">
+          <PropertyDetails details={samplePropertyDetailsData} />
           <Description description={description!} />
 
           {Array.isArray(similarProperties) && similarProperties.length > 1 && (
@@ -74,7 +77,7 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
             />
           )}
         </div>
-        <div className="w-1/4 bg-white rounded-xl border-2 border-pink-400 h-[50vh] sticky top-0 right-0">
+        <div className="w-1/4 bg-white rounded-xl h-[50vh] sticky top-0 right-0">
           <SidebarAgentCard agent={agent} />
         </div>
       </div>

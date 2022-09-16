@@ -9,7 +9,7 @@ interface DescriptionType {
 const Description: FC<DescriptionType> = memo((props) => {
   const { title = "Description", description } = props;
   return (
-    <div className="w-full border-2 border-red-400 p-10 bg-white">
+    <div className="w-full p-10 bg-white">
       <h3 className="font-['Playfair_Display'] text-lg pb-10 border-b border-gray-400 mb-6">
         {title}
       </h3>

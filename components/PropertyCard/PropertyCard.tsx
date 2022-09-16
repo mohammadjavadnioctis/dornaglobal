@@ -34,7 +34,7 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
   const img = similar
     ? property.miniCardPhotos[0].url
     : property.hiResImageLink;
-  console.log("here is teh image", img);
+  // console.log("here is teh image", img);
   return (
     <div className="group hover:shadow-lg transition-shadow">
       <div className="overflow-hidden">
