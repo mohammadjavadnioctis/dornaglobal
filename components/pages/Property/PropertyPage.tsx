@@ -1,9 +1,14 @@
 import React, { FC, memo } from "react";
 import Divider from "~/components/Divider/Divider";
 import PropertyDetails from "~/components/PropertyDetails/PropertyDetails";
+import PropertyFeatures from "~/components/PrpertyFeatures/PropertyFeatures";
 import SidebarAgentCard from "~/components/SidebarAgentCard/SidebarAgentCard";
 import SumWithText from "~/components/SumWithText/SumWithText";
-import { samplePropertyDetailsData } from "~/utils/data";
+import {
+  samplePropertyDetailsData,
+  SamplePropertyFeatures,
+} from "~/utils/data";
+import propertyDetails from "~/utils/data/SamplePropertyDetails";
 import { isDev } from "~/utils/helpers";
 import { AgentType, PropertyType } from "~/utils/types";
 import FeaturedExclusives from "../Partials/FeaturedExclusives/FeaturedExclusives";
@@ -67,13 +72,17 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
         <div className="w-[74%]">
           <PropertyDetails details={samplePropertyDetailsData} />
           <Description description={description!} />
+          <PropertyFeatures features={SamplePropertyFeatures} />
 
           {Array.isArray(similarProperties) && similarProperties.length > 1 && (
             <FeaturedExclusives
               properties={similarProperties}
-              title="Similar"
+              title="Similar Properties"
+              subtitle=""
               slidesPerView={3}
-              wrapperClassNames="bg-white rounded-xl"
+              titleContainerClassNames="!text-left max-w-[unset] my-0 mx-0"
+              wrapperClassNames="w-full !p-10 bg-white rounded-xl"
+              titleClassNames="text-titleColors text-lg font-playfair pb-10 mb-6 border-b border-gray-400"
             />
           )}
         </div>

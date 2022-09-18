@@ -70,7 +70,7 @@ const FooterPartial: FC = forwardRef((props, ref) => {
   }, []);
 
   return (
-    <footer className="bg-white">
+    <footer className="bg-white mt-4">
       {/* <UiDivider orientation="horizontal" className="border-0 h-20" /> */}
 
       <div className="container overflow-hidden !px-[15px]">

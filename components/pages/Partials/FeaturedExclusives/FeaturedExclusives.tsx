@@ -8,28 +8,37 @@ import { PropertyType } from "~/utils/types";
 
 interface FeaturedExclusivesType {
   title?: string;
+  subtitle?: string;
   properties: PropertyType[];
   silmilar?: boolean;
   slidesPerView?: number;
   wrapperClassNames?: string;
+  titleClassNames?: string;
+  subtitleClassNames?: string;
+  titleContainerClassNames?: string;
 }
 
 const FeaturedExclusives: FC<FeaturedExclusivesType> = memo((props) => {
   const {
     title = "Our Featured Exclusives",
+    subtitle = "CHOOSE FROM DIFFERENT LISTING TEMPLATES AND LAY THEM OUT AS LISTS OR GRIDS, FULL-WIDTH OR BOXED ",
     properties,
     silmilar = false,
     slidesPerView = 4,
     wrapperClassNames,
+    titleClassNames,
+    subtitleClassNames,
+    titleContainerClassNames,
   } = props;
   return (
     <section className={`container ${wrapperClassNames}`}>
       <div></div>
       <Head
         title={title}
-        subtitle="CHOOSE FROM DIFFERENT LISTING TEMPLATES AND LAY THEM OUT AS LISTS OR GRIDS, FULL-WIDTH OR BOXED ​"
-        subtitleClassNames="text-subtitleColor tracking-[1px] font-medium leading-[1.5rem] font-[Dosis,_sans-serif]"
-        containerClassNames="max-w-[600px] mx-auto my-[60px]"
+        subtitle={subtitle}
+        subtitleClassNames={`text-subtitleColor tracking-[1px] font-medium leading-[1.5rem] font-[Dosis,_sans-serif] ${subtitleClassNames}`}
+        containerClassNames={`max-w-[600px] mx-auto my-[60px] ${titleContainerClassNames}`}
+        titleClassnames={`${titleClassNames}`}
       />
 
       {/* TODO: create keys for this map */}

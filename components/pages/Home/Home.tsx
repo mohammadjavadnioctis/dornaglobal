@@ -16,9 +16,9 @@ const Home: FC<HomepageType> = memo((props) => {
   const { properties } = props;
   return (
     <>
-      <div className="w-full">
+      <div className="w-full snap-y snap-mandatory">
         <HomePageslider />
-        <main className={``}>
+        <main className={`snap-start`}>
           <FeaturedExclusives properties={properties} title="Top Projects" />
           <FeaturedExclusives
             properties={properties}

@@ -12,7 +12,9 @@ const Header = memo(() => {
   let isHomePage = router.asPath == "/";
   return (
     <header
-      className={` ${isHomePage ? "absolute" : "relative"}  z-10 w-full `}
+      className={` ${
+        isHomePage ? "absolute" : "relative bg-white"
+      }  z-10 w-full `}
     >
       <TopBar />
       <div className="container header w-full flex justify-between py-5 ">
