@@ -1,4 +1,4 @@
-import React, { FC, memo } from "react";
+import React, { FC, forwardRef, memo } from "react";
 import Head from "~/components/Head/Head";
 import PropertiesSlider from "~/components/PropertiesSlider/PropertiesSlider";
 import PropertyCard from "~/components/PropertyCard/PropertyCard";
@@ -16,9 +16,14 @@ interface FeaturedExclusivesType {
   titleClassNames?: string;
   subtitleClassNames?: string;
   titleContainerClassNames?: string;
+  ref?: any;
+  showSliderButtons?: boolean;
 }
 
-const FeaturedExclusives: FC<FeaturedExclusivesType> = memo((props) => {
+const FeaturedExclusives: FC<FeaturedExclusivesType> = forwardRef<
+  HTMLDivElement,
+  FeaturedExclusivesType
+>((props, ref) => {
   const {
     title = "Our Featured Exclusives",
     subtitle = "CHOOSE FROM DIFFERENT LISTING TEMPLATES AND LAY THEM OUT AS LISTS OR GRIDS, FULL-WIDTH OR BOXED ",
@@ -29,9 +34,10 @@ const FeaturedExclusives: FC<FeaturedExclusivesType> = memo((props) => {
     titleClassNames,
     subtitleClassNames,
     titleContainerClassNames,
+    showSliderButtons = true,
   } = props;
   return (
-    <section className={`container ${wrapperClassNames}`}>
+    <section className={`container ${wrapperClassNames}`} ref={ref}>
       <div></div>
       <Head
         title={title}
@@ -46,6 +52,7 @@ const FeaturedExclusives: FC<FeaturedExclusivesType> = memo((props) => {
         properties={properties}
         similar={silmilar}
         slidesPerView={slidesPerView}
+        showButtons={showSliderButtons}
       />
 
       {/* <div className="w-full justify-center grid grid-cols-2 gap-2 xl:grid-cols-[repeat(3,_minmax(0,_350px))] xl:gap-4">

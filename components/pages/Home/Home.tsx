@@ -1,4 +1,4 @@
-import React, { memo, useEffect, FC } from "react";
+import React, { memo, useEffect, FC, useRef } from "react";
 import { isDev } from "~/utils/helpers";
 import { HomePageslider } from "../Partials";
 import FeaturedExclusives from "../Partials/FeaturedExclusives/FeaturedExclusives";
@@ -7,23 +7,31 @@ import SellYourProperty from "../Partials/SellYourProperty/SellYourProperty";
 import Agents from "../Partials/Agents/Agents";
 import OurServices from "../Partials/OurServices/OurServices";
 import { PropertyType } from "~/utils/types";
-
+import NeightBourHoodSlider from "../Partials/NeightBourHoodSlider/NeightBourHoodSlider";
+import useScrollSnap from "react-use-scroll-snap";
 // TODO: hide the environment variable inside the image tag url
 interface HomepageType {
   properties: PropertyType[];
 }
 const Home: FC<HomepageType> = memo((props) => {
   const { properties } = props;
+  const scrollRef = useRef(null);
+  useScrollSnap({ ref: scrollRef, duration: 100, delay: 50 });
   return (
     <>
-      <div className="w-full snap-y snap-mandatory">
+      <div className="w-full ">
         <HomePageslider />
-        <main className={`snap-start`}>
-          <FeaturedExclusives properties={properties} title="Top Projects" />
+        <main className={``}>
+          <FeaturedExclusives
+            properties={properties}
+            title="Top Projects"
+            ref={scrollRef}
+          />
           <FeaturedExclusives
             properties={properties}
             title="Latest Properties"
           />
+          <NeightBourHoodSlider />
           <SellYourProperty />
           <ExploreByNeighrbourhood />
           <Agents />

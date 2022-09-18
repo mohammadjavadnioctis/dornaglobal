@@ -80,6 +80,7 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
               title="Similar Properties"
               subtitle=""
               slidesPerView={3}
+              showSliderButtons={false}
               titleContainerClassNames="!text-left max-w-[unset] my-0 mx-0"
               wrapperClassNames="w-full !p-10 bg-white rounded-xl"
               titleClassNames="text-titleColors text-lg font-playfair pb-10 mb-6 border-b border-gray-400"
