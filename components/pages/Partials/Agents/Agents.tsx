@@ -6,37 +6,34 @@ import { AgentType } from "~/utils/types";
 
 const AgentsSampleData: AgentType[] = [
   {
-    name: "John",
-    surname: "Doe",
+    name: "Sanaz",
+    surname: "Shahsavar",
     position: "Real Estate Agent",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, expedita.",
-    office: "Company Agent , Cool Houses Inc",
-    image:
-      "https://firebasestorage.googleapis.com/v0/b/dorna-global.appspot.com/o/dev%2Fagent1.jpg?alt=media&token=5f0e04f7-feff-40c9-9574-a87c4318939c",
+    office: "Company Agent , Izmir Branch",
+    img: "https://firebasestorage.googleapis.com/v0/b/dorna-global.appspot.com/o/dev%2Fsanaz%20shahsavar.jpg?alt=media&token=e443d4d4-976d-4abe-b983-44a3dfeead8b",
     id: "1",
   },
   {
-    name: "Justin",
-    surname: "Bieebr",
+    name: "Roya",
+    surname: "Rahimi",
     position: "Real Estate Agent",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, expedita.",
-    office: "Company Agent , Cool Houses Inc",
-    image:
-      "https://firebasestorage.googleapis.com/v0/b/dorna-global.appspot.com/o/dev%2Fagent%202.jpg?alt=media&token=7ee69cd7-f0c2-4545-aea7-d5214fbf1945",
-    id: "2",
+    office: "Company Agent ,Dorna Global",
+    img: "https://firebasestorage.googleapis.com/v0/b/dorna-global.appspot.com/o/dev%2FRoya.jpg?alt=media&token=4707987e-5624-4a0e-b78d-a413040edb6a",
+    id: "3",
   },
   {
-    name: "Lady",
-    surname: "Gaga",
+    name: "Nora",
+    surname: "Alieva",
     position: "Real Estate Agent",
     description:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic, expedita.",
-    office: "Company Agent , Cool Houses Inc",
-    image:
-      "https://firebasestorage.googleapis.com/v0/b/dorna-global.appspot.com/o/dev%2Fagent3.jpg?alt=media&token=7860f293-0ae1-4501-9e90-4d4a28eb2341",
-    id: "3",
+    office: "Company Agent , Istanbul Branch",
+    img: "https://firebasestorage.googleapis.com/v0/b/dorna-global.appspot.com/o/dev%2Fnora%20alieva.jpg?alt=media&token=678f1288-37ad-4948-a633-f5fadcf08468",
+    id: "2",
   },
 ];
 

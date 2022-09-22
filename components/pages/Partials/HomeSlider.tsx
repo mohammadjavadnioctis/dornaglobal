@@ -37,7 +37,7 @@ const HomeSlider = () => {
           subtitleClassNames="text-white"
         /> */}
       </div>
-      <div className="slider relative w-full snap-end h-screen">
+      <div className="slider relative w-full h-screen">
         <UiImage
           id="bg"
           src="https://firebasestorage.googleapis.com/v0/b/dorna-global.appspot.com/o/gran.jpg?alt=media&token=0662cbe5-6169-474d-bb41-88f4ed02a5d0"

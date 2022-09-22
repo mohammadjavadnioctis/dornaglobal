@@ -10,7 +10,7 @@ interface AgentType {
   officeId?: string;
   img?: string;
   id?: string;
-  properties: PropertyType[];
+  properties?: PropertyType[];
 }
 
 export default AgentType;

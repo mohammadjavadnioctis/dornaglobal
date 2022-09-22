@@ -23,6 +23,9 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
+    "contexts/AuthContext.tsx",
+    "utils/**/*.tsx",
+    "utils/**/*.ts",
     "pages/property/[[..slug].]tsx"
   ],
   "exclude": ["node_modules"]

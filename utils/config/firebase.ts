@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import {
+  Auth,
   browserSessionPersistence,
   getAuth,
   setPersistence,
@@ -9,9 +10,10 @@ import {
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import firebase from "firebase/app";
-import { getFirestore } from "firebase/firestore/lite";
+import { Firestore, getFirestore } from "firebase/firestore/lite";
 
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
@@ -22,11 +24,17 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+// let app: firebase.FirebaseApp | null = null;
+// let auth: Auth;
+// let db: Firestore;
+// console.log("this si get App:", getApp());
+// if (typeof window !== "undefined" && !getApps().length) {
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+// const auth = getAuth(app);
 const db = getFirestore(app);
-
-setPersistence(auth, browserSessionPersistence);
+// setPersistence(auth, browserSessionPersistence);
+// }
+// console.log("this si get Apps:", getApps());
 //   .then(() => {
 //     // Existing and future Auth states are now persisted in the current
 //     // session only. Closing the window would clear any existing state even
@@ -41,7 +49,6 @@ setPersistence(auth, browserSessionPersistence);
 //     const errorCode = error.code;
 //     const errorMessage = error.message;
 //   });
-
 // firebase.initializeApp(firebaseConfig);
-export { db, auth };
+export { db };
 export default app;

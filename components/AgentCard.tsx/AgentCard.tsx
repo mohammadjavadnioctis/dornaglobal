@@ -29,16 +29,16 @@ interface AgentCardType {
 
 const AgentCard: FC<AgentCardType> = memo((props) => {
   const { agent } = props;
-  const { name, surname, position, image, description, email } = agent;
+  const { name, surname, position, img, description, mail } = agent;
   const { classes } = useStyles();
 
   return (
     <div className="w-full max-w-[360px] flex flex-col p-4 items-center hover:shadow-xl transition-all duration-300">
       <div className="mb-8">
         <UiImage
-          src={image!}
-          width={120}
-          height={120}
+          src={img!}
+          width={200}
+          height={200}
           className="rounded-full overflow-hidden"
         />
       </div>
