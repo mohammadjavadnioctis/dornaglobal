@@ -1,6 +1,7 @@
 import React, { FC, memo } from "react";
 import { Field, ErrorMessage } from "formik";
 import TextError from "./TextError";
+import { isDev } from "~/utils/helpers";
 
 interface InputComponentPropsType {
   inputName: string;
@@ -40,5 +41,9 @@ const Input: FC<InputComponentPropsType> = memo((props) => {
     </div>
   );
 });
+
+if (isDev) {
+  Input.displayName = "InputComponent";
+}
 
 export default Input;

@@ -26,6 +26,7 @@ function RadioButtons(props: any) {
           });
         }}
       </Field>
+      {/* @ts-ignore */}
       <ErrorMessage component={TextError} name={inputName} />
     </div>
   );

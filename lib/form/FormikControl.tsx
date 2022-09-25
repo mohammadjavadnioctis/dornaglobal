@@ -4,6 +4,7 @@ import Textarea from "./Textarea";
 import Select from "./Select";
 import RadioButtons from "./RadioButtons";
 import CheckboxGroup from "./CheckboxGroup";
+import { isDev } from "~/utils/helpers";
 // import DatePicker from './DatePicker'
 // import ChakraInput from './ChakraInput'
 
@@ -39,5 +40,9 @@ const FormikControl: FC<FormikControlType> = memo((props) => {
       return null;
   }
 });
+
+if (isDev) {
+  FormikControl.displayName = "FormkiControl";
+}
 
 export default FormikControl;
