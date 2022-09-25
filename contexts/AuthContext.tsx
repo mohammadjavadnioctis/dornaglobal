@@ -1,13 +1,14 @@
+import { User } from "firebase/auth";
 import nookies from "nookies";
 import { createContext, useEffect, useState } from "react";
-import firebase, { auth } from "~/utils/config/firebase";
+import { auth } from "~/utils/config/firebase";
 
-const AuthContext = createContext<{ user: firebase.User | null }>({
+const AuthContext = createContext<{ user: User | null }>({
   user: null,
 });
 
 export function AuthProvider({ children }: any) {
-  const [user, setUser] = useState<firebase.User | null>(null);
+  const [user, setUser] = useState<User | null>(null);
 
   // listen for token changes
   // call setUser and write new token as a cookie

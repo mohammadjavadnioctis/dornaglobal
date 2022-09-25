@@ -74,7 +74,7 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
             APARTMENT
           </p>
         </div>
-        <div className="features w-full flex justify-between text-subtitleColor">
+        <div className="features w-full flex justify-around text-subtitleColor">
           <div className="flex flex-col justify-between">
             <span className="inline-flex mx-2 items-center justify-center">
               <BiBed className="mr-1" />

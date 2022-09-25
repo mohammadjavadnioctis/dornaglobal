@@ -15,7 +15,7 @@ import { Firestore, getFirestore } from "firebase/firestore/lite";
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
   authDomain: process.env.FIREBASE_AUTH_DOMAIN,
   projectId: process.env.FIREBASE_PROJECT_ID,
   storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
@@ -30,9 +30,9 @@ const firebaseConfig = {
 // console.log("this si get App:", getApp());
 // if (typeof window !== "undefined" && !getApps().length) {
 const app = initializeApp(firebaseConfig);
-// const auth = getAuth(app);
+const auth = getAuth(app);
 const db = getFirestore(app);
-// setPersistence(auth, browserSessionPersistence);
+setPersistence(auth, browserSessionPersistence);
 // }
 // console.log("this si get Apps:", getApps());
 //   .then(() => {
@@ -50,5 +50,5 @@ const db = getFirestore(app);
 //     const errorMessage = error.message;
 //   });
 // firebase.initializeApp(firebaseConfig);
-export { db };
+export { db, auth };
 export default app;

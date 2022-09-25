@@ -44,7 +44,6 @@ interface PropertyPagesProps {
 const Property: FC<PropertyPagesProps> = (props) => {
   const { property, agent, similarProperties } = props;
 
-  console.log("this is the property of the page", property);
   return (
     <div>
       <PropertyPage
