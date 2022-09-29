@@ -1,5 +1,6 @@
 import React, { FC, memo } from "react";
 import SignIn from "~/components/pages/Auth/SignIn";
+import { useAuth } from "~/contexts/AuthContext";
 import { isDev } from "~/utils/helpers";
 
 const SignInPage: FC = memo(() => {

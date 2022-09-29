@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React, { FC } from "react";
 import { mainMenuData } from "utils/data/menus";
+import { useAuth } from "~/contexts/AuthContext";
 
 interface MainMenuType {
   ItemsContainerClassNames?: string;
@@ -9,9 +10,11 @@ interface MainMenuType {
 
 const MainMenu: FC<MainMenuType> = (props) => {
   const { ItemsContainerClassNames = "flex ", ItemsClassNames } = props;
+  const { user } = useAuth();
   return (
     <ul className={`${ItemsContainerClassNames}`}>
       {mainMenuData.map((menuItem) => {
+        // if (user && menuItem.href === "/profile") return;
         return (
           <li
             key={menuItem.id}
@@ -23,6 +26,26 @@ const MainMenu: FC<MainMenuType> = (props) => {
           </li>
         );
       })}
+      {!user && (
+        <li
+          key={"signIn"}
+          className={`${ItemsClassNames} w-full h-full flex items-center`}
+        >
+          <Link href={"/signin"} passHref>
+            <a className="h-full flex items-center">Login</a>
+          </Link>
+        </li>
+      )}
+      {/* {user && (
+        <li
+          key={"signIn"}
+          className={`${ItemsClassNames} w-full h-full flex items-center`}
+        >
+          <Link href={"/signin"} passHref>
+            <a className="h-full flex items-center">Logout</a>
+          </Link>
+        </li>
+      )} */}
     </ul>
   );
 };

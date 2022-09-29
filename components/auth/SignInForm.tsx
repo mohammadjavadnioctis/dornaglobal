@@ -5,6 +5,7 @@ import * as Yup from "yup";
 import { isDev } from "~/utils/helpers";
 import { Button, createStyles } from "@mantine/core";
 import UiLink from "~/lib/UiLink";
+import { useAuth } from "~/contexts/AuthContext";
 
 interface SignInFormType {
   wraperClassname?: string;
@@ -32,6 +33,7 @@ const useStyles = createStyles((theme) => ({
 const SignInForm: FC<SignInFormType> = memo((props) => {
   const { wraperClassname } = props;
   const { classes } = useStyles();
+  const { signIn } = useAuth();
 
   const options = [
     { key: "Email", value: "emailmoc" },
@@ -56,8 +58,13 @@ const SignInForm: FC<SignInFormType> = memo((props) => {
     // }),
   });
 
-  const onSubmit = (values: any) => {
+  const onSubmit = async (values: any) => {
     console.log("Form data", values);
+    try {
+      await signIn(values.email, values.password);
+    } catch (error) {
+      console.log("error", error);
+    }
   };
 
   // TODO: change the styling model

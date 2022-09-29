@@ -1,5 +1,6 @@
 import React, { FC, memo } from "react";
 import SignUpForm from "~/components/auth/SignUpForm";
+import { useAuth } from "~/contexts/AuthContext";
 import UiImage from "~/lib/Image";
 import { isDev } from "~/utils/helpers";
 
