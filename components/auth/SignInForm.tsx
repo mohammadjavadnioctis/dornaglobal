@@ -6,6 +6,7 @@ import { isDev } from "~/utils/helpers";
 import { Button, createStyles } from "@mantine/core";
 import UiLink from "~/lib/UiLink";
 import { useAuth } from "~/contexts/AuthContext";
+import { useRouter } from "next/router";
 
 interface SignInFormType {
   wraperClassname?: string;
@@ -34,7 +35,7 @@ const SignInForm: FC<SignInFormType> = memo((props) => {
   const { wraperClassname } = props;
   const { classes } = useStyles();
   const { signIn } = useAuth();
-
+  const router = useRouter();
   const options = [
     { key: "Email", value: "emailmoc" },
     { key: "Telephone", value: "telephonemoc" },
@@ -62,6 +63,7 @@ const SignInForm: FC<SignInFormType> = memo((props) => {
     console.log("Form data", values);
     try {
       await signIn(values.email, values.password);
+      router.push("/");
     } catch (error) {
       console.log("error", error);
     }

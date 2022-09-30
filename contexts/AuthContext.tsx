@@ -59,6 +59,9 @@ export function AuthProvider({ children }: any) {
       setLoading(false);
     });
   }, []);
+  useEffect(() => {
+    console.log("this is user from auth ", user);
+  }, [user]);
 
   // force refresh the token every 10 minutes
   useEffect(() => {
