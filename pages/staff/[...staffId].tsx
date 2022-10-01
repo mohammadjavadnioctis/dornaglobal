@@ -19,6 +19,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return staffId;
     }
   })();
+  console.log("this is agent id: ", agentId);
 
   const fetchedAgent = await fetchAgent(agentId ?? "");
 

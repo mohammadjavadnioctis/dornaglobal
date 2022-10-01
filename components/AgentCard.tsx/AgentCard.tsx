@@ -34,7 +34,7 @@ const AgentCard: FC<AgentCardType> = memo((props) => {
   const { classes } = useStyles();
 
   return (
-    <UiLink href={"./staff/1"}>
+    <UiLink href={`./${agent.id}`}>
       <div className="w-full max-w-[360px] flex flex-col p-4 items-center hover:shadow-xl transition-all duration-300">
         <div className="mb-8">
           <UiImage
