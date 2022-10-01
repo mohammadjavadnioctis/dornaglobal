@@ -6,16 +6,23 @@ import {
   IoLogoLinkedin,
   IoLogoTwitter,
   IoLogoYoutube,
+  IoLogoWhatsapp,
 } from "react-icons/io5";
 import UiImage from "~/lib/Image";
 import { isDev } from "~/utils/helpers";
+import { AgentType } from "~/utils/types";
 
-const AgentBanner: FC = memo(() => {
+interface AgentBannerProps {
+  agent: AgentType;
+}
+
+const AgentBanner: FC<AgentBannerProps> = memo((props) => {
+  const { agent } = props;
   return (
     <div className="relative">
       <div className="overlay absolute w-full h-full top-0 left-0 bg-black bg-opacity-[0.7] z-[2] flex flex-col justify-end items-center">
         <h1 className="agent_name font-normal text-[53px] text-white">
-          John Doe
+          {agent.name} {agent.surname}
         </h1>
         <h2 className="text-xs font-light text-white tracking-[10px]">
           {" "}
@@ -26,7 +33,13 @@ const AgentBanner: FC = memo(() => {
           <IoLogoLinkedin className="text-white w-6 h-6 my-4 mx-4 cursor-pointer hover:text-accent transition-all" />
           <IoLogoFacebook className="text-white w-6 h-6 my-4 mx-4 cursor-pointer hover:text-accent transition-all" />
           <IoLogoTwitter className="text-white w-6 h-6 my-4 mx-4 cursor-pointer hover:text-accent transition-all" />
-          <IoLogoYoutube className="text-white w-6 h-6 my-4 mx-4 cursor-pointer hover:text-accent transition-all" />
+          <a
+            href="https://api.whatsapp.com/send?phone=90212..."
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <IoLogoWhatsapp className="text-white w-6 h-6 my-4 mx-4 cursor-pointer hover:text-accent transition-all" />
+          </a>
         </div>
         <div className="grid grid-cols-2 grid-flow-row gap-4 my-4">
           <Button

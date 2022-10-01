@@ -1,23 +1,28 @@
 import { GetServerSideProps, NextPage } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import React, { FC, memo } from "react";
 import { isDev } from "~/utils/helpers";
 import fetchProperties from "~/utils/helpers/firebase/fetchProperties";
-import { PropertyType } from "~/utils/types";
+import { AgentType, PropertyType } from "~/utils/types";
 import Agents from "../Partials/Agents/Agents";
 import FeaturedExclusives from "../Partials/FeaturedExclusives/FeaturedExclusives";
 import AgentBaner from "./partials/Banner/AgentBanner";
 
 interface StaffPageType {
   properties: PropertyType[];
+  staff: AgentType;
 }
 
 const StaffPage: NextPage<StaffPageType> = memo((props) => {
-  const { properties } = props;
+  const { properties, staff } = props;
 
   return (
     <div>
-      <AgentBaner />
-      <FeaturedExclusives title="Offered By John" properties={properties} />
+      <AgentBaner agent={staff} />
+      <FeaturedExclusives
+        title={`Offered By ${staff.name}`}
+        properties={properties}
+      />
       <Agents />
     </div>
   );

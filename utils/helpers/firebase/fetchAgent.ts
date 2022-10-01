@@ -8,7 +8,7 @@ const fetchAgent = async (agentId: string) => {
   if (docSnap.exists()) {
     return docSnap.data();
   } else {
-    console.log("No such document!");
+    console.log("No such agent document!");
   }
   return;
 };
