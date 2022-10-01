@@ -208,7 +208,7 @@ const FooterPartial: FC = forwardRef((props, ref) => {
               </div>
               <div className="texts ">
                 <h3 className=" text-2xl font-semibold text-default mb-3">
-                  <a href="tel:+902126740703"> +90 212 123 45 67</a>
+                  <a href="tel:+905446081111"> +90 544 608 11 11</a>
                 </h3>
                 {domLoaded && (
                   <div className="text-sm text-usedJustOnce-50">

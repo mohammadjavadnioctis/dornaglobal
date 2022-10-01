@@ -4,7 +4,8 @@ module.exports = {
   locales: ["en, tr, ru, ar"],
   defaultLocale: "en",
   supportMail: "info@dornaglobal.com",
-  supportPhoneNo: "(212) 123 45 67",
+  supportPhoneNo: "+905446081111",
+  supportPhoneNoBeautified: "+90 544 608 11 11",
   defaultCurrency: {
     name: "TL",
     symbol: "₺",

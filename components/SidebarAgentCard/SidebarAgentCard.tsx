@@ -8,18 +8,25 @@ import { FiMail } from "react-icons/fi";
 import UiLink from "~/lib/UiLink";
 import { IoCallOutline } from "react-icons/io5";
 import { Button } from "@mantine/core";
+import { useRouter } from "next/router";
 
 interface SidebarAgentCard {
   agent: AgentType;
 }
 
 const SidebarAgentCard: FC<SidebarAgentCard> = memo((props) => {
+  const router = useRouter();
   const { agent } = props;
-  const { name, surname, img, mail, tel, description, position } = agent;
+  const { name, surname, img, mail, tel, description, position, id } = agent;
   const [isImageLoading, setIsImageLoading] = useState(true);
   return (
     <div className="w-full p-2">
-      <div className="w-full flex justify-start items-center">
+      <div
+        className="w-full flex justify-start items-center cursor-pointer"
+        onClick={() => {
+          router.push(`/staff/${id}`);
+        }}
+      >
         <div className="img_container relative w-16 h-16 mr-4">
           {isImageLoading && (
             <div className="absolute inset-0 z-1 w-full h-full bg-white">

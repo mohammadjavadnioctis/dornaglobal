@@ -34,7 +34,7 @@ const AgentBanner: FC<AgentBannerProps> = memo((props) => {
           <IoLogoFacebook className="text-white w-6 h-6 my-4 mx-4 cursor-pointer hover:text-accent transition-all" />
           <IoLogoTwitter className="text-white w-6 h-6 my-4 mx-4 cursor-pointer hover:text-accent transition-all" />
           <a
-            href="https://api.whatsapp.com/send?phone=90212..."
+            href={`https://api.whatsapp.com/send?phone=${agent.tel}`}
             target="_blank"
             rel="noopener noreferrer"
           >

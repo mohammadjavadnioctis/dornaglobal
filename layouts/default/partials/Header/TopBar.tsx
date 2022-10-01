@@ -9,9 +9,22 @@ const TopBar = () => {
       <div className="container flex justify-between">
         <div className="inline-flex text-white items-center">
           <BsTelephone className="mr-2" />
-          <span className="mr-4">{config.supportPhoneNo}</span>
-          <IoIosMail className="mr-2" />
-          <span>{config.supportMail}</span>
+          <a
+            href={`tel:${config.supportPhoneNo}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span className="mr-4">{config.supportPhoneNoBeautified}</span>
+          </a>
+          <a
+            href="mailto:info@dornaglobal.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center"
+          >
+            <IoIosMail className="mr-2" />
+            <span>{config.supportMail}</span>
+          </a>
         </div>
         <div className="inline-block">
           <LangSelect />
