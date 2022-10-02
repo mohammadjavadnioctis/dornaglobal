@@ -34,7 +34,7 @@ const ListyourPropertyButton = () => {
 
   const { classes } = useStyles();
   return (
-    <Link href="/" className="cursor-pointer">
+    <Link href="/add-property" className="cursor-pointer">
       <Button
         leftIcon={<Icon />}
         variant="outline"
