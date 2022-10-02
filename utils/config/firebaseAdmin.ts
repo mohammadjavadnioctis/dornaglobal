@@ -1,9 +1,11 @@
 var admin = require("firebase-admin");
-var serviceAccount = require("./dorna-global-firebase-adminsdk-yiir8-f092db7eac.json");
+// var serviceAccount = require("./dorna-global-firebase-adminsdk-yiir8-f092db7eac.json");
 
-admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-});
+admin.initializeApp()
+
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+// });
 
 const adminDb = admin.Firestore();
 

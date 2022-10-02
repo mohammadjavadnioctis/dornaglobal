@@ -1,5 +1,6 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 /utils/config/dorna-global-firebase-adminsdk-yiir8-f092db7eac.json
+/functions
 
 # dependencies
 /node_modules
