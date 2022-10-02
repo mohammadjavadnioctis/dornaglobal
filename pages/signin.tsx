@@ -8,7 +8,7 @@ const SignInPage: FC = memo(() => {
   const { user } = useAuth();
   const router = useRouter();
   useEffect(() => {
-    if (!user) {
+    if (user) {
       router.push("/");
     }
   }, [router, user]);
