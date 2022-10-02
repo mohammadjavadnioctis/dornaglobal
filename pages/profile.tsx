@@ -6,10 +6,14 @@ import { isDev } from "~/utils/helpers";
 export interface ProfileProps {}
 
 const profile: FC = memo(() => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const router = useRouter();
 
-  return <div>Heloo {user?.email}</div>;
+  return (
+    <div>
+      Heloo {user?.email} <span onClick={logout}>logout</span>
+    </div>
+  );
 });
 
 if (isDev) {
