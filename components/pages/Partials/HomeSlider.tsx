@@ -3,8 +3,9 @@ import { BiChevronDown } from "react-icons/bi";
 import HeroCategries from "~/components/HeroCategories/HeroCategries";
 import MainSearchBar from "~/components/MainSearchBar/MainSearchBar";
 import UiImage from "~/lib/Image";
-
+import { useTranslation } from 'next-i18next';
 const HomeSlider = () => {
+  const { t } = useTranslation();
   return (
     <>
       <div className="overlay absolute w-full h-full top-0 left-0 bg-black bg-opacity-[0.7] z-[2] flex justify-center items-end">
@@ -20,7 +21,7 @@ const HomeSlider = () => {
               />
             </div>
             <h2 className="text-4xl font-medium text-white text-center mt-11 mb-8">
-              Discover Your Place To <span className="">Live...</span>
+              {t('DISCOVER YOUR PLACE TO LIVE...')}
             </h2>
             <MainSearchBar />
             <HeroCategries />

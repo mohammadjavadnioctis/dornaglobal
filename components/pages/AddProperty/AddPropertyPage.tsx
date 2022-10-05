@@ -2,10 +2,11 @@ import React, {FC, memo} from 'react'
 import { isDev } from '~/utils/helpers'
 
 const AddPropertyPage = memo(
-
     () => {
       return (
-        <div>AddPropertyPage</div>
+        <div >
+            <h1 className=''>Add Your Property To Dorna Global</h1>
+        </div>
       )
     }
 )

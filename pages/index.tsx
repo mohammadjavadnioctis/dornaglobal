@@ -6,13 +6,15 @@ import HomePage from "~/components/pages/Home/Home";
 import fetchProperties from "~/utils/helpers/firebase/fetchProperties";
 import { PropertyType } from "~/utils/types";
 import { isDev } from "~/utils/helpers";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   // fetch a list of properties from the database
   const properties = await fetchProperties();
-
+  const {locale} = context
+console.log('this is locale:', locale)
   return {
-    props: { properties },
+    props: { properties,  ...(await serverSideTranslations(locale as string, ['common'])), },
   };
 };
 
@@ -31,7 +33,7 @@ const Home: NextPage<HomepageType> = memo((props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="min-h-screen">
-        <HomePage properties={properties} />
+        <HomePage {...props} />
         {/* <div className="h-screen"></div> */}
       </div>
     </div>

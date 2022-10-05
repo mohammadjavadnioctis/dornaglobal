@@ -1,5 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
+import {appWithTranslation} from 'next-i18next';
+
 import Layout from "layouts/default";
 import { MantineProvider } from "@mantine/core";
 import { PropertiesDataProvider } from "~/contexts/FetchedProperties";
@@ -24,4 +26,4 @@ function MyApp({ Component, pageProps }: AppProps) {
   );
 }
 
-export default MyApp;
+export default appWithTranslation(MyApp);

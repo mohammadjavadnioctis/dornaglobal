@@ -9,12 +9,14 @@ import OurServices from "../Partials/OurServices/OurServices";
 import { PropertyType } from "~/utils/types";
 import NeightBourHoodSlider from "../Partials/NeightBourHoodSlider/NeightBourHoodSlider";
 import useScrollSnap from "react-use-scroll-snap";
+
 // TODO: hide the environment variable inside the image tag url
 interface HomepageType {
   properties: PropertyType[];
 }
 const Home: FC<HomepageType> = memo((props) => {
   const { properties } = props;
+  console.log('this is props', props)
   const scrollRef = useRef(null);
   useScrollSnap({ ref: scrollRef, duration: 100, delay: 50 });
   return (
