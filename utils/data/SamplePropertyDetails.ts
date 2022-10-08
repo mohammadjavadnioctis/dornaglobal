@@ -65,7 +65,7 @@ const propertyDetails: PropertyDetailsType[] = [
     detailTitle: "Fournished",
     detailName: "fournished",
     detailValue: "Not Fournished",
-    id: "11",
+    id: "14",
   },
   {
     detailTitle: "Usage Status",

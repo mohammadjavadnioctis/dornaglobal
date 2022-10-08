@@ -1,8 +1,9 @@
-import React, { FC, forwardRef, useState } from "react";
+import React, { FC, forwardRef, useEffect, useState } from "react";
 import { isDev } from "~/utils/helpers";
 import { Group, Avatar, Text, Select, createStyles } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons";
 import turkeyFlag from "~/public/icons/countryFlags/turkey.svg";
+import { useRouter } from "next/router";
 
 interface ItemProps extends React.ComponentPropsWithoutRef<"div"> {
   image: string;
@@ -43,8 +44,15 @@ if (isDev) {
 }
 
 const LangSelect: FC = () => {
-  const [lang, setLang] = useState<string>("English");
+  const [lang, setLang] = useState<string>("en");
   const { classes } = useStyles();
+  const router = useRouter()
+  useEffect(()=>{
+    console.log('lang changed :',lang)
+  
+    router.push(`${router.asPath}`, undefined, {locale: lang})
+
+  },[lang])
   return (
     <div>
       {/* <NativeSelect
