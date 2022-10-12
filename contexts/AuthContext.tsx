@@ -13,6 +13,7 @@ interface AuthContextType {
   signIn: (email: string, password: string) => void;
   signUp: (email: string, password: string) => void;
   logout: () => void;
+  loading: boolean
 }
 
 const AuthContext = createContext<AuthContextType>({
@@ -20,6 +21,7 @@ const AuthContext = createContext<AuthContextType>({
   signIn: () => null,
   signUp: () => null,
   logout: () => null,
+  loading: true
 });
 
 export const useAuth = () => {
@@ -40,7 +42,9 @@ export function AuthProvider({ children }: any) {
   // TODO: remove nookie token on logout
 
   const logout = async () => {
+    setLoading(true)
     setUser(null);
+    setLoading(false)
     await signOut(auth);
   };
 
@@ -48,8 +52,11 @@ export function AuthProvider({ children }: any) {
   // call setUser and write new token as a cookie
   useEffect(() => {
     return auth.onIdTokenChanged(async (user) => {
+      console.log('user from context: ', user)
+
       if (!user) {
         setUser(null);
+        setLoading(false)
         nookies.set(undefined, "token", "", { path: "/" });
       } else {
         const token = await user.getIdToken();
@@ -74,7 +81,7 @@ export function AuthProvider({ children }: any) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, signIn, signUp, logout }}>
+    <AuthContext.Provider value={{ user, signIn, signUp, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );

@@ -6,20 +6,22 @@ import { isDev } from "~/utils/helpers";
 export interface ProfileProps {}
 
 const profile: FC = memo(() => {
-  const { user, logout } = useAuth();
+  const { user, logout, loading } = useAuth();
   const router = useRouter();
 
   useEffect(()=>{
-      if(!user){
-        router.push('/signin')
-      }
-    },
-    [])
+    if(!user && !loading){
+      router.push('/signin')
+    }
+  },[user, loading])
 
 
   return (
     <div>
-      Heloo {user?.email} <span onClick={logout}>logout</span>
+      {
+      loading ? <h2>loading</h2> :
+     <div> Heloo {user?.email} <span onClick={logout}>logout</span> </div>
+      }
     </div>
   );
 });

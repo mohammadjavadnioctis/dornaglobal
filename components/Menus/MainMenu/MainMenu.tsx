@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { FC } from "react";
+import React, { FC, useEffect } from "react";
 import { mainMenuData } from "utils/data/menus";
 import { useAuth } from "~/contexts/AuthContext";
 
@@ -10,7 +10,10 @@ interface MainMenuType {
 
 const MainMenu: FC<MainMenuType> = (props) => {
   const { ItemsContainerClassNames = "flex ", ItemsClassNames } = props;
-  const { user } = useAuth();
+  const { user, loading  } = useAuth();
+  // useEffect(()=>{
+  //   console.log('this is the user: ', user)
+  // },[])
   return (
     <ul className={`${ItemsContainerClassNames}`}>
       {mainMenuData.map((menuItem) => {
@@ -26,7 +29,7 @@ const MainMenu: FC<MainMenuType> = (props) => {
           </li>
         );
       })}
-      {!user && (
+      {!user && !loading && (
         <li
           key={"signIn"}
           className={`${ItemsClassNames} w-full h-full flex items-center`}
