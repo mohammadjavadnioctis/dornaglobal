@@ -12,7 +12,6 @@ type PropertiesDataProviderType = {
 
 const fetchContextProperties = async () => {
   const properties = await fetchProperties();
-  // console.log("this is properties from context", properties);
   return properties;
 };
 

@@ -4,8 +4,9 @@ import HeroCategries from "~/components/HeroCategories/HeroCategries";
 import MainSearchBar from "~/components/MainSearchBar/MainSearchBar";
 import UiImage from "~/lib/Image";
 import { useTranslation } from 'next-i18next';
+import useTrans from "~/lib/useTranslate";
 const HomeSlider = () => {
-  const { t } = useTranslation();
+  const t = useTrans();
   return (
     <>
       <div className="overlay absolute w-full h-full top-0 left-0 bg-black bg-opacity-[0.7] z-[2] flex justify-center items-end">

@@ -47,12 +47,18 @@ const LangSelect: FC = () => {
   const [lang, setLang] = useState<string>("en");
   const { classes } = useStyles();
   const router = useRouter()
-  useEffect(()=>{
-    console.log('lang changed :',lang)
-  
-    router.push(`${router.asPath}`, undefined, {locale: lang})
+  // useEffect(()=>{
+  //   console.log('useEffect executed')
+  //   router.push(`${router.asPath}`, undefined, {locale: lang})
 
-  },[lang])
+  // },[lang])
+  
+  const handleLangChange = (e: string) => {
+      setLang((prevLang)=> e)
+      router.push(`${router.asPath}`, undefined, {locale: e})
+
+  }
+
   return (
     <div>
       {/* <NativeSelect
@@ -67,8 +73,7 @@ const LangSelect: FC = () => {
       /> */}
       <Select
         value={lang}
-        // @ts-ignore
-        onChange={setLang}
+        onChange={handleLangChange}
         placeholder={lang as string}
         itemComponent={SelectItem}
         data={data}
@@ -110,12 +115,12 @@ const data = [
     value: "fa",
     description: "",
   },
-  {
-    image: "https://countryflagsapi.com/svg/sa",
-    label: "العربية",
-    value: "ar",
-    description: "",
-  },
+  // {
+  //   image: "https://countryflagsapi.com/svg/sa",
+  //   label: "العربية",
+  //   value: "ar",
+  //   description: "",
+  // },
 ];
 
 if (isDev) {

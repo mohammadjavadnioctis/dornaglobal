@@ -64,12 +64,10 @@ const SignUpForm: FC<SignUpFormType> = memo((props) => {
   });
 
   const onSubmit = async (values: any) => {
-    console.log("Form data", values);
     try {
       await signUp(values.email, values.password);
       router.push("/");
     } catch (err) {
-      console.log(err);
     }
   };
 

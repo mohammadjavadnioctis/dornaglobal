@@ -1,10 +1,13 @@
 import { TextInput, createStyles } from "@mantine/core";
 import React, { FC, useState } from "react";
 import { IconSearch } from "@tabler/icons";
+import useTrans from "~/lib/useTranslate";
 
 interface MainSearchBarType {}
 
 const MainSearchBar: FC<MainSearchBarType> = (props) => {
+  const t  = useTrans();
+
   const useStyles = createStyles((theme) => ({
     input: {
       width: "100%",
@@ -25,7 +28,7 @@ const MainSearchBar: FC<MainSearchBarType> = (props) => {
       <TextInput
         value={value}
         onChange={(event) => setValue(event.currentTarget.value)}
-        placeholder="Search for listing No, title etc..."
+        placeholder= {`${t('SEARCH FOR LISTING NO , TITLE ETC')}`}
         rightSection={<IconSearch />}
         classNames={{
           input: classes.input,

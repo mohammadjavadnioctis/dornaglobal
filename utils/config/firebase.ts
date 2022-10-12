@@ -27,14 +27,12 @@ const firebaseConfig = {
 // let app: firebase.FirebaseApp | null = null;
 // let auth: Auth;
 // let db: Firestore;
-// console.log("this si get App:", getApp());
 // if (typeof window !== "undefined" && !getApps().length) {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 setPersistence(auth, browserSessionPersistence);
 // }
-// console.log("this si get Apps:", getApps());
 //   .then(() => {
 //     // Existing and future Auth states are now persisted in the current
 //     // session only. Closing the window would clear any existing state even

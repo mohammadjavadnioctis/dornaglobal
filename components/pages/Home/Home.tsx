@@ -16,7 +16,6 @@ interface HomepageType {
 }
 const Home: FC<HomepageType> = memo((props) => {
   const { properties } = props;
-  console.log('this is props', props)
   const scrollRef = useRef(null);
   useScrollSnap({ ref: scrollRef, duration: 100, delay: 50 });
   return (

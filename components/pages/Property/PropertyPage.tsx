@@ -27,7 +27,6 @@ interface ImagesType {
 }
 const PropertyPage: FC<PropertyPageType> = memo((props) => {
   const { property, agent, similarProperties } = props;
-  // console.log("here is the agent baby", agent);
   const {
     photos,
     bedrooms,

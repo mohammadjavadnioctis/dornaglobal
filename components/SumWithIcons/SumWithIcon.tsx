@@ -51,7 +51,6 @@ const FeatureIcon: FC<FeatureIconType> = memo((props) => {
     }
   })();
 
-  // console.log("this is the icon", Icon);
 
   return Icon;
 });

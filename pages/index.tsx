@@ -12,7 +12,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   // fetch a list of properties from the database
   const properties = await fetchProperties();
   const {locale} = context
-console.log('this is locale:', locale)
   return {
     props: { properties,  ...(await serverSideTranslations(locale as string, ['common'])), },
   };
@@ -24,7 +23,6 @@ interface HomepageType {
 
 const Home: NextPage<HomepageType> = memo((props) => {
   const { properties } = props;
-  // console.log('here is the properties', properties)
   return (
     <div className={styles.container}>
       <Head>

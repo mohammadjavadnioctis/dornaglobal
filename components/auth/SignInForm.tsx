@@ -60,12 +60,10 @@ const SignInForm: FC<SignInFormType> = memo((props) => {
   });
 
   const onSubmit = async (values: any) => {
-    console.log("Form data", values);
     try {
       await signIn(values.email, values.password);
       router.push("/");
     } catch (error) {
-      console.log("error", error);
     }
   };
 

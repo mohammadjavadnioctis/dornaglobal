@@ -9,7 +9,6 @@ interface SumWithIconsType {
 
 const SumWithIcons: FC<SumWithIconsType> = memo((props) => {
   const { features } = props;
-  // console.log("here is the features,", features);
 
   return (
     <div className="container grid grid-cols-5 ">
