@@ -5,6 +5,7 @@ import { useAuth } from "~/contexts/AuthContext";
 import { isDev } from "~/utils/helpers";
 import nookies from 'nookies'
 import { admin } from "~/utils/config/firebaseAdmin"; 
+import Profile from "~/components/pages/profile/Profile";
 
 
 
@@ -23,6 +24,8 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     console.log('and this is email bitch: ', email)
 
     // FETCH STUFF HERE!! 🚀
+
+
 
     return {
       props: { message: `Your email is ${email} and your UID is ${uid}.` },
@@ -60,10 +63,12 @@ const profile: FC = memo(() => {
 
   return (
     <div>
-      {
+      {/* {
       loading ? <h2>loading</h2> :
      <div> Heloo {user?.email} <span onClick={logout}>logout</span> </div>
       }
+       */}
+        <Profile />
     </div>
   );
 });
