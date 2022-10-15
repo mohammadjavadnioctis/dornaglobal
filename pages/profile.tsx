@@ -21,7 +21,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     // the user is authenticated!
     const { uid, email } = token;
     console.log('this si uid: ', uid)
-    console.log('and this is email bitch: ', email)
+    console.log('and this is email: ', email)
 
     // FETCH STUFF HERE!! 🚀
 

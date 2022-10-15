@@ -1,3 +1,7 @@
+import { DashboardMenuItemsType } from "../types";
+
+
+
 const mainMenuData = [
   {
     name: "Home",
@@ -25,4 +29,26 @@ const mainMenuData = [
     id: 5,
   },
 ];
-export { mainMenuData };
+
+const userDashboardMenu : DashboardMenuItemsType[] = [
+  {
+    name: 'Profile',
+    href: 'profile',
+    id: '1',
+   
+  },
+  {
+    name: 'My Listings',
+    href: 'myListings',
+    id: '2'
+  },
+  {
+    name: 'Messages',
+    href: 'messages',
+    id: '3'
+  },
+]
+
+
+
+export { mainMenuData, userDashboardMenu };
