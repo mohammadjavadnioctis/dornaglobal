@@ -6,6 +6,7 @@ import { isDev } from "~/utils/helpers";
 import nookies from 'nookies'
 import { admin } from "~/utils/config/firebaseAdmin"; 
 import Profile from "~/components/pages/profile/Profile";
+import { UserDashboardProvider } from "~/contexts/UserDashboardContext";
 
 
 
@@ -68,7 +69,10 @@ const profile: FC = memo(() => {
      <div> Heloo {user?.email} <span onClick={logout}>logout</span> </div>
       }
        */}
+      <UserDashboardProvider >
         <Profile />
+      </UserDashboardProvider> 
+
     </div>
   );
 });
