@@ -1,3 +1,6 @@
+import { BsHouse } from "react-icons/bs";
+import { FiMessageSquare } from "react-icons/fi";
+import UserIcon from "~/assets/icons/UserIcon";
 import { DashboardMenuItemsType } from "../types";
 
 
@@ -35,17 +38,20 @@ const userDashboardMenu : DashboardMenuItemsType[] = [
     name: 'Profile',
     href: 'profile',
     id: '1',
+    Icon: UserIcon
    
   },
   {
     name: 'My Listings',
     href: 'myListings',
-    id: '2'
+    id: '2',
+    Icon: BsHouse
   },
   {
     name: 'Messages',
     href: 'messages',
-    id: '3'
+    id: '3',
+    Icon: FiMessageSquare
   },
 ]
 
