@@ -1,4 +1,5 @@
 import React,{FC, memo} from 'react'
+import NoResults from '~/components/NoResult/NoResult'
 import { isDev } from '~/utils/helpers'
 
 const MessagesTab = memo(
@@ -9,7 +10,7 @@ const MessagesTab = memo(
           <h2 className='text-accent-600'>My Messages</h2>
           <h3 className='text-sm opacity-60'> all conversations </h3>
           <div className='mt-7'>
-
+            <NoResults />
           </div>
           </div>
       )
