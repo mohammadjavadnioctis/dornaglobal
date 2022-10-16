@@ -1,12 +1,12 @@
 import { FC, memo, useEffect } from "react";
 import {
-  UserDashboardProvider,
   useUserDashboardContext,
 } from "~/contexts/UserDashboardContext";
 import { userDashboardMenu } from "~/utils/data/menus";
 import { isDev } from "~/utils/helpers";
 import DashboardLeftSideBar from "./partials/DashboardLeftSideBar/DashboardLeftSideBar";
 import ProfileHero from "./partials/ProfileHero";
+import MessagesTab from "./partials/Tabs/MessagesTab/MessagesTab";
 import MyListingsTab from "./partials/Tabs/MyListingsTab/MyListingsTab";
 import ProfileTab from "./partials/Tabs/Profile/ProfileTab";
 
@@ -19,6 +19,8 @@ const Profile: FC = memo(() => {
         return <ProfileTab />;
       case "myListings":
         return <MyListingsTab />;
+      case "messages":
+        return <MessagesTab />
     }
   };
 

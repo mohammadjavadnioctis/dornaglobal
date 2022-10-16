@@ -12,7 +12,7 @@ interface DashBoardLeftSidebarPropsType {
 
 const DashboardLeftSideBar: FC<DashBoardLeftSidebarPropsType> = memo (
   (props) => {
-    const {setActiveTab} = useUserDashboardContext()
+    const {activeTab ,setActiveTab} = useUserDashboardContext()
     console.log('this is set active tab from leftSidebar', setActiveTab)
     const {menu} = props
     const handleChangeTab = (clickedItemHref: string) =>{
@@ -25,8 +25,9 @@ const DashboardLeftSideBar: FC<DashBoardLeftSidebarPropsType> = memo (
 
           {
             menu.map((menuItem)=>{
+              let isActive = menuItem.href === activeTab
               return(
-                <li onClick={() => handleChangeTab(menuItem.href)} key={menuItem.href} className='flex flex-start flex-grow items-center p-2 false rounded-lg text-base cursor-pointer font-normal hover:bg-[#EEEFFF] dark:hover:bg-[#EEEFFF] space-x-3'>{menuItem.name}</li>
+                <li onClick={() => handleChangeTab(menuItem.href)} key={menuItem.href} className={`flex flex-start flex-grow items-center p-2 false rounded-lg text-base cursor-pointer font-normal hover:bg-[#EEEFFF] dark:hover:bg-[#EEEFFF] space-x-3 ${isActive && 'bg-[#EEEFFF]'}`}>{menuItem.name}</li>
               )
             })
           }
