@@ -1,6 +1,7 @@
 import React, {FC, memo} from 'react'
 import Head from '~/components/Head/Head'
 import { isDev } from '~/utils/helpers'
+import ChooseCategory from './Partials/ChooseCategoryStep/ChooseCategory'
 import Stepper from './Partials/Stepper/Stepper'
 
 const AddPropertyPage = memo(
@@ -10,6 +11,7 @@ const AddPropertyPage = memo(
             <Head title='Add Your Property To Dorna Global'
             titleClassnames='text-4xl my-0' containerClassNames='my-4' />
             <Stepper />
+            <ChooseCategory />
         </div>
       )
     }
