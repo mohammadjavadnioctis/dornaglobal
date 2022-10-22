@@ -1,7 +1,7 @@
-interface DealTypes {
+interface DealType {
     dealName: string;
     dealLable: string;
     id: string;
 }
 
-export default DealTypes
+export default DealType

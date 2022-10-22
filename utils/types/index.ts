@@ -4,4 +4,4 @@ export type { default as PropertyDetailsType } from "./PropertyDetailsType";
 export type { default as PropertyFeaturesType } from "./PropertyFeaturesType";
 export type { default as DashboardMenuItemsType } from "./DashboardMenuItems";
 export type { default as CategoryStepsType } from "./CategoryStepsType";
-export type { default as DealTypes } from "./DealTypes";
+export type { default as DealType } from "./DealType";
