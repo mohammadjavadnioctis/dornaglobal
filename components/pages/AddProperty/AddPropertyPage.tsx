@@ -1,11 +1,13 @@
 import React, {FC, memo} from 'react'
+import Head from '~/components/Head/Head'
 import { isDev } from '~/utils/helpers'
 
 const AddPropertyPage = memo(
     () => {
       return (
         <div >
-            <h1 className=''>Add Your Property To Dorna Global</h1>
+            <Head title='Add Your Property To Dorna Global'
+            titleClassnames='text-4xl pt-2' />
         </div>
       )
     }
