@@ -1,25 +1,26 @@
 import React, {FC, memo, useState} from 'react'
 import { UIButton, UIGroup, UIStepper } from '~/lib'
 import { isDev } from '~/utils/helpers'
+import ChooseCategory from '../ChooseCategoryStep/ChooseCategory';
 
 
 
 
 const Stepper = memo(
     () => {
-        const [active, setActive] = useState(1);
+        const [active, setActive] = useState(0);
         const nextStep = () => setActive((current) => (current < 3 ? current + 1 : current));
         const prevStep = () => setActive((current) => (current > 0 ? current - 1 : current));
 
 
       return (
         <div className='contianer px-11'>
-            <UIStepper active={active} onStepClick={setActive} breakpoint="sm">
+            <UIStepper active={active} onStepClick={setActive} breakpoint="sm" className='border-2 border-orange-400 min-h-[300px]'>
         <UIStepper.Step label="First step" description="Choose category">
-          
+          <ChooseCategory />
         </UIStepper.Step>
         <UIStepper.Step label="Second step" description="Enter property details">
-          {/* Step 2 content */}
+          Step 2 content
         </UIStepper.Step>
         <UIStepper.Step label="Third step" description="Review">
         </UIStepper.Step>

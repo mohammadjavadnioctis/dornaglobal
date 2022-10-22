@@ -11,7 +11,6 @@ const AddPropertyPage = memo(
             <Head title='Add Your Property To Dorna Global'
             titleClassnames='text-4xl my-0' containerClassNames='my-4' />
             <Stepper />
-            <ChooseCategory />
         </div>
       )
     }
