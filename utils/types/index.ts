@@ -5,3 +5,5 @@ export type { default as PropertyFeaturesType } from "./PropertyFeaturesType";
 export type { default as DashboardMenuItemsType } from "./DashboardMenuItems";
 export type { default as CategoryStepsType } from "./CategoryStepsType";
 export type { default as DealType } from "./DealType";
+export type { default as PropertySubCategoryType } from "./PropertySubCategoryType";
+export type { default as ChosenPropertyType } from "./ChosenPropertyType";
