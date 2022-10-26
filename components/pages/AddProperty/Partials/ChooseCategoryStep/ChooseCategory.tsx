@@ -1,5 +1,7 @@
 import React, { FC, memo, useEffect, useState } from "react";
 import { BiChevronRight } from "react-icons/bi";
+import { IoCheckmarkCircleOutline } from "react-icons/io5";
+import { UIButton } from "~/lib";
 import ChooseCategorySteps from "~/utils/data/ChoseCategorySteps";
 import { isDev } from "~/utils/helpers";
 import {
@@ -25,6 +27,7 @@ const ChooseCategory: FC = memo(() => {
       correspondingForm: null,
     });
   const [dealTypes, setDealTypes] = useState<DealType[] | null>(null);
+  const [isCategoryChosen , setIsCategoryChosen] = useState(false)
   const [chosenPropertyCategory, setChosenPropertyCategory] =
     useState<ChosenPropertyType | null>(null);
   const [
@@ -83,22 +86,59 @@ const ChooseCategory: FC = memo(() => {
           case "dailyRental":
             return chosenPropertyCategory.dailyRentalPropertyTypes;
           default:
+            setIsCategoryChosen(false)
             return null;
         }
       });
     }
   }, [chosenCategoryInfo.dealType]);
 
+  // validate if category is chosen
   useEffect(() => {
-    console.log("this is chosen category: ", chosenPropertyCategory);
-  }, [chosenPropertyCategory]);
+    const {PropertyType, category, correspondingForm, dealType} = chosenCategoryInfo
+    console.log('useEffect executed')
+    switch (category) {
+      case 'residential':
+        console.log('chosen category is: residential')
+        if(dealType && PropertyType){
+          setIsCategoryChosen(true)
+        }
+        break;
+      case 'commercial': 
+      console.log('chosen category is: commercial')
+      if(dealType && PropertyType){
+        setIsCategoryChosen(true)
+      }
+        break;
+      case 'land': 
+      console.log('chosen category is: land')
+      if(dealType){
+        setIsCategoryChosen(true)
+      }
+        break;
+      case 'bulding': 
+      console.log('chosen category is: building')
+      if(dealType){
+        setIsCategoryChosen(true)
+      }
+        break
+      default:
+        break;
+    }
+
+
+  }, [chosenCategoryInfo]);
+
+  const nextStep = ()=>{
+    console.log('this is the chosenCategoryINfo', chosenCategoryInfo)
+  }
 
   return (
     <div className="h-full border border-green-400">
       <h2 className="mb-8">Choose Category</h2>
-      <div className="steps-container flex space-x-4 h-80 px-24 ">
-        <div className="first-step border border-blue-400 h-full w-56">
-          <ul className="pl-4 border-2 border-accent-300 bg-accent-100 rounded-xl">
+      <div className="steps-container flex space-x-4 h-80 px-24 min-h-full">
+        <div className="first-step h-full w-56 min-h-full">
+          <ul className="pl-4 border-2 border-accent-300 bg-accent-100 rounded-xl min-h-full">
             {ChooseCategorySteps.map((category) => {
               const { categoryLabel, id, categoryName } = category;
               const isActive = categoryName === chosenCategoryInfo.category;
@@ -124,8 +164,8 @@ const ChooseCategory: FC = memo(() => {
         {chosenCategoryInfo.category &&
           Array.isArray(dealTypes) &&
           dealTypes.length > 0 && (
-            <div className="second-step border border-blue-400 h-full w-56 ">
-              <ul className="pl-4 border-2 border-accent-300 bg-accent-100 rounded-xl">
+            <div className="second-step h-full w-56 min-h-full">
+              <ul className="pl-4 border-2 border-accent-300 bg-accent-100 rounded-xl min-h-full">
                 {dealTypes.map((deal) => {
                   const { id, dealName, dealLable } = deal;
                   const isActive = dealName === chosenCategoryInfo.dealType;
@@ -147,9 +187,9 @@ const ChooseCategory: FC = memo(() => {
               </ul>
             </div>
           )}
-        {chosenCategoryInfo.category && chosenCategoryInfo.dealType && (
-          <div className="third-step border border-blue-400 h-full w-56">
-            <ul className="pl-4 border-2 border-accent-300 bg-accent-100 rounded-xl">
+        {chosenCategoryInfo.category && (chosenCategoryInfo.category == 'residential' || 'commercial') && chosenCategoryInfo.dealType && (
+          <div className="third-step h-full w-56 min-h-full">
+            <ul className="pl-4 border-2 border-accent-300 bg-accent-100 rounded-xl min-h-full">
               {correspondingPropertyTypesToChosenDealType &&
                 correspondingPropertyTypesToChosenDealType.map(
                   (propertyCategory) => {
@@ -178,6 +218,15 @@ const ChooseCategory: FC = memo(() => {
             </ul>
           </div>
         )}
+        {
+          isCategoryChosen && 
+          <div className="is-catagory-chosen flex flex-col items-center justify-center w-56 min-h-full pl-4 border-2 border-accent-300 bg-accent-100 rounded-xl min-h-ful">
+              <IoCheckmarkCircleOutline className="w-24 h-24 text-accent" />
+              <span className="text-sm ">Category is chosen</span>
+              <UIButton onClick={nextStep} className={'border border-accent bg-accent text-white hover:bg-white hover:text-accent mt-4'}>Next step</UIButton>
+
+            </div>
+        }
       </div>
     </div>
   );
