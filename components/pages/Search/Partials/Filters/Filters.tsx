@@ -15,7 +15,7 @@ const Filters: FC = memo(
       const handleFilterchange = (name: string ,e: any )=>{
         console.log('this is the event', e, name)
        
-        setFilters(prevState => ( { ...prevState } ))
+        // setFilters(prevState => ( { ...prevState } ))
       }
 
       useEffect(()=>{
