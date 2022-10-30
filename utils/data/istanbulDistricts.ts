@@ -1,36 +1,36 @@
 const IstanbulDistricts = [
     {
-        name: 'adalar',
+        value: 'adalar',
         label: 'Adalar',
         id: '0',
     },
     {
-        name: 'arnavutkoy',
+        value: 'arnavutkoy',
         label: 'Arnavutköy',
         id: '1',
     },
     {
-        name: 'atasehir',
+        value: 'atasehir',
         label: 'Ataşehir',
         id: '3',
     },
     {
-        name: 'avcilar',
+        value: 'avcilar',
         label: 'Avcılar',
         id: '4',
     },
     {
-        name: 'bagcilar',
+        value: 'bagcilar',
         label: 'Bağcılar',
         id: '5',
     },
     {
-        name: 'bahcelievler',
+        value: 'bahcelievler',
         label: 'Bahçelievler',
         id: '6',
     },
     {
-        name: '',
+        value: '',
         label: '',
         id: '7',
     }
