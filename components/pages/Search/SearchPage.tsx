@@ -6,7 +6,6 @@ import { FiltersType } from "~/utils/types";
 import Filters from "./Partials/Filters/Filters";
 
 const SearchPage: FC = memo(() => {
-  const [filters, setFilters] = useState<FiltersType | null>(null);
 
   const fetchBasedOnFilters: any = async () => {
     let pageCount = false;
