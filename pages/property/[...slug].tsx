@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 import { db } from "~/utils/config/firebase";
-import { collection, getDocs, addDoc } from "firebase/firestore/lite";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 import SampleProperties2 from "~/utils/data/SampleProperties2.json";
 import fetchProperty from "~/utils/helpers/firebase/fetchProperty";
 export const getServerSideProps: GetServerSideProps = async (context) => {

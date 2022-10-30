@@ -1,4 +1,4 @@
-import { collection, getDocs, addDoc } from "firebase/firestore/lite";
+import { collection, getDocs, addDoc } from "firebase/firestore";
 import { db } from "~/utils/config/firebase";
 
 const fetchProperties = async () => {
