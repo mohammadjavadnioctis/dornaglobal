@@ -3,7 +3,7 @@ import { isDev } from "~/utils/helpers";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "~/utils/config/firebase";
 import { FiltersType } from "~/utils/types";
-import Filters from "./Partials/Filters/filters";
+import Filters from "./Partials/Filters/Filters";
 
 const SearchPage: FC = memo(() => {
   const [filters, setFilters] = useState<FiltersType | null>(null);
