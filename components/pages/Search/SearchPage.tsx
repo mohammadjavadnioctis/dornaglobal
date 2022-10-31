@@ -44,11 +44,11 @@ const SearchPage: FC = memo(() => {
   // )()
   return (
     <div className="container border border-orange-400">
-      <div className="relative min-h-[80vh] grid grid-cols-5 gap-3 border border-pink-600">
-        <div className="col-span-4 border border-green-400">the left one</div>
-      <div className=" bg-white rounded-xl h-[50vh] border border-rose-500">
+      <div className="relative min-h-[80vh] grid grid-cols-5 gap-3">
+      <div className=" bg-white rounded-xl h-[50vh]">
         <Filters />
       </div>
+        <div className="col-span-4 border border-green-400">the right one</div>
       </div>
     </div>
   );
