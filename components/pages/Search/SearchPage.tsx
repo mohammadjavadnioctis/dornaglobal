@@ -45,7 +45,7 @@ const SearchPage: FC = memo(() => {
   return (
     <div className="container !pl-0 border border-orange-400">
       <div className="relative min-h-[80vh] grid grid-cols-8 gap-3">
-      <div className="col-span-2  rounded-xl h-[50vh]">
+      <div className="col-span-2  rounded-xl">
         <Filters />
       </div>
         <div className="col-span-4 border border-green-400">the right one</div>
