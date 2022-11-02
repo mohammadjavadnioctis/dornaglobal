@@ -51,7 +51,13 @@ const SearchPage: FC = memo(() => {
       <div className="col-span-2  rounded-xl">
         <Filters />
       </div>
-        <div className="col-span-4 border border-green-400">The right part</div>
+        <div className="col-span-6 grid grid-cols-4 gap-4 border border-green-400">
+          {
+            fetchedProperties && (
+              fetchedProperties.map(property => (<PropertyCard property={property} />))
+            )
+          }
+        </div>
       </div>
     </div>
   );

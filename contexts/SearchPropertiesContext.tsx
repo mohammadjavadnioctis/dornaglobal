@@ -5,7 +5,7 @@ import fetchProperties from "~/utils/helpers/firebase/fetchProperties";
 import { PropertyType } from "~/utils/types";
 
 interface SearchPropertiesContextType {
-    fetchedProperties?: PropertyType
+    fetchedProperties?: PropertyType[]
   }
 
 
