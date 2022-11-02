@@ -4,9 +4,12 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "~/utils/config/firebase";
 import { FiltersType } from "~/utils/types";
 import Filters from "./Partials/Filters/Filters";
+import PropertyCard from "~/components/PropertyCard/PropertyCard";
+import { useSearchProperties } from "~/contexts/SearchPropertiesContext";
 
 const SearchPage: FC = memo(() => {
-
+  const {fetchedProperties} = useSearchProperties()
+  console.log('this is the fetchedProperties from context  ',fetchedProperties )
   const fetchBasedOnFilters: any = async () => {
     let pageCount = false;
     const queryConstraints = [];
@@ -48,7 +51,7 @@ const SearchPage: FC = memo(() => {
       <div className="col-span-2  rounded-xl">
         <Filters />
       </div>
-        <div className="col-span-4 border border-green-400">the right one</div>
+        <div className="col-span-4 border border-green-400">The right part</div>
       </div>
     </div>
   );

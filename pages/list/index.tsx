@@ -4,6 +4,10 @@ import { isDev } from "~/utils/helpers";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "~/utils/config/firebase";
 import SearchPage from "~/components/pages/Search/SearchPage";
+import {
+  SearchPropertiesContext,
+  SearchPropertiesProvider,
+} from "~/contexts/SearchPropertiesContext";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   // let pageCount = false
@@ -32,10 +36,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 const Search: FC = memo((props: any) => {
   console.log("this is props baby", props);
 
-  return <div>
-    <SearchPage />
-  </div>
-    
+  return (
+    <div>
+      <SearchPropertiesProvider>
+        <SearchPage />
+      </SearchPropertiesProvider>
+    </div>
+  );
 });
 
 if (isDev) {
