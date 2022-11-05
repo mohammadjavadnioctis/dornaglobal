@@ -9,40 +9,53 @@ import { useSearchProperties } from "~/contexts/SearchPropertiesContext";
 
 const SearchPage: FC = memo(() => {
   const {fetchedProperties} = useSearchProperties()
-  const fetchBasedOnFilters: any = async () => {
-    let pageCount = false;
-    const queryConstraints = [];
-    const q = query(
-      collection(db, "properties"),
-      where("agentId", "==", "Zd58oroNdd7pC5kuKT4C"),
-      where("pageViewCount", "==", 140)
-    );
 
-    const querySnapshot = await getDocs(q);
-    const data = querySnapshot.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id,
-    }));
-  };
-  fetchBasedOnFilters();
 
-  //   (async function () {
-  //     let pageCount = false;
-  //     const q = query(
-  //       collection(db, "properties"),
-  //       where("agentId", "==", "Zd58oroNdd7pC5kuKT4C"),
+  // const fetchBasedOnFilters: any = async () => {
+  //   let pageCount = false;
+  //   const queryConstraints = [];
+  //   const q = query(
+  //     collection(db, "properties"),
+  //     where("agentId", "==", "Zd58oroNdd7pC5kuKT4C"),
+  //     where("pageViewCount", "==", 140)
+  //   );
 
-  //       where("pageViewCount", "==", 140)
-  //     );
+  //   const querySnapshot = await getDocs(q);
 
-  //     const querySnapshot = await getDocs(q);
-  //     const data = querySnapshot.docs.map((doc) => ({
-  //       ...doc.data(),
-  //       id: doc.id,
-  //     }));
-  //     console.log("this is data :", data);
-  //   }
-  // )()
+
+
+  //     // if (docSnap.exists()) {
+  // //   return { ...docSnap.data(), id: docSnap.id };
+  // // } else {
+  // //   console.log("No such agent document!");
+  // // }
+
+  //   const data = querySnapshot.docs.map((doc) => ({
+  //     ...doc.data(),
+  //     id: doc.id,
+  //   }));
+  //   console.log('this is the fetchedfilters : ',data )
+  // };
+
+  // fetchBasedOnFilters();
+
+    // const fetchPropertiesBasedOnFliters =  async () => {
+    //   let pageCount = false;
+    //   const q = query(
+    //     collection(db, "properties"),
+    //     where("agentId", "==", "Zd58oroNdd7pC5kuKT4C"),
+
+    //     where("pageViewCount", "==", 140)
+    //   );
+
+    //   const querySnapshot = await getDocs(q);
+    //   const data = querySnapshot.docs.map((doc) => ({
+    //     ...doc.data(),
+    //     id: doc.id,
+    //   }));
+    //   console.log("this is data :", data);
+    // }
+  
   return (
     <div className="container !pl-0 border border-orange-400">
       <div className="relative min-h-[80vh] grid grid-cols-8 gap-3">

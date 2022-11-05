@@ -1,36 +1,15 @@
 import React, { FC, FormEvent, memo, useEffect, useState } from "react";
 import { DefinedStringSchema } from "yup/lib/string";
+import { useSearchProperties } from "~/contexts/SearchPropertiesContext";
 import { UiNativeSelect, UiNumberInput, UiSelect } from "~/lib";
 import { IstanbulDistricts, TitleDeedTypes } from "~/utils/data";
 import { isDev } from "~/utils/helpers";
 import { FiltersType } from "~/utils/types";
 
 const Filters: FC = memo(() => {
-  const initialFilters: FiltersType = {
-    address: {
-      city: "",
-      district: "",
-      neighbourhood: "",
-    },
-    balcony: false,
-    dateListed: null,
-    floor: null,
-    furnished: null,
-    heatingSystem: null,
-    isInBuildingComplex: null,
-    noOfBathRooms: null,
-    noOfBedRooms: null,
-    price: {
-      maxPrice: null,
-      minPrice: null,
-    },
-    titleDeedStatus: null,
-    usageStatus: null,
-    yearBuilt: null,
-  };
-
-  const [filters, setFilters] = useState<FiltersType>(initialFilters);
-
+ 
+  const {filters, setFilters, fetchBasedOnFilters}  =  useSearchProperties()
+  
   const handleFilterchange = (name: string, e: any) => {
     // console.log("this is the event", e, name);
     // TODO : refactor this part
@@ -61,6 +40,7 @@ const Filters: FC = memo(() => {
   const handleFiltersSubmit = (e:  React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     console.log('here is the filters  : ',filters )
+    fetchBasedOnFilters()
   }
 
   useEffect(() => {
