@@ -61,16 +61,16 @@ const PropertiesSlider: FC<PropertiesSliderProps> = memo((props) => {
 
             return (
               <UiSlider.Slide className="bg-white rounded-xl">
-                <UiLink
+                {/* <UiLink
                   href={`/property/${property.id}`}
                   className="h-full relative"
-                >
+                > */}
                   <PropertyCard
                     key={index}
                     property={property}
                     similar={similar}
                   />
-                </UiLink>
+                {/* </UiLink> */}
               </UiSlider.Slide>
             );
           })}

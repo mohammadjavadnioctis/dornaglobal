@@ -60,8 +60,7 @@ export const SearchPropertiesProvider: FC<SearchPropertiesProviderContextType> =
     
 const fetchContextProperties = async () => {
     const fetchedProperties = await fetchProperties();
-    // @ts-ignore
-    setProperties(fetchedProperties)
+    setProperties(fetchedProperties as PropertyType[])
     return fetchedProperties;
   };
 

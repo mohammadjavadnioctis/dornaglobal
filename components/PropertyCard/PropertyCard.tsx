@@ -5,6 +5,7 @@ import { PropertyType } from "~/utils/types";
 import { BiBed } from "react-icons/bi";
 import { FaBath } from "react-icons/fa";
 import { BiCar } from "react-icons/bi";
+import UiLink from "~/lib/UiLink";
 
 interface PropertyCardProps {
   property: PropertyType;
@@ -34,6 +35,10 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
     ? property.miniCardPhotos[0].url
     : property.hiResImageLink;
   return (
+    <UiLink
+                  href={`/property/${property.id}`}
+                  className="h-full relative"
+                > 
     <div className="group hover:shadow-lg transition-shadow">
       <div className="overflow-hidden">
         <div className={"block overflow-hidden aspect-w-4 aspect-h-4"}>
@@ -98,6 +103,7 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
         </div>
       </div>
     </div>
+    </UiLink>
   );
 });
 
