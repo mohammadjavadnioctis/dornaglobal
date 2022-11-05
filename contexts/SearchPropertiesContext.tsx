@@ -36,6 +36,9 @@ const fetchContextProperties = async () => {
     return fetchedProperties;
   };
 
+  useEffect(()=>{
+  },[properties])
+
   useEffect(() => {
     fetchContextProperties()
 }, []);
@@ -43,7 +46,7 @@ const fetchContextProperties = async () => {
     () => ({
       fetchedProperties: properties,
     }),
-    []
+    [properties]
   );
   return (
     <SearchPropertiesContext.Provider value={value}>

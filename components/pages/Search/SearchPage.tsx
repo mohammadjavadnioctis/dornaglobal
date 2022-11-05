@@ -1,4 +1,4 @@
-import React, { FC, memo, useState } from "react";
+import React, { FC, memo, useEffect, useState } from "react";
 import { isDev } from "~/utils/helpers";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "~/utils/config/firebase";
@@ -9,7 +9,6 @@ import { useSearchProperties } from "~/contexts/SearchPropertiesContext";
 
 const SearchPage: FC = memo(() => {
   const {fetchedProperties} = useSearchProperties()
-  console.log('this is the fetchedProperties from context  ',fetchedProperties )
   const fetchBasedOnFilters: any = async () => {
     let pageCount = false;
     const queryConstraints = [];
@@ -24,7 +23,6 @@ const SearchPage: FC = memo(() => {
       ...doc.data(),
       id: doc.id,
     }));
-    console.log("this is data :", data);
   };
   fetchBasedOnFilters();
 
@@ -54,7 +52,7 @@ const SearchPage: FC = memo(() => {
         <div className="col-span-6 grid grid-cols-4 gap-4 border border-green-400">
           {
             fetchedProperties && (
-              fetchedProperties.map(property => (<PropertyCard property={property} />))
+              fetchedProperties.map(property => (<PropertyCard key={property.id} property={property} />))
             )
           }
         </div>

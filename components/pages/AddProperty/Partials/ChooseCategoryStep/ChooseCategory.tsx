@@ -36,7 +36,7 @@ const ChooseCategory: FC = memo(() => {
   ] = useState<PropertySubCategoryType[] | null | undefined>(null);
 
   const handleChosenCategory = (ChosenCategory: any) => {
-    console.log("category name is: ", ChosenCategory);
+    // console.log("category name is: ", ChosenCategory);
     const { categoryName, dealTypes } = ChosenCategory;
     setChosenCategoryInfo((prevState) => ({
       ...prevState,
@@ -53,7 +53,7 @@ const ChooseCategory: FC = memo(() => {
   };
 
   const handleChooseDeal = (deal: DealType) => {
-    console.log("this is the deal: ", deal);
+    // console.log("this is the deal: ", deal);
     const { dealName } = deal;
     setChosenCategoryInfo((prevState) => ({
       ...prevState,
@@ -63,7 +63,7 @@ const ChooseCategory: FC = memo(() => {
   };
 
   const handleSelectPropertyType = (PropertyType: PropertySubCategoryType) => {
-    console.log("this is the selected PropertyType:", PropertyType);
+    // console.log("this is the selected PropertyType:", PropertyType);
     const { propertyTypeName } = PropertyType;
     setChosenCategoryInfo((prevState) => ({
       ...prevState,
@@ -72,10 +72,10 @@ const ChooseCategory: FC = memo(() => {
   };
 
   useEffect(() => {
-    console.log(
-      "this si dealtype of the chosencategory info; ",
-      chosenCategoryInfo.dealType
-    );
+    // console.log(
+    //   "this si dealtype of the chosencategory info; ",
+    //   chosenCategoryInfo.dealType
+    // );
     if (chosenPropertyCategory) {
       setCorrespondingPropertyTypesToChosenDealType((prevState) => {
         switch (chosenCategoryInfo.dealType) {
@@ -96,28 +96,28 @@ const ChooseCategory: FC = memo(() => {
   // validate if category is chosen
   useEffect(() => {
     const {PropertyType, category, correspondingForm, dealType} = chosenCategoryInfo
-    console.log('useEffect executed')
+    // console.log('useEffect executed')
     switch (category) {
       case 'residential':
-        console.log('chosen category is: residential')
+        // console.log('chosen category is: residential')
         if(dealType && PropertyType){
           setIsCategoryChosen(true)
         }
         break;
       case 'commercial': 
-      console.log('chosen category is: commercial')
+      // console.log('chosen category is: commercial')
       if(dealType && PropertyType){
         setIsCategoryChosen(true)
       }
         break;
       case 'land': 
-      console.log('chosen category is: land')
+      // console.log('chosen category is: land')
       if(dealType){
         setIsCategoryChosen(true)
       }
         break;
       case 'bulding': 
-      console.log('chosen category is: building')
+      // console.log('chosen category is: building')
       if(dealType){
         setIsCategoryChosen(true)
       }

@@ -52,7 +52,7 @@ export function AuthProvider({ children }: any) {
   // call setUser and write new token as a cookie
   useEffect(() => {
     return auth.onIdTokenChanged(async (user) => {
-      console.log('user from context: ', user)
+      // console.log('user from context: ', user)
 
       if (!user) {
         setUser(null);

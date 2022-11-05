@@ -32,7 +32,7 @@ const Filters: FC = memo(() => {
   const [filters, setFilters] = useState<FiltersType>(initialFilters);
 
   const handleFilterchange = (name: string, e: any) => {
-    console.log("this is the event", e, name);
+    // console.log("this is the event", e, name);
     // TODO : refactor this part
     switch (name) {
       case "district":
@@ -58,109 +58,117 @@ const Filters: FC = memo(() => {
     // setFilters(prevState => ( { ...prevState } ))
   };
 
+  const handleFiltersSubmit = (e:  React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    console.log('here is the filters  : ',filters )
+  }
+
   useEffect(() => {
-    console.log("filters changed: ", filters);
+    // console.log("filters changed: ", filters);
   }, [filters]);
 
   return (
     <div>
       <div className="adress_forms">
-        <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
-          <div className="form_input_section ">
-            <label className="text-xs">District:</label>
-            <UiSelect
-              value={filters?.address?.district}
-              name="district"
-              onChange={(event) => handleFilterchange("district", event)}
-              data={IstanbulDistricts}
-            />
+        <form onSubmit={(e) => handleFiltersSubmit(e)}>
+          <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
+            <div className="form_input_section ">
+              <label className="text-xs">District:</label>
+              <UiSelect
+                value={filters?.address?.district}
+                name="district"
+                onChange={(event) => handleFilterchange("district", event)}
+                data={IstanbulDistricts}
+              />
+            </div>
+            <div className="form_input_section">
+              <label className="text-xs">Neighbourhood:</label>
+              <UiSelect
+                value={filters?.address?.neighbourhood}
+                name="neighbourhood"
+                onChange={(event) => handleFilterchange("neighbourhood", event)}
+                data={IstanbulDistricts}
+              />
+            </div>
           </div>
-          <div className="form_input_section">
-            <label className="text-xs">Neighbourhood:</label>
-            <UiSelect
-              value={filters?.address?.neighbourhood}
-              name="neighbourhood"
-              onChange={(event) => handleFilterchange("neighbourhood", event)}
-              data={IstanbulDistricts}
-            />
-          </div>
-        </div>
 
-        <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
-          <div className="form_input_section">
-            <label className="text-xs">Min price :</label>
+          <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
+            <div className="form_input_section">
+              <label className="text-xs">Min price :</label>
+              <UiNumberInput
+                // label="Price"
+                defaultValue={1000}
+                value={filters.price?.minPrice as number}
+                onChange={(e) => handleFilterchange("minPrice", e)}
+                parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
+                formatter={(value) =>
+                  !Number.isNaN(parseFloat(value as string))
+                    ? `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                    : "$ "
+                }
+              />
+            </div>
+            <div className="form_input_section">
+              <label className="text-xs">Max price :</label>
+              <UiNumberInput
+                // label="Price"
+                defaultValue={1000}
+                value={filters.price?.maxPrice as number}
+                onChange={(e) => handleFilterchange("minPrice", e)}
+                parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
+                formatter={(value) =>
+                  !Number.isNaN(parseFloat(value as string))
+                    ? `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                    : "$ "
+                }
+              />
+            </div>
+          </div>
+          <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
+            <label className="text-xs">Number of bedrooms :</label>
+
             <UiNumberInput
               // label="Price"
-              defaultValue={1000}
-              value={filters.price?.minPrice as number}
-              onChange={(e) => handleFilterchange("minPrice", e)}
-              parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
-              formatter={(value) =>
-                !Number.isNaN(parseFloat(value as string))
-                  ? `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                  : "$ "
-              }
+              defaultValue={1}
+              value={filters.noOfBedRooms as number}
+              // onChange={(e) => handleFilterchange("minPrice", e)}
             />
           </div>
-          <div className="form_input_section">
-            <label className="text-xs">Max price :</label>
+          <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
+            <label className="text-xs">Number of bathrooms :</label>
+
             <UiNumberInput
               // label="Price"
-              defaultValue={1000}
-              value={filters.price?.maxPrice as number}
-              onChange={(e) => handleFilterchange("minPrice", e)}
-              parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
-              formatter={(value) =>
-                !Number.isNaN(parseFloat(value as string))
-                  ? `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                  : "$ "
-              }
+              defaultValue={1}
+              value={filters.noOfBedRooms as number}
+              // onChange={(e) => handleFilterchange("minPrice", e)}
             />
           </div>
-        </div>
-        <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
-          <label className="text-xs">Number of bedrooms :</label>
+          <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
+            <label className="text-xs">Floor no :</label>
 
-          <UiNumberInput
-            // label="Price"
-            defaultValue={1}
-            value={filters.noOfBedRooms as number}
-            // onChange={(e) => handleFilterchange("minPrice", e)}
-          />
-        </div>
-        <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
-          <label className="text-xs">Number of bathrooms :</label>
+            <UiNumberInput
+              // label="Price"
 
-          <UiNumberInput
-            // label="Price"
-            defaultValue={1}
-            value={filters.noOfBedRooms as number}
-            // onChange={(e) => handleFilterchange("minPrice", e)}
-          />
-        </div>
-        <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
-          <label className="text-xs">Floor no :</label>
-
-          <UiNumberInput
-            // label="Price"
-           
-            value={filters.floor as number}
-            // onChange={(e) => handleFilterchange("minPrice", e)}
-          />
-        </div>
-        <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
-          <label className="text-xs">  :</label>
-
-          <div className="form_input_section ">
-            <label className="text-xs">Title deed status:</label>
-            <UiSelect
-              value={filters?.address?.district}
-              name="titleDeed"
-              onChange={(event) => handleFilterchange("district", event)}
-              data={TitleDeedTypes}
+              value={filters.floor as number}
+              // onChange={(e) => handleFilterchange("minPrice", e)}
             />
           </div>
-        </div>
+          <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
+            <label className="text-xs"> :</label>
+
+            <div className="form_input_section ">
+              <label className="text-xs">Title deed status:</label>
+              <UiSelect
+                value={filters?.address?.district}
+                name="titleDeed"
+                onChange={(event) => handleFilterchange("district", event)}
+                data={TitleDeedTypes}
+              />
+            </div>
+          </div>
+          <button type="submit" className="w-full sticky bottom-0  border bg-accent p-4 ">Apply</button>
+        </form>
       </div>
     </div>
   );
