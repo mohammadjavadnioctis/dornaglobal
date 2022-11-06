@@ -8,13 +8,13 @@ const TopBar = () => {
     <div className="w-full m-auto py-1 min-h-[35px] bg-accent flex items-center justify-center font-sans">
       <div className="container flex justify-between">
         <div className="inline-flex text-white items-center">
-          <BsTelephone className="mr-2" />
+          <BsTelephone className="mr-2 text-black" />
           <a
             href={`tel:${config.supportPhoneNo}`}
             target="_blank"
             rel="noopener noreferrer"
           >
-            <span className="mr-4">{config.supportPhoneNoBeautified}</span>
+            <span className="mr-4 text-black">{config.supportPhoneNoBeautified}</span>
           </a>
           <a
             href="mailto:info@dornaglobal.com"
@@ -22,8 +22,8 @@ const TopBar = () => {
             rel="noopener noreferrer"
             className="flex items-center"
           >
-            <IoIosMail className="mr-2" />
-            <span>{config.supportMail}</span>
+            <IoIosMail className="mr-2 text-black" />
+            <span className="text-black">{config.supportMail}</span>
           </a>
         </div>
         <div className="inline-block">
