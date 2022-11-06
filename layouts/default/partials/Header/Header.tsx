@@ -19,15 +19,18 @@ const Header = memo(() => {
       >
         <TopBar />
       </header>
-      <div className={`sticky px-8 top-0 left-0 z-50 header w-full flex justify-between py-5 backdrop-saturate-[180%] backdrop-blur-[5px] ${isHomePage ? 'bg-[hsla(0,0%,28%,.3)]' : 'bg-[hsla(0,0%,100%,.8)]'}`}>
-        <div>
-          <ListyourPropertyButton />
+      <div className={`sticky px-4 top-0 left-0 z-50 header w-full py-5 backdrop-saturate-[180%] backdrop-blur-[5px] ${isHomePage ? 'bg-[hsla(0,0%,28%,.3)]' : 'bg-[hsla(0,0%,100%,.8)]'}`}>
+        <div className="w-full container flex justify-between">
+
+          <div>
+            <ListyourPropertyButton />
+          </div>
+          <NavBar
+            ItemsClassNames={`${
+              isHomePage ? "text-white" : "text-black"
+            } w-full whitespace-nowrap px-4 hover:text-accent transition-all `}
+          />
         </div>
-        <NavBar
-          ItemsClassNames={`${
-            isHomePage ? "text-white" : "text-black"
-          } w-full whitespace-nowrap px-4 hover:text-accent transition-all `}
-        />
       </div>
     </>
   );

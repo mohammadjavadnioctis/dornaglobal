@@ -9,7 +9,7 @@ const HomeSlider = () => {
   const t = useTrans();
   return (
     <>
-      <div className="overlay absolute w-full h-screen top-0 left-0 bg-black bg-opacity-[0.7] z-[2] flex justify-center items-end">
+      <div className="overlay absolute w-full h-[calc(100vh_-_44px)] top-0 left-0 bg-black bg-opacity-[0.7] z-[2] flex justify-center items-end">
         <div className="content w-full p-4 h-full flex flex-col items-center justify-center">
           <div className="w-[60%] max-w-[600px]">
             <div className="w-full flex justify-center">
@@ -21,7 +21,7 @@ const HomeSlider = () => {
                 className="cursor-pointer "
               />
             </div>
-            <h2 className="text-4xl font-medium text-white text-center mt-11 mb-8">
+            <h2 className="text-4xl font-medium text-white text-center mt-3 mb-3">
               {t('DISCOVER YOUR PLACE TO LIVE...')}
             </h2>
             <MainSearchBar />
@@ -39,7 +39,7 @@ const HomeSlider = () => {
           subtitleClassNames="text-white"
         /> */}
       </div>
-      <div className="slider relative w-full h-screen">
+      <div className="slider relative w-full h-[calc(100vh_-_44px)]">
         <UiImage
           id="bg"
           src="https://firebasestorage.googleapis.com/v0/b/dorna-global.appspot.com/o/gran.jpg?alt=media&token=0662cbe5-6169-474d-bb41-88f4ed02a5d0"

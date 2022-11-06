@@ -9,6 +9,7 @@ import OurServices from "../Partials/OurServices/OurServices";
 import { PropertyType } from "~/utils/types";
 import NeightBourHoodSlider from "../Partials/NeightBourHoodSlider/NeightBourHoodSlider";
 import useScrollSnap from "react-use-scroll-snap";
+import Promotions from "../Partials/Promotions/Promotions";
 
 // TODO: hide the environment variable inside the image tag url
 interface HomepageType {
@@ -23,6 +24,7 @@ const Home: FC<HomepageType> = memo((props) => {
       <div className="w-full relative">
         <HomePageslider />
         <main className={``}>
+          <Promotions />
           <FeaturedExclusives
             properties={properties}
             title="Top Projects"

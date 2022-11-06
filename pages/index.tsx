@@ -30,7 +30,7 @@ const Home: NextPage<HomepageType> = memo((props) => {
         <meta name="description" content="Real Estate Istanbul" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="min-h-screen -translate-y-[76px]">
+      <div className="min-h-[h-[calc(100vh_-_76px)]] -translate-y-[76px] ">
         <HomePage {...props} />
         {/* <div className="h-screen"></div> */}
       </div>
