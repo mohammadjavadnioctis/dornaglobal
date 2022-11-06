@@ -19,7 +19,7 @@ const Header = memo(() => {
       >
         <TopBar />
       </header>
-      <div className="sticky px-8 top-0 left-0 z-50 header w-full flex justify-between py-5 backdrop-saturate-[180%] backdrop-blur-[5px] bg-[hsla(0,0%,100%,.8)]">
+      <div className={`sticky px-8 top-0 left-0 z-50 header w-full flex justify-between py-5 backdrop-saturate-[180%] backdrop-blur-[5px] ${isHomePage ? 'bg-[hsla(0,0%,28%,.3)]' : 'bg-[hsla(0,0%,100%,.8)]'}`}>
         <div>
           <ListyourPropertyButton />
         </div>
