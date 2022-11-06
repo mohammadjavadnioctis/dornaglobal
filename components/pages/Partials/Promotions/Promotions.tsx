@@ -3,6 +3,7 @@ import UiSlider from "~/lib/UiSlider";
 import SwiperClass, { FreeMode, Navigation, Thumbs } from "swiper";
 import { isDev } from "~/utils/helpers";
 import UiImage from "~/lib/Image";
+import { AiOutlineRight } from "react-icons/ai";
 
 const sampleData = [
   {
@@ -38,7 +39,7 @@ const sampleData = [
 const Promotions: FC = () => {
   return (
     <div className="my-16">
-      <div className="container border border-rose-700 ">
+      <div className="container  ">
         <UiSlider
           style={{
             // @ts-ignore
@@ -46,9 +47,12 @@ const Promotions: FC = () => {
             "--swiper-pagination-color": "#fff",
             height: "100%",
             margin: 0,
+            paddingTop:'1rem',
+            paddingBottom:'1rem',
+
           }}
           spaceBetween={10}
-          navigation={true}
+        //   navigation={true}
           slidesPerView={3}
           //   thumbs={{
           //     swiper:
@@ -60,11 +64,18 @@ const Promotions: FC = () => {
           {sampleData.map((data) => {
             const { img, label, name, id } = data;
             return (
-              <UiSlider.Slide className="border border-orange-400">
-                <div className="aspect-w-16 aspect-h-9">
+              <UiSlider.Slide className=" cursor-pointer my-4 hover:shadow-[0_10px_40px_-30px_rgba(0,0,255,0.9)]">
+                <div className="aspect-w-16 aspect-h-9 hover:shadow-[0_10px_40px_-30px_rgba(0,0,255,0.9)] group">
                   <div className="overflow-hidden">
                     <div className="relative w-full h-full ">
                       <UiImage src={img} layout="fill" />
+                      <div className="content  relative z-10 h-full flex items-end pb-3 px-3 text-white">
+                        <div className="w-full flex items-center justify-between group-hover:text-accent">
+
+                            {label}
+                            <AiOutlineRight className="w-8 h-8" />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
