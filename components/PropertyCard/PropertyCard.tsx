@@ -5,6 +5,7 @@ import { PropertyType } from "~/utils/types";
 import { BiBed } from "react-icons/bi";
 import { FaBath } from "react-icons/fa";
 import { BiCar } from "react-icons/bi";
+import {TfiRulerAlt2} from 'react-icons/tfi'
 import UiLink from "~/lib/UiLink";
 
 interface PropertyCardProps {
@@ -21,6 +22,7 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
     bathrooms,
     garage = 1,
     hiResImageLink,
+    livingArea
   } = property;
   // get the highest res images from the photos
   //     let images: (string | undefined)[] | undefined = photos?.map(
@@ -95,10 +97,10 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
 
           <div className="flex flex-col justify-between">
             <span className="inline-flex mx-2 items-center justify-center">
-              <BiCar className="mr-1" />
-              <span>2</span>
+              <TfiRulerAlt2 className="mr-1" />
+              <span className="text-sm">{livingArea}</span>
             </span>
-            <span className="text-xs">Garage</span>
+            <span className="text-xs text-center">Area</span>
           </div>
         </div>
       </div>

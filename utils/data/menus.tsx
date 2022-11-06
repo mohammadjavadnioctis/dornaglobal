@@ -27,9 +27,15 @@ const mainMenuData = [
     id: 4,
   },
   {
+    name: "About",
+    href: "/about",
+    id: 5,
+  },
+  
+  {
     name: "Profile",
     href: "/profile",
-    id: 5,
+    id: 6,
   },
 ];
 

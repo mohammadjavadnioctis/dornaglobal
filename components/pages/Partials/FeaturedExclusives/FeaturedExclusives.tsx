@@ -37,7 +37,7 @@ const FeaturedExclusives: FC<FeaturedExclusivesType> = forwardRef<
     showSliderButtons = true,
   } = props;
   return (
-    <section className={`container border border-orange-400 ${wrapperClassNames}`} ref={ref}>
+    <section className={`container ${wrapperClassNames}`} ref={ref}>
       <div></div>
       <Head
         title={title}
