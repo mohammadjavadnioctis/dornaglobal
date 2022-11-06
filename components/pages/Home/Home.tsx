@@ -17,10 +17,10 @@ interface HomepageType {
 const Home: FC<HomepageType> = memo((props) => {
   const { properties } = props;
   const scrollRef = useRef(null);
-  useScrollSnap({ ref: scrollRef, duration: 100, delay: 50 });
+  // useScrollSnap({ ref: scrollRef, duration: 100, delay: 50 });
   return (
     <>
-      <div className="w-full ">
+      <div className="w-full relative">
         <HomePageslider />
         <main className={``}>
           <FeaturedExclusives

@@ -19,16 +19,16 @@ const ListyourPropertyButton = () => {
   let isHomePage = router.asPath == "/";
   const useStyles = createStyles((theme) => ({
     root: {
-      borderColor: `${isHomePage ? "white" : "black"}`,
+      borderColor: `black`,
       "&:hover": {
         background: "#E9C46A",
         borderColor: "#E9C46A",
-        color: "white",
+        color: "black",
       },
       transition: "all 0.1s linear ",
     },
     inner: {
-      color: `${isHomePage ? "white" : "black"}`,
+      color: `black`,
     },
   }));
 
