@@ -62,14 +62,28 @@ export const SearchPropertiesProvider: FC<
 
   const fetchBasedOnFilters: any = async () => {
     let pageCount = false;
-    const queryConstraints = [
-      where("agentId", "==", "Zd58oroNdd7pC5kuKT4C"),
-      where("pageViewCount", "==", 140),
+    const queryConstraints:any = [
+      // where("agentId", "==", "Zd58oroNdd7pC5kuKT4C"),
+      // where("pageViewCount", "==", 140),
     ];
+
+    Object.keys(filters)?.forEach((key, index) => {
+      console.log('this is the key:', key)
+      switch (key) {
+        case 'address':
+          filters.address?.neighbourhood && queryConstraints.push(where('address.neighborhood', '==', filters.address?.neighbourhood))
+          filters.address?.district && queryConstraints.push(where('address.district', '==', filters.address?.district))
+      
+        default:
+          break;
+      }
+    })
+    console.log('this is the quetyConstraints:', queryConstraints)
     const q = query(
       collection(db, "properties"),
-      where("agentId", "==", "Zd58oroNdd7pC5kuKT4C"),
-      where("pageViewCount", "==", 140)
+      ...queryConstraints
+      // where("address.streetAddress", "==", "2505 Prospect St"),
+      // where("pageViewCount", "==", 140)
     );
 
     const querySnapshot = await getDocs(q);
@@ -82,7 +96,10 @@ export const SearchPropertiesProvider: FC<
     setProperties(data as PropertyType[]);
   };
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    console.log('this is the filters from the context: ', filters)
+  }, 
+  [filters]);
 
   useEffect(() => {}, [properties]);
 

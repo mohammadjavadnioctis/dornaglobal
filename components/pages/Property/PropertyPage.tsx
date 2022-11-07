@@ -37,6 +37,7 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
     description,
     nearbyHomes,
   } = property;
+  console.log('this is the property: ', property)
   // get the highest res images from the photos
   const images: (string | undefined)[] | undefined = photos?.map(
     (photo) => photo?.mixedSources?.webp?.pop()?.url
