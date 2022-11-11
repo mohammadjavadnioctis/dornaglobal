@@ -61,6 +61,34 @@ const userDashboardMenu : DashboardMenuItemsType[] = [
   },
 ]
 
+const adminDashboardMenu : DashboardMenuItemsType[] = [
+  {
+    name: 'Users List',
+    href: 'usersList',
+    id: '1',
+    Icon: UserIcon
+   
+  },
+  {
+    name: 'Properties List',
+    href: 'propertiesList',
+    id: '2',
+    Icon: BsHouse
+  },
+  {
+    name: 'Pending Properties List',
+    href: 'pendingProperties',
+    id: '3',
+    Icon: FiMessageSquare
+  },
+  {
+    name: 'Messages',
+    href: 'messages',
+    id: '4',
+    Icon: FiMessageSquare
+  },
+]
 
 
-export { mainMenuData, userDashboardMenu };
+
+export { mainMenuData, userDashboardMenu, adminDashboardMenu };
