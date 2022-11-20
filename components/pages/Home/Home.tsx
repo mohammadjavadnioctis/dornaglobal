@@ -1,15 +1,15 @@
 import React, { memo, useEffect, FC, useRef } from "react";
 import { isDev } from "~/utils/helpers";
-import { HomePageslider } from "../Partials";
-import FeaturedExclusives from "../Partials/FeaturedExclusives/FeaturedExclusives";
-import ExploreByNeighrbourhood from "../Partials/ExploreByNeighrbourhood/ExploreByNeighrbourhood";
-import SellYourProperty from "../Partials/SellYourProperty/SellYourProperty";
-import Agents from "../Partials/Agents/Agents";
-import OurServices from "../Partials/OurServices/OurServices";
+import { HomePageslider } from "./Partials";
+import FeaturedExclusives from "./Partials/FeaturedExclusives/FeaturedExclusives";
+import ExploreByNeighrbourhood from "./Partials/ExploreByNeighrbourhood/ExploreByNeighrbourhood";
+import SellYourProperty from "./Partials/SellYourProperty/SellYourProperty";
+import Agents from "./Partials/Agents/Agents";
+import OurServices from "./Partials/OurServices/OurServices";
 import { PropertyType } from "~/utils/types";
-import NeightBourHoodSlider from "../Partials/NeightBourHoodSlider/NeightBourHoodSlider";
+import NeightBourHoodSlider from "./Partials/NeightBourHoodSlider/NeightBourHoodSlider";
 import useScrollSnap from "react-use-scroll-snap";
-import Promotions from "../Partials/Promotions/Promotions";
+import Promotions from "./Partials/Promotions/Promotions";
 
 // TODO: hide the environment variable inside the image tag url
 interface HomepageType {

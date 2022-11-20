@@ -14,9 +14,11 @@ export interface ProfileProps {}
 
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    
+    let propsCookies: any;
   try {
     const cookies = nookies.get(ctx);
+    propsCookies = cookies
+    console.log('the cookies are: ',cookies)
     const token = await admin.auth().verifyIdToken(cookies.token);
 
     // the user is authenticated!
@@ -41,14 +43,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     // with InferGetServerSidePropsType.
     // The props returned here don't matter because we've
     // already redirected the user.
-    return { props: {} as never };
+    return { props: {propsCookies} };
   }
 }
 
 
 
-const profile: FC = memo(() => {
+const profile: FC = memo((props) => {
   const { user, logout, loading } = useAuth();
+  console.log('this is the user: ', user)
   const router = useRouter();
   if(!user && !loading){
     router.push('/signin')
@@ -68,7 +71,9 @@ const profile: FC = memo(() => {
       }
        */}
       <UserDashboardProvider >
-        <Profile />
+        {
+          (user && !loading) ?  <Profile /> : <h2>loading</h2>
+        }  
       </UserDashboardProvider> 
 
     </div>

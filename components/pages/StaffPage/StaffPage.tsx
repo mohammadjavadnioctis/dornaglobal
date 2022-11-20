@@ -4,8 +4,8 @@ import React, { FC, memo } from "react";
 import { isDev } from "~/utils/helpers";
 import fetchProperties from "~/utils/helpers/firebase/fetchProperties";
 import { AgentType, PropertyType } from "~/utils/types";
-import Agents from "../Partials/Agents/Agents";
-import FeaturedExclusives from "../Partials/FeaturedExclusives/FeaturedExclusives";
+import Agents from "../Home/Partials/Agents/Agents";
+import FeaturedExclusives from "../Home/Partials/FeaturedExclusives/FeaturedExclusives";
 import AgentBaner from "./partials/Banner/AgentBanner";
 
 interface StaffPageType {

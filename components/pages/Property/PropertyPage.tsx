@@ -11,7 +11,7 @@ import {
 import propertyDetails from "~/utils/data/SamplePropertyDetails";
 import { isDev } from "~/utils/helpers";
 import { AgentType, PropertyType } from "~/utils/types";
-import FeaturedExclusives from "../Partials/FeaturedExclusives/FeaturedExclusives";
+import FeaturedExclusives from "../Home/Partials/FeaturedExclusives/FeaturedExclusives";
 import Description from "./partials/Description/Description";
 import Propertyslider from "./partials/Propertyslider";
 import SumWithIcons from "./partials/SumWithIcons/SumWithIcons";

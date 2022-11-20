@@ -3,6 +3,7 @@ import { BsTelephone } from 'react-icons/bs'
 import { FaRegEdit } from 'react-icons/fa'
 import { IoMailOutline } from 'react-icons/io5'
 import UserIcon from '~/assets/icons/UserIcon'
+import { useAuth } from '~/contexts/AuthContext'
 import { isDev } from '~/utils/helpers'
 
 
@@ -33,6 +34,9 @@ const ProfileTab: FC = memo(
 
 
     () => {
+
+      const { logout } = useAuth();
+
       return (
         <div className='w-full h-full p-4'>
           <h2 className='text-accent-600'>My Profile</h2>
@@ -59,6 +63,7 @@ const ProfileTab: FC = memo(
           }
           )
         }
+        <div onClick={() => {logout()}}>logout</div>
           </div>
         </div>
       )
