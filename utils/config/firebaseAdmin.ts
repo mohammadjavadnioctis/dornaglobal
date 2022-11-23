@@ -13,7 +13,7 @@ if (!admin.apps.length) {
   }
   
   const adminDb = admin.firestore();
-  
+
 //   export { adminDb };
 // const adminDb = admin.Firestore();
 

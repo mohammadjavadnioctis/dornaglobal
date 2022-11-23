@@ -2,6 +2,7 @@ import React, {FC, memo, useState} from 'react'
 import { UIButton, UIGroup, UIStepper } from '~/lib'
 import { isDev } from '~/utils/helpers'
 import ChooseCategory from '../ChooseCategoryStep/ChooseCategory';
+import UploadMediaStep from '../UploadMediaStep/UploadMediaStep';
 
 
 
@@ -19,12 +20,15 @@ const Stepper = memo(
         <UIStepper.Step label="First step" description="Choose category">
           <ChooseCategory />
         </UIStepper.Step>
-        <UIStepper.Step label="Second step" description="Enter property details">
+        <UIStepper.Step label="Second step" description="Upload Images and videos">
+            <UploadMediaStep />
+        </UIStepper.Step>
+        <UIStepper.Step label="Third step" description="Enter property details">
           Step 2 content
         </UIStepper.Step>
-        <UIStepper.Step label="Third step" description="Review">
+        <UIStepper.Step label="Fourth step" description="Review">
         </UIStepper.Step>
-        <UIStepper.Step label="Fourth step" description="Property Listed">
+        <UIStepper.Step label="Fifth step" description="Property Listed">
           {/* Step 3 content: Get full access */}
         </UIStepper.Step>
         <UIStepper.Step label="Final step" description="congratulation">

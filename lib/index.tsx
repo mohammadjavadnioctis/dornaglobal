@@ -3,5 +3,11 @@ export { Stepper as UIStepper,
     Group as UIGroup,
     NativeSelect as UiNativeSelect,
     Select as UiSelect,
-    NumberInput as UiNumberInput
+    NumberInput as UiNumberInput,
+    Text as UiText,
+    Image as UiMantineImage
 } from '@mantine/core'
+
+export {
+    Dropzone as UiDropzone
+} from '@mantine/dropzone'
