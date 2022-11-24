@@ -5,7 +5,8 @@ export { Stepper as UIStepper,
     Select as UiSelect,
     NumberInput as UiNumberInput,
     Text as UiText,
-    Image as UiMantineImage
+    Image as UiMantineImage,
+    TextInput as UiTextinput
     
 } from '@mantine/core'
 
