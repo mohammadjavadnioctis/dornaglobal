@@ -6,6 +6,7 @@ export { Stepper as UIStepper,
     NumberInput as UiNumberInput,
     Text as UiText,
     Image as UiMantineImage
+    
 } from '@mantine/core'
 
 export {
