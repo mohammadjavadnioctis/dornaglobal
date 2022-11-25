@@ -6,7 +6,8 @@ export { Stepper as UIStepper,
     NumberInput as UiNumberInput,
     Text as UiText,
     Image as UiMantineImage,
-    TextInput as UiTextinput
+    TextInput as UiTextinput,
+    Textarea as UiTextArea
     
 } from '@mantine/core'
 

@@ -8,15 +8,14 @@ const PriceInput: FC = memo(() => {
     <div>
       {" "}
       <UiNumberInput
-        // label="Price"
-        defaultValue={1000}
+        label="Price"
         value={price}
         onChange={(val) => setPrice(val)}
         parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
         formatter={(value) =>
           !Number.isNaN(parseFloat(value as string))
-            ? `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-            : "$ "
+            ? `₺ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+            : "₺ "
         }
       />
     </div>
