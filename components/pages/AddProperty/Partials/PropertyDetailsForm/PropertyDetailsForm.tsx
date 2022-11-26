@@ -2,6 +2,8 @@ import React, {FC, memo} from 'react'
 import { isDev } from '~/utils/helpers'
 import FloorNoInput from './PropertyDetailsPartials/FloorNoInput'
 import LivingAreaInput from './PropertyDetailsPartials/LivingAreaInput'
+import NoOfBathroomsInput from './PropertyDetailsPartials/NoOfBathroomsInput'
+import NoOfRoomsInput from './PropertyDetailsPartials/NoOfRoomsInput'
 import PriceInput from './PropertyDetailsPartials/PriceInput'
 import PropertyDescriptionInput from './PropertyDetailsPartials/PropertyDescriptionInput'
 import PropertyTitleInput from './PropertyDetailsPartials/PropertyTitleInput'
@@ -23,7 +25,8 @@ const PropertyDetailsForm: FC = () => {
           <FloorNoInput />
           <LivingAreaInput />
           <TotalAreaInput />
-
+          <NoOfRoomsInput />
+          <NoOfBathroomsInput />
 
       </div>
     </div>
