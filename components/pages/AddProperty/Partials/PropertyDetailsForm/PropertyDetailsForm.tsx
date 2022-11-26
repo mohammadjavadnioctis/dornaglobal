@@ -1,5 +1,6 @@
 import React, {FC, memo} from 'react'
 import { isDev } from '~/utils/helpers'
+import AddressInput from './PropertyDetailsPartials/AddressInput'
 import FloorNoInput from './PropertyDetailsPartials/FloorNoInput'
 import LivingAreaInput from './PropertyDetailsPartials/LivingAreaInput'
 import NoOfBathroomsInput from './PropertyDetailsPartials/NoOfBathroomsInput'
@@ -29,6 +30,7 @@ const PropertyDetailsForm: FC = () => {
           <NoOfBathroomsInput />
 
       </div>
+      <AddressInput />
     </div>
   )
 }
