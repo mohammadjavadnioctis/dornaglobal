@@ -17,7 +17,8 @@ const PropertyTitleInput: FC<PropertyTitleInputType> = memo((props) => {
         label="Property Title"
         value={title}
         onChange={(event) => setTitle(event.currentTarget.value)}
-
+        required
+        withAsterisk
       />
     </div>
   );
