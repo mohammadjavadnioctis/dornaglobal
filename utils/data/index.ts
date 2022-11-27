@@ -4,3 +4,4 @@ export { default as SamplePropertyFeatures } from "./PropertyFeatures";
 export { default as NeightBourHoodSampleData } from "./SampleDeightBourHoodData";
 export { default as IstanbulDistricts } from "./istanbulDistricts";
 export { default as TitleDeedTypes } from "./titleDeedTypes";
+export * as AddressSampleData from './AddressSampleData'

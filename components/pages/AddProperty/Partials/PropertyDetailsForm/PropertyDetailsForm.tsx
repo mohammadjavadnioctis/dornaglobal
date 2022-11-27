@@ -35,7 +35,7 @@ const PropertyDetailsForm: FC = () => {
           <NoOfRoomsInput />
           <NoOfBathroomsInput />
         </div>
-        <AddressInput />
+        <AddressInput wrapperClassNames="my-16" />
         <button type="submit">Submit</button> 
       </form>
     </div>
