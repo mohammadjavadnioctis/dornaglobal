@@ -8,3 +8,4 @@ export type { default as DealType } from "./DealType";
 export type { default as PropertySubCategoryType } from "./PropertySubCategoryType";
 export type { default as ChosenPropertyType } from "./ChosenPropertyType";
 export type { default as FiltersType } from "./FiltersType";
+export type { default as ChosenCategoryInfoType } from "./ChosenCategoryType";

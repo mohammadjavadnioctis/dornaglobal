@@ -5,6 +5,7 @@ import { isDev } from '~/utils/helpers'
 import nookies from 'nookies'
 import { admin, adminDb } from "~/utils/config/firebaseAdmin";
 import { collection, doc, setDoc } from "firebase/firestore"; 
+import { AddPropertyContext, AddPropertyProvider } from '~/contexts/AddPropertyContext';
 
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
@@ -29,7 +30,9 @@ const addProperty: FC = memo(
     console.log('this is the props from the add property page: ', props)
     return (
       <div>
-        <AddPropertyPage />
+        <AddPropertyProvider>
+          <AddPropertyPage />
+        </AddPropertyProvider>
       </div>
     )
   }

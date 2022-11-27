@@ -1,31 +1,23 @@
 import React, { FC, memo, useEffect, useState } from "react";
 import { BiChevronRight } from "react-icons/bi";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
+import { AddPropertyContext, usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UIButton } from "~/lib";
 import ChooseCategorySteps from "~/utils/data/ChoseCategorySteps";
 import { isDev } from "~/utils/helpers";
 import {
   CategoryStepsType,
+  ChosenCategoryInfoType,
   ChosenPropertyType,
   DealType,
   PropertySubCategoryType,
 } from "~/utils/types";
 
-interface ChosenCategoryInfoType {
-  category: null | string;
-  dealType: null | string;
-  PropertyType: null | string;
-  correspondingForm: null | string;
-}
+
 
 const ChooseCategory: FC = memo(() => {
-  const [chosenCategoryInfo, setChosenCategoryInfo] =
-    useState<ChosenCategoryInfoType>({
-      category: null,
-      dealType: null,
-      PropertyType: null,
-      correspondingForm: null,
-    });
+ 
+  const {chosenCategoryInfo, setChosenCategoryInfo} = usePropertyContext()
   const [dealTypes, setDealTypes] = useState<DealType[] | null>(null);
   const [isCategoryChosen , setIsCategoryChosen] = useState(false)
   const [chosenPropertyCategory, setChosenPropertyCategory] =
@@ -36,7 +28,6 @@ const ChooseCategory: FC = memo(() => {
   ] = useState<PropertySubCategoryType[] | null | undefined>(null);
 
   const handleChosenCategory = (ChosenCategory: any) => {
-    // console.log("category name is: ", ChosenCategory);
     const { categoryName, dealTypes } = ChosenCategory;
     setChosenCategoryInfo((prevState) => ({
       ...prevState,
@@ -53,7 +44,6 @@ const ChooseCategory: FC = memo(() => {
   };
 
   const handleChooseDeal = (deal: DealType) => {
-    // console.log("this is the deal: ", deal);
     const { dealName } = deal;
     setChosenCategoryInfo((prevState) => ({
       ...prevState,
@@ -63,7 +53,6 @@ const ChooseCategory: FC = memo(() => {
   };
 
   const handleSelectPropertyType = (PropertyType: PropertySubCategoryType) => {
-    // console.log("this is the selected PropertyType:", PropertyType);
     const { propertyTypeName } = PropertyType;
     setChosenCategoryInfo((prevState) => ({
       ...prevState,
@@ -72,10 +61,7 @@ const ChooseCategory: FC = memo(() => {
   };
 
   useEffect(() => {
-    // console.log(
-    //   "this si dealtype of the chosencategory info; ",
-    //   chosenCategoryInfo.dealType
-    // );
+   
     if (chosenPropertyCategory) {
       setCorrespondingPropertyTypesToChosenDealType((prevState) => {
         switch (chosenCategoryInfo.dealType) {
@@ -91,33 +77,28 @@ const ChooseCategory: FC = memo(() => {
         }
       });
     }
-  }, [chosenCategoryInfo.dealType]);
+  }, [chosenCategoryInfo?.dealType]);
 
   // validate if category is chosen
   useEffect(() => {
     const {PropertyType, category, correspondingForm, dealType} = chosenCategoryInfo
-    // console.log('useEffect executed')
     switch (category) {
       case 'residential':
-        // console.log('chosen category is: residential')
         if(dealType && PropertyType){
           setIsCategoryChosen(true)
         }
         break;
       case 'commercial': 
-      // console.log('chosen category is: commercial')
       if(dealType && PropertyType){
         setIsCategoryChosen(true)
       }
         break;
       case 'land': 
-      // console.log('chosen category is: land')
       if(dealType){
         setIsCategoryChosen(true)
       }
         break;
       case 'bulding': 
-      // console.log('chosen category is: building')
       if(dealType){
         setIsCategoryChosen(true)
       }
@@ -130,7 +111,6 @@ const ChooseCategory: FC = memo(() => {
   }, [chosenCategoryInfo]);
 
   const nextStep = ()=>{
-    console.log('this is the chosenCategoryINfo', chosenCategoryInfo)
   }
 
   return (
