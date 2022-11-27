@@ -1,4 +1,5 @@
 import React, { FC, memo, useState } from "react";
+import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UiNumberInput, UiTextArea, UiTextinput } from "~/lib";
 
 interface PropertyDescriptionInput {
@@ -7,8 +8,12 @@ interface PropertyDescriptionInput {
 
 const PropertyDescriptionInput: FC<PropertyDescriptionInput> = memo((props) => {
   const { wrapperClassNames } = props;
-  const [description, setDescription] = useState<string>("");
-
+  // const [description, setDescription] = useState<string>("");
+  const {details: {description}, setDetails} = usePropertyContext()
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const value = event.currentTarget.value
+    setDetails(prevState => ({...prevState , description: value}))
+  }
   return (
     <div className={`${wrapperClassNames}`}>
       {" "}
@@ -16,7 +21,7 @@ const PropertyDescriptionInput: FC<PropertyDescriptionInput> = memo((props) => {
         label='Description'
         placeholder="a short summary of the property"
         value={description}
-        onChange={(event) => setDescription(event.currentTarget.value)}
+        onChange={handleChange}
       />
     </div>
   );

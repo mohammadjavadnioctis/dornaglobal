@@ -6,7 +6,8 @@ import PropertyDetailsForm from '../PropertyDetailsForm/PropertyDetailsForm';
 import UploadMediaStep from '../UploadMediaStep/UploadMediaStep';
 
 
-
+// TODO : error hadling of forms and  context of the forms
+// cities api
 
 const Stepper = memo(
     () => {

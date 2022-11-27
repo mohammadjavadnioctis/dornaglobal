@@ -6,14 +6,25 @@ import { ChosenCategoryInfoType, FiltersType, PropertyType } from "~/utils/types
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "~/utils/config/firebase";
 
+
+
+interface PropertyDetailsType extends FiltersType {
+    title: string,
+    description: string 
+}
+
 interface AddPropertyContextContextType {
     chosenCategoryInfo: ChosenCategoryInfoType,
     setChosenCategoryInfo: React.Dispatch<React.SetStateAction<ChosenCategoryInfoType>>
     media: any;
-    details: FiltersType;
-    setDetails: React.Dispatch<React.SetStateAction<FiltersType>>
+    details: PropertyDetailsType;
+    setDetails: React.Dispatch<React.SetStateAction<PropertyDetailsType>>
 }
-const initialDetails: FiltersType = {
+
+
+const initialDetails: PropertyDetailsType  = {
+    title: '',
+    description: '',
   address: {
     city: "",
     district: "",
