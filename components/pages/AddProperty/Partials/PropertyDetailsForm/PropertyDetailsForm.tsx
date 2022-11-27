@@ -1,6 +1,8 @@
 import React, { FC, memo } from "react";
 import { isDev } from "~/utils/helpers";
 import AddressInput from "./PropertyDetailsPartials/AddressInput";
+import BuildingAgeInput from "./PropertyDetailsPartials/BuildingAgeInput";
+import BuildingAge from "./PropertyDetailsPartials/BuildingAgeInput";
 import FloorNoInput from "./PropertyDetailsPartials/FloorNoInput";
 import LivingAreaInput from "./PropertyDetailsPartials/LivingAreaInput";
 import NoOfBathroomsInput from "./PropertyDetailsPartials/NoOfBathroomsInput";
@@ -38,6 +40,7 @@ const PropertyDetailsForm: FC = () => {
           <NoOfBathroomsInput />
           <FloorNoInput />
           <TotalNoOfFloorsInput />
+          <BuildingAgeInput />
         </div>
         <AddressInput wrapperClassNames="my-16" />
         <button type="submit">Submit</button> 
