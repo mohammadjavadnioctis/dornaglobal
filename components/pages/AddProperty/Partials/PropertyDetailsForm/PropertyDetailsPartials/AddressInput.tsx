@@ -19,6 +19,7 @@ const {wrapperClassNames} = props
   })
 
   const handleSelect = (event: any) => {
+    console.log('this is e: ', event)
     let value = event.currentTarget.value
     let inputName = event.currentTarget.name
     setAddress(prevState => { return { ...prevState, [inputName]: value } })
@@ -56,5 +57,7 @@ const {wrapperClassNames} = props
     </div>
   );
 });
+
+
 
 export default AddressInput;

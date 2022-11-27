@@ -8,7 +8,9 @@ import NoOfRoomsInput from "./PropertyDetailsPartials/NoOfRoomsInput";
 import PriceInput from "./PropertyDetailsPartials/PriceInput";
 import PropertyDescriptionInput from "./PropertyDetailsPartials/PropertyDescriptionInput";
 import PropertyTitleInput from "./PropertyDetailsPartials/PropertyTitleInput";
+import TitleDeedStatusinput from "./PropertyDetailsPartials/TitleDeedStatusinput";
 import TotalAreaInput from "./PropertyDetailsPartials/TotalAreaInput";
+import TotalNoOfFloorsInput from "./PropertyDetailsPartials/TotalNoOfFloorsInput";
 
 const PropertyDetailsForm: FC = () => {
 
@@ -28,12 +30,14 @@ const PropertyDetailsForm: FC = () => {
           <div className="col-span-2 ">
             <PropertyDescriptionInput />
           </div>
-          <PriceInput />
-          <FloorNoInput />
+          <PriceInput /> 
+          <TitleDeedStatusinput />
           <LivingAreaInput />
           <TotalAreaInput />
           <NoOfRoomsInput />
           <NoOfBathroomsInput />
+          <FloorNoInput />
+          <TotalNoOfFloorsInput />
         </div>
         <AddressInput wrapperClassNames="my-16" />
         <button type="submit">Submit</button> 
