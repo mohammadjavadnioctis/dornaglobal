@@ -7,7 +7,9 @@ export { Stepper as UIStepper,
     Text as UiText,
     Image as UiMantineImage,
     TextInput as UiTextinput,
-    Textarea as UiTextArea
+    Textarea as UiTextArea,
+    Chip as UiChip,
+    Button as UiButton
     
 } from '@mantine/core'
 

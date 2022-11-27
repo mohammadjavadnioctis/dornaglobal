@@ -1,10 +1,13 @@
 import React, { FC, memo } from "react";
+import { UiButton } from "~/lib";
 import { isDev } from "~/utils/helpers";
 import AddressInput from "./PropertyDetailsPartials/AddressInput";
 import AydatInput from "./PropertyDetailsPartials/AydatInput";
+import BalconyInput from "./PropertyDetailsPartials/BalconyInput";
 import BuildingAgeInput from "./PropertyDetailsPartials/BuildingAgeInput";
 import BuildingAge from "./PropertyDetailsPartials/BuildingAgeInput";
 import FloorNoInput from "./PropertyDetailsPartials/FloorNoInput";
+import FurnishedInput from "./PropertyDetailsPartials/FurnishedInput";
 import LivingAreaInput from "./PropertyDetailsPartials/LivingAreaInput";
 import NoOfBathroomsInput from "./PropertyDetailsPartials/NoOfBathroomsInput";
 import NoOfRoomsInput from "./PropertyDetailsPartials/NoOfRoomsInput";
@@ -43,9 +46,20 @@ const PropertyDetailsForm: FC = () => {
           <TotalNoOfFloorsInput />
           <AydatInput />
           <BuildingAgeInput />
+          <FurnishedInput />
+          <BalconyInput />
         </div>
         <AddressInput wrapperClassNames="my-16" />
-        <button type="submit">Submit</button> 
+        {/* <button type="submit" className="w-16 h-10 border border">Submit</button>  */}
+        <UiButton
+          variant="filled"
+          size="lg"
+          color="#E9C46A"
+          uppercase
+          className="bg-accent hover:bg-accent-600 transition-all w-full "
+        >
+          Submit
+        </UiButton>
       </form>
     </div>
   );
