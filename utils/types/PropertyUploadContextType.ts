@@ -17,7 +17,9 @@ interface PropertyUploadContextType {
         furnished?: boolean | null,
         usageStatus?: 'empty'  | 'underRent' | null ,
         isInBuildingComplex?: boolean | null,
-        dateListed?: Date | null
+        dateListed?: Date | null,
+        livingArea?: number | undefined,
+        totalArea?: number | undefined,
     
     }
     

@@ -42,6 +42,8 @@ const initialDetails: PropertyUploadContextType  = {
   titleDeedStatus: null,
   usageStatus: null,
   yearBuilt: null,
+  livingArea: undefined,
+  totalArea: undefined,
 };
 
 export const AddPropertyContext =
