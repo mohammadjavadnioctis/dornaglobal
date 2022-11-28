@@ -1,5 +1,6 @@
 import React, { FC, memo, useState } from "react";
 import { UiNumberInput } from "~/lib";
+import { isDev } from "~/utils/helpers";
 
 const AydatInput: FC = memo(() => {
   const [price, setPrice] = useState<number>();
@@ -22,5 +23,12 @@ const AydatInput: FC = memo(() => {
     </div>
   );
 });
+
+
+if(isDev){
+  AydatInput.displayName = 'AydatInput'
+}
+
+
 
 export default AydatInput;

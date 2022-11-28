@@ -1,5 +1,6 @@
 import React, { FC, memo, useState } from "react";
 import { UiNumberInput } from "~/lib";
+import { isDev } from "~/utils/helpers";
 
 const FloorNoInput: FC = memo(() => {
   const [floorNo, setFloorNo] = useState<number>();
@@ -17,5 +18,12 @@ const FloorNoInput: FC = memo(() => {
     </div>
   );
 });
+
+
+if(isDev){
+  FloorNoInput.displayName = 'FloorNoInput'
+}
+
+
 
 export default FloorNoInput;

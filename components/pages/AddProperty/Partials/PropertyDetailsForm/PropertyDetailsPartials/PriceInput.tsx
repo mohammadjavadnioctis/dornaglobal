@@ -1,5 +1,6 @@
 import React, { FC, memo, useState } from "react";
 import { UiNumberInput } from "~/lib";
+import { isDev } from "~/utils/helpers";
 
 const PriceInput: FC = memo(() => {
   const [price, setPrice] = useState<number>();
@@ -22,5 +23,12 @@ const PriceInput: FC = memo(() => {
     </div>
   );
 });
+
+
+if(isDev){
+  PriceInput.displayName = 'PriceInput'
+}
+
+
 
 export default PriceInput;

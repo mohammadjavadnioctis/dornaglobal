@@ -1,6 +1,7 @@
 import React, { FC, memo, useState } from "react";
 import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UiNumberInput, UiTextinput } from "~/lib";
+import { isDev } from "~/utils/helpers";
 
 interface PropertyTitleInputType {
   wrapperClassNames?: string;
@@ -30,5 +31,12 @@ const PropertyTitleInput: FC<PropertyTitleInputType> = memo((props) => {
     </div>
   );
 });
+
+
+
+if(isDev){
+  PropertyTitleInput.displayName = 'PropertyTitleInput'
+}
+
 
 export default PropertyTitleInput;

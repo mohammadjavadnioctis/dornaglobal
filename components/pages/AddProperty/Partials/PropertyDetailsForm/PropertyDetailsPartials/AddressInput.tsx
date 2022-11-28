@@ -1,6 +1,7 @@
 import React, { FC, memo, useEffect, useState } from "react";
 import { UiNativeSelect, UiTextinput } from "~/lib";
 import { AddressSampleData } from "~/utils/data";
+import { isDev } from "~/utils/helpers";
 
 interface AddressInputProps {
   wrapperClassNames?: string
@@ -58,6 +59,10 @@ const {wrapperClassNames} = props
   );
 });
 
+
+if(isDev){
+  AddressInput.displayName = 'AddressInput'
+}
 
 
 export default AddressInput;

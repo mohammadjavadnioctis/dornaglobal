@@ -1,5 +1,6 @@
 import React, { FC, memo, useState } from "react";
 import { UiNumberInput } from "~/lib";
+import { isDev } from "~/utils/helpers";
 
 const BuildingAgeInput: FC = memo(() => {
   const [buildingAge, setBuildingAge] = useState<number>();
@@ -17,5 +18,12 @@ const BuildingAgeInput: FC = memo(() => {
     </div>
   );
 });
+
+
+
+if(isDev){
+  BuildingAgeInput.displayName = 'BuildingAgeInput'
+}
+
 
 export default BuildingAgeInput;

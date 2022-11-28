@@ -1,5 +1,6 @@
 import React, { FC, memo, useState } from "react";
 import { UiNumberInput } from "~/lib";
+import { isDev } from "~/utils/helpers";
 
 const TotalNoOfFloorsInput: FC = memo(() => {
   const [totalFloorCount, setTotalFloorCount] = useState<number>();
@@ -17,5 +18,12 @@ const TotalNoOfFloorsInput: FC = memo(() => {
     </div>
   );
 });
+
+
+if(isDev){
+  TotalNoOfFloorsInput.displayName = 'TotalNoOfFloorsInput'
+}
+
+
 
 export default TotalNoOfFloorsInput;

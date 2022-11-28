@@ -1,5 +1,6 @@
 import React, { FC, memo, useState } from "react";
 import { UiNumberInput } from "~/lib";
+import { isDev } from "~/utils/helpers";
 
 const TotalAreaInput: FC = memo(() => {
   const [totalArea, setTotalArea] = useState<number>();
@@ -16,5 +17,12 @@ const TotalAreaInput: FC = memo(() => {
     </div>
   );
 });
+
+
+
+if(isDev){
+  TotalAreaInput.displayName = 'TotalAreaInput'
+}
+
 
 export default TotalAreaInput;

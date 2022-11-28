@@ -1,6 +1,7 @@
 import React, { FC, memo, useState } from "react";
 import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UiNumberInput, UiTextArea, UiTextinput } from "~/lib";
+import { isDev } from "~/utils/helpers";
 
 interface PropertyDescriptionInput {
   wrapperClassNames?: string;
@@ -26,5 +27,12 @@ const PropertyDescriptionInput: FC<PropertyDescriptionInput> = memo((props) => {
     </div>
   );
 });
+
+
+if(isDev){
+  PropertyDescriptionInput.displayName = 'PropertyDescriptionInput'
+}
+
+
 
 export default PropertyDescriptionInput;
