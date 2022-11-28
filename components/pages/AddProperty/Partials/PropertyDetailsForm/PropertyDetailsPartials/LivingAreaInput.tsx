@@ -4,7 +4,7 @@ import { UiNumberInput } from "~/lib";
 import { isDev } from "~/utils/helpers";
 
 const LivingAreaInput: FC = memo(() => {
-  const [livingAera, setLivingArea] = useState<number>();
+  // const [livingAera, setLivingArea] = useState<number>();
 
   const {details: {livingArea}, setDetails} = usePropertyContext()
     const handleChange = (event: number) => {
@@ -16,7 +16,7 @@ const LivingAreaInput: FC = memo(() => {
       {" "}
       <UiNumberInput
         label="Living Area ( m2 )"
-        value={livingAera}
+        value={livingArea}
         onChange={handleChange}
         parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
       />
