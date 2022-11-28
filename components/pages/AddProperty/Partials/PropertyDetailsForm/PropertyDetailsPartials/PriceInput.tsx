@@ -1,9 +1,15 @@
 import React, { FC, memo, useState } from "react";
+import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UiNumberInput } from "~/lib";
 import { isDev } from "~/utils/helpers";
 
 const PriceInput: FC = memo(() => {
-  const [price, setPrice] = useState<number>();
+  // const [price, setPrice] = useState<number>();
+  const {details: {price}, setDetails} = usePropertyContext()
+
+  const handleChange = (event: number) => {
+    setDetails(prevState => ({...prevState , price: event}))
+  }
 
   return (
     <div>
@@ -12,7 +18,7 @@ const PriceInput: FC = memo(() => {
         label="Price (₺)"
         placeholder=""
         value={price}
-        onChange={(val) => setPrice(val)}
+        onChange={handleChange}
         parser={(value) => value?.replace(/\₺\s?|(,*)/g, "")}
         formatter={(value) =>
           !Number.isNaN(parseFloat(value as string))

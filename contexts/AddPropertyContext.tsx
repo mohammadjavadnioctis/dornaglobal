@@ -2,27 +2,27 @@ import React, { FC, ReactNode, useState, useEffect, useContext } from "react";
 import { useCallback } from "react";
 import { useMemo } from "react";
 import fetchProperties from "~/utils/helpers/firebase/fetchProperties";
-import { ChosenCategoryInfoType, FiltersType, PropertyType } from "~/utils/types";
+import { ChosenCategoryInfoType, FiltersType, PropertyType, PropertyUploadContextType } from "~/utils/types";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { db } from "~/utils/config/firebase";
 
 
 
-interface PropertyDetailsType extends FiltersType {
-    title: string,
-    description: string 
-}
+// interface PropertyDetailsType extends FiltersType {
+//     title: string,
+//     description: string 
+// }
 
 interface AddPropertyContextContextType {
     chosenCategoryInfo: ChosenCategoryInfoType,
     setChosenCategoryInfo: React.Dispatch<React.SetStateAction<ChosenCategoryInfoType>>
     media: any;
-    details: PropertyDetailsType;
-    setDetails: React.Dispatch<React.SetStateAction<PropertyDetailsType>>
+    details: PropertyUploadContextType;
+    setDetails: React.Dispatch<React.SetStateAction<PropertyUploadContextType>>
 }
 
 
-const initialDetails: PropertyDetailsType  = {
+const initialDetails: PropertyUploadContextType  = {
     title: '',
     description: '',
   address: {
@@ -38,10 +38,7 @@ const initialDetails: PropertyDetailsType  = {
   isInBuildingComplex: null,
   noOfBathRooms: null,
   noOfBedRooms: null,
-  price: {
-    maxPrice: null,
-    minPrice: null,
-  },
+  price: undefined,
   titleDeedStatus: null,
   usageStatus: null,
   yearBuilt: null,
@@ -69,7 +66,7 @@ export const AddPropertyProvider: FC<
     PropertyType: null,
     correspondingForm: null,
   });
-  const [details, setDetails] = useState<FiltersType>(initialDetails);
+  const [details, setDetails] = useState<PropertyUploadContextType>(initialDetails);
 
 //   const fetchContextProperties = async () => {
 //     const fetchedProperties = await fetchProperties();

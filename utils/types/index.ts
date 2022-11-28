@@ -9,3 +9,4 @@ export type { default as PropertySubCategoryType } from "./PropertySubCategoryTy
 export type { default as ChosenPropertyType } from "./ChosenPropertyType";
 export type { default as FiltersType } from "./FiltersType";
 export type { default as ChosenCategoryInfoType } from "./ChosenCategoryType";
+export type { default as PropertyUploadContextType } from "./PropertyUploadContextType";
