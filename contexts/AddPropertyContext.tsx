@@ -44,6 +44,9 @@ const initialDetails: PropertyUploadContextType  = {
   yearBuilt: null,
   livingArea: undefined,
   totalArea: undefined,
+  totalFloorCount: undefined,
+  aydat: undefined,
+  buildingAge: undefined
 };
 
 export const AddPropertyContext =

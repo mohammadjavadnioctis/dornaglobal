@@ -20,6 +20,9 @@ interface PropertyUploadContextType {
         dateListed?: Date | null,
         livingArea?: number | undefined,
         totalArea?: number | undefined,
+        totalFloorCount?: number | undefined,
+        aydat?: number | undefined,
+        buildingAge?: number | number,
     
     }
     
