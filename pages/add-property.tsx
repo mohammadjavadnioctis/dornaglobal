@@ -15,23 +15,26 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     // data = propertiesRef
     let ref = adminDb.collection("testproperties").doc();
     let id = ref?.id
-    return { props: {  } };
+    return { props: { id } };
   
 }
 
 
+export interface AddPropertyType {
+  id: string
+}
 
 
 
-
-const addProperty: FC = memo(
+const AddProperty: FC<AddPropertyType> = memo(
 
   (props) => {
+    const {id} = props
     console.log('this is the props from the add property page: ', props)
     return (
       <div>
         <AddPropertyProvider>
-          <AddPropertyPage />
+          <AddPropertyPage {...props}/>
         </AddPropertyProvider>
       </div>
     )
@@ -39,7 +42,7 @@ const addProperty: FC = memo(
 )
 
 if (isDev) {
-  addProperty.displayName = "add-property"
+  AddProperty.displayName = "add-property"
 }
 
-export default addProperty
+export default AddProperty

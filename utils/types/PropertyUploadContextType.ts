@@ -23,6 +23,7 @@ interface PropertyUploadContextType {
         totalFloorCount?: number | undefined,
         aydat?: number | undefined,
         buildingAge?: number | number,
+        id: string | undefined
     
     }
     

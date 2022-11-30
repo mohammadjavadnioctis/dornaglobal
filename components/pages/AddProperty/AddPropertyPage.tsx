@@ -1,11 +1,18 @@
-import React, {FC, memo} from 'react'
+import React, {FC, memo, useEffect} from 'react'
 import Head from '~/components/Head/Head'
+import { usePropertyContext } from '~/contexts/AddPropertyContext'
+import { AddPropertyType } from '~/pages/add-property'
 import { isDev } from '~/utils/helpers'
 import ChooseCategory from './Partials/ChooseCategoryStep/ChooseCategory'
 import Stepper from './Partials/Stepper/Stepper'
 
-const AddPropertyPage = memo(
-    () => {
+
+
+const AddPropertyPage: FC<AddPropertyType> = memo(
+    (props) => {
+      const { id } = props
+      const {setDetails} = usePropertyContext()
+      useEffect(() => {setDetails(prevDetails => ({...prevDetails, id}))} ,[])
       return (
         <div >
             <Head title='Add Your Property To Dorna Global'

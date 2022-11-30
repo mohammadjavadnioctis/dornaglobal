@@ -46,7 +46,8 @@ const initialDetails: PropertyUploadContextType  = {
   totalArea: undefined,
   totalFloorCount: undefined,
   aydat: undefined,
-  buildingAge: undefined
+  buildingAge: undefined,
+  id:  undefined
 };
 
 export const AddPropertyContext =
@@ -116,6 +117,10 @@ export const AddPropertyProvider: FC<
     console.log('this is the details from the context: ', details)
   }, 
   [details]);
+  useEffect(() => {
+    console.log('this is the chosenCategoryInfo from the context: ', chosenCategoryInfo)
+  }, 
+  [chosenCategoryInfo]);
 
 
   const value: any = useMemo(
