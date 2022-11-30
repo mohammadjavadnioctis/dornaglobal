@@ -6,7 +6,7 @@ import { isDev } from "~/utils/helpers";
 const FloorNoInput: FC = memo(() => {
   // const [floorNo, setFloorNo] = useState<number>();
 
-  const {details: {noOfBedRooms}, setDetails} = usePropertyContext()
+  const {details: {floor}, setDetails} = usePropertyContext()
 
   const handleChange = (event: number) => {
     setDetails(prevState => ({...prevState , noOfBathRooms: event}))
@@ -18,7 +18,7 @@ const FloorNoInput: FC = memo(() => {
       <UiNumberInput
         label="Floor number"
         placeholder="which floor is the property located at"
-        value={noOfBedRooms}
+        value={floor  as number | undefined}
         onChange={handleChange}
         parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
       />

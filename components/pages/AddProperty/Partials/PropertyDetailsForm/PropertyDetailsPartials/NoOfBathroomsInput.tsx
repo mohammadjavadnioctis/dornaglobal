@@ -6,7 +6,7 @@ import { isDev } from "~/utils/helpers";
 const NoOfBathroomsInput: FC = memo(() => {
   // const [NoOfBathrooms, setNoOfBathrooms] = useState<number>();
 
-  const {details: {noOfBedRooms}, setDetails} = usePropertyContext()
+  const {details: {noOfBathRooms}, setDetails} = usePropertyContext()
 
   const handleChange = (event: number) => {
     setDetails(prevState => ({...prevState , noOfBathRooms: event}))
@@ -17,7 +17,7 @@ const NoOfBathroomsInput: FC = memo(() => {
       {" "}
       <UiNumberInput
         label="Number of bathrooms"
-        value={noOfBedRooms}
+        value={noOfBathRooms}
         onChange={handleChange}
         parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
       />
