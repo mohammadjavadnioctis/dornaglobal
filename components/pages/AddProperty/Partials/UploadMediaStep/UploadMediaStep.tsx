@@ -6,6 +6,7 @@ import { useMantineTheme } from '@mantine/core';
 import { IMAGE_MIME_TYPE, FileWithPath } from '@mantine/dropzone';
 import { storage } from '~/utils/config/firebase';
 import {ref, uploadBytes, listAll} from 'firebase/storage'
+import { usePropertyContext } from '~/contexts/AddPropertyContext';
 
 
 
@@ -13,7 +14,7 @@ const UploadMediaStep: FC = memo(
   () => {
     const theme = useMantineTheme();
     const [files, setFiles] = useState<FileWithPath[]>([]);
-
+    const {details} = usePropertyContext()
 
     const handleFileCapture = (files: FileWithPath[]) => {
       console.log('files are: ', files)
@@ -21,7 +22,7 @@ const UploadMediaStep: FC = memo(
     }
     const handleFileUpload = () => {
       files.map(file => {
-        const imageRef = ref(storage , `test_properties/${file.name}`)
+        const imageRef = ref(storage , `test_properties/${details.id}/${file.name}`)
         uploadBytes(imageRef , file).then(() => {
           alert(`image : ${file.name} uploaded`)
         })
