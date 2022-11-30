@@ -3,8 +3,9 @@ import { useCallback } from "react";
 import { useMemo } from "react";
 import fetchProperties from "~/utils/helpers/firebase/fetchProperties";
 import { ChosenCategoryInfoType, FiltersType, PropertyType, PropertyUploadContextType } from "~/utils/types";
-import { collection, query, where, getDocs } from "firebase/firestore";
+import { collection, query, where, getDocs, setDoc, DocumentReference, DocumentData, doc } from "firebase/firestore";
 import { db } from "~/utils/config/firebase";
+import { firestore } from "firebase-admin";
 
 
 
@@ -19,6 +20,9 @@ interface AddPropertyContextContextType {
     media: any;
     details: PropertyUploadContextType;
     setDetails: React.Dispatch<React.SetStateAction<PropertyUploadContextType>>
+    UploadProperty: () => Promise<void>,
+    docRef: DocumentReference,
+    setDocRef: React.Dispatch<React.SetStateAction<DocumentReference<DocumentData> | undefined>>
 }
 
 
@@ -47,7 +51,8 @@ const initialDetails: PropertyUploadContextType  = {
   totalFloorCount: undefined,
   aydat: undefined,
   buildingAge: undefined,
-  id:  undefined
+  id:  undefined,
+  
 };
 
 export const AddPropertyContext =
@@ -72,8 +77,21 @@ export const AddPropertyProvider: FC<
     PropertyType: null,
     correspondingForm: null,
   });
-  const [details, setDetails] = useState<PropertyUploadContextType>(initialDetails);
 
+  const [details, setDetails] = useState<PropertyUploadContextType>(initialDetails);
+  const [docRef, setDocRef] = useState<DocumentReference>()
+
+
+  const UploadProperty = async () => {
+  const response = await setDoc(docRef as DocumentReference<DocumentData> , {...details, chosenCategoryInfo }) 
+  console.log('this is response: ', response)
+  alert('property uploaded')
+
+}
+
+useEffect(()=>{
+  console.log('docRef changed; ', docRef)
+},[docRef])
 //   const fetchContextProperties = async () => {
 //     const fetchedProperties = await fetchProperties();
 //     setProperties(fetchedProperties as PropertyType[]);
@@ -123,14 +141,26 @@ export const AddPropertyProvider: FC<
   [chosenCategoryInfo]);
 
 
+  useEffect(()=>{
+    let ref = doc(collection(db, "testproperties"));
+    // let parsedRef =  JSON.stringify(ref)
+    console.log('ref: ',ref)
+    let id = ref?.id
+    setDocRef(ref)
+    setDetails(prevDetails => ({...prevDetails, id}))
+  },[])
+
   const value: any = useMemo(
     () => ({
       details,
       setDetails,
       chosenCategoryInfo,
-      setChosenCategoryInfo
+      setChosenCategoryInfo,
+      UploadProperty,
+      docRef,
+      setDocRef
     }),
-    [chosenCategoryInfo, details, setDetails]
+    [chosenCategoryInfo, details, setDetails, setChosenCategoryInfo, UploadProperty, docRef, setDocRef]
   );
   return (
     <AddPropertyContext.Provider value={value}>

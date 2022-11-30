@@ -1,4 +1,6 @@
+import { DocumentReference } from "firebase/firestore";
 import React, { FC, memo } from "react";
+import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UiButton } from "~/lib";
 import { isDev } from "~/utils/helpers";
 import AddressInput from "./PropertyDetailsPartials/AddressInput";
@@ -18,11 +20,19 @@ import TitleDeedStatusinput from "./PropertyDetailsPartials/TitleDeedStatusinput
 import TotalAreaInput from "./PropertyDetailsPartials/TotalAreaInput";
 import TotalNoOfFloorsInput from "./PropertyDetailsPartials/TotalNoOfFloorsInput";
 
-const PropertyDetailsForm: FC = () => {
+interface PropertyDetailsFormType {
+  // ref: DocumentReference
+}
 
+
+const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
+  // const { ref } = props
+  const {UploadProperty} = usePropertyContext()
   const handleSubmit = (e:  React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       console.log('form submitted ')
+      UploadProperty()
+
   }
 
   return (
@@ -57,6 +67,7 @@ const PropertyDetailsForm: FC = () => {
           color="#E9C46A"
           uppercase
           className="bg-accent hover:bg-accent-600 transition-all w-full "
+          type="submit"
         >
           Submit
         </UiButton>

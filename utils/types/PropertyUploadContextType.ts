@@ -2,9 +2,9 @@ interface PropertyUploadContextType {
         title: string,
         description: string 
         address?: {
-            city: string | null,
-            district: string | null,
-            neighbourhood: string | null,
+            city?: string | undefined,
+            district?: string | undefined,
+            neighbourhood?: string | undefined,
         },
         price?: number | undefined ,
         titleDeedStatus?: 'mulkiyet' | 'irtifakli' | 'arsa' | 'hisseli' | null,
@@ -23,8 +23,8 @@ interface PropertyUploadContextType {
         totalFloorCount?: number | undefined,
         aydat?: number | undefined,
         buildingAge?: number | number,
-        id: string | undefined
-    
+        id: string | undefined,
+           
     }
     
 

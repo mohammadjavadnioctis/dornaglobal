@@ -10,9 +10,14 @@ import Stepper from './Partials/Stepper/Stepper'
 
 const AddPropertyPage: FC<AddPropertyType> = memo(
     (props) => {
-      const { id } = props
+      // const { id, ref } = props
+      const {setDocRef} = usePropertyContext()
       const {setDetails} = usePropertyContext()
-      useEffect(() => {setDetails(prevDetails => ({...prevDetails, id}))} ,[])
+      // useEffect(() => {
+      //   setDetails(prevDetails => ({...prevDetails, id}))
+      //   setDocRef(ref)
+
+      // } ,[])
       return (
         <div >
             <Head title='Add Your Property To Dorna Global'
