@@ -1,3 +1,5 @@
+import { FieldValue } from "firebase/firestore";
+
 interface PropertyUploadContextType {
         title: string,
         description: string 
@@ -24,7 +26,8 @@ interface PropertyUploadContextType {
         aydat?: number | undefined,
         buildingAge?: number | number,
         id: string | undefined,
-           
+        isVarified?: boolean
+        timestamp?: FieldValue;
     }
     
 

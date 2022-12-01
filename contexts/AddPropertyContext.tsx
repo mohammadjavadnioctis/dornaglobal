@@ -3,9 +3,10 @@ import { useCallback } from "react";
 import { useMemo } from "react";
 import fetchProperties from "~/utils/helpers/firebase/fetchProperties";
 import { ChosenCategoryInfoType, FiltersType, PropertyType, PropertyUploadContextType } from "~/utils/types";
-import { collection, query, where, getDocs, setDoc, DocumentReference, DocumentData, doc } from "firebase/firestore";
+import { collection, query, where, getDocs, setDoc, DocumentReference, DocumentData, doc, Timestamp, serverTimestamp } from "firebase/firestore";
 import { db } from "~/utils/config/firebase";
 import { firestore } from "firebase-admin";
+import { useAuth } from "./AuthContext";
 
 
 
@@ -52,7 +53,8 @@ const initialDetails: PropertyUploadContextType  = {
   aydat: undefined,
   buildingAge: undefined,
   id:  undefined,
-  
+  isVarified: false,
+  timestamp: serverTimestamp()
 };
 
 export const AddPropertyContext =
@@ -77,13 +79,13 @@ export const AddPropertyProvider: FC<
     PropertyType: null,
     correspondingForm: null,
   });
-
+  const { user } = useAuth()
   const [details, setDetails] = useState<PropertyUploadContextType>(initialDetails);
   const [docRef, setDocRef] = useState<DocumentReference>()
 
 
   const UploadProperty = async () => {
-  const response = await setDoc(docRef as DocumentReference<DocumentData> , {...details, chosenCategoryInfo }) 
+  const response = await setDoc(docRef as DocumentReference<DocumentData> , {...details, chosenCategoryInfo, user}) 
   console.log('this is response: ', response)
   alert('property uploaded')
 
