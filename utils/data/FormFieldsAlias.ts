@@ -16,7 +16,13 @@ const formFiledsAlias = {
     facing: 'facing',
     view: 'view',
     residenceName: 'residenceName',
-    withinResidence: 'withinResidence'    
+    withinResidence: 'withinResidence',
+    noOfEntrance: 'noOfEntrance',
+    deposit: 'depsit',
+    preRent: 'PreRent',
+    heatingModel: 'heatingModel',
+    avilableForCreditUsage: 'availableForCreditUsage'
+
 }
 
 export default formFiledsAlias
