@@ -1,4 +1,5 @@
 import React, { FC, memo, useState } from "react";
+import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UIButton, UIGroup, UIStepper } from "~/lib";
 import { isDev } from "~/utils/helpers";
 import ChooseCategory from "../ChooseCategoryStep/ChooseCategory";
@@ -9,17 +10,18 @@ import UploadMediaStep from "../UploadMediaStep/UploadMediaStep";
 // cities api
 
 const Stepper = memo(() => {
-  const [active, setActive] = useState(0);
-  const nextStep = () =>
-    setActive((current) => (current < 3 ? current + 1 : current));
-  const prevStep = () =>
-    setActive((current) => (current > 0 ? current - 1 : current));
+  // const [active, setActive] = useState(0);
+  // const nextStep = () =>
+  //   setActive((current) => (current < 3 ? current + 1 : current));
+  // const prevStep = () =>
+  //   setActive((current) => (current > 0 ? current - 1 : current));
+  const {activeStep, setActiveStep, prevStep, nextStep} = usePropertyContext()
 
   return (
     <div className="contianer px-11">
       <UIStepper
-        active={active}
-        onStepClick={setActive}
+        active={activeStep}
+        onStepClick={setActiveStep}
         breakpoint="sm"
         className="border-2 border-orange-400 min-h-[300px]"
       >

@@ -24,6 +24,11 @@ interface AddPropertyContextContextType {
     UploadProperty: () => Promise<void>,
     docRef: DocumentReference,
     setDocRef: React.Dispatch<React.SetStateAction<DocumentReference<DocumentData> | undefined>>
+    activeStep: number,
+    setActiveStep: React.Dispatch<React.SetStateAction<number>>,
+    nextStep: () => void,
+    prevStep: () => void
+
 }
 
 
@@ -91,6 +96,14 @@ export const AddPropertyProvider: FC<
   alert('property uploaded')
 
 }
+
+  const [activeStep, setActiveStep] = useState(0);
+  const nextStep = () =>
+  setActiveStep((current) => (current < 3 ? current + 1 : current));
+  const prevStep = () =>
+  setActiveStep((current) => (current > 0 ? current - 1 : current));
+
+
 
 useEffect(()=>{
   console.log('docRef changed; ', docRef)
@@ -161,9 +174,16 @@ useEffect(()=>{
       setChosenCategoryInfo,
       UploadProperty,
       docRef,
-      setDocRef
+      setDocRef,
+      activeStep,
+      setActiveStep,
+      prevStep,
+      nextStep
     }),
-    [chosenCategoryInfo, details, setDetails, setChosenCategoryInfo, UploadProperty, docRef, setDocRef]
+    [chosenCategoryInfo, details, setDetails, setChosenCategoryInfo, UploadProperty, docRef, setDocRef, activeStep,
+      setActiveStep,
+      prevStep,
+      nextStep]
   );
   return (
     <AddPropertyContext.Provider value={value}>
