@@ -8,21 +8,28 @@ interface ChosenPropertyType {
         dealName: string;
         dealLable: string;
         id: string;
+        formFields: string[] | null
+
     }[];
     rentalPropertyTypes: {
         propertyTypeName: string;
         propertyTypeLabel: string;
         id: string;
+        formFields: string[] | null
+
     }[];
     forSalePropertyTypes: {
         propertyTypeName: string;
         propertyTypeLabel: string;
         id: string;
+        formFields: string[] | null
     }[];
     dailyRentalPropertyTypes: {
         propertyTypeName: string;
         propertyTypeLabel: string;
         id: string;
+        formFields: string[] | null
+
     }[];
     id: string;
 }

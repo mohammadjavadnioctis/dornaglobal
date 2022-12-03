@@ -10,36 +10,62 @@ const ChooseCategorySteps = [
             {dealName: 'dailyRental', dealLable: 'Daily rent', id: '3'},
         ],
         rentalPropertyTypes: [
-            {propertyTypeName: 'apt', propertyTypeLabel: 'Apartment', id: '1'},
-            {propertyTypeName: 'residence', propertyTypeLabel: 'Residence', id: '2'},
-            {propertyTypeName: 'detachedHouse', propertyTypeLabel: 'Detached House', id: '3'},
-            {propertyTypeName: 'villa', propertyTypeLabel: 'Villa', id: '4'},
+            {propertyTypeName: 'apt', propertyTypeLabel: 'Apartment', id: '1',
+            formFields: ['residential apt rental' ,formFiledsAlias.price , formFiledsAlias.livingArea, formFiledsAlias.totalArea , formFiledsAlias.noOfRooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, {name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+
+        },
+            {propertyTypeName: 'residence', propertyTypeLabel: 'Residence', id: '2',
+            formFields: ['residential residence rental' ,formFiledsAlias.price , formFiledsAlias.livingArea, formFiledsAlias.totalArea , formFiledsAlias.noOfRooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, {name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+
+        },
+            {propertyTypeName: 'detachedHouse', propertyTypeLabel: 'Detached House', id: '3',
+            formFields: ['residential detahed rental' ,formFiledsAlias.price , formFiledsAlias.livingArea, formFiledsAlias.totalArea , formFiledsAlias.noOfRooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, {name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+
+        },
+            {propertyTypeName: 'villa', propertyTypeLabel: 'Villa', id: '4',
+            formFields: ['residential villa rental' ,formFiledsAlias.price , formFiledsAlias.livingArea, formFiledsAlias.totalArea , formFiledsAlias.noOfRooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, {name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+
+        },
             // {propertyTypeName: 'residentialRentalspecific', propertyTypeLabel: 'residentialRentalspecific', id: '4'},
         ],
         forSalePropertyTypes: [
             {propertyTypeName: 'apt', propertyTypeLabel: 'Apartment', id: '1', 
-            formFields: [formFiledsAlias.price , formFiledsAlias.livingArea, formFiledsAlias.totalArea , formFiledsAlias.noOfRooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, {name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }]},
+            formFields: ['forsale api residential',formFiledsAlias.price , formFiledsAlias.livingArea, formFiledsAlias.totalArea , formFiledsAlias.noOfRooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, {name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }]},
             {propertyTypeName: 'residence', propertyTypeLabel: 'Residence', id: '2',
-            formFields: [formFiledsAlias.price , formFiledsAlias.livingArea, formFiledsAlias.totalArea , formFiledsAlias.noOfRooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, {name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+            formFields: ['forSale residence residential',formFiledsAlias.price , formFiledsAlias.livingArea, formFiledsAlias.totalArea , formFiledsAlias.noOfRooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, {name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
             
         },
             {propertyTypeName: 'detachedHouse', propertyTypeLabel: 'Detached House', id: '3',
-            formFields: [formFiledsAlias.price , formFiledsAlias.livingArea, formFiledsAlias.totalArea , formFiledsAlias.noOfRooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, {name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+            formFields: ['forsale detached residential',formFiledsAlias.price , formFiledsAlias.livingArea, formFiledsAlias.totalArea , formFiledsAlias.noOfRooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, {name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
 
 
         },
-            {propertyTypeName: 'villa', propertyTypeLabel: 'Villa', id: '4'},
+            {propertyTypeName: 'villa', propertyTypeLabel: 'Villa', id: '4',
+            formFields: ['forsale villa residential',formFiledsAlias.price , formFiledsAlias.livingArea, formFiledsAlias.totalArea , formFiledsAlias.noOfRooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, {name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+
+        },
             // {propertyTypeName: 'residentialforsalespecific', propertyTypeLabel: 'residentialforsalespecific', id: '4'},
 
 
         ],
         dailyRentalPropertyTypes: [
-            {propertyTypeName: 'apt', propertyTypeLabel: 'Apartment', id: '1'},
-            {propertyTypeName: 'residence', propertyTypeLabel: 'Residence', id: '2'},
-            {propertyTypeName: 'detachedHouse', propertyTypeLabel: 'Detached House', id: '3'},
-            {propertyTypeName: 'villa', propertyTypeLabel: 'Villa', id: '4'},
+            {propertyTypeName: 'apt', propertyTypeLabel: 'Apartment', id: '1',
+            formFields: ['dailyRental apt residential',formFiledsAlias.price , formFiledsAlias.livingArea, formFiledsAlias.totalArea , formFiledsAlias.noOfRooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, {name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+
+        },
+            {propertyTypeName: 'residence', propertyTypeLabel: 'Residence', id: '2',
+            formFields: ['dailyRental residnece residential',formFiledsAlias.price , formFiledsAlias.livingArea, formFiledsAlias.totalArea , formFiledsAlias.noOfRooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, {name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+
+        },
+            {propertyTypeName: 'detachedHouse', propertyTypeLabel: 'Detached House', id: '3',
+            formFields: ['dailyRental detached residential',formFiledsAlias.price , formFiledsAlias.livingArea, formFiledsAlias.totalArea , formFiledsAlias.noOfRooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, {name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+
+        },
+            {propertyTypeName: 'villa', propertyTypeLabel: 'Villa', id: '4',
+            formFields: ['dailyRental villa residential',formFiledsAlias.price , formFiledsAlias.livingArea, formFiledsAlias.totalArea , formFiledsAlias.noOfRooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, {name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+
+        },
             // {propertyTypeName: 'residentialdailyRentalspecific', propertyTypeLabel: 'residentialdailyRentalspecific', id: '4'},
-            
         ],
         id: '1'
     },

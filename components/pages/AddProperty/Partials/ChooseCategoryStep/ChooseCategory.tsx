@@ -45,6 +45,7 @@ const ChooseCategory: FC = memo(() => {
 
   const handleChooseDeal = (deal: DealType) => {
     const { dealName } = deal;
+    console.log('this is handle choosedeal: ', deal)
     setChosenCategoryInfo((prevState) => ({
       ...prevState,
       dealType: dealName,
@@ -53,10 +54,12 @@ const ChooseCategory: FC = memo(() => {
   };
 
   const handleSelectPropertyType = (PropertyType: PropertySubCategoryType) => {
-    const { propertyTypeName } = PropertyType;
+    const { propertyTypeName, formFields } = PropertyType;
+    console.log('handleSelectPropertyType: ', PropertyType)
     setChosenCategoryInfo((prevState) => ({
       ...prevState,
       PropertyType: propertyTypeName,
+      formFields
     }));
   };
 
@@ -81,7 +84,7 @@ const ChooseCategory: FC = memo(() => {
 
   // validate if category is chosen
   useEffect(() => {
-    const {PropertyType, category, correspondingForm, dealType} = chosenCategoryInfo
+    const {PropertyType, category, formFields, dealType} = chosenCategoryInfo
     switch (category) {
       case 'residential':
         if(dealType && PropertyType){

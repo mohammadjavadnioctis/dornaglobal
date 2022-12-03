@@ -77,7 +77,7 @@ export const AddPropertyProvider: FC<
     category: null,
     dealType: null,
     PropertyType: null,
-    correspondingForm: null,
+    formFields: null,
   });
   const { user } = useAuth()
   console.log('this is uset: ', user)
