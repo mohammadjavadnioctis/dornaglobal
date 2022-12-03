@@ -80,12 +80,13 @@ export const AddPropertyProvider: FC<
     correspondingForm: null,
   });
   const { user } = useAuth()
+  console.log('this is uset: ', user)
   const [details, setDetails] = useState<PropertyUploadContextType>(initialDetails);
   const [docRef, setDocRef] = useState<DocumentReference>()
 
 
   const UploadProperty = async () => {
-  const response = await setDoc(docRef as DocumentReference<DocumentData> , {...details, chosenCategoryInfo, user}) 
+  const response = await setDoc(docRef as DocumentReference<DocumentData> , {...details, chosenCategoryInfo, user: {email: user?.email, uid: user?.uid}}) 
   console.log('this is response: ', response)
   alert('property uploaded')
 
