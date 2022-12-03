@@ -13,6 +13,11 @@ export { Stepper as UIStepper,
     
 } from '@mantine/core'
 
+
+export {
+    useForm as uiUseForm
+} from '@mantine/form'
+
 export {
     Dropzone as UiDropzone
 } from '@mantine/dropzone'

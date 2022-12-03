@@ -1,7 +1,7 @@
 import { DocumentReference } from "firebase/firestore";
 import React, { FC, memo } from "react";
 import { usePropertyContext } from "~/contexts/AddPropertyContext";
-import { UiButton } from "~/lib";
+import { UiButton, uiUseForm } from "~/lib";
 import { isDev } from "~/utils/helpers";
 import AddressInput from "./PropertyDetailsPartials/AddressInput";
 import AydatInput from "./PropertyDetailsPartials/AydatInput";
@@ -27,13 +27,24 @@ interface PropertyDetailsFormType {
 
 const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   // const { ref } = props
-  const {UploadProperty} = usePropertyContext()
+  const {UploadProperty, details} = usePropertyContext()
+  const {title} = details
   const handleSubmit = (e:  React.FormEvent<HTMLFormElement>) => {
       e.preventDefault()
       console.log('form submitted ')
       UploadProperty()
 
   }
+ 
+ 
+  const formErrorHandling = uiUseForm({
+    initialValues: {PropertyTitle: title},
+    validateInputOnBlur: true,
+    validate: {
+      PropertyTitle: (value: any ) => ((value && value.length > 3) ? '' : 'error is this ' )
+    }
+  })
+
 
   return (
     <div className="outer_wrapper bg-white container rounded-lg py-7">
@@ -41,7 +52,7 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="inner_wrapper grid grid-cols-2 gap-y-16 gap-x-4">
           <div className="col-span-2">
-            <PropertyTitleInput wrapperClassNames="" />
+            <PropertyTitleInput wrapperClassNames="" ErrorHandlingProp={{...formErrorHandling.getInputProps('PropertyTitle')}}/>
           </div>
           <div className="col-span-2 ">
             <PropertyDescriptionInput />

@@ -17,7 +17,7 @@ const AydatInput: FC = memo(() => {
     <div>
       {" "}
       <UiNumberInput
-        label="Aydat (₺)"
+        label="Aidat (₺)"
         placeholder=""
         value={aydat}
         onChange={handleChange}

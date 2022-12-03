@@ -1,11 +1,13 @@
 import React, { FC, memo, useState } from "react";
 import { usePropertyContext } from "~/contexts/AddPropertyContext";
-import { UiNumberInput, UiTextinput } from "~/lib";
+import { UiNumberInput, UiTextinput, uiUseForm } from "~/lib";
 import { isDev } from "~/utils/helpers";
 
 interface PropertyTitleInputType {
   wrapperClassNames?: string;
+  ErrorHandlingProp?: any;
 }
+
 
 const PropertyTitleInput: FC<PropertyTitleInputType> = memo((props) => {
   const { wrapperClassNames } = props;
@@ -17,6 +19,19 @@ const PropertyTitleInput: FC<PropertyTitleInputType> = memo((props) => {
     setDetails(prevState => ({...prevState , title: value}))
   }
 
+  // const formErrorHandling = uiUseForm({
+  //   initialValues: {PropertyTitle: title},
+  //   validateInputOnBlur: true,
+  //   validate: {
+  //     PropertyTitle: (value: any ) => ((value && value.length > 3) ? '' : 'error is this ' )
+  //   }
+  // })
+
+  const error = () => {
+    if(title && typeof title == 'string') return false
+    return true
+  }
+  // console.log('this is the errorhandleing prop: ', {...props.ErrorHandlingProp})
   return (
     <div className={`${wrapperClassNames}`}>
       {" "}
@@ -27,6 +42,9 @@ const PropertyTitleInput: FC<PropertyTitleInputType> = memo((props) => {
         onChange={handleChange}
         required
         withAsterisk
+        // error={() => error()}
+        // {...formErrorHandling.getInputProps('PropertyTitle')}
+        {...props.ErrorHandlingProp}
       />
     </div>
   );
