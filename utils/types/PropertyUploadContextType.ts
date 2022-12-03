@@ -9,7 +9,7 @@ interface PropertyUploadContextType {
             neighbourhood?: string | undefined,
         },
         price?: number | undefined ,
-        titleDeedStatus?: 'mulkiyet' | 'irtifakli' | 'arsa' | 'hisseli' | null,
+        titleDeedStatus?: 'mulkiyet' | 'irtifakli' | 'arsa' | 'hisseli' | '',
         noOfBedRooms?: number | undefined,
         yearBuilt?: number | null,
         floor?: number | null,

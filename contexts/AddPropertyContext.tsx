@@ -49,7 +49,7 @@ const initialDetails: PropertyUploadContextType  = {
   noOfBathRooms: undefined,
   noOfBedRooms: undefined,
   price: undefined,
-  titleDeedStatus: null,
+  titleDeedStatus: '',
   usageStatus: null,
   yearBuilt: null,
   livingArea: undefined,

@@ -11,7 +11,7 @@ const TitleDeedStatusinput:FC = () => {
     const {details: {titleDeedStatus}, setDetails} = usePropertyContext()
     const handleChange = (event:React.ChangeEvent<HTMLSelectElement>) => {
       const value = event.currentTarget.value
-// @ts-ignore
+    // @ts-ignore
       setDetails(prevState => ({...prevState , titleDeedStatus: value }  ))
     }
   
@@ -24,6 +24,7 @@ const TitleDeedStatusinput:FC = () => {
       value={titleDeedStatus}
       onChange={handleChange}
       data={[
+        {value: '', label: ''},
         { value: 'mulkiyet', label: 'Kat Mülkiyet' },
         { value: 'irtifak', label: 'Kat İrtifaklı' },
         { value: 'hisseli', label: 'Hisseli' },

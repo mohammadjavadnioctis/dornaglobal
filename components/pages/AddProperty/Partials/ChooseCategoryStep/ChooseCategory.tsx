@@ -44,12 +44,13 @@ const ChooseCategory: FC = memo(() => {
   };
 
   const handleChooseDeal = (deal: DealType) => {
-    const { dealName } = deal;
+    const { dealName, formFields} = deal;
     console.log('this is handle choosedeal: ', deal)
     setChosenCategoryInfo((prevState) => ({
       ...prevState,
       dealType: dealName,
       PropertyType: null,
+      formFields: formFields ?? null
     }));
   };
 
@@ -170,7 +171,7 @@ const ChooseCategory: FC = memo(() => {
               </ul>
             </div>
           )}
-        {chosenCategoryInfo.category && (chosenCategoryInfo.category == 'residential' || 'commercial') && chosenCategoryInfo.dealType && (
+        {chosenCategoryInfo.category && (chosenCategoryInfo.category == 'residential' || chosenCategoryInfo.category == 'commercial') && chosenCategoryInfo.dealType && (
           <div className="third-step h-full w-56 min-h-full">
             <ul className="pl-4 border-2 border-accent-300 bg-accent-100 rounded-xl min-h-full">
               {correspondingPropertyTypesToChosenDealType &&

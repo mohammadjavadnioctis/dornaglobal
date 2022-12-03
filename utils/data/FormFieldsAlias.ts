@@ -21,7 +21,15 @@ const formFiledsAlias = {
     deposit: 'depsit',
     preRent: 'PreRent',
     heatingModel: 'heatingModel',
-    avilableForCreditUsage: 'availableForCreditUsage'
+    avilableForCreditUsage: 'availableForCreditUsage',
+    imarStatus: 'imarStatus',
+    adaNo: 'adaNo',
+    parselNo: 'parselNo',
+    gaba: 'gaba',
+    kaks: 'kaks',
+    // kat karşılığı
+    floorReturn: 'floorReturn',
+    theUnitOntheFirstFloor: 'theUnitOntheFirstFloor'
 
 }
 
