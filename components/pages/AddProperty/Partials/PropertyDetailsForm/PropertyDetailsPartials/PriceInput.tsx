@@ -3,9 +3,16 @@ import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UiNumberInput } from "~/lib";
 import { isDev } from "~/utils/helpers";
 
-const PriceInput: FC = memo(() => {
+
+interface PriceInputType {
+  errorHandlingProp?: any
+}
+
+const PriceInput: FC<PriceInputType> = memo((props) => {
+  const {errorHandlingProp} = props
   // const [price, setPrice] = useState<number>();
   const {details: {price}, setDetails} = usePropertyContext()
+  
 
   const handleChange = (event: number) => {
     setDetails(prevState => ({...prevState , price: event}))
@@ -24,7 +31,8 @@ const PriceInput: FC = memo(() => {
           !Number.isNaN(parseFloat(value as string))
             ? `₺ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             : "₺ "
-        }
+          }
+          {...errorHandlingProp}
       />
     </div>
   );

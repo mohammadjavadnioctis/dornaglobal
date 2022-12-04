@@ -3,7 +3,14 @@ import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UiNumberInput } from "~/lib";
 import { isDev } from "~/utils/helpers";
 
-const LivingAreaInput: FC = memo(() => {
+
+interface LivingAreaType {
+  errorHandlingProp?: any;
+}
+
+
+const LivingAreaInput: FC<LivingAreaType> = memo((props) => {
+  const {errorHandlingProp} = props
   // const [livingAera, setLivingArea] = useState<number>();
 
   const {details: {livingArea}, setDetails} = usePropertyContext()
@@ -19,6 +26,7 @@ const LivingAreaInput: FC = memo(() => {
         value={livingArea}
         onChange={handleChange}
         parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
+        {...errorHandlingProp}
       />
     </div>
   );

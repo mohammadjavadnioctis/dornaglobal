@@ -2,7 +2,15 @@ import React, {FC, useState} from 'react'
 import { usePropertyContext } from '~/contexts/AddPropertyContext';
 import { UiNativeSelect, UiSelect } from '~/lib'
 
-const TitleDeedStatusinput:FC = () => {
+
+
+interface TitleDeedStatusinputType {
+  errorHandlingProp?: any
+}
+
+
+const TitleDeedStatusinput:FC<TitleDeedStatusinputType> = (props) => {
+  const {errorHandlingProp} = props
     // const [titleDeedStatus, setTitleDeedStatus] = useState('');
     // const handleSelect = (event: any) => {
     //     console.log(event)
@@ -30,6 +38,7 @@ const TitleDeedStatusinput:FC = () => {
         { value: 'hisseli', label: 'Hisseli' },
         { value: 'arsa', label: 'Arsa Tapulu' },
       ]}
+      {...errorHandlingProp}
     />
     </div>
   )

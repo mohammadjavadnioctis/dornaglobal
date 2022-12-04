@@ -17,7 +17,7 @@ import {
 
 const ChooseCategory: FC = memo(() => {
  
-  const {chosenCategoryInfo, setChosenCategoryInfo} = usePropertyContext()
+  const {chosenCategoryInfo, setChosenCategoryInfo, nextStep} = usePropertyContext()
   const [dealTypes, setDealTypes] = useState<DealType[] | null>(null);
   const [isCategoryChosen , setIsCategoryChosen] = useState(false)
   const [chosenPropertyCategory, setChosenPropertyCategory] =
@@ -114,7 +114,8 @@ const ChooseCategory: FC = memo(() => {
 
   }, [chosenCategoryInfo]);
 
-  const nextStep = ()=>{
+  const handleNextStep = ()=>{
+    nextStep()
   }
 
   return (
@@ -207,7 +208,7 @@ const ChooseCategory: FC = memo(() => {
           <div className="is-catagory-chosen flex flex-col items-center justify-center w-56 min-h-full pl-4 border-2 border-accent-300 bg-accent-100 rounded-xl min-h-ful">
               <IoCheckmarkCircleOutline className="w-24 h-24 text-accent" />
               <span className="text-sm ">Category is chosen</span>
-              <UIButton onClick={nextStep} className={'border border-accent bg-accent text-white hover:bg-white hover:text-accent mt-4'}>Next step</UIButton>
+              <UIButton onClick={handleNextStep} className={'border border-accent bg-accent text-white hover:bg-white hover:text-accent mt-4'}>Next step</UIButton>
 
             </div>
         }

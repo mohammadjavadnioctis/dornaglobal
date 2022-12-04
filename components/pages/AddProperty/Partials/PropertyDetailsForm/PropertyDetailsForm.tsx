@@ -27,21 +27,25 @@ interface PropertyDetailsFormType {
 
 const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   // const { ref } = props
-  const {UploadProperty, details} = usePropertyContext()
-  const {title} = details
-  const handleSubmit = (e:  React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault()
-      console.log('form submitted ')
-      UploadProperty()
+  const { UploadProperty, details } = usePropertyContext()
+  const { title, price, titleDeedStatus, livingArea } = details
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    console.log('form submitted ')
+    UploadProperty()
 
   }
- 
- 
+
+
   const formErrorHandling = uiUseForm({
-    initialValues: {PropertyTitle: title},
+    initialValues: { PropertyTitle: title, Price: price, TitleDeedStatus: titleDeedStatus, LivingArea: livingArea },
     validateInputOnBlur: true,
     validate: {
-      PropertyTitle: (value: any ) => ((value && value.length > 3) ? '' : 'error is this ' )
+      PropertyTitle: (value: any) => ((value && value.length > 3) ? '' : 'this field is required'),
+      Price: (value: any) => ((value && value > 0) ? '' : 'price can not be empty or 0'),
+      TitleDeedStatus: (value: any) => ((value && value.length > 3) ? '' : 'please choose an option'),
+      LivingArea: (value: any) => ((value && value > 0) ? '' : 'Living Area can not be empty or 0'),
+
     }
   })
 
@@ -52,14 +56,14 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
       <form onSubmit={(e) => handleSubmit(e)}>
         <div className="inner_wrapper grid grid-cols-2 gap-y-16 gap-x-4">
           <div className="col-span-2">
-            <PropertyTitleInput wrapperClassNames="" ErrorHandlingProp={{...formErrorHandling.getInputProps('PropertyTitle')}}/>
+            <PropertyTitleInput wrapperClassNames="" ErrorHandlingProp={{ ...formErrorHandling.getInputProps('PropertyTitle') }} />
           </div>
           <div className="col-span-2 ">
             <PropertyDescriptionInput />
           </div>
-          <PriceInput /> 
-          <TitleDeedStatusinput />
-          <LivingAreaInput />
+          <PriceInput errorHandlingProp={{ ...formErrorHandling.getInputProps('Price') }} />
+          <TitleDeedStatusinput errorHandlingProp={{ ...formErrorHandling.getInputProps('TitleDeedStatus') }}/>
+          <LivingAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('LivingArea') }}/>
           <TotalAreaInput />
           <NoOfRoomsInput />
           <NoOfBathroomsInput />
