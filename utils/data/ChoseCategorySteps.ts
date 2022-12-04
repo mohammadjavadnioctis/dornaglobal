@@ -1,6 +1,6 @@
 import formFiledsAlias from "./FormFieldsAlias"
 
-const { address, aidat, balcony, buildingAge, deposit, facing, floor, furnished, heatingModel, livingArea, noOfBathrooms, noOfEntrance, noOfRooms, preRent, price, residenceName, titleDeedStatus, totalArea, totalFloorCount, usageStatus, view, withinResidence, avilableForCreditUsage, imarStatus, adaNo, parselNo, gaba, kaks, floorReturn, theUnitOntheFirstFloor } = formFiledsAlias
+const { address, aidat, balcony, buildingAge, deposit, facing, floor, furnished, heatingModel, livingArea, noOfBathrooms, noOfEntrance, noOfRooms, preRent, price, residenceName, titleDeedStatus, totalArea, totalFloorCount, usageStatus, view, withinResidence, avilableForCreditUsage, imarStatus, adaNo, parselNo, gaba, kaks, floorReturn, theUnitOntheFirstFloor, alchoholUsagePremission, zeminEtudu, elevatorCount } = formFiledsAlias
 
 const ChooseCategorySteps = [
     {
@@ -91,29 +91,46 @@ const ChooseCategorySteps = [
         dealTypes: [
             { dealName: 'rental', dealLable: 'Rental', id: '1' },
             { dealName: 'forsale', dealLable: 'For sale', id: '2' },
-            { dealName: 'lease', dealLable: 'For lease', id: '3' },
+            // { dealName: 'lease', dealLable: 'For lease', id: '3' },
 
         ],
         rentalPropertyTypes: [
-            { propertyTypeName: 'apt', propertyTypeLabel: 'Apartment', id: '1' },
-            { propertyTypeName: 'office', propertyTypeLabel: 'Office', id: '2' },
-            { propertyTypeName: 'coffeeShop', propertyTypeLabel: 'Coffee Shop/Bar', id: '3' },
-            { propertyTypeName: 'restaurant', propertyTypeLabel: 'Restaurant', id: '4' },
-            { propertyTypeName: 'Warehouse', propertyTypeLabel: 'Warehouse', id: '5' },
-            { propertyTypeName: 'store', propertyTypeLabel: 'Store/shop', id: '6' },
-            { propertyTypeName: 'Factory', propertyTypeLabel: 'factory', id: '7' },
-            { propertyTypeName: 'parking', propertyTypeLabel: 'parking', id: '8' },
+            {
+                propertyTypeName: 'office', propertyTypeLabel: 'Office', id: '1'
+
+            },
+            { propertyTypeName: 'coffeeShop', propertyTypeLabel: 'Coffee Shop/Bar', id: '2' },
+            { propertyTypeName: 'store', propertyTypeLabel: 'Store/shop', id: '3' },
+            { propertyTypeName: 'apt', propertyTypeLabel: 'Apartment', id: '4' },
+            { propertyTypeName: 'mall', propertyTypeLabel: 'Mall', id: '5' },
             // {propertyTypeName: 'commercialrentalPropertyTypes', propertyTypeLabel: 'commercialrentalPropertyTypes', id: '9'},
         ],
         forSalePropertyTypes: [
-            { propertyTypeName: 'apt', propertyTypeLabel: 'Apartment', id: '1' },
-            { propertyTypeName: 'office', propertyTypeLabel: 'Office', id: '2' },
-            { propertyTypeName: 'coffeeShop', propertyTypeLabel: 'Coffee Shop/Bar', id: '3' },
-            { propertyTypeName: 'restaurant', propertyTypeLabel: 'Restaurant', id: '4' },
-            { propertyTypeName: 'Warehouse', propertyTypeLabel: 'Warehouse', id: '5' },
-            { propertyTypeName: 'store', propertyTypeLabel: 'Store/shop', id: '6' },
-            { propertyTypeName: 'Factory', propertyTypeLabel: 'factory', id: '7' },
-            { propertyTypeName: 'parking', propertyTypeLabel: 'parking', id: '8' },
+            {
+                propertyTypeName: 'office', propertyTypeLabel: 'Office', id: '1',
+                formFields: ['commercial Forsal office', price, address, totalArea, noOfRooms, buildingAge, aidat, heatingModel, floor, avilableForCreditUsage, usageStatus, titleDeedStatus],
+
+            },
+            {
+                propertyTypeName: 'coffeeShop', propertyTypeLabel: 'Coffee Shop/Bar', id: '2',
+                formFields: ['commercial Forsale cofeeShop', price, address, totalArea, noOfRooms, buildingAge, aidat, heatingModel, floor, alchoholUsagePremission, usageStatus, titleDeedStatus],
+
+            },
+            {
+                propertyTypeName: 'store', propertyTypeLabel: 'Store/shop', id: '3',
+                formFields: ['commercial Forsale store', price, address, totalArea, noOfRooms, buildingAge, aidat, heatingModel, floor, titleDeedStatus],
+
+            },
+            { propertyTypeName: 'apt', propertyTypeLabel: 'Apartment', id: '4',
+            formFields: ['commercial Forsale apt', price, address, totalArea, noOfRooms, noOfBathrooms,totalFloorCount,floor ,buildingAge, aidat, heatingModel, usageStatus, titleDeedStatus, zeminEtudu],
+
+        },
+            { propertyTypeName: 'mall', propertyTypeLabel: 'Mall', id: '5',
+            formFields: ['commercial for sale mall', address, price, totalArea, totalFloorCount, heatingModel, buildingAge, elevatorCount, usageStatus, titleDeedStatus]
+        },
+
+            // { propertyTypeName: 'restaurant', propertyTypeLabel: 'Restaurant', id: '4' },
+            // { propertyTypeName: 'Warehouse', propertyTypeLabel: 'Warehouse', id: '5' },
             // {propertyTypeName: 'commercialforsalePropertyTypes', propertyTypeLabel: 'commercialforsalePropertyTypes', id: '4'},
 
         ],
@@ -141,13 +158,15 @@ const ChooseCategorySteps = [
         categoryName: 'bulding',
         categoryLabel: 'Building',
         dealTypes: [
-            { dealName: 'rental', dealLable: 'Rental', id: '1',
-            formFields: ['buildingRental', price, address, totalArea, buildingAge, theUnitOntheFirstFloor, totalFloorCount, heatingModel]
-        },
-            { dealName: 'forsale', dealLable: 'For sale', id: '2',
-            formFields: ['buildingForSale', price, address, totalArea, buildingAge, theUnitOntheFirstFloor, totalFloorCount, heatingModel]
+            {
+                dealName: 'rental', dealLable: 'Rental', id: '1',
+                formFields: ['buildingRental', price, address, totalArea, buildingAge, theUnitOntheFirstFloor, totalFloorCount, heatingModel]
+            },
+            {
+                dealName: 'forsale', dealLable: 'For sale', id: '2',
+                formFields: ['buildingForSale', price, address, totalArea, buildingAge, theUnitOntheFirstFloor, totalFloorCount, heatingModel]
 
-        },
+            },
             // { dealName: 'lease', dealLable: 'For lease', id: '3' },
             // {dealName: 'buildingspecific', dealLable: 'buildingspecific', id: '3'},
 

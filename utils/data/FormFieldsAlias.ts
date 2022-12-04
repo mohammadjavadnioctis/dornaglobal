@@ -29,7 +29,10 @@ const formFiledsAlias = {
     kaks: 'kaks',
     // kat karşılığı
     floorReturn: 'floorReturn',
-    theUnitOntheFirstFloor: 'theUnitOntheFirstFloor'
+    theUnitOntheFirstFloor: 'theUnitOntheFirstFloor',
+    alchoholUsagePremission: 'alchoholUsagePremission',
+    zeminEtudu: 'zeminEtudu',
+    elevatorCount: 'elevatorCount'
 
 }
 
