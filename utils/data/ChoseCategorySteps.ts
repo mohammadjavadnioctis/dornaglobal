@@ -96,13 +96,26 @@ const ChooseCategorySteps = [
         ],
         rentalPropertyTypes: [
             {
-                propertyTypeName: 'office', propertyTypeLabel: 'Office', id: '1'
+                propertyTypeName: 'office', propertyTypeLabel: 'Office', id: '1',
+                formFields: ['commercial rental office', address, price, totalArea, noOfRooms, buildingAge, aidat, heatingModel, floor, avilableForCreditUsage, usageStatus,]
 
             },
-            { propertyTypeName: 'coffeeShop', propertyTypeLabel: 'Coffee Shop/Bar', id: '2' },
-            { propertyTypeName: 'store', propertyTypeLabel: 'Store/shop', id: '3' },
-            { propertyTypeName: 'apt', propertyTypeLabel: 'Apartment', id: '4' },
-            { propertyTypeName: 'mall', propertyTypeLabel: 'Mall', id: '5' },
+            {
+                propertyTypeName: 'coffeeShop', propertyTypeLabel: 'Coffee Shop/Bar', id: '2',
+                formFields: ['commercial rental cofeeshop', address, price, totalArea, buildingAge, heatingModel, alchoholUsagePremission, aidat, usageStatus]
+            },
+            {
+                propertyTypeName: 'store', propertyTypeLabel: 'Store/shop', id: '3',
+                formFields: ['commercial rental store', address, price, totalArea, noOfRooms, aidat, heatingModel, buildingAge, avilableForCreditUsage]
+            },
+            {
+                propertyTypeName: 'apt', propertyTypeLabel: 'Apartment', id: '4',
+                formFields: ['commercial rental apt', address, price, livingArea, totalArea, noOfRooms, totalFloorCount, floor, aidat, buildingAge, heatingModel, usageStatus, titleDeedStatus, zeminEtudu]
+            },
+            {
+                propertyTypeName: 'mall', propertyTypeLabel: 'Mall', id: '5',
+                formFields: ['commercial rental mall', address, price, livingArea, totalArea, totalFloorCount, heatingModel, buildingAge, elevatorCount, usageStatus]
+            },
             // {propertyTypeName: 'commercialrentalPropertyTypes', propertyTypeLabel: 'commercialrentalPropertyTypes', id: '9'},
         ],
         forSalePropertyTypes: [
@@ -121,13 +134,15 @@ const ChooseCategorySteps = [
                 formFields: ['commercial Forsale store', price, address, totalArea, noOfRooms, buildingAge, aidat, heatingModel, floor, titleDeedStatus],
 
             },
-            { propertyTypeName: 'apt', propertyTypeLabel: 'Apartment', id: '4',
-            formFields: ['commercial Forsale apt', price, address, totalArea, noOfRooms, noOfBathrooms,totalFloorCount,floor ,buildingAge, aidat, heatingModel, usageStatus, titleDeedStatus, zeminEtudu],
+            {
+                propertyTypeName: 'apt', propertyTypeLabel: 'Apartment', id: '4',
+                formFields: ['commercial Forsale apt', price, address, totalArea, noOfRooms, noOfBathrooms, totalFloorCount, floor, buildingAge, aidat, heatingModel, usageStatus, titleDeedStatus, zeminEtudu],
 
-        },
-            { propertyTypeName: 'mall', propertyTypeLabel: 'Mall', id: '5',
-            formFields: ['commercial for sale mall', address, price, totalArea, totalFloorCount, heatingModel, buildingAge, elevatorCount, usageStatus, titleDeedStatus]
-        },
+            },
+            {
+                propertyTypeName: 'mall', propertyTypeLabel: 'Mall', id: '5',
+                formFields: ['commercial for sale mall', address, price, totalArea, totalFloorCount, heatingModel, buildingAge, elevatorCount, usageStatus, titleDeedStatus]
+            },
 
             // { propertyTypeName: 'restaurant', propertyTypeLabel: 'Restaurant', id: '4' },
             // { propertyTypeName: 'Warehouse', propertyTypeLabel: 'Warehouse', id: '5' },
