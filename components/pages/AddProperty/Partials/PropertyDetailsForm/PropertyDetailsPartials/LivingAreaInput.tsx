@@ -14,7 +14,8 @@ const LivingAreaInput: FC<LivingAreaType> = memo((props) => {
   // const [livingAera, setLivingArea] = useState<number>();
 
   const {details: {livingArea}, setDetails} = usePropertyContext()
-    const handleChange = (event: number) => {
+    const handleChange = (event: number | undefined) => {
+    console.log('the living area input: ', event)
       setDetails(prevState => ({...prevState , livingArea: event }  ))
     }
 
@@ -24,7 +25,7 @@ const LivingAreaInput: FC<LivingAreaType> = memo((props) => {
       <UiNumberInput
         label="Living Area ( m2 )"
         value={livingArea}
-        onChange={handleChange}
+        onChange={e => handleChange(e)}
         parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
         {...errorHandlingProp}
       />
@@ -35,7 +36,7 @@ const LivingAreaInput: FC<LivingAreaType> = memo((props) => {
 
 
 if(isDev){
-  LivingAreaInput.displayName = 'AddrLivingAreaInputessInput'
+  LivingAreaInput.displayName = 'LivingAreaInput'
 }
 
 

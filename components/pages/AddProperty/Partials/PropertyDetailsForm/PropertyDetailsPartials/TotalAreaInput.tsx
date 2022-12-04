@@ -3,8 +3,15 @@ import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UiNumberInput } from "~/lib";
 import { isDev } from "~/utils/helpers";
 
-const TotalAreaInput: FC = memo(() => {
+
+interface TotalAreaInputType {
+  errorHandlingProp? : any
+}
+
+
+const TotalAreaInput: FC<TotalAreaInputType> = memo((props) => {
   // const [totalArea, setTotalArea] = useState<number>();
+  const {errorHandlingProp} = props 
 
   const {details: {totalArea}, setDetails} = usePropertyContext()
     const handleChange = (event: number) => {
@@ -19,6 +26,7 @@ const TotalAreaInput: FC = memo(() => {
         value={totalArea}
         onChange={handleChange}
         parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
+        {...errorHandlingProp}
       />
     </div>
   );

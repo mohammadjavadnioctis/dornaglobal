@@ -10,11 +10,11 @@ interface PropertyUploadContextType {
         },
         price?: number | undefined ,
         titleDeedStatus?: 'mulkiyet' | 'irtifakli' | 'arsa' | 'hisseli' | '',
-        noOfBedRooms?: number | null,
+        noOfBedRooms?: number ,
         yearBuilt?: number | null,
         floor?: number | null,
         heatingSystem?: string | null,
-        noOfBathRooms?: number | null,
+        noOfBathRooms?: number ,
         balcony?: boolean | null,
         furnished?: boolean | null,
         usageStatus?: 'empty'  | 'underRent' | null ,
@@ -24,7 +24,7 @@ interface PropertyUploadContextType {
         totalArea?: number | undefined,
         totalFloorCount?: number | undefined,
         aydat?: number | undefined,
-        buildingAge?: number | number,
+        buildingAge: number | null,
         id: string | undefined,
         isVarified?: boolean
         timestamp?: FieldValue;

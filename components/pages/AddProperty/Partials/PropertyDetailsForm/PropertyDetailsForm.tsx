@@ -27,50 +27,75 @@ interface PropertyDetailsFormType {
 
 const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   // const { ref } = props
-  const { UploadProperty, details } = usePropertyContext()
-  const { title, price, titleDeedStatus, livingArea } = details
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    console.log('form submitted ')
-    UploadProperty()
+  const { UploadProperty, details, setDetails } = usePropertyContext()
+  const { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge } = details
 
-  }
 
 
   const formErrorHandling = uiUseForm({
-    initialValues: { PropertyTitle: title, Price: price, TitleDeedStatus: titleDeedStatus, LivingArea: livingArea },
+    initialValues: { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge   },
     validateInputOnBlur: true,
     validate: {
-      PropertyTitle: (value: any) => ((value && value.length > 3) ? '' : 'this field is required'),
-      Price: (value: any) => ((value && value > 0) ? '' : 'price can not be empty or 0'),
-      TitleDeedStatus: (value: any) => ((value && value.length > 3) ? '' : 'please choose an option'),
-      LivingArea: (value: any) => ((value && value > 0) ? '' : 'Living Area can not be empty or 0'),
+      title: (value: any) => ((value && value.length > 3) ? null : 'this field is required'),
+      price: (value: any) => ((value && value > 0) ? null : 'price can not be empty or 0'),
+      titleDeedStatus: (value: any) => ((value && value.length > 3) ? null : 'please choose an option'),
+      livingArea: (value: any) => ((value && value > 0) ? null : 'Living Area can not be empty or 0'),
+      totalArea: (value: any) => ((value && value > 0) ? null : 'Total Area can not be empty or 0'),
+      floor: (value: any) => ((value) ? null : 'please provide the floor number'),
+      totalFloorCount: (value: any) => ((value) ? null : 'please provide the total floor count'),
+      aydat: (value: any) => ((value >= 0) ? null : 'please provide the amount'),
+      buildingAge: (value: any) => ((value >= 0) ? null : 'please provide the age of the building'),
 
+      
     }
   })
 
 
+  const handleError = (errors: typeof formErrorHandling.errors) => {
+    if (errors.name) {
+      // showNotification({ message: 'Please fill name field', color: 'red' });
+    } else if (errors.email) {
+      // showNotification({ message: 'Please provide a valid email', color: 'red' });
+    }
+    console.log('the errors are : ',errors)
+  };
+
+  // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //   e.preventDefault()
+  //   console.log('form submitted ')
+  //   UploadProperty()
+
+  // }
+  const handleSubmit = (e: typeof formErrorHandling.values) => {
+    // e.preventDefault()
+    
+    console.log('form handleSubmit: ', e)
+    // UploadProperty()
+    // @ts-ignore
+    setDetails(prevState => ({...prevState, ...e}))
+
+  }
   return (
     <div className="outer_wrapper bg-white container rounded-lg py-7">
       <h3 className="text-2xl mb-20">Property Details Form</h3>
-      <form onSubmit={(e) => handleSubmit(e)}>
+      <form onSubmit={formErrorHandling.onSubmit(handleSubmit, handleError)}>
         <div className="inner_wrapper grid grid-cols-2 gap-y-16 gap-x-4">
           <div className="col-span-2">
-            <PropertyTitleInput wrapperClassNames="" ErrorHandlingProp={{ ...formErrorHandling.getInputProps('PropertyTitle') }} />
+            <PropertyTitleInput wrapperClassNames="" ErrorHandlingProp={{ ...formErrorHandling.getInputProps('title') }} />
           </div>
           <div className="col-span-2 ">
             <PropertyDescriptionInput />
           </div>
-          <PriceInput errorHandlingProp={{ ...formErrorHandling.getInputProps('Price') }} />
-          <TitleDeedStatusinput errorHandlingProp={{ ...formErrorHandling.getInputProps('TitleDeedStatus') }}/>
-          <LivingAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('LivingArea') }}/>
-          <TotalAreaInput />
+          <PriceInput errorHandlingProp={{ ...formErrorHandling.getInputProps('price') }} />
+          <TitleDeedStatusinput errorHandlingProp={{ ...formErrorHandling.getInputProps('titleDeedStatus') }}/>
+          <LivingAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('livingArea') }}/>
+          <TotalAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalArea') }} />
           <NoOfRoomsInput />
           <NoOfBathroomsInput />
-          <FloorNoInput />
-          <TotalNoOfFloorsInput />
-          <AydatInput />
-          <BuildingAgeInput />
+          <FloorNoInput  errorHandlingProp={{ ...formErrorHandling.getInputProps('floor') }} />
+          <TotalNoOfFloorsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalFloorCount') }}/>
+          <AydatInput errorHandlingProp={{ ...formErrorHandling.getInputProps('aydat') }}/>
+          <BuildingAgeInput errorHandlingProp={{ ...formErrorHandling.getInputProps('buildingAge') }}/>
           <FurnishedInput />
           <BalconyInput />
         </div>
@@ -81,7 +106,7 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
           size="lg"
           color="#E9C46A"
           uppercase
-          className="bg-accent hover:bg-accent-600 transition-all w-full "
+          className="bg-accent hover:bg-accent-600 transition-all w-full mt-8 mb-4"
           type="submit"
         >
           Submit

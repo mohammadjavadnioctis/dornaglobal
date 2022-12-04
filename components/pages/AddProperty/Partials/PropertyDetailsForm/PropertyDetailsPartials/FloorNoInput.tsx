@@ -3,7 +3,13 @@ import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UiNumberInput } from "~/lib";
 import { isDev } from "~/utils/helpers";
 
-const FloorNoInput: FC = memo(() => {
+interface FloorNoInputType  {
+  errorHandlingProp?: any;
+}
+
+
+const FloorNoInput: FC<FloorNoInputType> = memo((props) => {
+  const {errorHandlingProp} = props
   // const [floorNo, setFloorNo] = useState<number>();
 
   const {details: {floor}, setDetails} = usePropertyContext()
@@ -21,6 +27,7 @@ const FloorNoInput: FC = memo(() => {
         value={floor  as number | undefined}
         onChange={handleChange}
         parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
+        {...errorHandlingProp}
       />
     </div>
   );

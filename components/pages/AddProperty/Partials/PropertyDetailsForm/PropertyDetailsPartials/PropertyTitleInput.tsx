@@ -40,7 +40,6 @@ const PropertyTitleInput: FC<PropertyTitleInputType> = memo((props) => {
         label="Property Title"
         value={title}
         onChange={handleChange}
-        required
         withAsterisk
         // error={() => error()}
         // {...formErrorHandling.getInputProps('PropertyTitle')}

@@ -3,9 +3,14 @@ import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UiNumberInput } from "~/lib";
 import { isDev } from "~/utils/helpers";
 
-const AydatInput: FC = memo(() => {
-  // const [price, setPrice] = useState<number>();
+interface AidatType {
+  errorHandlingProp?: any
+}
 
+
+const AydatInput: FC<AidatType> = memo((props) => {
+  // const [price, setPrice] = useState<number>();
+  const {errorHandlingProp} = props
   const {details: {aydat}, setDetails} = usePropertyContext()
 
   const handleChange = (event: number) => {
@@ -27,6 +32,7 @@ const AydatInput: FC = memo(() => {
             ? `₺ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             : "₺ "
         }
+        {...errorHandlingProp}
       />
     </div>
   );

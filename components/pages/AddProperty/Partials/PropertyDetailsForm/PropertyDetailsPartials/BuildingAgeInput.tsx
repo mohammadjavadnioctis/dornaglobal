@@ -3,9 +3,14 @@ import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UiNumberInput } from "~/lib";
 import { isDev } from "~/utils/helpers";
 
-const BuildingAgeInput: FC = memo(() => {
-  // const [buildingAge, setBuildingAge] = useState<number>();
+interface BuildingAgeInputType {
+  errorHandlingProp?: any
+}
 
+
+const BuildingAgeInput: FC<BuildingAgeInputType> = memo((props) => {
+  // const [buildingAge, setBuildingAge] = useState<number>();
+  const {errorHandlingProp} = props
   const {details: {buildingAge}, setDetails} = usePropertyContext()
 
   const handleChange = (event: number) => {
@@ -19,9 +24,10 @@ const BuildingAgeInput: FC = memo(() => {
       <UiNumberInput
         label="Building Age"
         placeholder=""
-        value={buildingAge}
+        value={buildingAge as (number | undefined)}
         onChange={handleChange}
         parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
+        {...errorHandlingProp}
       />
     </div>
   );
