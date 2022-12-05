@@ -2,6 +2,7 @@ import { DocumentReference } from "firebase/firestore";
 import React, { FC, memo } from "react";
 import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UiButton, uiUseForm } from "~/lib";
+import { formFiledsAlias } from "~/utils/data";
 import { isDev } from "~/utils/helpers";
 import AddressInput from "./PropertyDetailsPartials/AddressInput";
 import AydatInput from "./PropertyDetailsPartials/AydatInput";
@@ -24,16 +25,19 @@ interface PropertyDetailsFormType {
   // ref: DocumentReference
 }
 
+const { address: addressAlias, aidat: aidatAlias, balcony: balconyAlias, buildingAge: buildingAgeAlias, deposit: depositAlias, facing: facingAlias, floor: floorAlias, furnished: furnishedAlias, heatingModel: heatingModelAlias, livingArea: livingAreaAlias, noOfBathrooms: noOfBathRoomsAlias, noOfEntrance: noOfEntranceAlias, noOfRooms: noOfRoomsAlias, preRent: preRentAlias, price: priceAlias, residenceName: residenceNameAlias, titleDeedStatus: titleDeedStatusAlias, totalArea: totalAreaAlias, totalFloorCount: totalFloorCountAlias, usageStatus: usageStatusAlias, view: viewAlias, withinResidence: withinResidenceAlias, avilableForCreditUsage: avilableForCreditUsageAlias, imarStatus: imarStatusAlias, adaNo: adaNoAlias, parselNo: parselNoAlias, gaba: gabaAlias, kaks: kaksAlias, floorReturn: floorReturnAlias, theUnitOntheFirstFloor: theUnitOntheFirstFloorAlias, alchoholUsagePremission: alchoholUsagePremissionAlias, zeminEtudu: zeminEtuduAlias, elevatorCount: elevatorCountAlias } = formFiledsAlias
+
+
 
 const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   // const { ref } = props
-  const { UploadProperty, details, setDetails } = usePropertyContext()
+  const { UploadProperty, details, setDetails, chosenCategoryInfo } = usePropertyContext()
   const { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge } = details
 
 
 
   const formErrorHandling = uiUseForm({
-    initialValues: { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge   },
+    initialValues: { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge },
     validateInputOnBlur: true,
     validate: {
       title: (value: any) => ((value && value.length > 3) ? null : 'this field is required'),
@@ -44,9 +48,9 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
       floor: (value: any) => ((value) ? null : 'please provide the floor number'),
       totalFloorCount: (value: any) => ((value) ? null : 'please provide the total floor count'),
       aydat: (value: any) => ((value >= 0) ? null : 'please provide the amount'),
-      buildingAge: (value: any) => ((value >= 0) ? null : 'please provide the age of the building'),
+      buildingAge: (value: any) => ((value >= 0 && value !== null) ? null : 'please provide the age of the building'),
 
-      
+
     }
   })
 
@@ -57,7 +61,7 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
     } else if (errors.email) {
       // showNotification({ message: 'Please provide a valid email', color: 'red' });
     }
-    console.log('the errors are : ',errors)
+    console.log('the errors are : ', errors)
   };
 
   // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -68,13 +72,55 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   // }
   const handleSubmit = (e: typeof formErrorHandling.values) => {
     // e.preventDefault()
-    
+
     console.log('form handleSubmit: ', e)
     // UploadProperty()
     // @ts-ignore
-    setDetails(prevState => ({...prevState, ...e}))
+    setDetails(prevState => ({ ...prevState, ...e }))
 
   }
+
+  console.log('this is the chosen categoryi info:: ', chosenCategoryInfo)
+
+  const renderFormInput = (inputName: string) => {
+    if (typeof inputName == 'string') {
+
+      switch (inputName) {
+
+        case `${priceAlias}`:
+          return <PriceInput errorHandlingProp={{ ...formErrorHandling.getInputProps('price') }} />
+          break;
+        case `${livingAreaAlias}`:
+          return <LivingAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('livingArea') }} />
+          break;
+        case `${totalAreaAlias}`:
+          return <TotalAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalArea') }} />
+          break;
+        case `${noOfRoomsAlias}`:
+          return <NoOfRoomsInput />
+          break;
+        case `${noOfBathRoomsAlias}`:
+          return <NoOfBathroomsInput />
+          break;
+        case `${floorAlias}`:
+          return <FloorNoInput errorHandlingProp={{ ...formErrorHandling.getInputProps('floor') }} />
+          break;
+        case `${totalFloorCountAlias}`:
+          return <TotalNoOfFloorsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalFloorCount') }} />
+          break;
+        case `${aidatAlias}`:
+          return <AydatInput errorHandlingProp={{ ...formErrorHandling.getInputProps('aydat') }} />
+          break;
+        case `${buildingAgeAlias}`:
+          return <BuildingAgeInput errorHandlingProp={{ ...formErrorHandling.getInputProps('buildingAge') }} />
+          break;
+        default: return inputName
+
+
+      }
+    }
+  }
+
   return (
     <div className="outer_wrapper bg-white container rounded-lg py-7">
       <h3 className="text-2xl mb-20">Property Details Form</h3>
@@ -86,16 +132,23 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
           <div className="col-span-2 ">
             <PropertyDescriptionInput />
           </div>
-          <PriceInput errorHandlingProp={{ ...formErrorHandling.getInputProps('price') }} />
-          <TitleDeedStatusinput errorHandlingProp={{ ...formErrorHandling.getInputProps('titleDeedStatus') }}/>
-          <LivingAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('livingArea') }}/>
-          <TotalAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalArea') }} />
-          <NoOfRoomsInput />
-          <NoOfBathroomsInput />
-          <FloorNoInput  errorHandlingProp={{ ...formErrorHandling.getInputProps('floor') }} />
-          <TotalNoOfFloorsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalFloorCount') }}/>
-          <AydatInput errorHandlingProp={{ ...formErrorHandling.getInputProps('aydat') }}/>
-          <BuildingAgeInput errorHandlingProp={{ ...formErrorHandling.getInputProps('buildingAge') }}/>
+          {/* <PriceInput errorHandlingProp={{ ...formErrorHandling.getInputProps('price') }} /> */}
+          {/* <TitleDeedStatusinput errorHandlingProp={{ ...formErrorHandling.getInputProps('titleDeedStatus') }}/> */}
+          {/* <LivingAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('livingArea') }}/> */}
+          {/* <TotalAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalArea') }} /> */}
+          {/* <NoOfRoomsInput /> */}
+          {/* <NoOfBathroomsInput /> */}
+          {/* <FloorNoInput  errorHandlingProp={{ ...formErrorHandling.getInputProps('floor') }} /> */}
+          {/* <TotalNoOfFloorsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalFloorCount') }}/> */}
+          {/* <AydatInput errorHandlingProp={{ ...formErrorHandling.getInputProps('aydat') }}/> */}
+          {/* <BuildingAgeInput errorHandlingProp={{ ...formErrorHandling.getInputProps('buildingAge') }}/> */}
+          {
+
+            chosenCategoryInfo && chosenCategoryInfo?.formFields && chosenCategoryInfo?.formFields?.map(field => {
+              return renderFormInput(field)
+            })
+
+          }
           <FurnishedInput />
           <BalconyInput />
         </div>
