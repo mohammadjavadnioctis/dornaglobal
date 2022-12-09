@@ -4,9 +4,11 @@ import React, { FC, memo, useEffect } from "react";
 import { useAuth } from "~/contexts/AuthContext";
 import { isDev } from "~/utils/helpers";
 import nookies from 'nookies'
-import { admin } from "~/utils/config/firebaseAdmin"; 
+import { admin, adminDb } from "~/utils/config/firebaseAdmin"; 
 import Profile from "~/components/pages/profile/Profile";
 import { UserDashboardProvider } from "~/contexts/UserDashboardContext";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "~/utils/config/firebase";
 
 
 
@@ -25,9 +27,18 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const { uid, email } = token;
 
     // FETCH STUFF HERE!! 🚀
+    console.log('this is email,', email, 'and this is uid: ', uid)
+const q = query(
+        collection(db, "testproperties"),
+        where("user.email", "==", email)
+      );
 
-
-
+      const querySnapshot = await getDocs(q);
+      const data = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      console.log('this is the list of properties of the user:', data)
     return {
       props: { message: `Your email is ${email} and your UID is ${uid}.` },
     };

@@ -4,6 +4,7 @@ import { UIButton, UIGroup, UIStepper } from "~/lib";
 import { isDev } from "~/utils/helpers";
 import ChooseCategory from "../ChooseCategoryStep/ChooseCategory";
 import PropertyDetailsForm from "../PropertyDetailsForm/PropertyDetailsForm";
+import PropertyListedStep from "../PropertyListedStep/PropertyListedStep";
 import ReviewStep from "../ReviewStep/ReviewStep";
 import UploadMediaStep from "../UploadMediaStep/UploadMediaStep";
 
@@ -49,6 +50,7 @@ const Stepper = memo(() => {
         </UIStepper.Step>
         <UIStepper.Step label="Fifth step" description="Property Listed">
           {/* Step 3 content: Get full access */}
+          <PropertyListedStep />
         </UIStepper.Step>
         <UIStepper.Step label="Final step" description="congratulation">
           {/* Step 3 content: Get full access */}
