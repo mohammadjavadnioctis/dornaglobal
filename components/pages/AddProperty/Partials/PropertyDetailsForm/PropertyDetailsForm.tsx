@@ -114,7 +114,10 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
         case `${buildingAgeAlias}`:
           return <BuildingAgeInput errorHandlingProp={{ ...formErrorHandling.getInputProps('buildingAge') }} />
           break;
-        default: return inputName
+          case `${addressAlias}`: 
+            return null
+        default: return null
+            // default: return inputName
 
 
       }
@@ -144,7 +147,7 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
           {/* <BuildingAgeInput errorHandlingProp={{ ...formErrorHandling.getInputProps('buildingAge') }}/> */}
           {
 
-            chosenCategoryInfo && chosenCategoryInfo?.formFields && chosenCategoryInfo?.formFields?.map(field => {
+            chosenCategoryInfo && chosenCategoryInfo?.formFields && chosenCategoryInfo?.formFields?.slice(0).map(field => {
               return renderFormInput(field)
             })
 

@@ -12,7 +12,10 @@ import {
   DealType,
   PropertySubCategoryType,
 } from "~/utils/types";
-
+import { getDatabase, ref, onValue, get, child} from "firebase/database";
+import { RTdatabase, db } from "~/utils/config/firebase";
+import { addDoc, doc, setDoc, collection, where, getDocs, query} from "firebase/firestore"; 
+import citiesData from '~/utils/data/districts.json'
 
 
 const ChooseCategory: FC = memo(() => {
@@ -22,6 +25,8 @@ const ChooseCategory: FC = memo(() => {
   const [isCategoryChosen , setIsCategoryChosen] = useState(false)
   const [chosenPropertyCategory, setChosenPropertyCategory] =
     useState<ChosenPropertyType | null>(null);
+    const [rtData, setRTData] = useState(null)
+
   const [
     correspondingPropertyTypesToChosenDealType,
     setCorrespondingPropertyTypesToChosenDealType,
@@ -43,6 +48,77 @@ const ChooseCategory: FC = memo(() => {
     }));
   };
 
+  const uploadData = async () => {
+    
+    // await setDoc(doc(db, "cities" ), {
+    //   name: "istanbul",
+    //   state: "CA",
+    //   country: "USA"
+    // });
+    // @ts-ignore
+    const slicedCitiesData = citiesData.slice(0, 20)
+    console.log(slicedCitiesData)
+// @ts-ignore
+    // citiesData.map((data: any) => {
+    //   addDoc(collection(db, 'cities'), {
+    //    ...data
+    // })
+    // })
+    // const q = await query(
+    //   collection(db, "cities"),
+    //   where('il', '==', 'ADANA')
+    //   )
+    //   const fetchedCity = await getDocs(q);
+    //   const data = await fetchedCity.docs.map((doc) => ({
+    //         ...doc.data(),
+    //         id: doc.id,
+    //       }));
+    //   console.log('this is fetchedCity', data)
+    // const data = querySnapshot.docs.map((doc) => ({
+    //   ...doc.data(),
+    //   id: doc.id,
+    // }));
+    // console.log('retrieved data: ', data)
+  //   addDoc(collection(db, 'cities'), {
+  //     name: 'test name  ',
+  //     type: 'bridge'
+  // })
+    
+  }
+
+
+  useEffect(() => {
+    //     const dbRef = ref(getDatabase());
+    //     console.log('dataFetching: useeffect triggered: ' )
+    // get(child(dbRef, '/')).then((snapshot) => {
+    //   if (snapshot.exists()) {
+    //     console.log('dataFetching: this is data: snapshot ',snapshot.val());
+    //   } else {
+    //     console.log("dataFetching: No data available");
+    //   }
+    // }).catch((error) => {
+    //   console.error('dataFetching: this is error',error);
+    // });
+      //   const db = RTdatabase;
+      //   const dbref = ref(db);
+      //   onValue(dbref, (snapshot) => {
+      //     const data = snapshot.val();
+      //     console.log('dataFetching: data is :', data)
+      //     setRTData(data)
+      //   });
+
+    uploadData()
+
+      } ,[])
+
+      
+    
+      useEffect(() => {
+        console.log('dataFetching: rtData changed: ', rtData)
+      } ,[
+        rtData
+      ])
+
   const handleChooseDeal = (deal: DealType) => {
     const { dealName, formFields} = deal;
     console.log('this is handle choosedeal: ', deal)
@@ -63,6 +139,8 @@ const ChooseCategory: FC = memo(() => {
       formFields
     }));
   };
+
+  
 
   useEffect(() => {
    

@@ -59,6 +59,7 @@ const initialDetails: PropertyUploadContextType  = {
   buildingAge: null,
   id:  '',
   isVarified: false,
+  deposit: 0,
   timestamp: serverTimestamp()
 };
 

@@ -28,6 +28,7 @@ interface PropertyUploadContextType {
         id: string | undefined,
         isVarified?: boolean
         timestamp?: FieldValue;
+        deposit?: number
     }
     
 

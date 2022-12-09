@@ -18,6 +18,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     // console.log('parsedRef',parsedRef, 'ref: ',ref)
     
     // return { props: { id, parsedRef } };
+
+
+
     return {props: {}}
   
 }

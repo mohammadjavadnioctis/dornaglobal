@@ -12,7 +12,7 @@ import {
 import firebase from "firebase/app";
 import { Firestore, getFirestore } from "firebase/firestore";
 import { getStorage } from 'firebase/storage'
-
+import { getDatabase } from "firebase/database";
 // Your web app's Firebase configuration
 
 const firebaseConfig = {
@@ -33,6 +33,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app)
+const RTdatabase = getDatabase();
 setPersistence(auth, browserSessionPersistence);
 // }
 //   .then(() => {
@@ -50,5 +51,5 @@ setPersistence(auth, browserSessionPersistence);
 //     const errorMessage = error.message;
 //   });
 // firebase.initializeApp(firebaseConfig);
-export { db, auth, storage };
+export { db, auth, storage,  RTdatabase};
 export default app;
