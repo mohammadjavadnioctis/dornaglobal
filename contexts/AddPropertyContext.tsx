@@ -100,7 +100,7 @@ export const AddPropertyProvider: FC<
 
   const [activeStep, setActiveStep] = useState(0);
   const nextStep = () =>
-  setActiveStep((current) => (current < 3 ? current + 1 : current));
+  setActiveStep((current) => (current < 5 ? current + 1 : current));
   const prevStep = () =>
   setActiveStep((current) => (current > 0 ? current - 1 : current));
 

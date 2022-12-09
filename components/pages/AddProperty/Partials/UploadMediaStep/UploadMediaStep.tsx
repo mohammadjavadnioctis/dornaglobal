@@ -90,7 +90,6 @@ const UploadMediaStep: FC = memo(
 
     return (
       <div>
-        UploadMediaStep component
         <UiDropzone
           onDrop={(files) => handleFileCapture(files)}
           onReject={(files) => console.log('rejected files', files)}

@@ -4,6 +4,7 @@ import { UIButton, UIGroup, UIStepper } from "~/lib";
 import { isDev } from "~/utils/helpers";
 import ChooseCategory from "../ChooseCategoryStep/ChooseCategory";
 import PropertyDetailsForm from "../PropertyDetailsForm/PropertyDetailsForm";
+import ReviewStep from "../ReviewStep/ReviewStep";
 import UploadMediaStep from "../UploadMediaStep/UploadMediaStep";
 
 // TODO : error hadling of forms and  context of the forms
@@ -43,7 +44,9 @@ const Stepper = memo(() => {
         <UIStepper.Step
           label="Fourth step"
           description="Review"
-        ></UIStepper.Step>
+        >
+          <ReviewStep />
+        </UIStepper.Step>
         <UIStepper.Step label="Fifth step" description="Property Listed">
           {/* Step 3 content: Get full access */}
         </UIStepper.Step>
