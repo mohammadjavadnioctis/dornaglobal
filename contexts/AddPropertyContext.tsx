@@ -60,6 +60,7 @@ const initialDetails: PropertyUploadContextType  = {
   id:  '',
   isVarified: false,
   deposit: 0,
+  listingStatus: 'Listing in progress',
   timestamp: serverTimestamp()
 };
 
@@ -86,7 +87,6 @@ export const AddPropertyProvider: FC<
     formFields: null,
   });
   const { user } = useAuth()
-  console.log('this is uset: ', user)
   const [details, setDetails] = useState<PropertyUploadContextType>(initialDetails);
   const [docRef, setDocRef] = useState<DocumentReference>()
 
@@ -105,10 +105,6 @@ export const AddPropertyProvider: FC<
   setActiveStep((current) => (current > 0 ? current - 1 : current));
 
 
-
-useEffect(()=>{
-  console.log('docRef changed; ', docRef)
-},[docRef])
 //   const fetchContextProperties = async () => {
 //     const fetchedProperties = await fetchProperties();
 //     setProperties(fetchedProperties as PropertyType[]);
@@ -147,15 +143,6 @@ useEffect(()=>{
 //     }));
 //     setProperties(data as PropertyType[]);
 //   };
-
-  useEffect(() => {
-    console.log('this is the details from the context: ', details)
-  }, 
-  [details]);
-  useEffect(() => {
-    console.log('this is the chosenCategoryInfo from the context: ', chosenCategoryInfo)
-  }, 
-  [chosenCategoryInfo]);
 
 
   useEffect(()=>{

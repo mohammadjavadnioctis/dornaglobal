@@ -4,23 +4,23 @@ import React, { FC, memo, useEffect } from "react";
 import { useAuth } from "~/contexts/AuthContext";
 import { isDev } from "~/utils/helpers";
 import nookies from 'nookies'
-import { admin, adminDb } from "~/utils/config/firebaseAdmin"; 
-import Profile from "~/components/pages/profile/Profile";
+import { admin, adminDb } from "~/utils/config/firebaseAdmin";
+import ProfilePage from "~/components/pages/profile/Profile";
 import { UserDashboardProvider } from "~/contexts/UserDashboardContext";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "~/utils/config/firebase";
 
 
 
-export interface ProfileProps {}
+export interface ProfileProps { }
 
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    let propsCookies: any;
+  let propsCookies: any;
   try {
     const cookies = nookies.get(ctx);
     propsCookies = cookies
-    console.log('the cookies are: ',cookies)
+    console.log('the cookies are: ', cookies)
     const token = await admin.auth().verifyIdToken(cookies.token);
 
     // the user is authenticated!
@@ -28,19 +28,20 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     // FETCH STUFF HERE!! 🚀
     console.log('this is email,', email, 'and this is uid: ', uid)
-const q = query(
-        collection(db, "testproperties"),
-        where("user.email", "==", email)
-      );
+    const q = query(
+      collection(db, "testproperties"),
+      where("user.email", "==", email)
+    );
 
-      const querySnapshot = await getDocs(q);
-      const data = querySnapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      console.log('this is the list of properties of the user:', data)
+    const querySnapshot = await getDocs(q);
+    const listedProperties = querySnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    const parsedListedProperties = JSON.parse(JSON.stringify(listedProperties))
+    console.log('this is the list of properties of the user:', listedProperties)
     return {
-      props: { message: `Your email is ${email} and your UID is ${uid}.` },
+      props: { listedProperties: parsedListedProperties,  },
     };
   } catch (err) {
     // either the `token` cookie didn't exist
@@ -54,24 +55,27 @@ const q = query(
     // with InferGetServerSidePropsType.
     // The props returned here don't matter because we've
     // already redirected the user.
-    return { props: {propsCookies} };
+    return { props: { propsCookies } };
   }
 }
 
+export interface ProfilePageType {
+  listedProperties: any;
+}
 
-
-const profile: FC = memo((props) => {
+const Profile: FC<ProfilePageType> = memo((props) => {
+  const {listedProperties} = props
   const { user, logout, loading } = useAuth();
   console.log('this is the user: ', user)
   const router = useRouter();
-  if(!user && !loading){
+  if (!user && !loading) {
     router.push('/signin')
   }
-  useEffect(()=>{
-    if(!user && !loading){
+  useEffect(() => {
+    if (!user && !loading) {
       router.push('/signin')
     }
-  },[user, loading])
+  }, [user, loading])
 
 
   return (
@@ -83,16 +87,16 @@ const profile: FC = memo((props) => {
        */}
       <UserDashboardProvider >
         {
-          (user && !loading) ?  <Profile /> : <h2>loading</h2>
-        }  
-      </UserDashboardProvider> 
+          (user && !loading) ? <ProfilePage listedProperties={listedProperties}/> : <h2>loading</h2>
+        }
+      </UserDashboardProvider>
 
     </div>
   );
 });
 
 if (isDev) {
-  profile.displayName = "Profile";
+  Profile.displayName = "Profile";
 }
 
-export default profile;
+export default Profile;

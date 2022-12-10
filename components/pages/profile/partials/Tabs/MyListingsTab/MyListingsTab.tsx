@@ -2,9 +2,20 @@ import React, { FC, memo } from "react";
 import ListyourPropertyButton from "~/components/ListYourPropertyButton/ListyourPropertyButton";
 import NoResults from "~/components/NoResult/NoResult";
 import { isDev } from "~/utils/helpers";
+import { PropertyUploadContextType } from "~/utils/types";
+import PropertyRow from "./PropertyRow";
 
-const MyListingsTab: FC = memo(() => {
 
+interface MyListingsType {
+  listedProperties: PropertyUploadContextType[];
+}
+
+
+
+
+const MyListingsTab: FC<MyListingsType> = memo((props) => {
+  const { listedProperties } = props
+  console.log('listedProperties', listedProperties)
   return (
     <div className="w-full h-full p-4">
       <div className="w-full flex justify-between">
@@ -16,7 +27,14 @@ const MyListingsTab: FC = memo(() => {
         <ListyourPropertyButton />
       </div>
       <div className="mt-7">
-        <NoResults />
+        {
+          listedProperties.map(property => (
+            <PropertyRow property={property} />
+          )
+          )
+        }
+        {!listedProperties && <NoResults />}
+
       </div>
     </div>
   );

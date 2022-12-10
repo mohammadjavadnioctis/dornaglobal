@@ -2,6 +2,7 @@ import { FC, memo, useEffect } from "react";
 import {
   useUserDashboardContext,
 } from "~/contexts/UserDashboardContext";
+import { ProfilePageType } from "~/pages/profile";
 import { userDashboardMenu } from "~/utils/data/menus";
 import { isDev } from "~/utils/helpers";
 import DashboardLeftSideBar from "./partials/DashboardLeftSideBar/DashboardLeftSideBar";
@@ -10,15 +11,20 @@ import MessagesTab from "./partials/Tabs/MessagesTab/MessagesTab";
 import MyListingsTab from "./partials/Tabs/MyListingsTab/MyListingsTab";
 import ProfileTab from "./partials/Tabs/Profile/ProfileTab";
 
-const Profile: FC = memo(() => {
-  const { activeTab } = useUserDashboardContext();
 
+
+
+const Profile: FC<ProfilePageType> = memo((props) => {
+  
+  const { listedProperties } = props
+  const { activeTab } = useUserDashboardContext();
+  
   const RenderActiveTab = () => {
     switch (activeTab) {
       case "profile":
         return <ProfileTab />;
       case "myListings":
-        return <MyListingsTab />;
+        return <MyListingsTab listedProperties={listedProperties} />;
       case "messages":
         return <MessagesTab />
     }

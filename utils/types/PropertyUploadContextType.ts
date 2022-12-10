@@ -28,7 +28,8 @@ interface PropertyUploadContextType {
         id: string | undefined,
         isVarified?: boolean
         timestamp?: FieldValue;
-        deposit?: number
+        deposit?: number,
+        listingStatus: 'Listing in progress' | 'Under review' | 'Listed'
     }
     
 
