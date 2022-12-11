@@ -31,7 +31,7 @@ const { address: addressAlias, aidat: aidatAlias, balcony: balconyAlias, buildin
 
 const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   // const { ref } = props
-  const { UploadProperty, details, setDetails, chosenCategoryInfo } = usePropertyContext()
+  const { UploadProperty, details, setDetails, chosenCategoryInfo,nextStep } = usePropertyContext()
   const { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge } = details
 
 
@@ -77,6 +77,8 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
     // UploadProperty()
     // @ts-ignore
     setDetails(prevState => ({ ...prevState, ...e }))
+    nextStep()
+        // UploadProperty()
 
   }
 
@@ -114,8 +116,8 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
         case `${buildingAgeAlias}`:
           return <BuildingAgeInput errorHandlingProp={{ ...formErrorHandling.getInputProps('buildingAge') }} />
           break;
-          case `${addressAlias}`: 
-            return null
+          case `${titleDeedStatusAlias}`: 
+            return <TitleDeedStatusinput errorHandlingProp={{ ...formErrorHandling.getInputProps('titleDeedStatus') }} />
         default: return null
             // default: return inputName
 

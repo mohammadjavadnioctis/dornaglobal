@@ -61,6 +61,7 @@ const initialDetails: PropertyUploadContextType  = {
   isVarified: false,
   deposit: 0,
   listingStatus: 'Listing in progress',
+  mediaUrls : {images: null, videos: null},
   timestamp: serverTimestamp()
 };
 
@@ -153,6 +154,11 @@ export const AddPropertyProvider: FC<
     setDocRef(ref)
     setDetails(prevDetails => ({...prevDetails, id}))
   },[])
+
+
+useEffect(() => {
+  console.log('details from context changed: ', details)
+} ,[details])
 
   const value: any = useMemo(
     () => ({

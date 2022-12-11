@@ -22,14 +22,15 @@ interface PropertyUploadContextType {
         dateListed?: Date | null,
         livingArea?: number | undefined,
         totalArea?: number | undefined,
-        totalFloorCount?: number | undefined,
+        totalFloorCount?: number | undefined | null,
         aydat?: number | undefined,
         buildingAge: number | null,
         id: string | undefined,
         isVarified?: boolean
         timestamp?: FieldValue;
         deposit?: number,
-        listingStatus: 'Listing in progress' | 'Under review' | 'Listed'
+        listingStatus: 'Listing in progress' | 'Under review' | 'Listed' | 'sold',
+        mediaUrls?: {images: string[] | null, videos: string[] | null}
     }
     
 

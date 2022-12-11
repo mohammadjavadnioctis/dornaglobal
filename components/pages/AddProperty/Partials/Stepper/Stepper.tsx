@@ -25,7 +25,7 @@ const Stepper = memo(() => {
         active={activeStep}
         onStepClick={setActiveStep}
         breakpoint="sm"
-        className="border-2 border-orange-400 min-h-[300px]"
+        className="min-h-[300px]"
       >
         <UIStepper.Step label="First step" description="Choose category">
           <ChooseCategory />

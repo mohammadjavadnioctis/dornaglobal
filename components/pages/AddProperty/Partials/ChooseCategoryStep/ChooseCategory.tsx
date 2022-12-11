@@ -197,7 +197,7 @@ const ChooseCategory: FC = memo(() => {
   }
 
   return (
-    <div className="h-full border border-green-400">
+    <div className="h-full">
       <h2 className="mb-8">Choose Category</h2>
       <div className="steps-container flex space-x-4 h-80 px-24 min-h-full">
         <div className="first-step h-full w-56 min-h-full">

@@ -19,7 +19,7 @@ const AddPropertyPage: FC<AddPropertyType> = memo(
 
       // } ,[])
       return (
-        <div >
+        <div className='min-h-[80vh]' >
             <Head title='Add Your Property To Dorna Global'
             titleClassnames='text-4xl my-0' containerClassNames='my-4' />
             <Stepper />

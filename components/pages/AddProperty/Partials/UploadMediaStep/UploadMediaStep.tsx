@@ -14,7 +14,7 @@ const UploadMediaStep: FC = memo(
   () => {
     const theme = useMantineTheme();
     const [files, setFiles] = useState<FileWithPath[]>([]);
-    const { details, nextStep } = usePropertyContext()
+    const { details, setDetails, nextStep, UploadProperty } = usePropertyContext()
     const [loading, setLoading] = useState(false)
     const [areFilesUploaded, setAreFilesUploaded] = useState(false)
     const handleFileCapture = (files: FileWithPath[]) => {
@@ -34,6 +34,7 @@ const UploadMediaStep: FC = memo(
 
 
     const handleFileUpload = () => {
+      const mediaLinks: string[] | null = []
       if(!areFilesUploaded){
         files.map(file => {
           setLoading(true)
@@ -63,9 +64,18 @@ const UploadMediaStep: FC = memo(
               // For instance, get the download URL: https://firebasestorage.googleapis.com/...
               getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                 console.log('File available at', downloadURL);
+                mediaLinks.push(downloadURL)
               });
+                      setDetails(prevState => ({...prevState, mediaUrls:{videos: null, images: mediaLinks} }))
+
               setLoading(false)
               setAreFilesUploaded(true)
+              // setDetails(prevState => ({...prevState, listingStatus: 'Under review'}))
+
+              // TODO: find a way around this
+              details.listingStatus = 'Under review'
+              UploadProperty()
+
             }
           );
   
@@ -94,6 +104,9 @@ const UploadMediaStep: FC = memo(
           onDrop={(files) => handleFileCapture(files)}
           onReject={(files) => console.log('rejected files', files)}
           maxSize={3 * 1024 ** 2}
+          accept={{
+            'image/*': [],
+          }}
         // accept={IMAGE_MIME_TYPE}
         // {...props}
         >
