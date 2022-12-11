@@ -57,7 +57,6 @@ const ChooseCategory: FC = memo(() => {
     // });
     // @ts-ignore
     const slicedCitiesData = citiesData.slice(0, 20)
-    console.log(slicedCitiesData)
 // @ts-ignore
     // citiesData.map((data: any) => {
     //   addDoc(collection(db, 'cities'), {
@@ -113,11 +112,11 @@ const ChooseCategory: FC = memo(() => {
 
       
     
-      useEffect(() => {
-        console.log('dataFetching: rtData changed: ', rtData)
-      } ,[
-        rtData
-      ])
+      // useEffect(() => {
+      //   console.log('dataFetching: rtData changed: ', rtData)
+      // } ,[
+      //   rtData
+      // ])
 
   const handleChooseDeal = (deal: DealType) => {
     const { dealName, formFields} = deal;

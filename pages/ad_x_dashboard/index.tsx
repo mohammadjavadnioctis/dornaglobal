@@ -25,7 +25,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     // the user is authenticated!
     const { uid, email } = token;
-    console.log('this is the token: ', token)
     // FETCH STUFF HERE!! 🚀
 
     // fetch current user
@@ -40,7 +39,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       id: doc.id,
     }));
     const parsedUser = JSON.parse(JSON.stringify(fetchedUserFromUser))
-    console.log('parseduser', parsedUser)
 
     // fetch unvarified properties list
     const uvarifiedPropertiesList = query(
@@ -54,7 +52,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       id: doc.id,
     }));
     const parsedUnvarifiedPropertiesList = JSON.parse(JSON.stringify(fetchedUnvarifiedProperties))
-    console.log('parsed unvarified properties list ', parsedUnvarifiedPropertiesList)
 
 
 
@@ -68,7 +65,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     // either the `token` cookie didn't exist
     // or token verification failed
     // either way: redirect to the login page
-    console.log('this is error; ', err)
     ctx.res.writeHead(302, { Location: '/signin' });
     ctx.res.end();
 
@@ -87,7 +83,6 @@ export interface AdminProfileType {
 
 const AdminProfile: FC<AdminProfileType> = memo((props) => {
   const { userFromFireStore, unvarifiedPropertiedList } = props
-  console.log('this is the unvarified list: ', unvarifiedPropertiedList)
   const { user, logout, loading } = useAuth();
   const router = useRouter();
   if (!userFromFireStore && !userFromFireStore?.isAdmin && !loading) {

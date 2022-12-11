@@ -34,7 +34,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 };
 
 const Search: FC = memo((props: any) => {
-  console.log("this is props baby", props);
 
   return (
     <div>

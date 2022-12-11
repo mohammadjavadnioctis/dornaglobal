@@ -68,7 +68,6 @@ export const SearchPropertiesProvider: FC<
     ];
 
     Object.keys(filters)?.forEach((key, index) => {
-      console.log('this is the key:', key)
       switch (key) {
         case 'address':
           filters.address?.neighbourhood && queryConstraints.push(where('address.neighborhood', '==', filters.address?.neighbourhood))
@@ -78,7 +77,6 @@ export const SearchPropertiesProvider: FC<
           break;
       }
     })
-    console.log('this is the quetyConstraints:', queryConstraints)
     const q = query(
       collection(db, "properties"),
       ...queryConstraints
@@ -92,14 +90,10 @@ export const SearchPropertiesProvider: FC<
       ...doc.data(),
       id: doc.id,
     }));
-    console.log("this is the fetchedfilters : ", data);
     setProperties(data as PropertyType[]);
   };
 
-  useEffect(() => {
-    console.log('this is the filters from the context: ', filters)
-  }, 
-  [filters]);
+ 
 
   useEffect(() => {}, [properties]);
 

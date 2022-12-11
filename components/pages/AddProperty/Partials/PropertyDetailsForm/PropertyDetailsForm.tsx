@@ -27,6 +27,47 @@ interface PropertyDetailsFormType {
 
 const { address: addressAlias, aidat: aidatAlias, balcony: balconyAlias, buildingAge: buildingAgeAlias, deposit: depositAlias, facing: facingAlias, floor: floorAlias, furnished: furnishedAlias, heatingModel: heatingModelAlias, livingArea: livingAreaAlias, noOfBathrooms: noOfBathRoomsAlias, noOfEntrance: noOfEntranceAlias, noOfRooms: noOfRoomsAlias, preRent: preRentAlias, price: priceAlias, residenceName: residenceNameAlias, titleDeedStatus: titleDeedStatusAlias, totalArea: totalAreaAlias, totalFloorCount: totalFloorCountAlias, usageStatus: usageStatusAlias, view: viewAlias, withinResidence: withinResidenceAlias, avilableForCreditUsage: avilableForCreditUsageAlias, imarStatus: imarStatusAlias, adaNo: adaNoAlias, parselNo: parselNoAlias, gaba: gabaAlias, kaks: kaksAlias, floorReturn: floorReturnAlias, theUnitOntheFirstFloor: theUnitOntheFirstFloorAlias, alchoholUsagePremission: alchoholUsagePremissionAlias, zeminEtudu: zeminEtuduAlias, elevatorCount: elevatorCountAlias } = formFiledsAlias
 
+// const renderValidation = (inputName: string) => {
+//   if (typeof inputName == 'string') {
+
+//     switch (inputName) {
+
+//       case `${priceAlias}`:
+//         return <PriceInput errorHandlingProp={{ ...formErrorHandling.getInputProps('price') }} />
+//         break;
+//       case `${livingAreaAlias}`:
+//         return <LivingAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('livingArea') }} />
+//         break;
+//       case `${totalAreaAlias}`:
+//         return <TotalAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalArea') }} />
+//         break;
+//       case `${noOfRoomsAlias}`:
+//         return <NoOfRoomsInput />
+//         break;
+//       case `${noOfBathRoomsAlias}`:
+//         return <NoOfBathroomsInput />
+//         break;
+//       case `${floorAlias}`:
+//         return <FloorNoInput errorHandlingProp={{ ...formErrorHandling.getInputProps('floor') }} />
+//         break;
+//       case `${totalFloorCountAlias}`:
+//         return <TotalNoOfFloorsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalFloorCount') }} />
+//         break;
+//       case `${aidatAlias}`:
+//         return <AydatInput errorHandlingProp={{ ...formErrorHandling.getInputProps('aydat') }} />
+//         break;
+//       case `${buildingAgeAlias}`:
+//         return <BuildingAgeInput errorHandlingProp={{ ...formErrorHandling.getInputProps('buildingAge') }} />
+//         break;
+//         case `${titleDeedStatusAlias}`: 
+//           return <TitleDeedStatusinput errorHandlingProp={{ ...formErrorHandling.getInputProps('titleDeedStatus') }} />
+//       default: return null
+//           // default: return inputName
+
+
+//     }
+//   }
+// }
 
 
 const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
@@ -34,7 +75,7 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   const { UploadProperty, details, setDetails, chosenCategoryInfo,nextStep } = usePropertyContext()
   const { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge } = details
 
-
+  // chosenCategoryInfo && chosenCategoryInfo?.formFields && chosenCategoryInfo?.formFields?.slice(0).map(formField => renderValidationFunction())
 
   const formErrorHandling = uiUseForm({
     initialValues: { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge },

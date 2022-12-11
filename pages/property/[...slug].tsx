@@ -13,15 +13,14 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return slug;
     }
   })();
-  const fetchedProperty = await fetchProperty(propertyId ?? "");
-  // @ts-ignore
-  const { agentId } = fetchedProperty;
-  const fetcehdAgent = await fetchAgent(agentId ?? "");
-  const fetchSimilarProperties = await fetchProperties();
+  const fetchedProperty = await fetchProperty('eIeFFpKGfdlK7OVeIC9q', true) ;
+  const parsedFetchedProperty = await JSON.parse(JSON.stringify(fetchedProperty))
+  const fetcehdAgent = await JSON.parse(JSON.stringify(fetchAgent(parsedFetchedProperty?.agentId ?? "xpRbGNtDWVYGzBkran8g")))     ;
+  // const fetchSimilarProperties = await fetchProperties();
   return {
     props: {
-      property: fetchedProperty,
-      similarProperties: fetchSimilarProperties,
+      property: parsedFetchedProperty,
+      // similarProperties: fetchSimilarProperties,
       agent: fetcehdAgent,
     },
   };
@@ -42,7 +41,6 @@ interface PropertyPagesProps {
 
 const Property: FC<PropertyPagesProps> = (props) => {
   const { property, agent, similarProperties } = props;
-
   return (
     <div>
       <PropertyPage

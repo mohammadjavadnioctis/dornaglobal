@@ -13,15 +13,15 @@ interface SumWithTextType {
 
 const SumWithText: FC<SumWithTextType> = memo((props) => {
   const { title, tags, address, price } = props;
-  let formattedPrice = commafy(price!);
+  let formattedPrice = price && commafy(price);
   const sampleTags = ["FEATURED", "FORSALE", "TEST"];
 
   //   formatting the addres for displaying it properly
   //   remove the blank fields in the address object
-  let formattedAddress = Object.keys(address!)
+  let formattedAddress = address && Object.keys(address)
     .filter((k) => address![k] != null)
     .reduce((a, k) => ({ ...a, [k]: address![k] }), {});
-  let displayableAddress = Object.values(formattedAddress).map(
+  let displayableAddress = formattedAddress && Object.values(formattedAddress).map(
     (field) => ` ${field}`
   );
   return (

@@ -20,14 +20,12 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
     const cookies = nookies.get(ctx);
     propsCookies = cookies
-    console.log('the cookies are: ', cookies)
     const token = await admin.auth().verifyIdToken(cookies.token);
 
     // the user is authenticated!
     const { uid, email } = token;
 
     // FETCH STUFF HERE!! 🚀
-    console.log('this is email,', email, 'and this is uid: ', uid)
     const q = query(
       collection(db, "testproperties"),
       where("user.email", "==", email)
@@ -39,7 +37,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       id: doc.id,
     }));
     const parsedListedProperties = JSON.parse(JSON.stringify(listedProperties))
-    console.log('this is the list of properties of the user:', listedProperties)
     return {
       props: { listedProperties: parsedListedProperties,  },
     };
@@ -66,7 +63,6 @@ export interface ProfilePageType {
 const Profile: FC<ProfilePageType> = memo((props) => {
   const {listedProperties} = props
   const { user, logout, loading } = useAuth();
-  console.log('this is the user: ', user)
   const router = useRouter();
   if (!user && !loading) {
     router.push('/signin')

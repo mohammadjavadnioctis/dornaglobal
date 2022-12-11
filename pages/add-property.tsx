@@ -15,7 +15,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     // data = propertiesRef
     // let ref = adminDb.collection("testproperties").doc();
     // let parsedRef =  JSON.stringify(ref)
-    // console.log('parsedRef',parsedRef, 'ref: ',ref)
     
     // return { props: { id, parsedRef } };
 
@@ -37,7 +36,6 @@ const AddProperty: FC<AddPropertyType> = memo(
 
   (props) => {
     // const {id} = props
-    console.log('this is the props from the add property page: ', props)
     return (
       <div>
         <AddPropertyProvider>

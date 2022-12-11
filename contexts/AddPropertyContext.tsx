@@ -54,7 +54,7 @@ const initialDetails: PropertyUploadContextType  = {
   yearBuilt: null,
   livingArea: 0,
   totalArea: 0,
-  totalFloorCount: undefined,
+  totalFloorCount: null,
   aydat: 0,
   buildingAge: null,
   id:  '',

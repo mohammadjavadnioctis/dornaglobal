@@ -11,9 +11,7 @@ interface MainMenuType {
 const MainMenu: FC<MainMenuType> = (props) => {
   const { ItemsContainerClassNames = "flex ", ItemsClassNames } = props;
   const { user, loading  } = useAuth();
-  // useEffect(()=>{
-  //   console.log('this is the user: ', user)
-  // },[])
+
   return (
     <ul className={`${ItemsContainerClassNames}`}>
       {mainMenuData.map((menuItem) => {

@@ -47,12 +47,7 @@ const LangSelect: FC = () => {
   const [lang, setLang] = useState<string>("en");
   const { classes } = useStyles();
   const router = useRouter()
-  // useEffect(()=>{
-  //   console.log('useEffect executed')
-  //   router.push(`${router.asPath}`, undefined, {locale: lang})
 
-  // },[lang])
-  
   const handleLangChange = (e: string) => {
       setLang((prevLang)=> e)
       router.push(`${router.asPath}`, undefined, {locale: e})

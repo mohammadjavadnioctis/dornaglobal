@@ -74,6 +74,9 @@ const UploadMediaStep: FC = memo(
 
               // TODO: find a way around this
               details.listingStatus = 'Under review'
+              if( details?.mediaUrls?.images){
+                details.mediaUrls.images = mediaLinks
+              }
               UploadProperty()
 
             }
