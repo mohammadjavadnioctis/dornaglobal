@@ -8,6 +8,8 @@ import { admin } from "~/utils/config/firebaseAdmin";
 import Profile from "~/components/pages/profile/Profile";
 import { UserDashboardProvider } from "~/contexts/UserDashboardContext";
 import AdProfile from "~/components/pages/AdProfile/AdProfile";
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { db } from "~/utils/config/firebase";
 
 
 
@@ -22,13 +24,23 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     // the user is authenticated!
     const { uid, email } = token;
-
+    console.log('this is the token: ', token)
     // FETCH STUFF HERE!! 🚀
-
-
+    const q = query(
+      collection(db, "users"),
+      where("email", "==", email)
+    );
+    
+    const querySnapshot = await getDocs(q);
+    const fetchedUserFromUsersList = querySnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    const parsedUser = JSON.parse(JSON.stringify(fetchedUserFromUsersList))
+    console.log('parseduser',parsedUser)
 
     return {
-      props: { message: `Your email is ${email} and your UID is ${uid}.` },
+      props: {userFromFireStore : parsedUser},
     };
   } catch (err) {
     // either the `token` cookie didn't exist
@@ -46,20 +58,22 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   }
 }
 
+export interface AdminProfileType {
+  userFromFireStore: any;
+}
 
-
-const profile: FC = memo(() => {
+const AdminProfile: FC<AdminProfileType> = memo((props) => {
+  const {userFromFireStore} = props
   const { user, logout, loading } = useAuth();
   const router = useRouter();
-  if(!user && !loading){
+  if(!userFromFireStore && !userFromFireStore?.isAdmin && !loading){
     router.push('/signin')
   }
   useEffect(()=>{
-    if(!user && !loading){
+    if(!userFromFireStore && !userFromFireStore?.isAdmin && !loading){
       router.push('/signin')
     }
-  },[user, loading])
-
+  },[userFromFireStore, loading])
 
   return (
     <div>
@@ -77,7 +91,7 @@ const profile: FC = memo(() => {
 });
 
 if (isDev) {
-  profile.displayName = "Profile";
+  AdminProfile.displayName = "Profile";
 }
 
-export default profile;
+export default AdminProfile;

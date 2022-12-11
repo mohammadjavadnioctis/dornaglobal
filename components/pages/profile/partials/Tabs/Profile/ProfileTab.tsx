@@ -9,33 +9,33 @@ import { isDev } from '~/utils/helpers'
 
 
 
+
+
+const ProfileTab: FC = memo(
+
+    () => {
+
+      const { logout, user } = useAuth();
+
 const userData: Record<string, any> = [
   {
     field: 'Name',
-    value: 'Example Name',
+    value: user?.displayName,
     Img: UserIcon
   },
   {
     field: 'Email',
-    value: 'Example@gmail.com',
+    value: user?.email,
     Img: IoMailOutline
   },
   {
     field: 'Phone Number',
-    value: '+123456789',
+    value: user?.phoneNumber,
     Img: BsTelephone
   },
 
 ]
 
-
-const ProfileTab: FC = memo(
-
-
-
-    () => {
-
-      const { logout } = useAuth();
 
       return (
         <div className='w-full h-full p-4'>
@@ -54,7 +54,7 @@ const ProfileTab: FC = memo(
               <Img className='w-7 h-7'/>
                <span className='ml-2 whitespace-nowrap'>{data.field}</span>
              </div>
-             <span className='xl:w-[400px]'>{data.value}</span>
+             <span className='xl:w-[400px]'>{data.value ?? 'not provided'} </span>
              <span>
              <FaRegEdit />
              </span>
