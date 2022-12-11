@@ -63,7 +63,7 @@ const userData: Record<string, any> = [
           }
           )
         }
-        <div onClick={() => {logout()}}>logout</div>
+        <div className='w-min px-4 py-3 mt-4 cursor-pointer border border-gray-400 rounded-lg float-right' onClick={() => {logout()}}>logout</div>
           </div>
         </div>
       )
