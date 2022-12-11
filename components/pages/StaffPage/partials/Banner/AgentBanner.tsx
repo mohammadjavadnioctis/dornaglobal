@@ -61,7 +61,7 @@ const AgentBanner: FC<AgentBannerProps> = memo((props) => {
       <div className="slider relative w-full h-screen">
         <UiImage
           id="bg"
-          src="https://firebasestorage.googleapis.com/v0/b/dorna-global.appspot.com/o/dev%2FdemoAgent06-05.jpg?alt=media&token=c8490c02-3c83-4515-8a29-7739c3428535"
+          src={agent?.img ?? 'https://firebasestorage.googleapis.com/v0/b/dorna-dev.appspot.com/o/no-image.png?alt=media&token=021927bf-ea0d-4cfc-8111-e1d7681b800c'}
           // src={`https://firebasestorage.googleapis.com/v0/b/dorna-global.appspot.com/o/SeekPng.com_world-map-png-image_2573292.png?alt=media&token=c8fd5965-2263-4d6f-9d68-a3b79105de28`}
           layout="fill"
           objectFit="cover"
