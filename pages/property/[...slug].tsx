@@ -13,28 +13,31 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       return slug;
     }
   })();
-  const fetchedProperty = await fetchProperty('eIeFFpKGfdlK7OVeIC9q', true) ;
+  const fetchedProperty = await fetchProperty(propertyId ?? '', true) ;
   const parsedFetchedProperty = await JSON.parse(JSON.stringify(fetchedProperty))
-  const fetcehdAgent = await JSON.parse(JSON.stringify(fetchAgent(parsedFetchedProperty?.agentId ?? "xpRbGNtDWVYGzBkran8g")))     ;
-  // const fetchSimilarProperties = await fetchProperties();
+  const agentId = (typeof parsedFetchedProperty?.agentId == 'string' &&  parsedFetchedProperty?.agentId.length > 0 ) ? parsedFetchedProperty?.agentId :  'xpRbGNtDWVYGzBkran8g'
+  const fetcehdAgent = await fetchAgent(agentId);
+  const parsedFetchedAgent = await JSON.parse(JSON.stringify(fetcehdAgent))
+  const fetchSimilarProperties = await fetchProperties();
   return {
     props: {
       property: parsedFetchedProperty,
-      // similarProperties: fetchSimilarProperties,
-      agent: fetcehdAgent,
+      similarProperties: fetchSimilarProperties,
+      agent: parsedFetchedAgent,
     },
   };
 };
 
 import React, { FC } from "react";
-import { AgentType, PropertyType } from "~/utils/types";
+import { AgentType, PropertyType, PropertyTypeV2 } from "~/utils/types";
 import Propertyslider from "~/components/pages/Property/partials/Propertyslider";
 import PropertyPage from "~/components/pages/Property/PropertyPage";
 import fetchAgent from "~/utils/helpers/firebase/fetchAgent";
 import fetchProperties from "~/utils/helpers/firebase/fetchProperties";
 
 interface PropertyPagesProps {
-  property: PropertyType;
+  // property: PropertyType;
+  property: PropertyTypeV2
   similarProperties: PropertyType[];
   agent: AgentType;
 }

@@ -9,15 +9,15 @@ import {
   SamplePropertyFeatures,
 } from "~/utils/data";
 import propertyDetails from "~/utils/data/SamplePropertyDetails";
-import { isDev } from "~/utils/helpers";
-import { AgentType, PropertyType } from "~/utils/types";
+import { camelCaseToSpaces, isDev, legitDetails } from "~/utils/helpers";
+import { AgentType, PropertyDetailsType, PropertyType, PropertyTypeV2 } from "~/utils/types";
 import FeaturedExclusives from "../Home/Partials/FeaturedExclusives/FeaturedExclusives";
 import Description from "./partials/Description/Description";
 import Propertyslider from "./partials/Propertyslider";
 import SumWithIcons from "./partials/SumWithIcons/SumWithIcons";
 
 interface PropertyPageType {
-  property: PropertyType;
+  property: PropertyTypeV2;
   agent: AgentType;
   similarProperties?: PropertyType[];
 }
@@ -28,21 +28,24 @@ interface ImagesType {
 const PropertyPage: FC<PropertyPageType> = memo((props) => {
   const { property, agent, similarProperties } = props;
   const {
-    photos,
-    bedrooms,
-    bathrooms,
+    mediaUrls,
+    noOfBathRooms,
+    noOfBedRooms,
     livingArea,
     yearBuilt,
-    propertyTypeDimension,
     description,
-    nearbyHomes,
+  
   } = property;
   console.log('this is the property: ', property)
   // get the highest res images from the photos
-  const images: (string | undefined)[] | undefined = photos?.map(
-    (photo) => photo?.mixedSources?.webp?.pop()?.url
-  );
+  // const images: (string | undefined)[] | undefined = photos?.map(
+  //   (photo) => photo?.mixedSources?.webp?.pop()?.url
+  // );
 
+
+const images: (string | undefined)[] | undefined = mediaUrls?.images?.map(
+    (photo) => photo
+  );
   const SumWithTextProps = {
     title: property.title ?? "Amazing Oceanfront Apartment",
     address: property.address,
@@ -51,13 +54,31 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
   };
 
   const SumWithIconsProps = [
-    { Bedrooms: bedrooms! },
-    { Bathrooms: bathrooms! },
-    { "Living Area": livingArea! },
+    { Bedrooms: noOfBedRooms },
+    { Bathrooms: noOfBathRooms },
+    { "Living Area": livingArea },
     { "Year Built": yearBuilt! },
-    { "Property Type": propertyTypeDimension! },
+    // { "Property Type": propertyTypeDimension! },
   ];
 
+  const propertyDetails = () => {
+    let details: PropertyDetailsType[] = []
+    Object.keys(property).forEach(function(key, index) {
+      console.log('this si the key :', key)
+      if(legitDetails.includes(key)){
+
+        // @ts-ignore
+        console.log('this si the value :', property[key] )
+         // @ts-ignore
+        const propertyValue = property[key]
+        details.push({detailName: key, detailTitle: camelCaseToSpaces(key), detailValue: propertyValue, id: key})
+    
+      }
+    });
+    console.log('this is details: ', details)
+    return details
+  } 
+  propertyDetails()
   return (
     <div>
       <div className="slider_container bg-white p-4  mb-4">
@@ -70,7 +91,8 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
       {/* The layout of the right sidebar and content */}
       <div className=" container relative min-h-[80vh] flex justify-between">
         <div className="w-[74%]">
-          <PropertyDetails details={samplePropertyDetailsData} />
+          {/* <PropertyDetails details={samplePropertyDetailsData} /> */}
+          <PropertyDetails details={propertyDetails()} />
           <Description description={description!} />
           <PropertyFeatures features={SamplePropertyFeatures} />
 
@@ -87,7 +109,7 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
             />
           )}
         </div>
-        <div className="w-1/4 bg-white rounded-xl h-[50vh] sticky top-0 right-0">
+        <div className="w-1/4 bg-white rounded-xl h-[50vh] sticky top-[90px] right-0">
           <SidebarAgentCard agent={agent} />
         </div>
       </div>

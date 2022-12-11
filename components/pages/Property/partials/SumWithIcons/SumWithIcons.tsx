@@ -17,7 +17,7 @@ const SumWithIcons: FC<SumWithIconsType> = memo((props) => {
           key={Object.keys(feature)[0]}
           FeatureTitle={Object.keys(feature)[0]}
           featureName={Object.keys(feature)[0]}
-          featureValue={Object.values(feature)[0]!}
+          featureValue={Object.values(feature)[0] ?? 'not provided' }
         />
       ))}
     </div>
