@@ -1,8 +1,10 @@
 import { FieldValue } from "firebase/firestore";
+import ChosenCategoryInfoType from "./ChosenCategoryType";
 
 interface PropertyTypeV2 {
     title: string,
-    description: string 
+    description: string,
+    chosenCategoryInfo?: ChosenCategoryInfoType,
     address?: {
         city?: string | undefined,
         district?: string | undefined,

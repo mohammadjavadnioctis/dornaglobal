@@ -19,7 +19,7 @@ const legitDetails = [
     heatingModelAlias,
     aidatAlias,
     depositAlias,
-        
+    'totalFloorCount',
 
     
 ]

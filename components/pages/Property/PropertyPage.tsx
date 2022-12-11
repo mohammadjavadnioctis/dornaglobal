@@ -36,7 +36,6 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
     description,
   
   } = property;
-  console.log('this is the property: ', property)
   // get the highest res images from the photos
   // const images: (string | undefined)[] | undefined = photos?.map(
   //   (photo) => photo?.mixedSources?.webp?.pop()?.url
@@ -65,17 +64,15 @@ const images: (string | undefined)[] | undefined = mediaUrls?.images?.map(
     let details: PropertyDetailsType[] = []
     Object.keys(property).forEach(function(key, index) {
       console.log('this si the key :', key)
+      // if the data is in appropriate to show, add it to the details list
       if(legitDetails.includes(key)){
-
-        // @ts-ignore
-        console.log('this si the value :', property[key] )
          // @ts-ignore
         const propertyValue = property[key]
-        details.push({detailName: key, detailTitle: camelCaseToSpaces(key), detailValue: propertyValue, id: key})
+        details.push({detailName: key, detailTitle: camelCaseToSpaces(key), detailValue: propertyValue ?? 'not specified', id: key})
     
       }
     });
-    console.log('this is details: ', details)
+    details = [...details, { detailName: 'Deal Type: ', detailTitle: 'Deal Type', detailValue: camelCaseToSpaces(property?.chosenCategoryInfo?.dealType!) ,id: 'Deal Type'  }]
     return details
   } 
   propertyDetails()
