@@ -81,7 +81,7 @@ const images: (string | undefined)[] | undefined = mediaUrls?.images?.map(
       <div className="slider_container bg-white p-4  mb-4">
         <SumWithText {...SumWithTextProps} />
         {!images && (
-          <div className="container border border-orange-400 flex space-x-10 items-start">
+          <div className="container border flex space-x-10 items-start">
 
             <img className="w-full max-w-[75%] max-h-[600px]" src="https://firebasestorage.googleapis.com/v0/b/dorna-dev.appspot.com/o/no-image.png?alt=media&token=021927bf-ea0d-4cfc-8111-e1d7681b800c" />
             <img className="w-full max-w-[25%] max-h-[600px]" src="https://firebasestorage.googleapis.com/v0/b/dorna-dev.appspot.com/o/no-image.png?alt=media&token=021927bf-ea0d-4cfc-8111-e1d7681b800c" />
