@@ -1,16 +1,18 @@
 import React, { FC, memo } from "react";
+import { useAdminDashboardContext } from "~/contexts/AdminDashboardContext";
 import { useUserDashboardContext } from "~/contexts/UserDashboardContext";
 import { isDev } from "~/utils/helpers";
 import { DashboardMenuItemsType } from "~/utils/types";
 
 interface DashBoardLeftSidebarPropsType {
   menu: DashboardMenuItemsType[];
+  isAdminDashboard?: boolean
 }
 
 const DashboardLeftSideBar: FC<DashBoardLeftSidebarPropsType> = memo(
   (props) => {
-    const { activeTab, setActiveTab } = useUserDashboardContext();
-    const { menu } = props;
+    const { menu, isAdminDashboard = false } = props;
+    const { activeTab, setActiveTab } = isAdminDashboard ? useAdminDashboardContext() : useUserDashboardContext();
     const handleChangeTab = (clickedItemHref: string) => {
       setActiveTab(clickedItemHref);
     };

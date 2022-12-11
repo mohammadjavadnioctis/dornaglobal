@@ -71,7 +71,7 @@ const adminDashboardMenu : DashboardMenuItemsType[] = [
   },
   {
     name: 'All Properties List',
-    href: 'propertiesList',
+    href: 'allPropertiesList',
     id: '2',
     Icon: BsHouse
   },
