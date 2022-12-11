@@ -4,20 +4,21 @@ import React, { FC, memo, useEffect } from "react";
 import { useAuth } from "~/contexts/AuthContext";
 import { isDev } from "~/utils/helpers";
 import nookies from 'nookies'
-import { admin } from "~/utils/config/firebaseAdmin"; 
+import { admin } from "~/utils/config/firebaseAdmin";
 import Profile from "~/components/pages/profile/Profile";
 import { UserDashboardProvider } from "~/contexts/UserDashboardContext";
 import AdProfile from "~/components/pages/AdProfile/AdProfile";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { db } from "~/utils/config/firebase";
+import { AdminDashboardProvider } from "~/contexts/AdminDashboardContext";
 
 
 
-export interface ProfileProps {}
+export interface ProfileProps { }
 
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-    
+
   try {
     const cookies = nookies.get(ctx);
     const token = await admin.auth().verifyIdToken(cookies.token);
@@ -26,21 +27,42 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const { uid, email } = token;
     console.log('this is the token: ', token)
     // FETCH STUFF HERE!! 🚀
+
+    // fetch current user
     const q = query(
       collection(db, "users"),
       where("email", "==", email)
     );
-    
+
     const querySnapshot = await getDocs(q);
-    const fetchedUserFromUsersList = querySnapshot.docs.map((doc) => ({
+    const fetchedUserFromUser = querySnapshot.docs.map((doc) => ({
       ...doc.data(),
       id: doc.id,
     }));
-    const parsedUser = JSON.parse(JSON.stringify(fetchedUserFromUsersList))
-    console.log('parseduser',parsedUser)
+    const parsedUser = JSON.parse(JSON.stringify(fetchedUserFromUser))
+    console.log('parseduser', parsedUser)
+
+    // fetch unvarified properties list
+    const uvarifiedPropertiesList = query(
+      collection(db, "testproperties"),
+      where("isVarified", "==", false)
+    );
+
+    const uvarifiedPropertiesListSnapShot = await getDocs(uvarifiedPropertiesList);
+    const fetchedUnvarifiedProperties = uvarifiedPropertiesListSnapShot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    const parsedUnvarifiedPropertiesList = JSON.parse(JSON.stringify(fetchedUnvarifiedProperties))
+    console.log('parsed unvarified properties list ', parsedUnvarifiedPropertiesList)
+
+
 
     return {
-      props: {userFromFireStore : parsedUser},
+      props: {
+        userFromFireStore: parsedUser,
+        unvarifiedPropertiedList: parsedUnvarifiedPropertiesList
+      },
     };
   } catch (err) {
     // either the `token` cookie didn't exist
@@ -60,20 +82,22 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
 export interface AdminProfileType {
   userFromFireStore: any;
+  unvarifiedPropertiedList: any;
 }
 
 const AdminProfile: FC<AdminProfileType> = memo((props) => {
-  const {userFromFireStore} = props
+  const { userFromFireStore, unvarifiedPropertiedList } = props
+  console.log('this is the unvarified list: ', unvarifiedPropertiedList)
   const { user, logout, loading } = useAuth();
   const router = useRouter();
-  if(!userFromFireStore && !userFromFireStore?.isAdmin && !loading){
+  if (!userFromFireStore && !userFromFireStore?.isAdmin && !loading) {
     router.push('/signin')
   }
-  useEffect(()=>{
-    if(!userFromFireStore && !userFromFireStore?.isAdmin && !loading){
+  useEffect(() => {
+    if (!userFromFireStore && !userFromFireStore?.isAdmin && !loading) {
       router.push('/signin')
     }
-  },[userFromFireStore, loading])
+  }, [userFromFireStore, loading])
 
   return (
     <div>
@@ -82,9 +106,9 @@ const AdminProfile: FC<AdminProfileType> = memo((props) => {
      <div> Heloo {user?.email} <span onClick={logout}>logout</span> </div>
       }
        */}
-      <UserDashboardProvider >
-        <AdProfile />
-      </UserDashboardProvider> 
+      <AdminDashboardProvider >
+        <AdProfile {...props}/>
+      </AdminDashboardProvider>
 
     </div>
   );

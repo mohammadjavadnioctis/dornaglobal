@@ -1,4 +1,5 @@
 import { BsHouse } from "react-icons/bs";
+import { MdOutlinePending } from "react-icons/md";
 import { FiMessageSquare } from "react-icons/fi";
 import UserIcon from "~/assets/icons/UserIcon";
 import { DashboardMenuItemsType } from "../types";
@@ -63,23 +64,23 @@ const userDashboardMenu : DashboardMenuItemsType[] = [
 
 const adminDashboardMenu : DashboardMenuItemsType[] = [
   {
-    name: 'Users List',
-    href: 'usersList',
-    id: '1',
-    Icon: UserIcon
-   
+    name: 'Pending Properties List',
+    href: 'pendingProperties',
+    id: '3',
+    Icon: MdOutlinePending
   },
   {
-    name: 'Properties List',
+    name: 'All Properties List',
     href: 'propertiesList',
     id: '2',
     Icon: BsHouse
   },
   {
-    name: 'Pending Properties List',
-    href: 'pendingProperties',
-    id: '3',
-    Icon: FiMessageSquare
+    name: 'Users List',
+    href: 'usersList',
+    id: '1',
+    Icon: UserIcon
+   
   },
   {
     name: 'Messages',
