@@ -16,7 +16,7 @@ const Header = memo(() => {
       <header
         className={` ${
           isHomePage ? "relative" : "relative bg-white"
-        }  z-10 w-full `}
+        }  z-[51] w-full `}
       >
         <TopBar />
       </header>
