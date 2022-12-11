@@ -1,4 +1,5 @@
 import React, {FC, memo} from 'react'
+import UiLink from '~/lib/UiLink'
 import { isDev } from '~/utils/helpers'
 import { PropertyUploadContextType } from '~/utils/types'
 
@@ -8,8 +9,9 @@ property: PropertyUploadContextType
 
 const PropertyRow: FC<PropertyRowType> = memo(
     (props) => {
-        const {property: {title, price, listingStatus}} = props
+        const {property: {title, price, listingStatus, id}} = props
       return (
+        <UiLink href={`/property/${id}`} >
         <div className='outer_container w-full px-3 py-5 border border-gray-200 rounded-lg bg-white'>
             <div className='inner_container w-full h-full flex items-center justify-between'>
                 <span className='truncate w-2/5'>{title}</span>
@@ -17,6 +19,7 @@ const PropertyRow: FC<PropertyRowType> = memo(
                 <span>{listingStatus}</span>
             </div>
         </div>
+        </UiLink >
       )
     }
 
