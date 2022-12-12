@@ -1,4 +1,4 @@
-import React, { FC, memo } from "react";
+import React, { FC, memo, useEffect, useState } from "react";
 import Divider from "~/components/Divider/Divider";
 import PropertyDetails from "~/components/PropertyDetails/PropertyDetails";
 import PropertyFeatures from "~/components/PrpertyFeatures/PropertyFeatures";
@@ -16,6 +16,9 @@ import Description from "./partials/Description/Description";
 import Propertyslider from "./partials/Propertyslider";
 import SumWithIcons from "./partials/SumWithIcons/SumWithIcons";
 import VarifyButton from "./partials/VarifyButton/VarifyButton";
+import { getStorage, ref, getDownloadURL, listAll } from "firebase/storage";
+import { storage } from "~/utils/config/firebase";
+
 
 interface PropertyPageType {
   property: PropertyTypeV2;
@@ -28,6 +31,7 @@ interface ImagesType {
 }
 const PropertyPage: FC<PropertyPageType> = memo((props) => {
   const { property, agent, similarProperties } = props;
+  const [images, setImages] = useState<string[]>([])
   const {
     mediaUrls,
     noOfBathRooms,
@@ -35,7 +39,7 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
     livingArea,
     yearBuilt,
     description,
-  
+    id
   } = property;
   console.log('this is the Property: ', property)
   // get the highest res images from the photos
@@ -44,9 +48,102 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
   // );
 
 
-const images: (string | undefined)[] | undefined = mediaUrls?.images?.map(
-    (photo) => photo
-  );
+const getTheDownLoadURL = (path: string) => {
+  getDownloadURL(ref(storage, path))
+  .then((url) => {
+    // `url` is the download URL for 'images/stars.jpg'
+    setImages(prevState => [...prevState, url])
+    // This can be downloaded directly:
+    // const xhr = new XMLHttpRequest();
+    // xhr.responseType = 'blob';
+    // xhr.onload = (event) => {
+    //   const blob = xhr.response;
+    // };
+    // xhr.open('GET', url);
+    // xhr.send();
+
+    // // Or inserted into an <img> element
+    // const img = document.getElementById('myimg');
+    // img?.setAttribute('src', url);
+  })
+  .catch((error) => {
+    // Handle any errors
+    console.log('error form the getTheDownLoadURL', error)
+  });
+}
+
+  const fetchList = async () => {
+    const listRef = ref(storage, `test_properties/${id}/`);
+
+    const listAllResponse = await listAll(listRef)
+    console.log('listAllResponse', listAllResponse)
+    const items = listAllResponse.items.map(item => {
+      // console.log('item. fulpath', item.fullPath)
+      getTheDownLoadURL(item.fullPath)
+    })
+    console.log('this is items',items)
+  //   await listAll(listRef)
+  // .then((res) => {
+  //   res.prefixes.forEach((folderRef) => {
+  //     // All the prefixes under listRef.
+  //     // You may call listAll() recursively on them.
+  //     console.log(' ths is folder ref',folderRef)
+  //   });
+  //   res.items.forEach((itemRef) => {
+  //     // All the items under listRef.
+  //   });
+  // }).catch((error) => {
+  //   // Uh-oh, an error occurred!
+  //   console.log('this is error', error)
+  // });
+
+  }
+
+  useEffect(()=> {
+   
+ fetchList()
+
+// Find all the prefixes and items.
+
+
+
+
+
+// const starsRef = ref(storage, `/test_properties/${id}/2b.jpg`);
+
+// // Get the download URL
+// getDownloadURL(starsRef)
+//   .then((url) => {
+//     // Insert url into an <img> tag to "download"
+//     console.log('this is the url', url)
+//   })
+//   .catch((error) => {
+//     // A full list of error codes is available at
+//     // https://firebase.google.com/docs/storage/web/handle-errors
+//     console.log(error)
+//     switch (error.code) {
+//       case 'storage/object-not-found':
+//         // File doesn't exist
+//         break;
+//       case 'storage/unauthorized':
+//         // User doesn't have permission to access the object
+//         break;
+//       case 'storage/canceled':
+//         // User canceled the upload
+//         break;
+
+//       // ...
+
+//       case 'storage/unknown':
+//         // Unknown error occurred, inspect the server response
+//         break;
+//     }
+//   });
+  },[])
+
+// const images: (string | undefined)[] | undefined = mediaUrls?.images?.map(
+//     (photo) => photo
+//   );
   console.log('this is images: ', images)
   const SumWithTextProps = {
     title: property.title ?? "Amazing Oceanfront Apartment",
