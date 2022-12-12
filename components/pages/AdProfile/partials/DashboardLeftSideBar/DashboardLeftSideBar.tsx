@@ -12,7 +12,7 @@ interface DashBoardLeftSidebarPropsType {
 const DashboardLeftSideBar: FC<DashBoardLeftSidebarPropsType> = memo(
   (props) => {
     const { menu, isAdminDashboard = false } = props;
-    const { activeTab, setActiveTab } = isAdminDashboard ? useAdminDashboardContext() : useUserDashboardContext();
+    const { activeTab, setActiveTab } =  useAdminDashboardContext();
     const handleChangeTab = (clickedItemHref: string) => {
       setActiveTab(clickedItemHref);
     };

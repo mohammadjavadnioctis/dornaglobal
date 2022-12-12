@@ -15,6 +15,7 @@ import FeaturedExclusives from "../Home/Partials/FeaturedExclusives/FeaturedExcl
 import Description from "./partials/Description/Description";
 import Propertyslider from "./partials/Propertyslider";
 import SumWithIcons from "./partials/SumWithIcons/SumWithIcons";
+import VarifyButton from "./partials/VarifyButton/VarifyButton";
 
 interface PropertyPageType {
   property: PropertyTypeV2;
@@ -78,6 +79,7 @@ const images: (string | undefined)[] | undefined = mediaUrls?.images?.map(
   propertyDetails()
   return (
     <div>
+      <VarifyButton />
       <div className="slider_container bg-white p-4  mb-4">
         <SumWithText {...SumWithTextProps} />
         {!images && (
