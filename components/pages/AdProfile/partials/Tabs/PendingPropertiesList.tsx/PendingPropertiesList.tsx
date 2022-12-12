@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React,{FC, memo} from 'react'
 import { isDev } from '~/utils/helpers'
 
@@ -11,7 +12,7 @@ interface PendingPropertiesList {
 const PendingPropertiesList: FC<PendingPropertiesList> = memo(
 
     (props) => {
-   
+        const router = useRouter()
         const { PropertiesList } = props
    
      return (
@@ -31,9 +32,9 @@ const PendingPropertiesList: FC<PendingPropertiesList> = memo(
            <tbody>
              {
                PropertiesList.map( (property: any) =>{
-                const {title, user: {email}, price} = property
+                const {title, user: {email}, price, id} = property
                   return (
-                    <tr>
+                    <tr onClick={() => router.push(`/property/${id}`)} className='hover:-translate-x-1 hover:-translate-y-1 transition-all cursor-pointer'>
                       <td className='text-sm p-3 dark:text-[#fff]'>{title}</td>
                       <td className='text-sm p-3 dark:text-[#fff]'>{email}</td>
                       <td className='text-sm p-3 dark:text-[#fff]'>₺{price}</td>
