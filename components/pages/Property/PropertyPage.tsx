@@ -37,6 +37,7 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
     description,
   
   } = property;
+  console.log('this is the Property: ', property)
   // get the highest res images from the photos
   // const images: (string | undefined)[] | undefined = photos?.map(
   //   (photo) => photo?.mixedSources?.webp?.pop()?.url
@@ -67,7 +68,7 @@ const images: (string | undefined)[] | undefined = mediaUrls?.images?.map(
     Object.keys(property).forEach(function(key, index) {
       // if the data is in appropriate to show, add it to the details list
       if(legitDetails.includes(key)){
-         // @ts-ignore
+        //  @ts-ignore
         const propertyValue = property[key]
         details.push({detailName: key, detailTitle: camelCaseToSpaces(key), detailValue: propertyValue ?? 'not specified', id: key})
     

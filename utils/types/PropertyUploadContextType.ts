@@ -30,7 +30,7 @@ interface PropertyUploadContextType {
         timestamp?: FieldValue;
         deposit?: number,
         listingStatus: 'Listing in progress' | 'Under review' | 'Listed' | 'sold',
-        mediaUrls?: {images: string[] | null, videos: string[] | null}
+        mediaUrls?: {images: string[] , videos: string[]}
     }
     
 

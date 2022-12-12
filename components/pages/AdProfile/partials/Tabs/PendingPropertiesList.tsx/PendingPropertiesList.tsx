@@ -34,7 +34,10 @@ const PendingPropertiesList: FC<PendingPropertiesList> = memo(
                PropertiesList.map( (property: any) =>{
                 const {title, user: {email}, price, id} = property
                   return (
-                    <tr onClick={() => router.push(`/property/${id}`)} className='hover:-translate-x-1 hover:-translate-y-1 transition-all cursor-pointer'>
+                    <tr 
+                    //  onClick={() => router.push(`/property/${id}`, {})}
+                     onClick={()=> window.open(`/property/${id}`, '_blank')}
+                    className='hover:-translate-x-1 hover:-translate-y-1 transition-all cursor-pointer'>
                       <td className='text-sm p-3 dark:text-[#fff]'>{title}</td>
                       <td className='text-sm p-3 dark:text-[#fff]'>{email}</td>
                       <td className='text-sm p-3 dark:text-[#fff]'>₺{price}</td>

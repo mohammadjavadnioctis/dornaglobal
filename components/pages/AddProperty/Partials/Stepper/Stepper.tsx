@@ -60,7 +60,8 @@ const Stepper = memo(() => {
         </UIStepper.Completed>
       </UIStepper>
 
-      <UIGroup position="center" mt="xl">
+
+      {/* <UIGroup position="center" mt="xl">
         <UIButton variant="default" onClick={prevStep}>
           Back
         </UIButton>
@@ -72,7 +73,7 @@ const Stepper = memo(() => {
         >
           Next step
         </UIButton>
-      </UIGroup>
+      </UIGroup> */}
     </div>
   );
 });

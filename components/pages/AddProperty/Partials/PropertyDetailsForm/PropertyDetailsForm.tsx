@@ -178,23 +178,23 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
           <div className="col-span-2 ">
             <PropertyDescriptionInput />
           </div>
-          {/* <PriceInput errorHandlingProp={{ ...formErrorHandling.getInputProps('price') }} /> */}
-          {/* <TitleDeedStatusinput errorHandlingProp={{ ...formErrorHandling.getInputProps('titleDeedStatus') }}/> */}
-          {/* <LivingAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('livingArea') }}/> */}
-          {/* <TotalAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalArea') }} /> */}
-          {/* <NoOfRoomsInput /> */}
-          {/* <NoOfBathroomsInput /> */}
-          {/* <FloorNoInput  errorHandlingProp={{ ...formErrorHandling.getInputProps('floor') }} /> */}
-          {/* <TotalNoOfFloorsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalFloorCount') }}/> */}
-          {/* <AydatInput errorHandlingProp={{ ...formErrorHandling.getInputProps('aydat') }}/> */}
-          {/* <BuildingAgeInput errorHandlingProp={{ ...formErrorHandling.getInputProps('buildingAge') }}/> */}
-          {
+          <PriceInput errorHandlingProp={{ ...formErrorHandling.getInputProps('price') }} /> 
+          <TitleDeedStatusinput errorHandlingProp={{ ...formErrorHandling.getInputProps('titleDeedStatus') }}/>
+          <LivingAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('livingArea') }}/>
+          <TotalAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalArea') }} />
+          <NoOfRoomsInput />
+          <NoOfBathroomsInput />
+          <FloorNoInput  errorHandlingProp={{ ...formErrorHandling.getInputProps('floor') }} />
+          <TotalNoOfFloorsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalFloorCount') }}/>
+          <AydatInput errorHandlingProp={{ ...formErrorHandling.getInputProps('aydat') }}/>
+           <BuildingAgeInput errorHandlingProp={{ ...formErrorHandling.getInputProps('buildingAge') }}/>
+          {/* {
 
             chosenCategoryInfo && chosenCategoryInfo?.formFields && chosenCategoryInfo?.formFields?.slice(0).map(field => {
               return renderFormInput(field)
             })
 
-          }
+          } */}
           <FurnishedInput />
           <BalconyInput />
         </div>

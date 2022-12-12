@@ -1,4 +1,4 @@
-import React, { FC, memo, useState } from 'react'
+import React, { FC, memo, useEffect, useState } from 'react'
 import { UIButton, UiDropzone, UIGroup, UiMantineImage, UiText } from '~/lib'
 import { isDev } from '~/utils/helpers'
 import { IconUpload, IconPhoto, IconX } from '@tabler/icons';
@@ -17,6 +17,7 @@ const UploadMediaStep: FC = memo(
     const { details, setDetails, nextStep, UploadProperty } = usePropertyContext()
     const [loading, setLoading] = useState(false)
     const [areFilesUploaded, setAreFilesUploaded] = useState(false)
+    const [mediaLinks, setMediaLinks] = useState<string[]>([])
     const handleFileCapture = (files: FileWithPath[]) => {
       console.log('files are: ', files)
       setFiles(files)
@@ -32,14 +33,15 @@ const UploadMediaStep: FC = memo(
 
     // const uploadTask = uploadBytesResumable(storageRef, file);
 
-
+    const promises:any = [];
     const handleFileUpload = () => {
-      const mediaLinks: string[] | null = []
+      // const mediaLinks: string[] | null = []
       if(!areFilesUploaded){
         files.map(file => {
           setLoading(true)
           const imageRef = ref(storage, `test_properties/${details.id}/${file.name}`)
           const uploadTask = uploadBytesResumable(imageRef, file);
+          promises.push(uploadTask);
           uploadTask.on('state_changed',
             (snapshot) => {
               // Observe state change events such as progress, pause, and resume
@@ -59,36 +61,71 @@ const UploadMediaStep: FC = memo(
               // Handle unsuccessful uploads
               console.log(error)
             },
-            () => {
+           async () => {
               // Handle successful uploads on complete
               // For instance, get the download URL: https://firebasestorage.googleapis.com/...
-              getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+             await getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
                 console.log('File available at', downloadURL);
-                mediaLinks.push(downloadURL)
+                // mediaLinks.push(downloadURL)
+                setMediaLinks(prevState => [...prevState, downloadURL])
               });
-                      setDetails(prevState => ({...prevState, mediaUrls:{videos: null, images: mediaLinks} }))
+              // setDetails(prevState => ({...prevState, mediaUrls:{videos: [], images: mediaLinks} }))
 
-              setLoading(false)
-              setAreFilesUploaded(true)
+              // setLoading(false)
+              // setAreFilesUploaded(true)
               // setDetails(prevState => ({...prevState, listingStatus: 'Under review'}))
 
-              // TODO: find a way around this
-              details.listingStatus = 'Under review'
-              if( details?.mediaUrls?.images){
-                details.mediaUrls.images = mediaLinks
-              }
-              UploadProperty()
-
+             
             }
           );
   
         })
-        return
+
+        Promise.all(promises)
+          .then(() => {
+            // alert('all imaegs uploaded')
+          details.listingStatus = 'Under review'
+          console.log('medialinks ', mediaLinks)
+          // details.mediaUrls!.images = mediaLinks
+          // setDetails(prevState => ({...prevState, mediaUrls: {videos: [], images:[...mediaLinks]}}))
+          console.log('details after changing medialinks ', details)
+          setAreFilesUploaded(true)
+          // UploadProperty()
+        })
+          .catch((err) => console.log('errors from Promeise All:', err))
+
+        // if(areFilesUploaded){
+        //    // TODO: find a way around this
+        //    details.listingStatus = 'Under review'
+        //    console.log('this is medialinks', mediaLinks)
+        //    details.mediaUrls!.images = mediaLinks
+        //   //  UploadProperty()
+        
+        // }
+        
       }
       if(areFilesUploaded){
         nextStep()
       }
     }
+
+
+    useEffect(() => {
+      console.log('areFilesUploaded: mediaLinks', mediaLinks)
+      setDetails(prevState => ({...prevState, mediaUrls:{videos: [], images: mediaLinks} }))
+      
+
+    } ,[mediaLinks])
+
+    useEffect(() => {
+      console.log('this is the promises: ', promises)
+      console.log('this is the details.mediaUrls')
+      // if(details.mediaUrls?.images.length == promises.length && areFilesUploaded){
+      if(areFilesUploaded){
+        UploadProperty()
+        nextStep()
+      }
+    } ,[areFilesUploaded, mediaLinks])
 
     const previews = files.map((file, index) => {
       const imageUrl = URL.createObjectURL(file);

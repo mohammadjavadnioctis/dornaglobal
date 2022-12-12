@@ -61,7 +61,7 @@ const initialDetails: PropertyUploadContextType  = {
   isVarified: false,
   deposit: 0,
   listingStatus: 'Listing in progress',
-  mediaUrls : {images: null, videos: null},
+  mediaUrls : {images: [], videos: []},
   timestamp: serverTimestamp()
 };
 
@@ -90,7 +90,7 @@ export const AddPropertyProvider: FC<
   const { user } = useAuth()
   const [details, setDetails] = useState<PropertyUploadContextType>(initialDetails);
   const [docRef, setDocRef] = useState<DocumentReference>()
-
+  
 
   const UploadProperty = async () => {
   const response = await setDoc(docRef as DocumentReference<DocumentData> , {...details, chosenCategoryInfo, user: {email: user?.email, uid: user?.uid}}) 
