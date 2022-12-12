@@ -15,7 +15,7 @@ import {
 import { getDatabase, ref, onValue, get, child} from "firebase/database";
 import { RTdatabase, db } from "~/utils/config/firebase";
 import { addDoc, doc, setDoc, collection, where, getDocs, query} from "firebase/firestore"; 
-import citiesData from '~/utils/data/districts.json'
+// import citiesData from '~/utils/data/districts.json'
 
 
 const ChooseCategory: FC = memo(() => {
@@ -56,7 +56,7 @@ const ChooseCategory: FC = memo(() => {
     //   country: "USA"
     // });
     // @ts-ignore
-    const slicedCitiesData = citiesData.slice(0, 20)
+    // const slicedCitiesData = citiesData.slice(0, 20)
 // @ts-ignore
     // citiesData.map((data: any) => {
     //   addDoc(collection(db, 'cities'), {
