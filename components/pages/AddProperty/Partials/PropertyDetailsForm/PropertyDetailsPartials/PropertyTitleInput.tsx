@@ -31,7 +31,6 @@ const PropertyTitleInput: FC<PropertyTitleInputType> = memo((props) => {
     if(title && typeof title == 'string') return false
     return true
   }
-  // console.log('this is the errorhandleing prop: ', {...props.ErrorHandlingProp})
   return (
     <div className={`${wrapperClassNames}`}>
       {" "}

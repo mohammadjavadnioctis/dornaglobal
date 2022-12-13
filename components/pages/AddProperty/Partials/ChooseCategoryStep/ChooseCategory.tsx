@@ -72,12 +72,10 @@ const ChooseCategory: FC = memo(() => {
     //         ...doc.data(),
     //         id: doc.id,
     //       }));
-    //   console.log('this is fetchedCity', data)
     // const data = querySnapshot.docs.map((doc) => ({
     //   ...doc.data(),
     //   id: doc.id,
     // }));
-    // console.log('retrieved data: ', data)
   //   addDoc(collection(db, 'cities'), {
   //     name: 'test name  ',
   //     type: 'bridge'
@@ -88,12 +86,9 @@ const ChooseCategory: FC = memo(() => {
 
   useEffect(() => {
     //     const dbRef = ref(getDatabase());
-    //     console.log('dataFetching: useeffect triggered: ' )
     // get(child(dbRef, '/')).then((snapshot) => {
     //   if (snapshot.exists()) {
-    //     console.log('dataFetching: this is data: snapshot ',snapshot.val());
     //   } else {
-    //     console.log("dataFetching: No data available");
     //   }
     // }).catch((error) => {
     //   console.error('dataFetching: this is error',error);
@@ -102,7 +97,6 @@ const ChooseCategory: FC = memo(() => {
       //   const dbref = ref(db);
       //   onValue(dbref, (snapshot) => {
       //     const data = snapshot.val();
-      //     console.log('dataFetching: data is :', data)
       //     setRTData(data)
       //   });
 
@@ -110,17 +104,10 @@ const ChooseCategory: FC = memo(() => {
 
       } ,[])
 
-      
     
-      // useEffect(() => {
-      //   console.log('dataFetching: rtData changed: ', rtData)
-      // } ,[
-      //   rtData
-      // ])
 
   const handleChooseDeal = (deal: DealType) => {
     const { dealName, formFields} = deal;
-    console.log('this is handle choosedeal: ', deal)
     setChosenCategoryInfo((prevState) => ({
       ...prevState,
       dealType: dealName,
@@ -131,7 +118,6 @@ const ChooseCategory: FC = memo(() => {
 
   const handleSelectPropertyType = (PropertyType: PropertySubCategoryType) => {
     const { propertyTypeName, formFields } = PropertyType;
-    console.log('handleSelectPropertyType: ', PropertyType)
     setChosenCategoryInfo((prevState) => ({
       ...prevState,
       PropertyType: propertyTypeName,

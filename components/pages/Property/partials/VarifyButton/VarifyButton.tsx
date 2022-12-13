@@ -17,7 +17,6 @@ const VarifyButton: FC = memo(
             })
           return () => {
             window.removeEventListener('scroll', () => {
-                console.log('the scroll event listener removed')
             })
           }
         }, [])

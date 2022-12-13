@@ -34,7 +34,6 @@ const SearchPage: FC = memo(() => {
   //     ...doc.data(),
   //     id: doc.id,
   //   }));
-  //   console.log('this is the fetchedfilters : ',data )
   // };
 
   // fetchBasedOnFilters();
@@ -53,7 +52,6 @@ const SearchPage: FC = memo(() => {
     //     ...doc.data(),
     //     id: doc.id,
     //   }));
-    //   console.log("this is data :", data);
     // }
   
   return (

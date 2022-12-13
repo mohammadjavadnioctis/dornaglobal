@@ -41,7 +41,6 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
     description,
     id
   } = property;
-  console.log('this is the Property: ', property)
   // get the highest res images from the photos
   // const images: (string | undefined)[] | undefined = photos?.map(
   //   (photo) => photo?.mixedSources?.webp?.pop()?.url
@@ -76,25 +75,20 @@ const getTheDownLoadURL = (path: string) => {
     const listRef = ref(storage, `test_properties/${id}/`);
 
     const listAllResponse = await listAll(listRef)
-    console.log('listAllResponse', listAllResponse)
     const items = listAllResponse.items.map(item => {
-      // console.log('item. fulpath', item.fullPath)
       getTheDownLoadURL(item.fullPath)
     })
-    console.log('this is items',items)
   //   await listAll(listRef)
   // .then((res) => {
   //   res.prefixes.forEach((folderRef) => {
   //     // All the prefixes under listRef.
   //     // You may call listAll() recursively on them.
-  //     console.log(' ths is folder ref',folderRef)
   //   });
   //   res.items.forEach((itemRef) => {
   //     // All the items under listRef.
   //   });
   // }).catch((error) => {
   //   // Uh-oh, an error occurred!
-  //   console.log('this is error', error)
   // });
 
   }
@@ -115,12 +109,10 @@ const getTheDownLoadURL = (path: string) => {
 // getDownloadURL(starsRef)
 //   .then((url) => {
 //     // Insert url into an <img> tag to "download"
-//     console.log('this is the url', url)
 //   })
 //   .catch((error) => {
 //     // A full list of error codes is available at
 //     // https://firebase.google.com/docs/storage/web/handle-errors
-//     console.log(error)
 //     switch (error.code) {
 //       case 'storage/object-not-found':
 //         // File doesn't exist
@@ -144,7 +136,6 @@ const getTheDownLoadURL = (path: string) => {
 // const images: (string | undefined)[] | undefined = mediaUrls?.images?.map(
 //     (photo) => photo
 //   );
-  console.log('this is images: ', images)
   const SumWithTextProps = {
     title: property.title ?? "Amazing Oceanfront Apartment",
     address: property.address,

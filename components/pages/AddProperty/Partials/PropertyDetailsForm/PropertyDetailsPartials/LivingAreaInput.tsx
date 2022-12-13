@@ -15,7 +15,6 @@ const LivingAreaInput: FC<LivingAreaType> = memo((props) => {
 
   const {details: {livingArea}, setDetails} = usePropertyContext()
     const handleChange = (event: number | undefined) => {
-    console.log('the living area input: ', event)
       setDetails(prevState => ({...prevState , livingArea: event }  ))
     }
 

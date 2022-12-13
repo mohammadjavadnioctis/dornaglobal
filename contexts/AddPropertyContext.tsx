@@ -94,8 +94,7 @@ export const AddPropertyProvider: FC<
 
   const UploadProperty = async () => {
   const response = await setDoc(docRef as DocumentReference<DocumentData> , {...details, chosenCategoryInfo, user: {email: user?.email, uid: user?.uid}}) 
-  console.log('this is response: ', response)
-  alert('property uploaded')
+  // alert('property uploaded')
 
 }
 
@@ -149,7 +148,6 @@ export const AddPropertyProvider: FC<
   useEffect(()=>{
     let ref = doc(collection(db, "testproperties"));
     // let parsedRef =  JSON.stringify(ref)
-    console.log('ref: ',ref)
     let id = ref?.id
     setDocRef(ref)
     setDetails(prevDetails => ({...prevDetails, id}))
@@ -157,7 +155,6 @@ export const AddPropertyProvider: FC<
 
 
 useEffect(() => {
-  console.log('details from context changed: ', details)
 } ,[details])
 
   const value: any = useMemo(

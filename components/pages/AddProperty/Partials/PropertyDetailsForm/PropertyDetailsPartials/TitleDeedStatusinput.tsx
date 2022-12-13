@@ -13,7 +13,6 @@ const TitleDeedStatusinput:FC<TitleDeedStatusinputType> = (props) => {
   const {errorHandlingProp} = props
     // const [titleDeedStatus, setTitleDeedStatus] = useState('');
     // const handleSelect = (event: any) => {
-    //     console.log(event)
     // }
 
     const {details: {titleDeedStatus}, setDetails} = usePropertyContext()

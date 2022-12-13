@@ -107,14 +107,12 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
 
   // const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
   //   e.preventDefault()
-  //   console.log('form submitted ')
   //   UploadProperty()
 
   // }
   const handleSubmit = (e: typeof formErrorHandling.values) => {
     // e.preventDefault()
 
-    console.log('form handleSubmit: ', e)
     // UploadProperty()
     // @ts-ignore
     setDetails(prevState => ({ ...prevState, ...e }))
@@ -122,8 +120,6 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
         // UploadProperty()
 
   }
-
-  console.log('this is the chosen categoryi info:: ', chosenCategoryInfo)
 
   const renderFormInput = (inputName: string) => {
     if (typeof inputName == 'string') {

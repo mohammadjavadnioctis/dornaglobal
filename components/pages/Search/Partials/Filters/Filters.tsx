@@ -11,7 +11,6 @@ const Filters: FC = memo(() => {
   const {filters, setFilters, fetchBasedOnFilters}  =  useSearchProperties()
   
   const handleFilterchange = (name: string, e: any) => {
-    // console.log("this is the event", e, name);
     // TODO : refactor this part
     switch (name) {
       case "district":
@@ -39,13 +38,8 @@ const Filters: FC = memo(() => {
 
   const handleFiltersSubmit = (e:  React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    console.log('here is the filters  : ',filters )
     fetchBasedOnFilters()
   }
-
-  useEffect(() => {
-    // console.log("filters changed: ", filters);
-  }, [filters]);
 
   return (
     <div>

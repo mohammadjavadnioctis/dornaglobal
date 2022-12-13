@@ -15,7 +15,6 @@ interface StaffPageType {
 
 const StaffPage: NextPage<StaffPageType> = memo((props) => {
   const { properties, staff } = props;
-  console.log('this is props: ', props)
   return (
     <div>
       <AgentBaner agent={staff} />

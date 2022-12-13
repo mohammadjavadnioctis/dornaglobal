@@ -19,7 +19,6 @@ const UploadMediaStep: FC = memo(
     const [areFilesUploaded, setAreFilesUploaded] = useState(false)
     const [mediaLinks, setMediaLinks] = useState<string[]>([])
     const handleFileCapture = (files: FileWithPath[]) => {
-      console.log('files are: ', files)
       setFiles(files)
     }
     // const handleFileUpload = () => {
@@ -85,10 +84,8 @@ const UploadMediaStep: FC = memo(
           .then(() => {
             // alert('all imaegs uploaded')
           details.listingStatus = 'Under review'
-          console.log('medialinks ', mediaLinks)
           // details.mediaUrls!.images = mediaLinks
           // setDetails(prevState => ({...prevState, mediaUrls: {videos: [], images:[...mediaLinks]}}))
-          console.log('details after changing medialinks ', details)
           setAreFilesUploaded(true)
           // UploadProperty()
         })
@@ -97,7 +94,6 @@ const UploadMediaStep: FC = memo(
         // if(areFilesUploaded){
         //    // TODO: find a way around this
         //    details.listingStatus = 'Under review'
-        //    console.log('this is medialinks', mediaLinks)
         //    details.mediaUrls!.images = mediaLinks
         //   //  UploadProperty()
         
@@ -111,15 +107,12 @@ const UploadMediaStep: FC = memo(
 
 
     useEffect(() => {
-      console.log('areFilesUploaded: mediaLinks', mediaLinks)
       setDetails(prevState => ({...prevState, mediaUrls:{videos: [], images: mediaLinks} }))
       
 
     } ,[mediaLinks])
 
     useEffect(() => {
-      console.log('this is the promises: ', promises)
-      console.log('this is the details.mediaUrls')
       // if(details.mediaUrls?.images.length == promises.length && areFilesUploaded){
       if(areFilesUploaded){
         UploadProperty()
