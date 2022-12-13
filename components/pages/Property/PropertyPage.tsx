@@ -18,6 +18,7 @@ import SumWithIcons from "./partials/SumWithIcons/SumWithIcons";
 import VarifyButton from "./partials/VarifyButton/VarifyButton";
 import { getStorage, ref, getDownloadURL, listAll } from "firebase/storage";
 import { storage } from "~/utils/config/firebase";
+import { useAuth } from "~/contexts/AuthContext";
 
 
 interface PropertyPageType {
@@ -41,6 +42,7 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
     description,
     id
   } = property;
+  const {userFromFirebase} = useAuth()
   // get the highest res images from the photos
   // const images: (string | undefined)[] | undefined = photos?.map(
   //   (photo) => photo?.mixedSources?.webp?.pop()?.url
@@ -168,7 +170,9 @@ const getTheDownLoadURL = (path: string) => {
   propertyDetails()
   return (
     <div>
-      <VarifyButton />
+      {/* @ts-ignore */}
+      {userFromFirebase?.isAdmin && <VarifyButton />}
+      
       <div className="slider_container bg-white p-4  mb-4">
         <SumWithText {...SumWithTextProps} />
         {!images && (

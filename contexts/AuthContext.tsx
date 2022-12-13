@@ -4,12 +4,15 @@ import {
   User,
   signOut,
 } from "firebase/auth";
+import { getDocs, query, where, collection } from "firebase/firestore";
 import nookies from "nookies";
 import { createContext, useEffect, useState, useContext } from "react";
-import { auth } from "~/utils/config/firebase";
+import { auth, db } from "~/utils/config/firebase";
+import isObjectEmpty from "~/utils/helpers/isObjectEmpty";
 
 interface AuthContextType {
   user: User | null;
+  userFromFirebase: User | null;
   signIn: (email: string, password: string) => void;
   signUp: (email: string, password: string) => void;
   logout: () => void;
@@ -21,7 +24,8 @@ const AuthContext = createContext<AuthContextType>({
   signIn: () => null,
   signUp: () => null,
   logout: () => null,
-  loading: true
+  loading: true,
+  userFromFirebase: null
 });
 
 export const useAuth = () => {
@@ -30,6 +34,7 @@ export const useAuth = () => {
 
 export function AuthProvider({ children }: any) {
   const [user, setUser] = useState<User | null>(null);
+  const [ userFromFirebase, setUserFromFirebase ] = useState(null)
   const [loading, setLoading] = useState(true);
 
   const signUp = (email: string, password: string) => {
@@ -39,6 +44,38 @@ export function AuthProvider({ children }: any) {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+
+  const fetchUserFromFirestore = async () => {
+    const q = query(
+      collection(db, "users"),
+      
+      where("email", "==", user?.email),
+      // where("pageViewCount", "==", 140)
+    );
+
+    const querySnapshot = await getDocs(q);
+
+    const data = querySnapshot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    // @ts-ignore
+    setUserFromFirebase(data[0] as User);
+
+  };
+  
+
+  useEffect(() => {
+    console.log('user is : ', user)
+    if(user && !isObjectEmpty(user)){
+      fetchUserFromFirestore()
+    }
+
+  } ,[user])
+
+  useEffect(() => {
+    console.log('userFromFirebase', userFromFirebase)
+  } ,[userFromFirebase])
   // TODO: remove nookie token on logout
 
   const logout = async () => {
@@ -80,7 +117,7 @@ export function AuthProvider({ children }: any) {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user, signIn, signUp, logout, loading }}>
+    <AuthContext.Provider value={{ user, signIn, signUp, logout, loading, userFromFirebase }}>
       {children}
     </AuthContext.Provider>
   );

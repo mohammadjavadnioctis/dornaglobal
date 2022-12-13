@@ -1,9 +1,13 @@
 import React, { FC, memo, useEffect, useState } from 'react'
+import { useAuth } from '~/contexts/AuthContext'
 import { UiButton } from '~/lib'
 import isDev from '~/utils/helpers/isDev'
 
 const VarifyButton: FC = memo(
     () => {
+
+
+       
         const [isScrolled, setIsScrolled] = useState(false)
 
         useEffect(() => {
@@ -29,15 +33,27 @@ const VarifyButton: FC = memo(
                <span className='text-red-500 text-xl'>
                  This property is not varified yet
                 </span>
-                <UiButton
-                    variant="filled"
-                    size="lg"
-                    color="#E9C46A"
-                    uppercase
-                    className="bg-accent hover:bg-accent-600 transition-all "
-                >
-                    Varify this property
-                </UiButton>
+                <div className='flex space-x-8'>
+
+                    <UiButton
+                        variant="filled"
+                        size="lg"
+                        color="#E9C46A"
+                        uppercase
+                        className="transition-all text-accent-600 border-accent-600 hover:bg-accent-600 hover:text-white"
+                    >
+                    See user's info
+                    </UiButton>
+                    <UiButton
+                        variant="filled"
+                        size="lg"
+                        color="#E9C46A"
+                        uppercase
+                        className="bg-accent hover:bg-accent-600 transition-all "
+                    >
+                        Varify this property
+                    </UiButton>
+                </div>
                 </div>
             </div>
         )
