@@ -85,11 +85,11 @@ const AdminProfile: FC<AdminProfileType> = memo((props) => {
   const { userFromFireStore, unvarifiedPropertiedList } = props
   const { user, logout, loading } = useAuth();
   const router = useRouter();
-  if (!userFromFireStore && !userFromFireStore?.isAdmin && !loading) {
+  if (userFromFireStore && !userFromFireStore?.isAdmin && !loading) {
     router.push('/signin')
   }
   useEffect(() => {
-    if (!userFromFireStore && !userFromFireStore?.isAdmin && !loading) {
+    if (userFromFireStore && !userFromFireStore?.isAdmin && !loading) {
       router.push('/signin')
     }
   }, [userFromFireStore, loading])
@@ -101,9 +101,17 @@ const AdminProfile: FC<AdminProfileType> = memo((props) => {
      <div> Heloo {user?.email} <span onClick={logout}>logout</span> </div>
       }
        */}
-      <AdminDashboardProvider >
+       { loading || (userFromFireStore && userFromFireStore?.isAdmin && !loading && (
+        <AdminDashboardProvider >
         <AdProfile {...props}/>
       </AdminDashboardProvider>
+       )
+       )
+        
+
+       }
+
+
 
     </div>
   );
