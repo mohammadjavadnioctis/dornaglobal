@@ -85,11 +85,12 @@ const AdminProfile: FC<AdminProfileType> = memo((props) => {
   const { userFromFireStore, unvarifiedPropertiedList } = props
   const { user, logout, loading } = useAuth();
   const router = useRouter();
-  if (userFromFireStore && !userFromFireStore?.isAdmin && !loading) {
-    router.push('/signin')
-  }
+  // if (userFromFireStore && !userFromFireStore?.isAdmin && !loading) {
+  //   router.push('/signin')
+  // }
   useEffect(() => {
-    if (userFromFireStore && !userFromFireStore?.isAdmin && !loading) {
+    console.log('userFromFireStore: on ad_x_dash', userFromFireStore)
+    if (userFromFireStore && !userFromFireStore[0]?.isAdmin && !loading) {
       router.push('/signin')
     }
   }, [userFromFireStore, loading])
@@ -101,12 +102,12 @@ const AdminProfile: FC<AdminProfileType> = memo((props) => {
      <div> Heloo {user?.email} <span onClick={logout}>logout</span> </div>
       }
        */}
-       { loading || (userFromFireStore && userFromFireStore?.isAdmin && !loading && (
+       {userFromFireStore && userFromFireStore[0]?.isAdmin && !loading && (
         <AdminDashboardProvider >
         <AdProfile {...props}/>
       </AdminDashboardProvider>
        )
-       )
+       
         
 
        }
