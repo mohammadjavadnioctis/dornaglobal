@@ -17,8 +17,11 @@ import Propertyslider from "./partials/Propertyslider";
 import SumWithIcons from "./partials/SumWithIcons/SumWithIcons";
 import VarifyButton from "./partials/VarifyButton/VarifyButton";
 import { getStorage, ref, getDownloadURL, listAll } from "firebase/storage";
-import { storage } from "~/utils/config/firebase";
+import { storage, db } from "~/utils/config/firebase";
 import { useAuth } from "~/contexts/AuthContext";
+import { getDocs, query, collection } from "firebase/firestore";
+import { User } from "firebase/auth";
+import fetchUser from "~/utils/helpers/firebase/fetchuser";
 
 
 interface PropertyPageType {
@@ -43,11 +46,32 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
     id
   } = property;
   const {userFromFirebase} = useAuth()
+  const [propertyOwner, setPropertyOwner] = useState<User | null>(null)
   // get the highest res images from the photos
   // const images: (string | undefined)[] | undefined = photos?.map(
   //   (photo) => photo?.mixedSources?.webp?.pop()?.url
   // );
 
+  
+
+useEffect(() => {
+  console.log('this is property: ', property)
+} ,
+[property])
+
+const fetchUserFromFirestore = async () => {
+  
+  const owner = await fetchUser(property?.user?.uid)
+  console.log('fetched user is : ', owner)
+  // @ts-ignore
+  setPropertyOwner(owner);
+
+};
+
+useEffect(() => {
+  console.log('property Owner: ', propertyOwner)
+} ,
+[propertyOwner])
 
 const getTheDownLoadURL = (path: string) => {
   getDownloadURL(ref(storage, path))
@@ -98,7 +122,7 @@ const getTheDownLoadURL = (path: string) => {
   useEffect(()=> {
    
  fetchList()
-
+fetchUserFromFirestore()
 // Find all the prefixes and items.
 
 
@@ -171,7 +195,7 @@ const getTheDownLoadURL = (path: string) => {
   return (
     <div>
       {/* @ts-ignore */}
-      {userFromFirebase?.isAdmin && <VarifyButton />}
+      {userFromFirebase?.isAdmin && <VarifyButton user={propertyOwner} />}
       
       <div className="slider_container bg-white p-4  mb-4">
         <SumWithText {...SumWithTextProps} />

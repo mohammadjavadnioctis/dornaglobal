@@ -1,7 +1,9 @@
+import { User } from "firebase/auth";
 import { FieldValue } from "firebase/firestore";
 import ChosenCategoryInfoType from "./ChosenCategoryType";
 
 interface PropertyTypeV2 {
+    user: User;
     title: string,
     description: string,
     chosenCategoryInfo?: ChosenCategoryInfoType,
@@ -32,7 +34,9 @@ interface PropertyTypeV2 {
     timestamp?: FieldValue;
     deposit?: number,
     listingStatus: 'Listing in progress' | 'Under review' | 'Listed' | 'sold',
-    mediaUrls?: {images: string[] | null, videos: string[] | null}
+    mediaUrls?: {images: string[] | null, videos: string[] | null,
+   
+    }
 }
 
 export default PropertyTypeV2

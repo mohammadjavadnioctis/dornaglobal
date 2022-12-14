@@ -1,13 +1,19 @@
+import { User } from 'firebase/auth'
 import React, { FC, memo, useEffect, useState } from 'react'
 import { useAuth } from '~/contexts/AuthContext'
 import { UiButton } from '~/lib'
 import isDev from '~/utils/helpers/isDev'
 import ContactUserModal from '../ContactUserModal.tsx/ContactUserModal'
 
-const VarifyButton: FC = memo(
-    () => {
 
+interface VarifyButtonType {
+    user?: User
+}
 
+const VarifyButton: FC<VarifyButtonType> = memo(
+    (props) => {
+
+        const {user} = props
         const [opened, setOpened] = useState(false)
         const [isScrolled, setIsScrolled] = useState(false)
         const handleOpenModal = () => {
@@ -61,7 +67,7 @@ const VarifyButton: FC = memo(
                     >
                         Varify this property
                     </UiButton>
-                    <ContactUserModal opened={opened} setOpened={setOpened}/>
+                    <ContactUserModal opened={opened} setOpened={setOpened} user={user}/>
                 </div>
                 </div>
             </div>
