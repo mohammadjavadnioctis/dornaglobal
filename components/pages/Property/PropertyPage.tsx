@@ -194,7 +194,7 @@ fetchUserFromFirestore()
   return (
     <div>
       {/* @ts-ignore */}
-      <VarifyButton user={propertyOwner} />
+      <VarifyButton user={propertyOwner} property={property}/>
       
       <div className="slider_container bg-white p-4  mb-4">
         <SumWithText {...SumWithTextProps} />

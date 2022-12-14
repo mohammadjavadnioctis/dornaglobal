@@ -9,10 +9,11 @@ import nookies from "nookies";
 import { createContext, useEffect, useState, useContext } from "react";
 import { auth, db } from "~/utils/config/firebase";
 import isObjectEmpty from "~/utils/helpers/isObjectEmpty";
+import { UserType } from "~/utils/types";
 
 interface AuthContextType {
   user: User | null;
-  userFromFirebase: User | null;
+  userFromFirebase: UserType | null;
   signIn: (email: string, password: string) => void;
   signUp: (email: string, password: string) => void;
   logout: () => void;

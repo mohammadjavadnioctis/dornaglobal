@@ -11,3 +11,4 @@ export type { default as FiltersType } from "./FiltersType";
 export type { default as ChosenCategoryInfoType } from "./ChosenCategoryType";
 export type { default as PropertyUploadContextType } from "./PropertyUploadContextType";
 export type { default as PropertyTypeV2 } from "./PropertyV2";
+export type { default as UserType } from "./UserType";

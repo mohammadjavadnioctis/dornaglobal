@@ -1,29 +1,53 @@
 import { User } from 'firebase/auth'
+import { doc, DocumentData, DocumentReference, setDoc, updateDoc } from 'firebase/firestore'
 import React, { FC, memo, useEffect, useState } from 'react'
 import { useAuth } from '~/contexts/AuthContext'
 import { UiButton } from '~/lib'
+import { db } from '~/utils/config/firebase'
 import isDev from '~/utils/helpers/isDev'
+import { PropertyTypeV2 } from '~/utils/types'
 import ContactUserModal from '../ContactUserModal.tsx/ContactUserModal'
 
 
 interface VarifyButtonType {
-    user?: User
+    user?: User,
+    property?: PropertyTypeV2
 }
 
 const VarifyButton: FC<VarifyButtonType> = memo(
     (props) => {
 
-        const {user: owner} = props
+        const {user: owner, property} = props
+        console.log('this is property form varifyButton', property)
+        console.log('this is props for varify button: ', props)
         const {userFromFirebase : currentUser} = useAuth()
-
+        const [loading, setLoading] = useState(false)
         const [opened, setOpened] = useState(false)
         const [isScrolled, setIsScrolled] = useState(false)
-        const handleOpenModal = () => {
+
+
+        const handleOpenModal = async () => {
             setOpened(prevState => !prevState)
         }       
         
         
-        
+        const handleVarifyProperty = async () => {
+            if(currentUser && currentUser?.isAdmin){
+                try{
+                    setLoading(true)
+                    const propertyRef = doc(db, `testproperties/${property?.id}`);
+                    const response = await updateDoc(propertyRef, {
+                        isVarifed: true,
+                        varifiedBy: currentUser
+                    })
+                   
+                    setLoading(false)
+
+                } catch (err) {
+                    console.log(err) 
+                }
+            }
+        }
         
         useEffect(() => {
             window.addEventListener('scroll', () => {
@@ -64,11 +88,13 @@ const VarifyButton: FC<VarifyButtonType> = memo(
                     See user's info
                     </UiButton>
                     <UiButton
+                    onClick={handleVarifyProperty}
                         variant="filled"
                         size="lg"
                         color="#E9C46A"
                         uppercase
                         className="bg-accent hover:bg-accent-600 transition-all "
+                        loading={loading}
                     >
                         Varify this property
                     </UiButton>
