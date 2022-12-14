@@ -13,7 +13,9 @@ interface VarifyButtonType {
 const VarifyButton: FC<VarifyButtonType> = memo(
     (props) => {
 
-        const {user} = props
+        const {user: owner} = props
+        const {userFromFirebase : currentUser} = useAuth()
+
         const [opened, setOpened] = useState(false)
         const [isScrolled, setIsScrolled] = useState(false)
         const handleOpenModal = () => {
@@ -46,7 +48,10 @@ const VarifyButton: FC<VarifyButtonType> = memo(
                <span className='text-red-500 text-xl'>
                  This property is not varified yet
                 </span>
-                <div className='flex space-x-8'>
+            {
+                // @ts-ignore
+                currentUser && currentUser.isAdmin && (
+                    <div className='flex space-x-8'>
 
                     <UiButton
                         variant="filled"
@@ -67,8 +72,11 @@ const VarifyButton: FC<VarifyButtonType> = memo(
                     >
                         Varify this property
                     </UiButton>
-                    <ContactUserModal opened={opened} setOpened={setOpened} user={user}/>
+                    <ContactUserModal opened={opened} setOpened={setOpened} user={owner}/>
                 </div>
+                )    
+            }
+               
                 </div>
             </div>
         )

@@ -45,7 +45,6 @@ const PropertyPage: FC<PropertyPageType> = memo((props) => {
     description,
     id
   } = property;
-  const {userFromFirebase} = useAuth()
   const [propertyOwner, setPropertyOwner] = useState<User | null>(null)
   // get the highest res images from the photos
   // const images: (string | undefined)[] | undefined = photos?.map(
@@ -195,7 +194,7 @@ fetchUserFromFirestore()
   return (
     <div>
       {/* @ts-ignore */}
-      {userFromFirebase?.isAdmin && <VarifyButton user={propertyOwner} />}
+      <VarifyButton user={propertyOwner} />
       
       <div className="slider_container bg-white p-4  mb-4">
         <SumWithText {...SumWithTextProps} />
