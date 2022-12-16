@@ -1,9 +1,12 @@
 import { memoryUsage } from "process";
 import React, { FC, memo } from "react";
+import { useAuth } from "~/contexts/AuthContext";
 import UiImage from "~/lib/Image";
 import { isDev } from "~/utils/helpers";
 
 const ProfileHero: FC = memo(() => {
+  const { userFromFirebase } = useAuth()
+  
   return (
     <div className="relative">
       <div className="image_container relative h-52 w-full border border-orange-400">
@@ -18,8 +21,8 @@ const ProfileHero: FC = memo(() => {
       <div className="contents_ absolute w-full h-full top-0 left-0 flex items-end pb-7 bg-black bg-opacity-[0.5] z-10 text-white">
         <div className="info_container container !my-0 w-full flex justify-between">
           <div className="flex flex-col items-center justify-center">
-            <h2 className="text-2xl font-bold">Test Admin</h2>
-            <h3>test@gmail.com</h3>
+            <h2 className="text-2xl font-bold">{userFromFirebase?.displayName ?? 'name is not provided'}</h2>
+            <h3>{userFromFirebase?.email ?? 'email is not provided'}</h3>
           </div>
           <div className="flex flex-col items-center justify-center">
             <h3 className="text-2xl font-bold">100</h3>

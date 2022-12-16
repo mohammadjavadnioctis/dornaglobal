@@ -38,7 +38,8 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
     : property.hiResImageLink;
   return (
     <UiLink
-                  href={`/property/${property.id}`}
+                  // href={`/property/${property.id}`}
+                  href={'#'}
                   className="h-full relative"
                 > 
     <div className="group hover:shadow-lg transition-shadow">

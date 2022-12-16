@@ -1,20 +1,15 @@
 import React, { FC, memo, useEffect, useState } from "react";
 import { BiChevronRight } from "react-icons/bi";
 import { IoCheckmarkCircleOutline } from "react-icons/io5";
-import { AddPropertyContext, usePropertyContext } from "~/contexts/AddPropertyContext";
+import {usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UIButton } from "~/lib";
 import ChooseCategorySteps from "~/utils/data/ChoseCategorySteps";
 import { isDev } from "~/utils/helpers";
 import {
-  CategoryStepsType,
-  ChosenCategoryInfoType,
   ChosenPropertyType,
   DealType,
   PropertySubCategoryType,
 } from "~/utils/types";
-import { getDatabase, ref, onValue, get, child} from "firebase/database";
-import { RTdatabase, db } from "~/utils/config/firebase";
-import { addDoc, doc, setDoc, collection, where, getDocs, query} from "firebase/firestore"; 
 // import citiesData from '~/utils/data/districts.json'
 
 
@@ -53,33 +48,79 @@ const ChooseCategory: FC = memo(() => {
     // await setDoc(doc(db, "cities" ), {
     //   name: "istanbul",
     //   state: "CA",
-    //   country: "USA"
+    //   country: "USA"ƒ
     // });
-    // @ts-ignore
+   
     // const slicedCitiesData = citiesData.slice(0, 20)
-// @ts-ignore
-    // citiesData.map((data: any) => {
-    //   addDoc(collection(db, 'cities'), {
+   
+  
+    // @ts-ignore
+    // citiesData.neighborhood.map((data: any) => {
+    //   addDoc(collection(db, 'neighbourhood', ), {
     //    ...data
     // })
     // })
-    // const q = await query(
-    //   collection(db, "cities"),
-    //   where('il', '==', 'ADANA')
-    //   )
-    //   const fetchedCity = await getDocs(q);
-    //   const data = await fetchedCity.docs.map((doc) => ({
-    //         ...doc.data(),
-    //         id: doc.id,
-    //       }));
-    // const data = querySnapshot.docs.map((doc) => ({
-    //   ...doc.data(),
-    //   id: doc.id,
-    // }));
+
+//   try{
+
+  
+//   const q = await query(
+//     collection(db, "neighbourhood"),
+//     where('DistrictID', '==', 802)
+//     );
+//     const fetchedCity = await getDocs(q);
+//     const theData = fetchedCity.docs.map((doc) => ({
+//           ...doc.data(),
+//           id: doc.id,
+//         }));
+//         console.log('query result : ', theData)
+// }catch(error){
+//   console.log('this is error', error)
+// }
+  //  @ts-ignore
+
+  
+
+  //   const data = querySnapshot.docs.map((doc) => ({
+  //     ...doc.data(),
+  //     id: doc.id,
+  //   }));
   //   addDoc(collection(db, 'cities'), {
   //     name: 'test name  ',
   //     type: 'bridge'
   // })
+
+
+
+    // console.log('hi')
+
+    //  const dbRef = await ref(RTdatabase);
+    // console.log('this is dbRef', dbRef)
+    // try{
+    //   const getResponse = await get(child(dbRef, '/cities' ,))
+    //   console.log('RTData: this is getResponse baby :', getResponse)
+
+    // }catch (error) {
+    //   console.log('the error is: ', error)
+    // }
+
+
+    // get(child(dbRef, '/')).then((snapshot) => {
+    //   if (snapshot.exists()) {
+    //     console.log('RTData: this is snapshot baby :', snapshot.val())
+    //   } else {
+    //     console.log('RTData: no data avalable ', snapshot)
+    //   }
+    // }).catch((error) => {
+    //   console.error('RTData: this is error',error);
+    // });
+    //     const db = RTdatabase;
+    //     const dbref = ref(db);
+    //     onValue(dbref, (snapshot) => {
+    //       const data = snapshot.val();
+    //       setRTData(data)
+    //     });
+
     
   }
 

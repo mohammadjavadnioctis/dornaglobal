@@ -22,6 +22,7 @@ const firebaseConfig = {
   storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.FIREBASE_APP_ID,
+  databaseUrl: 'https://dorna-dev-default-rtdb.europe-west1.firebasedatabase.app'
 };
 
 // Initialize Firebase
@@ -33,7 +34,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app)
-const RTdatabase = getDatabase();
+const RTdatabase = getDatabase(app);
 setPersistence(auth, browserSessionPersistence);
 // }
 //   .then(() => {
