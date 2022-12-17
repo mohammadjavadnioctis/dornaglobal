@@ -7,6 +7,7 @@ import { FaRegHandshake } from "react-icons/fa";
 import ListyourPropertyButton from "~/components/ListYourPropertyButton/ListyourPropertyButton";
 import { useRouter } from "next/router";
 import UiImage from "~/lib/Image";
+import MobileMenu from "~/components/MobileMenu/MobileMenu";
 
 const Header = memo(() => {
   const router = useRouter();
@@ -21,11 +22,16 @@ const Header = memo(() => {
         <TopBar />
       </header>
       <div className={`sticky px-4 h-[76px] flex items-center top-0 left-0 z-50 header w-full backdrop-saturate-[180%] backdrop-blur-[5px] ${isHomePage ? 'bg-[hsla(0,0%,28%,.3)]' : 'bg-[hsla(0,0%,100%,.8)]'}`}>
-        <div className="w-full container flex justify-between">
+       <div className="inline-bloc lg:hidden">
+        <MobileMenu />
+       </div>
+        <div className="w-full  hidden lg:flex container justify-between">
       <UiImage 
           src='/images/logo.png'
           width="60"
           height="60"
+          onClick={() => router.push('/')}
+          className="cursor-pointer"
         />
         <div className="flex flex-row items-center"> 
           

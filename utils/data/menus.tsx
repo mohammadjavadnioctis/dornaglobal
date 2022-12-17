@@ -14,17 +14,17 @@ const mainMenuData = [
   },
   {
     name: "Properties",
-    href: "/properties",
+    href: "/search",
     id: 2,
   },
   {
     name: "For Rent",
-    href: "/properties/rent",
+    href: "/search/rent",
     id: 3,
   },
   {
     name: "For Sale",
-    href: "/properties/rent",
+    href: "/search/rent",
     id: 4,
   },
   {

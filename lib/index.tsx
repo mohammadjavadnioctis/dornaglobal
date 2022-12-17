@@ -11,7 +11,8 @@ export { Stepper as UIStepper,
     Chip as UiChip,
     Button as UiButton,
     Modal as UiModal,
-    Autocomplete as UiAutoComplete
+    Autocomplete as UiAutoComplete,
+    Drawer as UiDrawer
     
 } from '@mantine/core'
 
