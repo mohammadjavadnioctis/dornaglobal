@@ -5,36 +5,37 @@ import { UiNativeSelect, UiNumberInput, UiSelect } from "~/lib";
 import { IstanbulDistricts, TitleDeedTypes } from "~/utils/data";
 import { isDev } from "~/utils/helpers";
 import { FiltersType } from "~/utils/types";
+import AddressInput from "../AddressInput/AddressInput";
 
 const Filters: FC = memo(() => {
  
-  const {filters, setFilters, fetchBasedOnFilters}  =  useSearchProperties()
+  const {filters, setFilters, fetchBasedOnFilters, handleFilterchange}  =  useSearchProperties()
   
-  const handleFilterchange = (name: string, e: any) => {
-    // TODO : refactor this part
-    switch (name) {
-      case "district":
-        setFilters((prevState) => ({
-          ...prevState,
-          address: { ...prevState?.address!, district: e },
-        }));
-        break;
-      case "neighbourhood":
-        setFilters((prevState) => ({
-          ...prevState,
-          address: { ...prevState?.address!, neighbourhood: e },
-        }));
-      case "minPrice":
-        setFilters((prevState) => ({
-          ...prevState,
-          price: { ...prevState?.price!, minPrice: e },
-        }));
-      default:
-        break;
-    }
+  // const handleFilterchange = (name: string, e: any) => {
+  //   // TODO : refactor this part
+  //   switch (name) {
+  //     case "district":
+  //       setFilters((prevState) => ({
+  //         ...prevState,
+  //         address: { ...prevState?.address!, district: e },
+  //       }));
+  //       break;
+  //     case "neighbourhood":
+  //       setFilters((prevState) => ({
+  //         ...prevState,
+  //         address: { ...prevState?.address!, neighbourhood: e },
+  //       }));
+  //     case "minPrice":
+  //       setFilters((prevState) => ({
+  //         ...prevState,
+  //         price: { ...prevState?.price!, minPrice: e },
+  //       }));
+  //     default:
+  //       break;
+  //   }
 
-    // setFilters(prevState => ( { ...prevState } ))
-  };
+  //   // setFilters(prevState => ( { ...prevState } ))
+  // };
 
   const handleFiltersSubmit = (e:  React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -47,8 +48,9 @@ const Filters: FC = memo(() => {
         <form onSubmit={(e) => handleFiltersSubmit(e)}>
           <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
             <div className="form_input_section ">
-              <label className="text-xs">District:</label>
-              <UiSelect
+              <AddressInput />
+              {/* <label className="text-xs">District:</label> */}
+              {/* <UiSelect
                 value={filters?.address?.district}
                 name="district"
                 onChange={(event) => handleFilterchange("district", event)}
@@ -62,7 +64,7 @@ const Filters: FC = memo(() => {
                 name="neighbourhood"
                 onChange={(event) => handleFilterchange("neighbourhood", event)}
                 data={IstanbulDistricts}
-              />
+              /> */}
             </div>
           </div>
 

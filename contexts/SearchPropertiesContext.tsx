@@ -11,28 +11,10 @@ interface SearchPropertiesContextType {
   filters: FiltersType;
   setFilters: React.Dispatch<React.SetStateAction<FiltersType>>;
   fetchBasedOnFilters: () => null;
+  handleFilterchange: (name: string, e: any) => void;
 }
 const initialFilters: FiltersType = {
-  address: {
-    city: "",
-    district: "",
-    neighbourhood: "",
-  },
-  balcony: false,
-  dateListed: null,
-  floor: null,
-  furnished: null,
-  heatingSystem: null,
-  isInBuildingComplex: null,
-  noOfBathRooms: null,
-  noOfBedRooms: null,
-  price: {
-    maxPrice: null,
-    minPrice: null,
-  },
-  titleDeedStatus: null,
-  usageStatus: null,
-  yearBuilt: null,
+ 
 };
 
 export const SearchPropertiesContext =
@@ -59,6 +41,9 @@ export const SearchPropertiesProvider: FC<
     setProperties(fetchedProperties as PropertyType[]);
     return fetchedProperties;
   };
+
+
+
 
   const fetchBasedOnFilters: any = async () => {
     let pageCount = false;
@@ -95,19 +80,60 @@ export const SearchPropertiesProvider: FC<
 
  
 
-  useEffect(() => {}, [properties]);
+  const handleFilterchange = (name: string, e: any) => {
+    // TODO : refactor this part
+    switch (name) {
+      case "city":
+        setFilters((prevState) => ({
+          ...prevState,
+          address: { ...prevState?.address!, city: e },
+        }));
+        break;
+      case "district":
+        setFilters((prevState) => ({
+          ...prevState,
+          address: { ...prevState?.address!, district: e },
+        }));
+        break;
+      case "neighbourhood":
+        setFilters((prevState) => ({
+          ...prevState,
+          address: { ...prevState?.address!, neighbourhood: e },
+        }));
+        break;
+      case "minPrice":
+        setFilters((prevState) => ({
+          ...prevState,
+          price: { ...prevState?.price!, minPrice: e },
+        }));
+      default:
+        break;
+    }
+  }
+
+
+  useEffect(() => {
+    console.log('filters :: filters: ', filters)
+  }, [filters]);
 
   useEffect(() => {
     fetchContextProperties();
   }, []);
+
+
+
+
+
+
   const value: any = useMemo(
     () => ({
       fetchedProperties: properties,
       filters,
       setFilters,
       fetchBasedOnFilters,
+      handleFilterchange
     }),
-    [properties, filters, setFilters, fetchBasedOnFilters]
+    [properties, filters, setFilters, fetchBasedOnFilters, handleFilterchange]
   );
   return (
     <SearchPropertiesContext.Provider value={value}>
