@@ -2,7 +2,7 @@ interface CityType {
     CityID : number,
     CountyID: number,
     PhondeCode: string,
-    PateNo: string,
+    PlateNo: string,
     CityName : string,
     id: string,
     

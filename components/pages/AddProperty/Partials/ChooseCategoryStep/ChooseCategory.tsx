@@ -10,7 +10,9 @@ import {
   DealType,
   PropertySubCategoryType,
 } from "~/utils/types";
-// import citiesData from '~/utils/data/districts.json'
+//  import citiesData from '~/utils/data/mahalleV2.json'
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "~/utils/config/firebase";
 
 
 const ChooseCategory: FC = memo(() => {
@@ -43,6 +45,14 @@ const ChooseCategory: FC = memo(() => {
     }));
   };
 
+
+
+  useEffect(() => {
+    console.log('is strict mode on ? ')
+
+
+  }, [])
+
   const uploadData = async () => {
     
     // await setDoc(doc(db, "cities" ), {
@@ -55,8 +65,8 @@ const ChooseCategory: FC = memo(() => {
    
   
     // @ts-ignore
-    // citiesData.neighborhood.map((data: any) => {
-    //   addDoc(collection(db, 'neighbourhood', ), {
+    // citiesData.map((data: any) => {
+    //   addDoc(collection(db, 'neighboursV2', ), {
     //    ...data
     // })
     // })

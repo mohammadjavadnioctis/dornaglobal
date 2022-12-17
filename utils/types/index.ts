@@ -13,3 +13,5 @@ export type { default as PropertyUploadContextType } from "./PropertyUploadConte
 export type { default as PropertyTypeV2 } from "./PropertyV2";
 export type { default as UserType } from "./UserType";
 export type { default as CityType } from "./CityType";
+export type { default as DistrictType } from "./DistrictType";
+export type { default as NeighbourHoodType } from "./NeighbourHoodType";

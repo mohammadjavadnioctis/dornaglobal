@@ -5,7 +5,7 @@ import { AddressSampleData } from "~/utils/data";
 import { isDev } from "~/utils/helpers";
 import { collection, where, getDocs, query} from "firebase/firestore"; 
 import { db } from "~/utils/config/firebase";
-import { CityType } from "~/utils/types";
+import { CityType, DistrictType, NeighbourHoodType } from "~/utils/types";
 
 
 
@@ -20,13 +20,13 @@ interface CityDataTypeForTheInput {
     CityID: number;
     CountyID: number;
     PhondeCode: string;
-    PateNo: string;
+    PlateNo: string;
     CityName: string;
     id: string;
 }[]
  
 
-
+const baseNeighbourhoodURL = 'https://api.kadircolak.com/Konum/JSON/API/ShowTown?plate=34&district='
 const AddressInput: FC<AddressInputProps> = memo((props) => {
 const {wrapperClassNames} = props
 
@@ -49,12 +49,14 @@ const {wrapperClassNames} = props
   const [citiesList, setCitiesList] = useState<CityType[]>()
   const [citiesForTheSelectComp, setCitiesForTheSelectComp] = useState<CityDataTypeForTheInput[]>()
 
-  const [fetchedDistricts, setFetchedDistricts] = useState()
+  const [fetchedDistricts, setFetchedDistricts] = useState<DistrictType[]>()
+  const [districtsForSelectComp, setDistrictsForSelectComp] = useState<DistrictType[]>()
 
+  const [fetchedNeighbourHoods, setFetchedNeghbourHoods ] = useState<NeighbourHoodType[]>()
+  const [neighbourhoodsForSelectComp, setNeighbourhoodsForSelectComp] = useState<NeighbourHoodType[]>()
 
     const handleChangeForCityInput = (value: string) => {
      
-     console.log('this is event: ', value)
       // const value = event.currentTarget.value
       // const inputName = event.currentTarget.name
       // setDetails(prevState => ({...prevState , address: {...prevState.address , [inputName]: value } }  ))
@@ -62,11 +64,11 @@ const {wrapperClassNames} = props
     }
 
     const handleChangeForDistrictInput = (value: string) => {   
-      setDetails(prevState => ({...prevState , address: {...prevState.address , city: value } }  ))
+      setDetails(prevState => ({...prevState , address: {...prevState.address , district: value } }  ))
     }
 
     const handleChangeForNeighbourHoodInput = (value: string) => {      
-      setDetails(prevState => ({...prevState , address: {...prevState.address , city: value } }  ))
+      setDetails(prevState => ({...prevState , address: {...prevState.address , neighbourhood: value } }  ))
     }
 
     // TODO: fetches should not happen until the drop down is open
@@ -90,20 +92,75 @@ const {wrapperClassNames} = props
     const fetchDistrictsList = async () => {
       try{
         // find corresponding city's ID
-        const cityID = citiesForTheSelectComp?.filter(city => city.CityName === address?.city)
-        const q = query(
-          collection(db, "districts"),
-          where('CityID','==', cityID)
-          );
-          const fetchedDistricts = await getDocs(q);
-          const theData = fetchedDistricts.docs.map((doc) => ({
-                ...doc.data(),
-                id: doc.id,
-              }));
-              setCitiesList(theData as unknown as CityType[])
+        const cityID = citiesForTheSelectComp?.filter(city => city.CityName === address?.city)[0]?.PlateNo
+
+        console.log('this is the, cityId',cityID)
+        if(cityID){
+          const q = query(
+            collection(db, "districtsV2"),
+            where('ilce_sehirkey','==',parseInt(cityID))
+            );
+            const fetchedDistricts = await getDocs(q);
+            const theData = fetchedDistricts.docs.map((doc) => ({
+                  ...doc.data(),
+                  id: doc.id,
+                }));
+                setFetchedDistricts(theData as unknown as DistrictType[])
+
+        }
       }catch(error){
         console.log('this is error', error)
       }
+    }
+
+
+    const fetchNeighBourhoods = async () => {
+      try{
+        // find corresponding districts's ID
+        const districtId = districtsForSelectComp?.filter(district => district.ilce_title === address?.district)[0]?.ilce_key
+        console.log('neighbourhood : this is districtId, ', districtId, 'districtsForSelectComp', districtsForSelectComp,'address.neidistrictghgou', address?.district)
+        if(districtId){
+          const q = query(
+            collection(db, "neighboursV2"),
+            where('mahalle_ilcekey','==', districtId)
+            );
+            const fetchedNeighBourHoods = await getDocs(q);
+            const theData = fetchedNeighBourHoods.docs.map((doc) => ({
+                  ...doc.data(),
+                  id: doc.id,
+                }));
+                setFetchedNeghbourHoods(theData as unknown as NeighbourHoodType[])
+                console.log('neighbourhood : theData for neightbourhood', theData)
+        }
+      }catch(error){
+        console.log('this is error', error)
+      }
+
+
+
+
+
+
+      // try{
+      //   // find corresponding districts's ID
+      //   const districtId = districtsForSelectComp?.filter(district => district.ilce_title === address?.district)[0]?.ilce_title
+      //   console.log('neighbourhood : this is districtId, ', districtId, 'districtsForSelectComp', districtsForSelectComp,'address.neidistrictghgou', address?.district)
+      //   if(districtId){
+
+      //       // const fetchedNeighBourHoods = await fetch (`${baseNeighbourhoodURL}${address?.district}`, {
+      //       const fetchedNeighBourHoods = await fetch ('https://api.kadircolak.com/Konum/JSON/API/ShowTown?plate=34&district=ARNAVUTK%C3%96Y', {
+      //         referrerPolicy: 'no-referrer',
+      //         method: "GET",
+              
+              
+      //       })
+      //      console.log('this is fetched fetchedNeighBourHoods', fetchedNeighBourHoods)
+      //           // setFetchedNeghbourHoods(theData as unknown as NeighbourHoodType[])
+      //           // console.log('neighbourhood : theData for neightbourhood', theData)
+      //   }
+      // }catch(error){
+      //   console.log('this is error', error)
+      // }
     }
 
   useEffect(() => {
@@ -118,15 +175,38 @@ const {wrapperClassNames} = props
    setCitiesForTheSelectComp(list as unknown as CityDataTypeForTheInput[])
   } ,
   [citiesList])
+  
+  useEffect(() => {
+   const list =  fetchedDistricts?.map(district => ({...district, value: district.ilce_title}))
+   setDistrictsForSelectComp(list as unknown as DistrictType[])
+  } ,
+  [fetchedDistricts])
+  useEffect(() => {
+   const list =  fetchedNeighbourHoods?.map(neighbourhood => ({...neighbourhood, value: neighbourhood.mahalle_title}))
+   setNeighbourhoodsForSelectComp(list as unknown as NeighbourHoodType[])
+  } ,
+  [fetchedNeighbourHoods])
 
   useEffect(() => {
-
+    fetchDistrictsList()
   } ,
-  [citiesForTheSelectComp])
+  [address?.city])
+
+
+  useEffect(() => {
+    fetchNeighBourhoods()
+  },[address?.district])
+
 
   useEffect(() => {
     console.log('details', details)
   },[details])
+  useEffect(() => {
+    console.log('fetchedDistricts', fetchedDistricts)
+  },[fetchedDistricts])
+  useEffect(() => {
+    console.log('districtsForSelectComp ', districtsForSelectComp)
+  },[districtsForSelectComp])
 
   return (
     <div className={`${wrapperClassNames}`}>
@@ -144,17 +224,20 @@ const {wrapperClassNames} = props
           // @ts-ignore
           data={citiesForTheSelectComp ?? AddressSampleData.cities}
           name="city"
+          limit={10}
         />
         <UiAutoComplete
           value={address?.district}
           onChange={(event) => handleChangeForDistrictInput(event)}
-          data={AddressSampleData.districts}
+          // @ts-ignore
+          data={ districtsForSelectComp ?? AddressSampleData.districts}
           name="district"
         />
         <UiAutoComplete
           value={address?.neighbourhood}
           onChange={(event) => handleChangeForNeighbourHoodInput(event)}
-          data={AddressSampleData.neighbourhoods}
+          // @ts-ignore
+          data={ neighbourhoodsForSelectComp ?? AddressSampleData.neighbourhoods}
           name='neighbourhood'
         />
       </div>
