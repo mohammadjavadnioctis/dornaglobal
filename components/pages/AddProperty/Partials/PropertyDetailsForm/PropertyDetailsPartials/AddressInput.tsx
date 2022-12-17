@@ -6,6 +6,7 @@ import { isDev } from "~/utils/helpers";
 import { collection, where, getDocs, query} from "firebase/firestore"; 
 import { db } from "~/utils/config/firebase";
 import { CityType, DistrictType, NeighbourHoodType } from "~/utils/types";
+import { createStyles } from "@mantine/core";
 
 
 
@@ -26,10 +27,22 @@ interface CityDataTypeForTheInput {
 }[]
  
 
-const baseNeighbourhoodURL = 'https://api.kadircolak.com/Konum/JSON/API/ShowTown?plate=34&district='
-const AddressInput: FC<AddressInputProps> = memo((props) => {
-const {wrapperClassNames} = props
+const myStyles = createStyles(theme => ({
+  dropDown: {
+    height: '400px',
+    overflowY: 'scroll'
+  
+  }
+}) )
 
+const AddressInput: FC<AddressInputProps> = memo((props) => {
+
+
+
+
+
+const {wrapperClassNames} = props
+  const {classes} = myStyles()
   
   // const [address, setAddress] = useState({
   //   city: undefined,
@@ -224,7 +237,8 @@ const {wrapperClassNames} = props
           // @ts-ignore
           data={citiesForTheSelectComp ?? AddressSampleData.cities}
           name="city"
-          limit={10}
+          limit={85}
+          classNames={{dropdown: classes.dropDown}}
         />
         <UiAutoComplete
           value={address?.district}
@@ -232,6 +246,8 @@ const {wrapperClassNames} = props
           // @ts-ignore
           data={ districtsForSelectComp ?? AddressSampleData.districts}
           name="district"
+          classNames={{dropdown: classes.dropDown}}
+
         />
         <UiAutoComplete
           value={address?.neighbourhood}
@@ -239,6 +255,8 @@ const {wrapperClassNames} = props
           // @ts-ignore
           data={ neighbourhoodsForSelectComp ?? AddressSampleData.neighbourhoods}
           name='neighbourhood'
+          classNames={{dropdown: classes.dropDown}}
+
         />
       </div>
     </div>
