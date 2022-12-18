@@ -8,7 +8,7 @@ import { admin } from "~/utils/config/firebaseAdmin";
 import Profile from "~/components/pages/profile/Profile";
 import { UserDashboardProvider } from "~/contexts/UserDashboardContext";
 import AdProfile from "~/components/pages/AdProfile/AdProfile";
-import { collection, getDocs, query, where } from "firebase/firestore";
+import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "~/utils/config/firebase";
 import { AdminDashboardProvider } from "~/contexts/AdminDashboardContext";
 
@@ -40,6 +40,21 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }));
     const parsedUser = JSON.parse(JSON.stringify(fetchedUserFromUser))
 
+    const allProperties = query(
+        collection(db, "testproperties"),
+        where("isVarified", "==", true),
+        // orderBy('timestamp'),
+        // orderBy('date','desc')
+      );
+
+    const allPropertiesSnapShot = await getDocs(allProperties);
+    const fetchedAllProperties = allPropertiesSnapShot.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    const parsedAllPropertiesList = JSON.parse(JSON.stringify(fetchedAllProperties))
+
+
     // fetch unvarified properties list
     const uvarifiedPropertiesList = query(
       collection(db, "testproperties"),
@@ -58,6 +73,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     return {
       props: {
         userFromFireStore: parsedUser,
+        allPropertiesList: parsedAllPropertiesList,
         unvarifiedPropertiedList: parsedUnvarifiedPropertiesList
       },
     };
@@ -65,6 +81,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     // either the `token` cookie didn't exist
     // or token verification failed
     // either way: redirect to the login page
+    console.log('this is error', err)
     ctx.res.writeHead(302, { Location: '/signin' });
     ctx.res.end();
 
@@ -79,16 +96,18 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 export interface AdminProfileType {
   userFromFireStore: any;
   unvarifiedPropertiedList: any;
+  allPropertiesList: any
 }
 
 const AdminProfile: FC<AdminProfileType> = memo((props) => {
-  const { userFromFireStore, unvarifiedPropertiedList } = props
+  const { userFromFireStore, unvarifiedPropertiedList, allPropertiesList } = props
   const { user, logout, loading } = useAuth();
   const router = useRouter();
   // if (userFromFireStore && !userFromFireStore?.isAdmin && !loading) {
   //   router.push('/signin')
   // }
-  useEffect(() => {
+  console.log('property:: uvarified: ', unvarifiedPropertiedList, 'varified: ', allPropertiesList)
+    useEffect(() => {
     console.log('userFromFireStore: on ad_x_dash', userFromFireStore)
     if (userFromFireStore && !userFromFireStore[0]?.isAdmin && !loading) {
       router.push('/signin')

@@ -13,7 +13,7 @@ import UsersListTab from "./partials/Tabs/Profile/UsersListTab";
 
 
 const AdProfile: FC<AdminProfileType> = memo((props) => {
-  const {unvarifiedPropertiedList} = props
+  const {unvarifiedPropertiedList, allPropertiesList} = props
   const { activeTab } = useAdminDashboardContext();
 
   const RenderActiveTab = () => {
@@ -22,7 +22,7 @@ const AdProfile: FC<AdminProfileType> = memo((props) => {
         return <PendingPropertiesList PropertiesList={unvarifiedPropertiedList} />;
       case "allPropertiesList":
         // TODO: pass in the varified properties list
-        return <AllPropertiesList PropertiesList={unvarifiedPropertiedList} />;
+        return <AllPropertiesList PropertiesList={allPropertiesList} />;
       case "messages":
         return <MessagesTab />
     }
