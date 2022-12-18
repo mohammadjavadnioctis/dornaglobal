@@ -1,8 +1,10 @@
-import { BsHouse } from "react-icons/bs";
+import { BsHouse, BsHouseDoor, BsInfoCircle } from "react-icons/bs";
 import { MdOutlinePending } from "react-icons/md";
 import { FiMessageSquare } from "react-icons/fi";
 import UserIcon from "~/assets/icons/UserIcon";
 import { DashboardMenuItemsType } from "../types";
+import { BiBuildingHouse, BiKey } from "react-icons/bi";
+import { CgProfile } from "react-icons/cg";
 
 
 
@@ -11,32 +13,39 @@ const mainMenuData = [
     name: "Home",
     href: "/",
     id: 1,
+    icon: BsHouse
   },
   {
     name: "Properties",
     href: "/search",
     id: 2,
+    icon: BiBuildingHouse
   },
   {
     name: "For Rent",
     href: "/search/rent",
     id: 3,
+    icon: BiKey
+
   },
   {
     name: "For Sale",
     href: "/search/rent",
     id: 4,
+    icon: BiKey
   },
   {
     name: "About",
     href: "/about",
     id: 5,
+    icon: BsInfoCircle
   },
   
   {
     name: "Profile",
     href: "/profile",
     id: 6,
+    icon: CgProfile
   },
 ];
 

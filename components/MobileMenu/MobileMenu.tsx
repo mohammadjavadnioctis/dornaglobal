@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { Button, createStyles, Group } from '@mantine/core';
-import  hamburgerIcon from "~/public/icons/hamburger.svg";
-import  xIcon from "~/public/icons/hamburger.svg";
+// import  hamburgerIcon from "~/public/icons/hamburger.svg";
+import  xIcon from "~/public/icons/xIcon.svg";
 
 // import { NAVIGATION_MENU } from '../../lib/MasterHeader/NavigationMenu';
 
@@ -12,18 +12,20 @@ import { UiDrawer } from '~/lib';
 import { mainMenuData } from '~/utils/data/menus';
 import { useRouter } from 'next/router';
 import UiLink from '~/lib/UiLink';
+import UiImage from '~/lib/Image';
+import HamburgerIcon from '~/public/icons/hamburger';
 
 
 
 const MobileMenu: FC = () => {
   const [opened, setOpened] = useState(false);
-  const Icon = opened ? xIcon : hamburgerIcon;
+  const Icon = opened ? xIcon : HamburgerIcon;
 
 
   const useStyles = createStyles(() => ({
     drawer: {
-      marginTop: '44px',
-      backgroundColor: '#FFF9F9', 
+      marginTop: '57px',
+      backgroundColor: 'white', 
       paddingRight: '0 !important'
     },
     closeButton: {
@@ -53,7 +55,7 @@ const MobileMenu: FC = () => {
 
             {mainMenuData.map((item) => {
 
-            //   const { icon: Icon, name } = item
+              const { icon: Icon, name } = item
               return (
 
 
@@ -72,7 +74,9 @@ const MobileMenu: FC = () => {
                     {" "}
                     {/* <div className="bullets w-[2px] h-[5px] rounded-[3px] bg-[#3944B3] dark:bg-black mr-4"></div> */}
                     {/* {Icon && <Icon className="mr-5 text-[#3944B3] dark:text-white" />} */}
-                    <span className='text-white'>click</span>
+                    <span className='text-orange'>
+                      <Icon className='text-accent mr-4 w-5 h-5'/> 
+                    </span>
                     <span className='text-sm text-[#3944B3] dark:text-white'>
 
                     {item.name}
@@ -89,15 +93,14 @@ const MobileMenu: FC = () => {
 
 
           </ul>
-          <div className="w-[calc(100%_-_24px)] min-h-[48px]  text-sm !border-[#F75847] dark:!border-white border rounded-lg bg-white 
-                                dark:bg-transparent text-[#F75847]  my-4 flex justify-center items-center"
-            onClick={() => { setOpened(false); history.push('travelguide') }}
+          <div className="w-[calc(100%_-_24px)] min-h-[48px]  text-sm border-accent dark:!border-white border rounded-lg bg-white 
+                                dark:bg-transparent text-accent  my-4 flex justify-center items-center"
+            onClick={() => { setOpened(false); history.push('add-property') }}
           >
-            <span className="w-[2px] h-[5px] mr-4 bg-[#F75847] text- dark:bg-white "></span>
+            <span className="w-[2px] h-[5px] mr-4 bg-accent text- dark:bg-white "></span>
             {/* {route()} */}
             <span className='dark:text-white'>
-            Travel Guide & Blog
-
+              Add your property
             </span>
           </div>
           {/* <div className='flex flex-col space-y-7'>
@@ -150,7 +153,12 @@ const MobileMenu: FC = () => {
       <Group position="center">
         <Button className='p-0 rotate-180' onClick={() => setOpened(prev => !prev)}>
             {/* <Icon color={`#F75847`} /> */}
-            icon
+              {/* <UiImage 
+                src='/icons/hamburger.svg'
+                width={30}
+                height={30}
+              /> */}
+              <HamburgerIcon className='text-accent' />
             </Button>
       </Group>
     </div>
