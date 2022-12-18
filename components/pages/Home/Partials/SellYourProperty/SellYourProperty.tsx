@@ -8,7 +8,7 @@ const SellYourProperty = () => {
     <div className="w-full relative my-16">
       {/* The Image */}
 
-      <div className="aspect-w-16 aspect-h-6">
+      <div className="aspect-w-1 aspect-h-1 md:aspect-w-16 md:aspect-h-6">
         <div className="overflow-hidden">
           <div className="relative w-full h-full ">
             <UiImage
@@ -20,9 +20,9 @@ const SellYourProperty = () => {
         </div>
       </div>
       {/* content */}
-      <div className="absolute top-0 left-0 w-full h-full">
-        <div className="h-full w-1/3 bg-white bg-opacity-60 flex items-center">
-          <div className="w-full max-h-full md:max-h-[auto] translate-x-1/2 flex flex-col bg-accent-600 bg-opacity-80 p-12 text-white">
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+        <div className="h-full w-full md:w-1/3 bg-white bg-opacity-60 flex items-center">
+          <div className="w-full max-h-full md:max-h-[auto] translate-x-0 md:translate-x-1/2 flex flex-col bg-accent-600 bg-opacity-80 p-4 md:p-12 text-white">
             <h2 className="text-[40px]">Sell your Property</h2>
             <p className="text-base text-medium  mb-5">
               At the comfort of your couch

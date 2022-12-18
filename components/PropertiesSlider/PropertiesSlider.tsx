@@ -1,4 +1,4 @@
-import React, { FC, memo, useCallback, useState } from "react";
+import React, { FC, memo, useCallback, useEffect, useState } from "react";
 import UiSlider from "~/lib/UiSlider";
 import { isDev } from "~/utils/helpers";
 import { Autoplay } from "swiper";
@@ -18,6 +18,11 @@ interface PropertiesSliderProps {
 
 const PropertiesSlider: FC<PropertiesSliderProps> = memo((props) => {
   const { properties, similar, slidesPerView = 4, showButtons = true } = props;
+  const [domLoaded, setDomLoaded] = useState(false);
+
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
   const [swiperRef, setSwiperRef] = useState<SwiperClass>();
   const handleLeftClick = useCallback(() => {
     if (!swiperRef) return;
@@ -30,6 +35,8 @@ const PropertiesSlider: FC<PropertiesSliderProps> = memo((props) => {
   }, [swiperRef]);
 
   return (
+    <>
+    {domLoaded &&
     <div className="properties_slider relative">
       <div className="w-[95%] mx-auto   shadow-card rounded-lg xl:my-5 mb-5 select-none swiper-padding">
         {showButtons && (
@@ -101,7 +108,8 @@ const PropertiesSlider: FC<PropertiesSliderProps> = memo((props) => {
           </Button>
         )}
       </div>
-    </div>
+    </div>}
+    </>
   );
 });
 
