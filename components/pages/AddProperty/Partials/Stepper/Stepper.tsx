@@ -27,32 +27,35 @@ const Stepper = memo(() => {
         breakpoint="sm"
         className="min-h-[300px]"
       >
-        <UIStepper.Step label="First step" description="Choose category">
+        <UIStepper.Step label="First step" description="Choose category" allowStepSelect={false}>
           <ChooseCategory />
         </UIStepper.Step>
         <UIStepper.Step
           label="Second step"
           description="Enter property details"
+          allowStepSelect={false}
         >
           <PropertyDetailsForm />
         </UIStepper.Step>
         <UIStepper.Step
           label="Third step"
           description="Upload Images and videos"
+          allowStepSelect={false}
         >
           <UploadMediaStep />
         </UIStepper.Step>
         <UIStepper.Step
           label="Fourth step"
           description="Review"
+          allowStepSelect={false}
         >
           <ReviewStep />
         </UIStepper.Step>
-        <UIStepper.Step label="Fifth step" description="Property Listed">
+        <UIStepper.Step label="Fifth step" description="Property Listed" allowStepSelect={false}>
           {/* Step 3 content: Get full access */}
           <PropertyListedStep />
         </UIStepper.Step>
-        <UIStepper.Step label="Final step" description="congratulation">
+        <UIStepper.Step label="Final step" description="congratulation" allowStepSelect={false}>
           {/* Step 3 content: Get full access */}
         </UIStepper.Step>
         <UIStepper.Completed>
