@@ -37,7 +37,7 @@ const VarifyButton: FC<VarifyButtonType> = memo(
                     setLoading(true)
                     const propertyRef = doc(db, `testproperties/${property?.id}`);
                     const response = await updateDoc(propertyRef, {
-                        isVarifed: true,
+                        isVarified: true,
                         varifiedBy: currentUser
                     })
                    
