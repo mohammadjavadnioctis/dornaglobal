@@ -7,6 +7,8 @@ import { Button, createStyles } from "@mantine/core";
 import UiLink from "~/lib/UiLink";
 import { useAuth } from "~/contexts/AuthContext";
 import { useRouter } from "next/router";
+import { updateProfile } from "firebase/auth";
+import { auth } from "~/utils/config/firebase";
 
 interface SignUpFormType {
   wraperClassname?: string;
@@ -65,8 +67,11 @@ const SignUpForm: FC<SignUpFormType> = memo((props) => {
 
   const onSubmit = async (values: any) => {
     try {
-      await signUp(values.email, values.password);
-      router.push("/");
+      console.log('this is values: ', values)
+      // await signUp(values.email, values.password);
+       await signUp(values.email, values.password, values.NameSurname);
+      
+      // router.push("/");
     } catch (err) {
     }
   };
@@ -87,6 +92,15 @@ const SignUpForm: FC<SignUpFormType> = memo((props) => {
           return (
             <div className={`${wraperClassname}`}>
               <Form>
+                <FormikControl
+                  control="input"
+                  type="text"
+                  inputLabel="Name and Surname"
+                  inputName="NameSurname"
+                  fieldClassName={inputClassName}
+                  labelClassName={inputLabelClassName}
+                  wrapperClassName={inputWrapperCalssName}
+                />
                 <FormikControl
                   control="input"
                   type="email"

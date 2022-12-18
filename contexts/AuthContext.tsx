@@ -3,8 +3,9 @@ import {
   signInWithEmailAndPassword,
   User,
   signOut,
+  updateProfile,
 } from "firebase/auth";
-import { getDocs, query, where, collection } from "firebase/firestore";
+import { getDocs, query, where, collection, doc, updateDoc } from "firebase/firestore";
 import nookies from "nookies";
 import { createContext, useEffect, useState, useContext } from "react";
 import { auth, db } from "~/utils/config/firebase";
@@ -15,7 +16,7 @@ interface AuthContextType {
   user: User | null;
   userFromFirebase: UserType | null;
   signIn: (email: string, password: string) => void;
-  signUp: (email: string, password: string) => void;
+  signUp: (email: string, password: string, NameSurname: string) => void;
   logout: () => void;
   loading: boolean
 }
@@ -38,9 +39,18 @@ export function AuthProvider({ children }: any) {
   const [ userFromFirebase, setUserFromFirebase ] = useState(null)
   const [loading, setLoading] = useState(true);
 
-  const signUp = (email: string, password: string) => {
-    return createUserWithEmailAndPassword(auth, email, password);
+  const signUp = async (email: string, password: string, NameSurname: string) => {
+    const userCreatesReponse = await createUserWithEmailAndPassword(auth, email, password);
+    console.log('this is userCreatesReponse', userCreatesReponse)
+     await updateProfile(userCreatesReponse.user, {
+        displayName: NameSurname})
+        const propertyRef = doc(db, `users/${userCreatesReponse.user.uid}`);
+                          const response = await updateDoc(propertyRef, {
+                            displayName: NameSurname
+                          })
   };
+
+
   const signIn = (email: string, password: string) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
