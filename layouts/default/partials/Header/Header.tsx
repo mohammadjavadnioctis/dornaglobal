@@ -21,8 +21,8 @@ const Header = memo(() => {
       >
         <TopBar />
       </header>
-      <div className={`sticky px-4 h-[76px] flex items-center top-0 left-0 z-50 header w-full backdrop-saturate-[180%] backdrop-blur-[5px] ${isHomePage ? 'bg-[hsla(0,0%,28%,.3)]' : 'bg-[hsla(0,0%,100%,.8)]'}`}>
-       <div className="inline-bloc lg:hidden">
+      <div className={`sticky px-4 h-[76px] flex justify-between items-center top-0 left-0 z-50 header w-full backdrop-saturate-[180%] backdrop-blur-[5px] ${isHomePage ? 'bg-[hsla(0,0%,28%,.3)]' : 'bg-[hsla(0,0%,100%,.8)]'}`}>
+       <div className="inline-block lg:hidden">
         <MobileMenu />
        </div>
         <div className="w-full  hidden lg:flex container justify-between">
@@ -45,6 +45,16 @@ const Header = memo(() => {
             <ListyourPropertyButton />
           </div>
           </div>
+        </div>
+        <div className="lg:hidden">
+
+        <UiImage 
+          src='/images/logo.png'
+          width="50"
+          height="50"
+          onClick={() => router.push('/')}
+          className="cursor-pointer lg:hidden"
+        />
         </div>
       </div>
     </>
