@@ -22,7 +22,7 @@ const SellYourProperty = () => {
       {/* content */}
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="h-full w-1/3 bg-white bg-opacity-60 flex items-center">
-          <div className="w-full translate-x-1/2 flex flex-col bg-accent-600 bg-opacity-80 p-12 text-white">
+          <div className="w-full max-h-full md:max-h-[auto] translate-x-1/2 flex flex-col bg-accent-600 bg-opacity-80 p-12 text-white">
             <h2 className="text-[40px]">Sell your Property</h2>
             <p className="text-base text-medium  mb-5">
               At the comfort of your couch

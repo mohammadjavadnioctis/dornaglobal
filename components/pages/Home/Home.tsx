@@ -29,10 +29,14 @@ const Home: FC<HomepageType> = memo((props) => {
             properties={properties}
             title="Top Projects"
             ref={scrollRef}
+            titleClassNames='text-[25px] md:text-[40px]'
+            subtitleClassNames="text-sm"
           />
           <FeaturedExclusives
             properties={properties}
             title="Latest Properties"
+            titleClassNames='text-[25px] md:text-[40px]'
+            subtitleClassNames="text-sm"
           />
           <NeightBourHoodSlider />
           <SellYourProperty />

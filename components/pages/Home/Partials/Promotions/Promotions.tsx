@@ -53,7 +53,15 @@ const Promotions: FC = () => {
           }}
           spaceBetween={10}
         //   navigation={true}
-          slidesPerView={3}
+          slidesPerView={1}
+          breakpoints = {{  
+            '480': {
+              slidesPerView: 2,
+              spaceBetween: 40,},
+            '640': {
+              slidesPerView: 3,
+              spaceBetween: 50, },
+          }}
           //   thumbs={{
           //     swiper:
           //       thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,

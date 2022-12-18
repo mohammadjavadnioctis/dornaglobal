@@ -48,8 +48,20 @@ const PropertiesSlider: FC<PropertiesSliderProps> = memo((props) => {
           className="h-full w-full"
           modules={[Autoplay]}
           autoplay={{ delay: 5000 }}
-          slidesPerView={slidesPerView}
+          slidesPerView={1}
           spaceBetween={12}
+          pagination
+          breakpoints = {{  
+            '480': {
+              slidesPerView: 2,
+              spaceBetween: 40,},
+            '640': {
+              slidesPerView: 3,
+              spaceBetween: 50, },
+            '1024': {
+              slidesPerView: 4,
+              spaceBetween: 50, },
+          }}
           // onSwiper={swiper => {
           //     swiperRef.current = swiper;
           // }}

@@ -11,7 +11,7 @@ const HomeSlider = () => {
     <>
       <div className="overlay absolute w-full h-[calc(100vh_-_44px)] top-0 left-0 bg-black bg-opacity-[0.7] z-[2] flex justify-center items-end">
         <div className="content w-full p-4 h-full flex flex-col items-center justify-center">
-          <div className="w-[60%] max-w-[600px]">
+          <div className="w-full md:w-[60%] max-w-[600px]">
             <div className="w-full flex justify-center">
               {/* logo */}
               <UiImage
