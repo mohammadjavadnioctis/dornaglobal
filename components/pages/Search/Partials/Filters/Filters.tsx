@@ -73,7 +73,7 @@ const Filters: FC = memo(() => {
               <label className="text-xs">Min price :</label>
               <UiNumberInput
                 // label="Price"
-                defaultValue={1000}
+                defaultValue={undefined}
                 value={filters.price?.minPrice as number}
                 onChange={(e) => handleFilterchange("minPrice", e)}
                 parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
@@ -88,7 +88,7 @@ const Filters: FC = memo(() => {
               <label className="text-xs">Max price :</label>
               <UiNumberInput
                 // label="Price"
-                defaultValue={1000}
+                defaultValue={undefined}
                 value={filters.price?.maxPrice as number}
                 onChange={(e) => handleFilterchange("minPrice", e)}
                 parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}

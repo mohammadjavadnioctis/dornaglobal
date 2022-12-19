@@ -121,7 +121,7 @@ const getTheDownLoadURL = (path: string) => {
   useEffect(()=> {
    
  fetchList()
-fetchUserFromFirestore()
+ fetchUserFromFirestore()
 // Find all the prefixes and items.
 
 

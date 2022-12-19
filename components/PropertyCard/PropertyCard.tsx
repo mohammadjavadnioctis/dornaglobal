@@ -1,4 +1,4 @@
-import React, { FC, memo } from "react";
+import React, { FC, memo, useEffect, useState } from "react";
 import UiImage from "~/lib/Image";
 import { isDev } from "~/utils/helpers";
 import { PropertyType } from "~/utils/types";
@@ -7,6 +7,9 @@ import { FaBath } from "react-icons/fa";
 import { BiCar } from "react-icons/bi";
 import {TfiRulerAlt2} from 'react-icons/tfi'
 import UiLink from "~/lib/UiLink";
+import fetchImages from "~/utils/helpers/firebase/fetchImages";
+import { getDownloadURL, listAll, ref } from "firebase/storage";
+import { storage } from "~/utils/config/firebase";
 
 interface PropertyCardProps {
   property: PropertyType;
@@ -22,7 +25,8 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
     bathrooms,
     garage = 1,
     hiResImageLink,
-    livingArea
+    livingArea,
+    id
   } = property;
   // get the highest res images from the photos
   //     let images: (string | undefined)[] | undefined = photos?.map(
@@ -33,13 +37,50 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
   //         return photo?.mixedSources?.jpeg?.pop()?.url
   //       }
   // });
+
+  const [images, setImages] = useState<string[]>([])
+  const getTheDownLoadURL = (path: string) => {
+    getDownloadURL(ref(storage, path))
+    .then((url) => {
+      // `url` is the download URL for 'images/stars.jpg'
+      setImages(prevState => [...prevState, url])
+      
+    })
+    .catch((error) => {
+      // Handle any errors
+      console.log('error form the getTheDownLoadURL', error)
+    });
+  }
+  
+    const fetchList = async () => {
+      const listRef = ref(storage, `test_properties/${id}/`);
+  
+      const listAllResponse = await listAll(listRef)
+      const items = listAllResponse.items.map(item => {
+        getTheDownLoadURL(item.fullPath)
+      })
+   
+  
+    }
+  
+    useEffect(()=> {
+     
+   fetchList()
+  // Find all the prefixes and items.
+    },[])
+
+
+    useEffect(() => {
+      console.log('images from propertycared: ', images)
+    },
+    [images])
+
   const img = similar
     ? property.miniCardPhotos[0].url
     : property.hiResImageLink;
   return (
     <UiLink
-                  // href={`/property/${property.id}`}
-                  href={'#'}
+                  href={`/property/${property.id}`}
                   className="h-full relative"
                 > 
     <div className="group hover:shadow-lg transition-shadow">
@@ -49,10 +90,10 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
           <div className={"overflow-hidden"}>
             <div className="relative w-full h-full transition ease-in-out duration-150 group-hover:opacity-75">
               {similar ||
-                (!!hiResImageLink && hiResImageLink.length > 0 && (
+                (!!images[0] && (
                   <UiImage
                     className="rounded-t-lg"
-                    src={img!}
+                    src={images[0]}
                     alt={title}
                     objectFit="cover"
                     objectPosition="center"

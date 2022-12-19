@@ -61,7 +61,7 @@ const {wrapperClassNames} = props
 
   const {filters: {address}, setFilters, filters, handleFilterchange} = useSearchProperties()
   const [citiesList, setCitiesList] = useState<CityType[]>()
-  const [citiesForTheSelectComp, setCitiesForTheSelectComp] = useState<CityDataTypeForTheInput[]>()
+  const [citiesForTheSelectComp, setCitiesForTheSelectComp] = useState<CityDataTypeForTheInput[]>([])
 
   const [fetchedDistricts, setFetchedDistricts] = useState<DistrictType[]>()
   const [districtsForSelectComp, setDistrictsForSelectComp] = useState<DistrictType[]>()
@@ -160,8 +160,17 @@ const {wrapperClassNames} = props
 
 
   useEffect(() => {
-   const list =  citiesList?.map(city => ({...city, value: city.CityName}))
-   setCitiesForTheSelectComp(list as unknown as CityDataTypeForTheInput[])
+    const empty =  [{value: 'empty', CityName: 'empty'}]
+   const list =  citiesList?.map(city => ({...city, value: city.CityName})) ?? empty
+    console.log('this is the leist', [list?.filter(city => city.CityName == 'İSTANBUL')[0], ...list])
+    const istanbul = list?.filter(city => city.CityName == 'İSTANBUL')[0]
+    if(typeof istanbul !== 'undefined') {
+      setCitiesForTheSelectComp([ istanbul , ...list] as unknown as CityDataTypeForTheInput[])
+    }else {
+      setCitiesForTheSelectComp([ ...list] as unknown as CityDataTypeForTheInput[])
+    }
+
+  //  setCitiesForTheSelectComp([!!istanbul && istanbul, {value: 'hi', CityName: 'hi'}, ...list] as unknown as CityDataTypeForTheInput[])
   } ,
   [citiesList])
   

@@ -43,7 +43,7 @@ export const SearchPropertiesProvider: FC<
   };
 
 
-
+  
 
   const fetchBasedOnFilters: any = async () => {
     let pageCount = false;
@@ -55,15 +55,16 @@ export const SearchPropertiesProvider: FC<
     Object.keys(filters)?.forEach((key, index) => {
       switch (key) {
         case 'address':
+          filters.address?.city && queryConstraints.push(where('address.city', '==', filters.address?.city))
           filters.address?.neighbourhood && queryConstraints.push(where('address.neighborhood', '==', filters.address?.neighbourhood))
           filters.address?.district && queryConstraints.push(where('address.district', '==', filters.address?.district))
-      
+          console.log('filters :: queryConstraints: ', queryConstraints)
         default:
           break;
       }
     })
     const q = query(
-      collection(db, "properties"),
+      collection(db, "testproperties"),
       ...queryConstraints
       // where("address.streetAddress", "==", "2505 Prospect St"),
       // where("pageViewCount", "==", 140)
@@ -115,6 +116,10 @@ export const SearchPropertiesProvider: FC<
   useEffect(() => {
     console.log('filters :: filters: ', filters)
   }, [filters]);
+  useEffect(() => {
+    console.log('filters :: properties: ', properties)
+  }, [properties]);
+
 
   useEffect(() => {
     fetchContextProperties();
