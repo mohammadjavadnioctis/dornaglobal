@@ -10,7 +10,7 @@ import UiLink from "~/lib/UiLink";
 import fetchImages from "~/utils/helpers/firebase/fetchImages";
 import { getDownloadURL, listAll, ref } from "firebase/storage";
 import { storage } from "~/utils/config/firebase";
-
+import NoImage from '~/public/images/no-image.png'
 interface PropertyCardProps {
   property: PropertyType;
   similar?: boolean;
@@ -39,11 +39,15 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
   // });
 
   const [images, setImages] = useState<string[]>([])
+  const [isImageLoaded, setIsImageLoaded] = useState(false)
+  const [imagesAreFetched,setImagesAreFetched] = useState(false)
+
   const getTheDownLoadURL = (path: string) => {
     getDownloadURL(ref(storage, path))
     .then((url) => {
       // `url` is the download URL for 'images/stars.jpg'
       setImages(prevState => [...prevState, url])
+      setImagesAreFetched(true)
       
     })
     .catch((error) => {
@@ -89,22 +93,28 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
           {/* This empty div is required for aspect ratio and next/image to work together. */}
           <div className={"overflow-hidden"}>
             <div className="relative w-full h-full transition ease-in-out duration-150 group-hover:opacity-75">
-              {similar ||
-                (!!images[0] && (
+              {!isImageLoaded && (
+              <div className="absolute inset-0 z-1 w-full h-full bg-white">
+                  <div className="w-full h-full bg-gray-300 rounded animate-pulse-fast" />
+              </div>)}
+              
+              
+                {imagesAreFetched &&
                   <UiImage
                     className="rounded-t-lg"
-                    src={images[0]}
+                    src={images[0] ?? NoImage}
                     alt={title}
                     objectFit="cover"
                     objectPosition="center"
                     layout="fill"
                     unoptimized={true}
                     // priority={preloadImage}
-                    // onLoadingComplete={() =>
-                    //     setIsImageLoading(false)
-                    // }
-                  />
-                ))}
+                    onLoadingComplete={() =>
+                        setIsImageLoaded(true)
+                    }
+                  />}
+               
+                
             </div>
           </div>
         </div>
