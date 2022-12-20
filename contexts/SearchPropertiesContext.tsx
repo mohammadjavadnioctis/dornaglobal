@@ -70,7 +70,6 @@ export const SearchPropertiesProvider: FC<
          case 'titleDeedStatus': 
          filters.titleDeedStatus && queryConstraints.push(where('titleDeedStatus', '==', filters.titleDeedStatus))
          default:
-          console.log('filters :: queryConstraints: ', queryConstraints)
 
           break;
       }
@@ -149,13 +148,6 @@ export const SearchPropertiesProvider: FC<
     }
   }
 
-
-  useEffect(() => {
-    console.log('filters :: filters: ', filters)
-  }, [filters]);
-  useEffect(() => {
-    console.log('filters :: properties: ', properties)
-  }, [properties]);
 
 
   useEffect(() => {

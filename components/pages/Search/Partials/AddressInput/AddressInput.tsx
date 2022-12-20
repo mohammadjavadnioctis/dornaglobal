@@ -52,7 +52,6 @@ const {wrapperClassNames} = props
   // })
 
   // const handleSelect = (event: any) => {
-  //   console.log('this is e: ', event)
   //   let value = event.currentTarget.value
   //   let inputName = event.currentTarget.name
   //   setAddress(prevState => { return { ...prevState, [inputName]: value } })
@@ -108,7 +107,6 @@ const {wrapperClassNames} = props
         // find corresponding city's ID
         const cityID = citiesForTheSelectComp?.filter(city => city.CityName === address?.city)[0]?.PlateNo
 
-        console.log('this is the, cityId',cityID)
         if(cityID){
           const q = query(
             collection(db, "districtsV2"),
@@ -132,7 +130,6 @@ const {wrapperClassNames} = props
       try{
         // find corresponding districts's ID
         const districtId = districtsForSelectComp?.filter(district => district.ilce_title === address?.district)[0]?.ilce_key
-        console.log('neighbourhood : this is districtId, ', districtId, 'districtsForSelectComp', districtsForSelectComp,'address.neidistrictghgou', address?.district)
         if(districtId){
           const q = query(
             collection(db, "neighboursV2"),
@@ -144,7 +141,6 @@ const {wrapperClassNames} = props
                   id: doc.id,
                 }));
                 setFetchedNeghbourHoods(theData as unknown as NeighbourHoodType[])
-                console.log('neighbourhood : theData for neightbourhood', theData)
         }
       }catch(error){
         console.log('this is error', error)
@@ -162,7 +158,6 @@ const {wrapperClassNames} = props
   useEffect(() => {
     const empty =  [{value: 'empty', CityName: 'empty'}]
    const list =  citiesList?.map(city => ({...city, value: city.CityName})) ?? empty
-    console.log('this is the leist', [list?.filter(city => city.CityName == 'İSTANBUL')[0], ...list])
     const istanbul = list?.filter(city => city.CityName == 'İSTANBUL')[0]
     if(typeof istanbul !== 'undefined') {
       setCitiesForTheSelectComp([ istanbul , ...list] as unknown as CityDataTypeForTheInput[])
@@ -195,16 +190,6 @@ const {wrapperClassNames} = props
     fetchNeighBourhoods()
   },[address?.district])
 
-
-  useEffect(() => {
-    console.log('filters', filters)
-  },[filters])
-  useEffect(() => {
-    console.log('fetchedDistricts', fetchedDistricts)
-  },[fetchedDistricts])
-  useEffect(() => {
-    console.log('districtsForSelectComp ', districtsForSelectComp)
-  },[districtsForSelectComp])
 
   return (
     <div className={`${wrapperClassNames}`}>
