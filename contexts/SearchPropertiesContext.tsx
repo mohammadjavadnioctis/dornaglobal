@@ -58,8 +58,12 @@ export const SearchPropertiesProvider: FC<
           filters.address?.city && queryConstraints.push(where('address.city', '==', filters.address?.city))
           filters.address?.neighbourhood && queryConstraints.push(where('address.neighborhood', '==', filters.address?.neighbourhood))
           filters.address?.district && queryConstraints.push(where('address.district', '==', filters.address?.district))
+        case 'price': 
+         filters.price?.minPrice && queryConstraints.push(where('price', '>=', filters.price?.minPrice))
+         filters.price?.maxPrice && queryConstraints.push(where('price', '<=', filters.price?.maxPrice))
+         default:
           console.log('filters :: queryConstraints: ', queryConstraints)
-        default:
+
           break;
       }
     })
@@ -106,6 +110,11 @@ export const SearchPropertiesProvider: FC<
         setFilters((prevState) => ({
           ...prevState,
           price: { ...prevState?.price!, minPrice: e },
+        }));
+      case "maxPrice":
+        setFilters((prevState) => ({
+          ...prevState,
+          price: { ...prevState?.price!, maxPrice: e },
         }));
       default:
         break;

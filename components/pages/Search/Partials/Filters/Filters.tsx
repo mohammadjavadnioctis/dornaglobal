@@ -90,7 +90,7 @@ const Filters: FC = memo(() => {
                 // label="Price"
                 defaultValue={undefined}
                 value={filters.price?.maxPrice as number}
-                onChange={(e) => handleFilterchange("minPrice", e)}
+                onChange={(e) => handleFilterchange("maxPrice", e)}
                 parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
                 formatter={(value) =>
                   !Number.isNaN(parseFloat(value as string))

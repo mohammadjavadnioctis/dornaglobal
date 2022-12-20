@@ -85,7 +85,8 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
   return (
     <UiLink
                   href={`/property/${property.id}`}
-                  className="h-full relative"
+                  
+                  target={"_blank"}
                 > 
     <div className="group hover:shadow-lg transition-shadow">
       <div className="overflow-hidden">
