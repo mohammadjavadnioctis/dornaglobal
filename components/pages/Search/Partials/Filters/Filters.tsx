@@ -105,9 +105,9 @@ const Filters: FC = memo(() => {
 
             <UiNumberInput
               // label="Price"
-              defaultValue={1}
+              defaultValue={undefined}
               value={filters.noOfBedRooms as number}
-              // onChange={(e) => handleFilterchange("minPrice", e)}
+              onChange={(e) => handleFilterchange("noOfRooms", e)}
             />
           </div>
           <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
@@ -115,9 +115,9 @@ const Filters: FC = memo(() => {
 
             <UiNumberInput
               // label="Price"
-              defaultValue={1}
+              defaultValue={undefined}
               value={filters.noOfBedRooms as number}
-              // onChange={(e) => handleFilterchange("minPrice", e)}
+              onChange={(e) => handleFilterchange("noOfBathRooms", e)}
             />
           </div>
           <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
@@ -125,9 +125,9 @@ const Filters: FC = memo(() => {
 
             <UiNumberInput
               // label="Price"
-
+              defaultValue={undefined}
               value={filters.floor as number}
-              // onChange={(e) => handleFilterchange("minPrice", e)}
+              onChange={(e) => handleFilterchange("floorNo", e)}
             />
           </div>
           <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
@@ -136,9 +136,10 @@ const Filters: FC = memo(() => {
             <div className="form_input_section ">
               <label className="text-xs">Title deed status:</label>
               <UiSelect
-                value={filters?.address?.district}
+                defaultValue={undefined}
+                value={filters.titleDeedStatus}
                 name="titleDeed"
-                onChange={(event) => handleFilterchange("district", event)}
+                onChange={(event) => handleFilterchange("titleDeedStatus", event)}
                 data={TitleDeedTypes}
               />
             </div>

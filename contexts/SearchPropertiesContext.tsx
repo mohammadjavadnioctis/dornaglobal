@@ -61,6 +61,14 @@ export const SearchPropertiesProvider: FC<
         case 'price': 
          filters.price?.minPrice && queryConstraints.push(where('price', '>=', filters.price?.minPrice))
          filters.price?.maxPrice && queryConstraints.push(where('price', '<=', filters.price?.maxPrice))
+         case 'noOfBedRooms': 
+         filters.noOfBedRooms && queryConstraints.push(where('noOfBedRooms', '==', filters.noOfBedRooms))
+         case 'noOfBathRooms': 
+         filters.noOfBathRooms && queryConstraints.push(where('noOfBathRooms', '==', filters.noOfBathRooms))
+         case 'floor': 
+         filters.floor && queryConstraints.push(where('floor', '==', filters.floor))
+         case 'titleDeedStatus': 
+         filters.titleDeedStatus && queryConstraints.push(where('titleDeedStatus', '==', filters.titleDeedStatus))
          default:
           console.log('filters :: queryConstraints: ', queryConstraints)
 
@@ -115,6 +123,26 @@ export const SearchPropertiesProvider: FC<
         setFilters((prevState) => ({
           ...prevState,
           price: { ...prevState?.price!, maxPrice: e },
+        }));
+      case "noOfRooms":
+        setFilters((prevState) => ({
+          ...prevState,
+          noOfBedRooms: e,
+        }));
+      case "noOfBathRooms":
+        setFilters((prevState) => ({
+          ...prevState,
+          noOfBathRooms: e,
+        }));
+      case "floorNo":
+        setFilters((prevState) => ({
+          ...prevState,
+          floor: e,
+        }));
+      case "titleDeedStatus":
+        setFilters((prevState) => ({
+          ...prevState,
+         titleDeedStatus: e
         }));
       default:
         break;
