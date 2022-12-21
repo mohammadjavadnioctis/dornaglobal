@@ -116,7 +116,7 @@ const Filters: FC = memo(() => {
             <UiNumberInput
               // label="Price"
               defaultValue={undefined}
-              value={filters.noOfBedRooms as number}
+              value={filters.noOfBathRooms as number}
               onChange={(e) => handleFilterchange("noOfBathRooms", e)}
             />
           </div>

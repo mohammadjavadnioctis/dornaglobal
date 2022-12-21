@@ -118,31 +118,37 @@ export const SearchPropertiesProvider: FC<
           ...prevState,
           price: { ...prevState?.price!, minPrice: e },
         }));
+        break;
       case "maxPrice":
         setFilters((prevState) => ({
           ...prevState,
           price: { ...prevState?.price!, maxPrice: e },
         }));
+        break;
       case "noOfRooms":
         setFilters((prevState) => ({
           ...prevState,
           noOfBedRooms: e,
         }));
+        break;
       case "noOfBathRooms":
         setFilters((prevState) => ({
           ...prevState,
           noOfBathRooms: e,
         }));
+        break;
       case "floorNo":
         setFilters((prevState) => ({
           ...prevState,
           floor: e,
         }));
+        break;
       case "titleDeedStatus":
         setFilters((prevState) => ({
           ...prevState,
          titleDeedStatus: e
         }));
+        break;
       default:
         break;
     }
