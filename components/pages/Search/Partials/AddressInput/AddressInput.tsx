@@ -3,7 +3,7 @@ import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UiAutoComplete, UiNativeSelect, UiTextinput } from "~/lib";
 import { AddressSampleData } from "~/utils/data";
 import { isDev } from "~/utils/helpers";
-import { collection, where, getDocs, query} from "firebase/firestore"; 
+import { collection, where, getDocs, query, orderBy} from "firebase/firestore"; 
 import { db } from "~/utils/config/firebase";
 import { CityType, DistrictType, NeighbourHoodType } from "~/utils/types";
 import { createStyles } from "@mantine/core";
@@ -89,7 +89,8 @@ const {wrapperClassNames} = props
 
       try{
         const q = query(
-          collection(db, "citiesData"));
+          collection(db, "citiesData"),
+          orderBy('CityName'));
           const fetchedCity = await getDocs(q);
           const theData = fetchedCity.docs.map((doc) => ({
                 ...doc.data(),
