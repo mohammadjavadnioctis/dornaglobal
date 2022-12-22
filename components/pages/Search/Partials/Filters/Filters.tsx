@@ -1,5 +1,6 @@
 import React, { FC, FormEvent, memo, useEffect, useState } from "react";
 import { DefinedStringSchema } from "yup/lib/string";
+import { defaultCurrency } from "~/app.config";
 import { useSearchProperties } from "~/contexts/SearchPropertiesContext";
 import { UiNativeSelect, UiNumberInput, UiSelect } from "~/lib";
 import { IstanbulDistricts, TitleDeedTypes } from "~/utils/data";
@@ -76,11 +77,11 @@ const Filters: FC = memo(() => {
                 defaultValue={undefined}
                 value={filters.price?.minPrice as number}
                 onChange={(e) => handleFilterchange("minPrice", e)}
-                parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
+                parser={(value) => value?.replace(/\₺\s?|(,*)/g, "")}
                 formatter={(value) =>
                   !Number.isNaN(parseFloat(value as string))
-                    ? `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                    : "$ "
+                    ? `${defaultCurrency.symbol} ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                    : `${defaultCurrency.symbol} `
                 }
               />
             </div>
@@ -91,11 +92,11 @@ const Filters: FC = memo(() => {
                 defaultValue={undefined}
                 value={filters.price?.maxPrice as number}
                 onChange={(e) => handleFilterchange("maxPrice", e)}
-                parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
+                parser={(value) => value?.replace(/\₺\s?|(,*)/g, "")}
                 formatter={(value) =>
                   !Number.isNaN(parseFloat(value as string))
-                    ? `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                    : "$ "
+                    ? `${defaultCurrency.symbol} ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                    : `${defaultCurrency.symbol} `
                 }
               />
             </div>
