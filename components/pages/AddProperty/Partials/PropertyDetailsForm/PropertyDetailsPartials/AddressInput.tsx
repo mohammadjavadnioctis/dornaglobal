@@ -184,8 +184,16 @@ const {wrapperClassNames} = props
 
 
   useEffect(() => {
-   const list =  citiesList?.map(city => ({...city, value: city.CityName}))
-   setCitiesForTheSelectComp(list as unknown as CityDataTypeForTheInput[])
+  //  const list =  citiesList?.map(city => ({...city, value: city.CityName}))
+  //  setCitiesForTheSelectComp(list as unknown as CityDataTypeForTheInput[])
+  const empty =  [{value: 'empty', CityName: 'empty'}]
+  const list =  citiesList?.map(city => ({...city, value: city.CityName})) ?? empty
+  const istanbul = list?.filter(city => city.CityName == 'İSTANBUL')[0]
+  if(typeof istanbul !== 'undefined') {
+    setCitiesForTheSelectComp([ istanbul , ...list] as unknown as CityDataTypeForTheInput[])
+  }else {
+    setCitiesForTheSelectComp([ ...list] as unknown as CityDataTypeForTheInput[])
+  }
   } ,
   [citiesList])
   
