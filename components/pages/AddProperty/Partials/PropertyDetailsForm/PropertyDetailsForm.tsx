@@ -183,9 +183,13 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
 
   const formErrorHandling = uiUseForm({
     // initialValues: { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge },
-    initialValues: { ...foundInitialvaluesState },
+    initialValues: {title,
+      ...foundInitialvaluesState 
+    },
     validateInputOnBlur: true,
-    validate: { ...foundValidationFunctionsState }
+    validate: { 
+      title: (value: any) => ((value && value.length > 3) ? null : 'this field is required'),
+      ...foundValidationFunctionsState }
   })
 
 useEffect(() => {
