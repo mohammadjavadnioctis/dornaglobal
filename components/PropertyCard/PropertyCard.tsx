@@ -74,11 +74,6 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
     },[])
 
 
-    useEffect(() => {
-      console.log('images from propertycared: ', images)
-    },
-    [images])
-
   const img = similar
     ? property.miniCardPhotos[0].url
     : property.hiResImageLink;

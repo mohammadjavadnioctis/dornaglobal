@@ -5,7 +5,7 @@ const formFiledsAlias = {
     noOfRooms: 'noOfRooms',
     noOfBathrooms: 'noOfBathrooms',
     floor: 'floor',
-    totalFloorCount: 'totalFloorCound',
+    totalFloorCount: 'totalFloorCount',
     buildingAge: 'buildingAge',
     balcony: 'balcony',
     furnished: 'furnished',

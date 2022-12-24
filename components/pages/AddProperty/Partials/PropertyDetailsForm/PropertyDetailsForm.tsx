@@ -1,5 +1,6 @@
+import { FormValidateInput, UseFormInput } from "@mantine/form/lib/types";
 import { DocumentReference } from "firebase/firestore";
-import React, { FC, memo } from "react";
+import React, { FC, memo, useEffect, useState } from "react";
 import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UiButton, uiUseForm } from "~/lib";
 import { formFiledsAlias } from "~/utils/data";
@@ -70,32 +71,126 @@ const { address: addressAlias, aidat: aidatAlias, balcony: balconyAlias, buildin
 // }
 
 
+
+
 const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   // const { ref } = props
-  const { UploadProperty, details, setDetails, chosenCategoryInfo,nextStep } = usePropertyContext()
+  const { UploadProperty, details, setDetails, chosenCategoryInfo, nextStep } = usePropertyContext()
   const { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge } = details
-
+  const [foundInitialvaluesState, setFoundInitialValuesState] = useState<any[]>([])
+  const [foundValidationFunctionsState, setFoundValidationFunctionsState] = useState<Record<string, any>>({})
   // chosenCategoryInfo && chosenCategoryInfo?.formFields && chosenCategoryInfo?.formFields?.slice(0).map(formField => renderValidationFunction())
+  const validationFunctions = {
+    title: (value: any) => ((value && value.length > 3) ? null : 'this field is required'),
+    price: (value: any) => ((value && value > 0) ? null : 'price can not be empty or 0'),
+    titleDeedStatus: (value: any) => ((value && value.length > 3) ? null : 'please choose an option'),
+    livingArea: (value: any) => ((value && value > 0) ? null : 'Living Area can not be empty or 0'),
+    totalArea: (value: any) => ((value && value > 0) ? null : 'Total Area can not be empty or 0'),
+    floor: (value: any) => ((value) ? null : 'please provide the floor number'),
+    totalFloorCount: (value: any) => ((value) ? null : 'please provide the total floor count'),
+    aydat: (value: any) => { console.log('aydat',value); return ((value >= 0) ? null : 'please provide the amount')},
+    buildingAge: (value: any) => ((value >= 0 && value !== null) ? null : 'please provide the age of the building'),
+  }
+  let foundValidationFunctions: Record<string, any> = {}
+  const renderValidationFunction = () => {
+    chosenCategoryInfo?.formFields?.slice(0).map(formFieldName => foundValidationFunctions[formFieldName] = findValidationFunction(formFieldName))
+    console.log('dynamic error handling: this is the found validtion form: ', foundValidationFunctions)
+    setFoundValidationFunctionsState(foundValidationFunctions)
+  }
 
-  const formErrorHandling = uiUseForm({
-    initialValues: { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge },
-    validateInputOnBlur: true,
-    validate: {
-      title: (value: any) => ((value && value.length > 3) ? null : 'this field is required'),
-      price: (value: any) => ((value && value > 0) ? null : 'price can not be empty or 0'),
-      titleDeedStatus: (value: any) => ((value && value.length > 3) ? null : 'please choose an option'),
-      livingArea: (value: any) => ((value && value > 0) ? null : 'Living Area can not be empty or 0'),
-      totalArea: (value: any) => ((value && value > 0) ? null : 'Total Area can not be empty or 0'),
-      floor: (value: any) => ((value) ? null : 'please provide the floor number'),
-      totalFloorCount: (value: any) => ((value) ? null : 'please provide the total floor count'),
-      aydat: (value: any) => ((value >= 0) ? null : 'please provide the amount'),
-      buildingAge: (value: any) => ((value >= 0 && value !== null) ? null : 'please provide the age of the building'),
+
+  const findValidationFunction = (inputName: string) => {
+    switch (inputName) {
+
+      case `${priceAlias}`:
+        return validationFunctions.price;
+
+      case `${livingAreaAlias}`:
+        return validationFunctions.livingArea;
+
+      case `${totalAreaAlias}`:
+        return validationFunctions.totalArea
+
+      case `${floorAlias}`:
+        return validationFunctions.floor;
+
+      case `${totalFloorCountAlias}`:
+        return validationFunctions.totalFloorCount
+
+      case `${aidatAlias}`:
+        return validationFunctions.aydat
+
+      case `${buildingAgeAlias}`:
+        return validationFunctions.buildingAge
+
+      case `${titleDeedStatusAlias}`:
+        return validationFunctions.titleDeedStatus
+      default: return undefined
+      // default: return inputName
 
 
     }
+  }
+  
+  
+  let foundInitialValues: any[] = []
+  
+  const findInitialValuesFunction = (inputName: string) => {
+    switch (inputName) {
+
+      case `${priceAlias}`:
+        return price
+
+      case `${livingAreaAlias}`:
+        return livingArea
+
+      case `${totalAreaAlias}`:
+        return totalAreaAlias
+
+      case `${floorAlias}`:
+        return floor
+
+      case `${totalFloorCountAlias}`:
+        return totalFloorCount
+
+      case `${aidatAlias}`:
+        return aydat
+
+      case `${buildingAgeAlias}`:
+        return buildingAge
+
+      case `${titleDeedStatusAlias}`:
+        return titleDeedStatus
+      default: return inputName
+      // default: return inputName
+
+
+    }
+  }
+
+  const populateInitialValues = () => {
+    chosenCategoryInfo?.formFields?.slice(0).map(formFieldName => foundInitialValues.push (findInitialValuesFunction(formFieldName)))
+    console.log('dynamic error handling: InitialValues', foundInitialValues)
+    setFoundInitialValuesState(foundInitialValues)
+  }
+
+  useEffect(() => {
+    renderValidationFunction()
+    populateInitialValues()
+  },
+    [])
+
+
+  const formErrorHandling = uiUseForm({
+    // initialValues: { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge },
+    initialValues: { ...foundInitialvaluesState },
+    validateInputOnBlur: true,
+    validate: { ...foundValidationFunctionsState }
   })
 
-
+useEffect(() => {
+  console.log('')
+}, [foundInitialvaluesState, foundValidationFunctionsState])
   const handleError = (errors: typeof formErrorHandling.errors) => {
     if (errors.name) {
       // showNotification({ message: 'Please fill name field', color: 'red' });
@@ -117,7 +212,7 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
     // @ts-ignore
     setDetails(prevState => ({ ...prevState, ...e }))
     nextStep()
-        // UploadProperty()
+    // UploadProperty()
 
   }
 
@@ -148,15 +243,15 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
           return <TotalNoOfFloorsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalFloorCount') }} />
           break;
         case `${aidatAlias}`:
-          return <AydatInput errorHandlingProp={{ ...formErrorHandling.getInputProps('aydat') }} />
+          return <AydatInput errorHandlingProp={{ ...formErrorHandling.getInputProps('aidat') }} />
           break;
         case `${buildingAgeAlias}`:
           return <BuildingAgeInput errorHandlingProp={{ ...formErrorHandling.getInputProps('buildingAge') }} />
           break;
-          case `${titleDeedStatusAlias}`: 
-            return <TitleDeedStatusinput errorHandlingProp={{ ...formErrorHandling.getInputProps('titleDeedStatus') }} />
+        case `${titleDeedStatusAlias}`:
+          return <TitleDeedStatusinput errorHandlingProp={{ ...formErrorHandling.getInputProps('titleDeedStatus') }} />
         default: return null
-            // default: return inputName
+        // default: return inputName
 
 
       }
@@ -174,7 +269,7 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
           <div className="col-span-2 ">
             <PropertyDescriptionInput />
           </div>
-          <PriceInput errorHandlingProp={{ ...formErrorHandling.getInputProps('price') }} /> 
+          {/* <PriceInput errorHandlingProp={{ ...formErrorHandling.getInputProps('price') }} /> 
           <TitleDeedStatusinput errorHandlingProp={{ ...formErrorHandling.getInputProps('titleDeedStatus') }}/>
           <LivingAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('livingArea') }}/>
           <TotalAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalArea') }} />
@@ -183,14 +278,14 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
           <FloorNoInput  errorHandlingProp={{ ...formErrorHandling.getInputProps('floor') }} />
           <TotalNoOfFloorsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalFloorCount') }}/>
           <AydatInput errorHandlingProp={{ ...formErrorHandling.getInputProps('aydat') }}/>
-           <BuildingAgeInput errorHandlingProp={{ ...formErrorHandling.getInputProps('buildingAge') }}/>
-          {/* {
+           <BuildingAgeInput errorHandlingProp={{ ...formErrorHandling.getInputProps('buildingAge') }}/> */}
+          {
 
             chosenCategoryInfo && chosenCategoryInfo?.formFields && chosenCategoryInfo?.formFields?.slice(0).map(field => {
               return renderFormInput(field)
             })
 
-          } */}
+          }
           <FurnishedInput />
           <BalconyInput />
         </div>

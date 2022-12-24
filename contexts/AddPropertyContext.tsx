@@ -155,6 +155,7 @@ export const AddPropertyProvider: FC<
 
 
 useEffect(() => {
+  console.log('detailsChanged', details )
 } ,[details])
 
   const value: any = useMemo(
