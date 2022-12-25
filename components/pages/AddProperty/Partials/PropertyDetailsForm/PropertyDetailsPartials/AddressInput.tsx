@@ -113,7 +113,8 @@ const {wrapperClassNames} = props
         if(cityID){
           const q = query(
             collection(db, "districtsV2"),
-            where('ilce_sehirkey','==',parseInt(cityID))
+            where('ilce_sehirkey','==',parseInt(cityID)),
+            orderBy('ilce_title')
             );
             const fetchedDistricts = await getDocs(q);
             const theData = fetchedDistricts.docs.map((doc) => ({
@@ -137,7 +138,8 @@ const {wrapperClassNames} = props
         if(districtId){
           const q = query(
             collection(db, "neighboursV2"),
-            where('mahalle_ilcekey','==', districtId)
+            where('mahalle_ilcekey','==', districtId),
+            orderBy('TownName')
             );
             const fetchedNeighBourHoods = await getDocs(q);
             const theData = fetchedNeighBourHoods.docs.map((doc) => ({
