@@ -257,6 +257,7 @@ const {wrapperClassNames} = props
           data={ districtsForSelectComp ?? AddressSampleData.districts}
           name="district"
           classNames={{dropdown: classes.dropDown}}
+          limit={100}
 
         />
         <UiAutoComplete
@@ -266,6 +267,7 @@ const {wrapperClassNames} = props
           data={ neighbourhoodsForSelectComp ?? AddressSampleData.neighbourhoods}
           name='neighbourhood'
           classNames={{dropdown: classes.dropDown}}
+          limit={100}
 
         />
       </div>
