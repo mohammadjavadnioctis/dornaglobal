@@ -76,7 +76,19 @@ const { address: addressAlias, aidat: aidatAlias, balcony: balconyAlias, buildin
 const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   // const { ref } = props
   const { UploadProperty, details, setDetails, chosenCategoryInfo, nextStep } = usePropertyContext()
-  const { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge } = details
+  const { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge, address } = details
+  let city: string;
+  let district: string;
+  let neighbourhood: string; 
+  if(!!address?.city){
+    city = address.city
+  }
+  if(!!address?.district){
+    district = address.district
+  }
+  if(!!address?.neighbourhood){
+    neighbourhood = address.neighbourhood
+  }
   const [foundInitialvaluesState, setFoundInitialValuesState] = useState<any[]>([])
   const [foundValidationFunctionsState, setFoundValidationFunctionsState] = useState<Record<string, any>>({})
   // chosenCategoryInfo && chosenCategoryInfo?.formFields && chosenCategoryInfo?.formFields?.slice(0).map(formField => renderValidationFunction())
@@ -90,6 +102,8 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
     totalFloorCount: (value: any) => ((value) ? null : 'please provide the total floor count'),
     aydat: (value: any) => { console.log('aydat',value); return ((value >= 0) ? null : 'please provide the amount')},
     buildingAge: (value: any) => ((value >= 0 && value !== null) ? null : 'please provide the age of the building'),
+    city: (value: any) => ((value && value.length > 2) ? null : 'please select a city'),
+
   }
   let foundValidationFunctions: Record<string, any> = {}
   const renderValidationFunction = () => {
@@ -169,8 +183,9 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   }
 
   const populateInitialValues = () => {
-    chosenCategoryInfo?.formFields?.slice(0).map(formFieldName => foundInitialValues.push (findInitialValuesFunction(formFieldName)))
+    chosenCategoryInfo?.formFields?.slice(0).map(formFieldName => foundInitialValues.push(findInitialValuesFunction(formFieldName)))
     console.log('dynamic error handling: InitialValues', foundInitialValues)
+    foundInitialValues.push(city)
     setFoundInitialValuesState(foundInitialValues)
   }
 
@@ -184,12 +199,15 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   const formErrorHandling = uiUseForm({
     // initialValues: { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge },
     initialValues: {title,
-      ...foundInitialvaluesState 
+      ...foundInitialvaluesState,    
     },
     validateInputOnBlur: true,
     validate: { 
       title: (value: any) => ((value && value.length > 3) ? null : 'this field is required'),
-      ...foundValidationFunctionsState }
+      ...foundValidationFunctionsState,
+      // @ts-ignore
+      city: (value: any) => ((value && value.length > 3) ? null : 'please select a city'),
+    }
   })
 
 useEffect(() => {
@@ -283,17 +301,17 @@ useEffect(() => {
           <TotalNoOfFloorsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalFloorCount') }}/>
           <AydatInput errorHandlingProp={{ ...formErrorHandling.getInputProps('aydat') }}/>
            <BuildingAgeInput errorHandlingProp={{ ...formErrorHandling.getInputProps('buildingAge') }}/> */}
-          {
+          {/* {
 
             chosenCategoryInfo && chosenCategoryInfo?.formFields && chosenCategoryInfo?.formFields?.slice(0).map(field => {
               return renderFormInput(field)
             })
 
-          }
+          } */}
           <FurnishedInput />
           <BalconyInput />
         </div>
-        <AddressInput wrapperClassNames="my-16" />
+        <AddressInput wrapperClassNames="my-16" cityErrorHandlingProps={{ ...formErrorHandling.getInputProps('city') }}/>
         {/* <button type="submit" className="w-16 h-10 border border">Submit</button>  */}
         <UiButton
           variant="filled"

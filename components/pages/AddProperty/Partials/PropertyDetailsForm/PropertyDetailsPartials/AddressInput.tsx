@@ -11,7 +11,8 @@ import { createStyles } from "@mantine/core";
 
 
 interface AddressInputProps {
-  wrapperClassNames?: string
+  wrapperClassNames?: string,
+  cityErrorHandlingProps: any
 }
 
 
@@ -41,7 +42,7 @@ const AddressInput: FC<AddressInputProps> = memo((props) => {
 
 
 
-const {wrapperClassNames} = props
+const {wrapperClassNames, cityErrorHandlingProps} = props
   const {classes} = myStyles()
   
   // const [address, setAddress] = useState({
@@ -251,6 +252,7 @@ const {wrapperClassNames} = props
           name="city"
           limit={85}
           classNames={{dropdown: classes.dropDown}}
+          {...cityErrorHandlingProps}
         />
         <UiAutoComplete
           value={address?.district}
