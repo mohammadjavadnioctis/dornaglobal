@@ -77,7 +77,7 @@ const { address: addressAlias, aidat: aidatAlias, balcony: balconyAlias, buildin
 const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   // const { ref } = props
   const { UploadProperty, details, setDetails, chosenCategoryInfo, nextStep } = usePropertyContext()
-  const { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge, address, noOfBathRooms, deposit } = details
+  const { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge, address, noOfBathRooms, deposit, noOfBedRooms } = details
   let city: string;
   let district: string = address?.district ?? ''
   let neighbourhood: string; 
@@ -105,6 +105,7 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
     buildingAge: (value: any) => ((value >= 0 && value !== null) ? null : 'please provide the age of the building'),
     city: (value: any) => ((value && value.length > 2) ? null : 'please select a city'),
     noOfBathRooms: (value: any) => { console.log('dynamic error handling: this is the bathrooms count: ', value) ;return ((value >= 0 && value !== null) ? null : 'please provide the battroms count')},
+    noOfRooms: (value: any) => { console.log('dynamic error handling: this is the bathrooms count: ', value) ;return ((value >= 0 && value !== null) ? null : 'please provide the bedroom count')},
     deposit: (value: any) => { console.log('dynamic error handling: this is amount of: deposit', value) ;return ((value >= 0) ? null : 'please provide the amount of deposit')}
 
   }
@@ -148,6 +149,9 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
         
         case `${depositAlias}`:
         return validationFunctions.deposit
+        
+        case `${noOfRoomsAlias}`:
+        return validationFunctions.noOfRooms
       // default: return undefined
       default: return inputName
 
@@ -190,6 +194,9 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
       
         case `${depositAlias}`:
         return deposit
+       
+        case `${noOfBathRoomsAlias}`:
+        return noOfBedRooms
       default: return inputName
       // default: return inputName
 
@@ -281,7 +288,7 @@ useEffect(() => {
           return <TotalAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalArea') }} />
           break;
         case `${noOfRoomsAlias}`:
-          return <NoOfRoomsInput />
+          return <NoOfRoomsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('noOfRooms') }} />
           break;
         case `${noOfBathRoomsAlias}`:
           return <NoOfBathroomsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('noOfBathrooms') }} />

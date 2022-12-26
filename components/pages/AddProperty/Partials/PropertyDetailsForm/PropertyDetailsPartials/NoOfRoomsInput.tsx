@@ -3,9 +3,15 @@ import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UiNumberInput } from "~/lib";
 import { isDev } from "~/utils/helpers";
 
-const NoOfRoomsInput: FC = memo(() => {
-  // const [noOfRooms, setNoOfRooms] = useState<number>();
 
+interface NoOfBedroomsInputType {
+  errorHandlingProp?: any;
+}
+
+
+const NoOfRoomsInput: FC<NoOfBedroomsInputType> = memo((props) => {
+  // const [noOfRooms, setNoOfRooms] = useState<number>();
+  const {errorHandlingProp} = props
   const {details: {noOfBedRooms}, setDetails} = usePropertyContext()
 
   const handleChange = (event: number) => {
@@ -20,7 +26,7 @@ const NoOfRoomsInput: FC = memo(() => {
         label="Number of rooms"
         value={noOfBedRooms}
         onChange={handleChange}
-      
+        {...errorHandlingProp}
       />
     </div>
   );
