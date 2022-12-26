@@ -14,7 +14,7 @@ interface PropertyUploadContextType {
         yearBuilt?: number | null,
         floor?: number | null,
         heatingSystem?: string | null,
-        noOfBathRooms?: number ,
+        noOfBathRooms?: number | null ,
         balcony?: boolean | null,
         furnished?: boolean | null,
         usageStatus?: 'empty'  | 'underRent' | null ,

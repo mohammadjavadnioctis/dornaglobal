@@ -46,7 +46,7 @@ const initialDetails: PropertyUploadContextType  = {
   furnished: null,
   heatingSystem: null,
   isInBuildingComplex: null,
-  noOfBathRooms: 0,
+  noOfBathRooms: null,
   noOfBedRooms: 0,
   price: 0,
   titleDeedStatus: '',

@@ -76,7 +76,7 @@ const { address: addressAlias, aidat: aidatAlias, balcony: balconyAlias, buildin
 const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   // const { ref } = props
   const { UploadProperty, details, setDetails, chosenCategoryInfo, nextStep } = usePropertyContext()
-  const { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge, address } = details
+  const { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge, address, noOfBathRooms } = details
   let city: string;
   let district: string = address?.district ?? ''
   let neighbourhood: string; 
@@ -103,13 +103,13 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
     aydat: (value: any) => { console.log('aydat',value); return ((value >= 0) ? null : 'please provide the amount')},
     buildingAge: (value: any) => ((value >= 0 && value !== null) ? null : 'please provide the age of the building'),
     city: (value: any) => ((value && value.length > 2) ? null : 'please select a city'),
-
+    noOfBathRooms: (value: any) => { console.log('dynamic error handling: this is the bathrooms count: ', value) ;return ((value >= 0 && value !== null) ? null : 'please provide the battroms count')}
 
   }
   let foundValidationFunctions: Record<string, any> = {}
   const renderValidationFunction = () => {
     chosenCategoryInfo?.formFields?.slice(0).map(formFieldName => foundValidationFunctions[formFieldName] = findValidationFunction(formFieldName))
-    console.log('dynamic error handling: this is the found validtion form: ', foundValidationFunctions)
+    console.log('dynamic error handling: this is the found validtion function: ', foundValidationFunctions)
     setFoundValidationFunctionsState(foundValidationFunctions)
   }
 
@@ -140,8 +140,11 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
 
       case `${titleDeedStatusAlias}`:
         return validationFunctions.titleDeedStatus
-      default: return undefined
-      // default: return inputName
+      
+        case `${noOfBathRoomsAlias}`:
+        return validationFunctions.noOfBathRooms
+      // default: return undefined
+      default: return inputName
 
 
     }
@@ -176,6 +179,9 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
 
       case `${titleDeedStatusAlias}`:
         return titleDeedStatus
+     
+      case `${noOfBathRoomsAlias}`:
+        return noOfBathRooms
       default: return inputName
       // default: return inputName
 
@@ -226,7 +232,6 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   })
 
 useEffect(() => {
-  console.log('')
 }, [foundInitialvaluesState, foundValidationFunctionsState])
   const handleError = (errors: typeof formErrorHandling.errors) => {
     if (errors.name) {
@@ -271,7 +276,7 @@ useEffect(() => {
           return <NoOfRoomsInput />
           break;
         case `${noOfBathRoomsAlias}`:
-          return <NoOfBathroomsInput />
+          return <NoOfBathroomsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('noOfBathrooms') }} />
           break;
         case `${floorAlias}`:
           return <FloorNoInput errorHandlingProp={{ ...formErrorHandling.getInputProps('floor') }} />
