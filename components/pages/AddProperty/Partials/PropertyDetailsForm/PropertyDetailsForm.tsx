@@ -78,14 +78,14 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   const { UploadProperty, details, setDetails, chosenCategoryInfo, nextStep } = usePropertyContext()
   const { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge, address } = details
   let city: string;
-  let district: string;
+  let district: string = address?.district ?? ''
   let neighbourhood: string; 
   if(!!address?.city){
     city = address.city
   }
-  if(!!address?.district){
-    district = address.district
-  }
+  // if(!!address?.district){
+    // district = address.district
+  // }
   if(!!address?.neighbourhood){
     neighbourhood = address.neighbourhood
   }
@@ -103,6 +103,7 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
     aydat: (value: any) => { console.log('aydat',value); return ((value >= 0) ? null : 'please provide the amount')},
     buildingAge: (value: any) => ((value >= 0 && value !== null) ? null : 'please provide the age of the building'),
     city: (value: any) => ((value && value.length > 2) ? null : 'please select a city'),
+
 
   }
   let foundValidationFunctions: Record<string, any> = {}
@@ -184,8 +185,10 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
 
   const populateInitialValues = () => {
     chosenCategoryInfo?.formFields?.slice(0).map(formFieldName => foundInitialValues.push(findInitialValuesFunction(formFieldName)))
-    console.log('dynamic error handling: InitialValues', foundInitialValues)
     foundInitialValues.push(city)
+    foundInitialValues.push(district)
+    foundInitialValues.push(neighbourhood)
+    console.log('dynamic error handling: InitialValues', foundInitialValues)
     setFoundInitialValuesState(foundInitialValues)
   }
 
@@ -206,7 +209,17 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
       title: (value: any) => ((value && value.length > 3) ? null : 'this field is required'),
       ...foundValidationFunctionsState,
       // @ts-ignore
-      city: (value: any) => ((value && value.length > 3) ? null : 'please select a city'),
+      city: (value: any) => {
+        setDetails(prevState => ({...prevState , address: {...prevState.address , city: value } }  ))
+        return ((value && value.length > 2) ? null : 'please select a city')
+      },
+      district: (value: any) => {
+        console.log('this is district: from the validation function ', value) 
+        setDetails(prevState => ({...prevState , address: {...prevState.address , district: value } }  ))
+        return ((value && value.length > 2) ? null : 'please select a district')
+      },
+      neighbourhood: (value: any) => ((value && value.length > 2) ? null : 'please select a neighbourhood'),
+
     }
   })
 
@@ -301,17 +314,17 @@ useEffect(() => {
           <TotalNoOfFloorsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalFloorCount') }}/>
           <AydatInput errorHandlingProp={{ ...formErrorHandling.getInputProps('aydat') }}/>
            <BuildingAgeInput errorHandlingProp={{ ...formErrorHandling.getInputProps('buildingAge') }}/> */}
-          {/* {
+          {
 
             chosenCategoryInfo && chosenCategoryInfo?.formFields && chosenCategoryInfo?.formFields?.slice(0).map(field => {
               return renderFormInput(field)
             })
 
-          } */}
+          }
           <FurnishedInput />
           <BalconyInput />
         </div>
-        <AddressInput wrapperClassNames="my-16" cityErrorHandlingProps={{ ...formErrorHandling.getInputProps('city') }}/>
+        <AddressInput wrapperClassNames="my-16" cityErrorHandlingProps={{ ...formErrorHandling.getInputProps('city') }} districtErrorHandlingProps={{ ...formErrorHandling.getInputProps('district') }} neighbourhoodErrorhandlingProps={{...formErrorHandling.getInputProps('neighbourhood')}}/>
         {/* <button type="submit" className="w-16 h-10 border border">Submit</button>  */}
         <UiButton
           variant="filled"

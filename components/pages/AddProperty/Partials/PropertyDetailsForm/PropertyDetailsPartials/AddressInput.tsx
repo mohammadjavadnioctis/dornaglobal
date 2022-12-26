@@ -12,7 +12,9 @@ import { createStyles } from "@mantine/core";
 
 interface AddressInputProps {
   wrapperClassNames?: string,
-  cityErrorHandlingProps: any
+  cityErrorHandlingProps: any,
+  districtErrorHandlingProps: any
+  neighbourhoodErrorhandlingProps: any
 }
 
 
@@ -42,7 +44,7 @@ const AddressInput: FC<AddressInputProps> = memo((props) => {
 
 
 
-const {wrapperClassNames, cityErrorHandlingProps} = props
+const {wrapperClassNames, cityErrorHandlingProps, districtErrorHandlingProps, neighbourhoodErrorhandlingProps} = props
   const {classes} = myStyles()
   
   // const [address, setAddress] = useState({
@@ -135,12 +137,12 @@ const {wrapperClassNames, cityErrorHandlingProps} = props
       try{
         // find corresponding districts's ID
         const districtId = districtsForSelectComp?.filter(district => district.ilce_title === address?.district)[0]?.ilce_key
-        console.log('neighbourhood : this is districtId, ', districtId, 'districtsForSelectComp', districtsForSelectComp,'address.neidistrictghgou', address?.district)
+        console.log('neighbourhood : this is districtId, ', districtId, )
         if(districtId){
           const q = query(
             collection(db, "neighboursV2"),
             where('mahalle_ilcekey','==', districtId),
-            orderBy('TownName')
+            orderBy('mahalle_title')
             );
             const fetchedNeighBourHoods = await getDocs(q);
             const theData = fetchedNeighBourHoods.docs.map((doc) => ({
@@ -262,6 +264,7 @@ const {wrapperClassNames, cityErrorHandlingProps} = props
           name="district"
           classNames={{dropdown: classes.dropDown}}
           limit={100}
+          {...districtErrorHandlingProps}
 
         />
         <UiAutoComplete
@@ -272,6 +275,7 @@ const {wrapperClassNames, cityErrorHandlingProps} = props
           name='neighbourhood'
           classNames={{dropdown: classes.dropDown}}
           limit={100}
+          {...neighbourhoodErrorhandlingProps}
 
         />
       </div>
