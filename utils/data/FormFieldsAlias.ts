@@ -18,7 +18,7 @@ const formFiledsAlias = {
     residenceName: 'residenceName',
     withinResidence: 'withinResidence',
     noOfEntrance: 'noOfEntrance',
-    deposit: 'depsit',
+    deposit: 'deposit',
     preRent: 'PreRent',
     heatingModel: 'heatingModel',
     avilableForCreditUsage: 'availableForCreditUsage',

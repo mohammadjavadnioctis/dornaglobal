@@ -11,20 +11,20 @@ interface DepositInputType {
 const DepositInput: FC<DepositInputType> = memo((props) => {
   const {errorHandlingProp} = props
   // const [price, setPrice] = useState<number>();
-  const {details: {price}, setDetails} = usePropertyContext()
+  const {details: {deposit}, setDetails} = usePropertyContext()
   
 
   const handleChange = (event: number) => {
-    setDetails(prevState => ({...prevState , price: event}))
+    setDetails(prevState => ({...prevState , deposit: event}))
   }
 
   return (
     <div>
       {" "}
       <UiNumberInput
-        label="Aidat (₺)"
+        label="Deposit"
         placeholder=""
-        value={price}
+        value={deposit}
         onChange={handleChange}
         parser={(value) => value?.replace(/\₺\s?|(,*)/g, "")}
         formatter={(value) =>

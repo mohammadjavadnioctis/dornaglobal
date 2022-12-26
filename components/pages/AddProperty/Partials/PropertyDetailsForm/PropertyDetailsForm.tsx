@@ -10,6 +10,7 @@ import AydatInput from "./PropertyDetailsPartials/AydatInput";
 import BalconyInput from "./PropertyDetailsPartials/BalconyInput";
 import BuildingAgeInput from "./PropertyDetailsPartials/BuildingAgeInput";
 import BuildingAge from "./PropertyDetailsPartials/BuildingAgeInput";
+import DepositInput from "./PropertyDetailsPartials/DepositInput";
 import FloorNoInput from "./PropertyDetailsPartials/FloorNoInput";
 import FurnishedInput from "./PropertyDetailsPartials/FurnishedInput";
 import LivingAreaInput from "./PropertyDetailsPartials/LivingAreaInput";
@@ -76,7 +77,7 @@ const { address: addressAlias, aidat: aidatAlias, balcony: balconyAlias, buildin
 const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
   // const { ref } = props
   const { UploadProperty, details, setDetails, chosenCategoryInfo, nextStep } = usePropertyContext()
-  const { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge, address, noOfBathRooms } = details
+  const { title, price, titleDeedStatus, livingArea, totalArea, floor, totalFloorCount, aydat, buildingAge, address, noOfBathRooms, deposit } = details
   let city: string;
   let district: string = address?.district ?? ''
   let neighbourhood: string; 
@@ -103,7 +104,8 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
     aydat: (value: any) => { console.log('aydat',value); return ((value >= 0) ? null : 'please provide the amount')},
     buildingAge: (value: any) => ((value >= 0 && value !== null) ? null : 'please provide the age of the building'),
     city: (value: any) => ((value && value.length > 2) ? null : 'please select a city'),
-    noOfBathRooms: (value: any) => { console.log('dynamic error handling: this is the bathrooms count: ', value) ;return ((value >= 0 && value !== null) ? null : 'please provide the battroms count')}
+    noOfBathRooms: (value: any) => { console.log('dynamic error handling: this is the bathrooms count: ', value) ;return ((value >= 0 && value !== null) ? null : 'please provide the battroms count')},
+    deposit: (value: any) => { console.log('dynamic error handling: this is amount of: deposit', value) ;return ((value >= 0) ? null : 'please provide the amount of deposit')}
 
   }
   let foundValidationFunctions: Record<string, any> = {}
@@ -143,6 +145,9 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
       
         case `${noOfBathRoomsAlias}`:
         return validationFunctions.noOfBathRooms
+        
+        case `${depositAlias}`:
+        return validationFunctions.deposit
       // default: return undefined
       default: return inputName
 
@@ -182,6 +187,9 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
      
       case `${noOfBathRoomsAlias}`:
         return noOfBathRooms
+      
+        case `${depositAlias}`:
+        return deposit
       default: return inputName
       // default: return inputName
 
@@ -292,6 +300,8 @@ useEffect(() => {
           break;
         case `${titleDeedStatusAlias}`:
           return <TitleDeedStatusinput errorHandlingProp={{ ...formErrorHandling.getInputProps('titleDeedStatus') }} />
+        case `${depositAlias}`:
+          return <DepositInput errorHandlingProp={{ ...formErrorHandling.getInputProps('deposit') }}/>
         default: return null
         // default: return inputName
 

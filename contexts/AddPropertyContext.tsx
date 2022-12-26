@@ -59,7 +59,7 @@ const initialDetails: PropertyUploadContextType  = {
   buildingAge: null,
   id:  '',
   isVarified: false,
-  deposit: 0,
+  deposit: undefined,
   listingStatus: 'Listing in progress',
   mediaUrls : {images: [], videos: []},
   timestamp: serverTimestamp()
