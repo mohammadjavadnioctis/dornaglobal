@@ -238,7 +238,7 @@ const {wrapperClassNames, cityErrorHandlingProps, districtErrorHandlingProps, ne
 
   return (
     <div className={`${wrapperClassNames}`}>
-      <h4>AddressInput</h4>
+      <h4 className="mb-4">AddressInput</h4>
       <div className={`form_container grid grid-cols-3 gap-4`}>
         {/* <UiNativeSelect
           value={address?.city}
@@ -247,6 +247,7 @@ const {wrapperClassNames, cityErrorHandlingProps, districtErrorHandlingProps, ne
           name="city"
         /> */}
         <UiAutoComplete
+          label="City"
           value={address?.city}
           onChange={(event) => handleChangeForCityInput(event)}
           // @ts-ignore
@@ -257,6 +258,7 @@ const {wrapperClassNames, cityErrorHandlingProps, districtErrorHandlingProps, ne
           {...cityErrorHandlingProps}
         />
         <UiAutoComplete
+          label='District'
           value={address?.district}
           onChange={(event) => handleChangeForDistrictInput(event)}
           // @ts-ignore
@@ -268,6 +270,7 @@ const {wrapperClassNames, cityErrorHandlingProps, districtErrorHandlingProps, ne
 
         />
         <UiAutoComplete
+        label='Neighbourhood'
           value={address?.neighbourhood}
           onChange={(event) => handleChangeForNeighbourHoodInput(event)}
           // @ts-ignore

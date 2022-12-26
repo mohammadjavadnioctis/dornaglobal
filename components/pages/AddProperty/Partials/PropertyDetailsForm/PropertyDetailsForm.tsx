@@ -218,7 +218,9 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
         setDetails(prevState => ({...prevState , address: {...prevState.address , district: value } }  ))
         return ((value && value.length > 2) ? null : 'please select a district')
       },
-      neighbourhood: (value: any) => ((value && value.length > 2) ? null : 'please select a neighbourhood'),
+      neighbourhood: (value: any) => {
+        setDetails(prevState => ({...prevState , address: {...prevState.address , neighbourhood: value } }  ))
+        return((value && value.length > 2) ? null : 'please select a neighbourhood')},
 
     }
   })
