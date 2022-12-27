@@ -11,11 +11,11 @@ const PropertyFeatures: FC<PropertyFeaturesComponentType> = memo((props) => {
   const { features } = props;
 
   return (
-    <div className={`p-10 bg-white rounded-xl mb-4 mt-4`}>
+    <div className={`px-2 py-10 md:p-10 bg-white rounded-xl mb-4 mt-4`}>
       <h2 className="text-titleColors text-lg font-playfair pb-10 mb-6 border-b border-gray-400">
         Property Features
       </h2>
-      <div className="features-container grid grid-cols-3">
+      <div className="features-container grid grid-cols-2 md:grid-cols-3">
         {features.map((feature) => {
           const { featureName, featureTitle, id } = feature;
           return (

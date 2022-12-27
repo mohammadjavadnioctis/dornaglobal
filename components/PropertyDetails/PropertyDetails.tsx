@@ -10,7 +10,7 @@ const PropertyDetails: FC<PropertyDetailsComponentType> = memo((props) => {
   const { details } = props;
 
   return (
-    <div className={`p-10 bg-white rounded-xl mb-4`}>
+    <div className={`px-2 py-10 md:p-10 bg-white rounded-xl mb-4`}>
       <h2 className="text-titleColors text-lg font-playfair pb-10 mb-6 border-b border-gray-400">
         Property Details
       </h2>

@@ -34,7 +34,7 @@ a {
 @tailwind utilities;
 
 .container {
-  @apply m-auto px-5;
+  @apply m-auto px-3 md:px-5;
 }
 
 /* Thumbnalis slider Start */
