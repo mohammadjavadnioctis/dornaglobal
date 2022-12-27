@@ -199,7 +199,7 @@ const getTheDownLoadURL = (path: string) => {
      <VarifyButton user={propertyOwner} property={property}/>
     } 
       
-      <div className="slider_container bg-white p-4  mb-4">
+      <div className="slider_container bg-white px-0 py-4 md:p-4  mb-4">
         <SumWithText {...SumWithTextProps} />
         {!images && (
           <div className="container border flex space-x-10 items-start">
@@ -215,12 +215,14 @@ const getTheDownLoadURL = (path: string) => {
       </div>
       {/* The layout of the right sidebar and content */}
       <div className=" container relative min-h-[80vh] flex justify-between">
-        <div className="w-[74%]">
+        <div className="w-full md:w-[74%] rounded-xl">
           {/* <PropertyDetails details={samplePropertyDetailsData} /> */}
           <PropertyDetails details={propertyDetails()} />
           <Description description={description!} />
           <PropertyFeatures features={SamplePropertyFeatures} />
-
+          <div className="md:hidden bg-white mb-4 rounded-xl py-10">
+            <SidebarAgentCard agent={agent} />
+          </div>
           {Array.isArray(similarProperties) && similarProperties.length > 1 && (
             <FeaturedExclusives
               properties={similarProperties}
@@ -234,7 +236,7 @@ const getTheDownLoadURL = (path: string) => {
             />
           )}
         </div>
-        <div className="w-1/4 bg-white rounded-xl h-[50vh] sticky top-[90px] right-0">
+        <div className="hidden md:inline-block w-1/4 bg-white rounded-xl h-[50vh] sticky top-[90px] right-0">
           <SidebarAgentCard agent={agent} />
         </div>
       </div>
