@@ -27,7 +27,7 @@ const SumWithText: FC<SumWithTextType> = memo((props) => {
   return (
     <div className="container">
       <Divider />
-      <div className="flex justify-between">
+      <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 justify-between">
         <div>
           <h1 className="text-3xl font-normal font-['Playfair_Display'] text-[#222222]">
             {title}

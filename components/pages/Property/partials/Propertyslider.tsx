@@ -1,9 +1,10 @@
-import React, { FC, memo, useState } from "react";
+import React, { FC, memo, useEffect, useState } from "react";
 import UiSlider from "~/lib/UiSlider";
 import SwiperClass, { FreeMode, Navigation, Thumbs } from "swiper";
 import UiImage from "~/lib/Image";
 import { isDev } from "~/utils/helpers";
 import Divider from "~/components/Divider/Divider";
+import useIsMobile from "~/utils/hooks/isMobile";
 
 interface PropertysliderType {
   images: string[];
@@ -14,6 +15,12 @@ const Propertyslider: FC<PropertysliderType> = memo((props) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass>();
   const [isImageLoading, setIsImageLoading] = useState(true);
   const [isVerticalSliderLoading, setIsVerticalSliderLoading] = useState(true);
+  let isMobile = useIsMobile()
+
+  useEffect(() => {
+    console.log('isMobile is: ', isMobile)
+  },[isMobile])
+
   return (
     <div className="container w-full min-h-[400px] max-h-[600px] overflow-hidden relative">
       <div className="w-full sm:aspect-w-3 sm:aspect-h-2 md:aspect-w-16 md:aspect-h-9 xl:aspect-none mt-4 xl:mt-0 xl:w-full xl:!h-[600px]">
