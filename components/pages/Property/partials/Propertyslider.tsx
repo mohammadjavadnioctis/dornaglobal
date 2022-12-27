@@ -23,7 +23,7 @@ const Propertyslider: FC<PropertysliderType> = memo((props) => {
 
   return (
     <div className="container w-full min-h-[400px] max-h-[600px] overflow-hidden relative">
-      <div className="w-full sm:aspect-w-3 sm:aspect-h-2 md:aspect-w-16 md:aspect-h-9 xl:aspect-none mt-4 xl:mt-0 xl:w-full xl:!h-[600px]">
+      <div className="w-full mt-4 xl:mt-0 xl:w-full xl:!h-[600px] aspect-2 md:aspect1">
         <UiSlider
           style={{
             // @ts-ignore
@@ -41,7 +41,7 @@ const Propertyslider: FC<PropertysliderType> = memo((props) => {
               thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null,
           }}
           modules={[FreeMode, Navigation, Thumbs]}
-          className="mySwiper2"
+          className="mySwiper2 !w-full md:!w-[73%]"
         >
           {isImageLoading && (
             <div className="absolute inset-0 z-1 w-full h-full bg-white">
@@ -76,6 +76,7 @@ const Propertyslider: FC<PropertysliderType> = memo((props) => {
           /> */}
         </UiSlider>
       </div>
+      {!isMobile && 
       <div className="thumbs_slider absolute top-0 right-0 w-1/4 h-full">
         <UiSlider
           onSwiper={setThumbsSwiper}
@@ -115,6 +116,7 @@ const Propertyslider: FC<PropertysliderType> = memo((props) => {
           })}
         </UiSlider>
       </div>
+      }
       <Divider />
     </div>
   );

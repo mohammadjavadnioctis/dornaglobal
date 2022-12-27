@@ -11,7 +11,7 @@ const SumWithIcons: FC<SumWithIconsType> = memo((props) => {
   const { features } = props;
 
   return (
-    <div className="container grid grid-cols-5 ">
+    <div className="container grid grid-cols-4 ">
       {features?.map((feature) => (
         <SumWithIcon
           key={Object.keys(feature)[0]}
