@@ -44,7 +44,7 @@ const Filters: FC = memo(() => {
   }
 
   return (
-    <div>
+    <div className="hidden md:inline-block">
       <div className="adress_forms">
         <form onSubmit={(e) => handleFiltersSubmit(e)}>
           <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">

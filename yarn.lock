@@ -690,7 +690,7 @@
   "resolved" "https://registry.npmjs.org/@humanwhocodes/object-schema/-/object-schema-1.2.1.tgz"
   "version" "1.2.1"
 
-"@mantine/core@^5.2.3", "@mantine/core@5.2.3":
+"@mantine/core@^5.2.3", "@mantine/core@5.2.3", "@mantine/core@5.8.3":
   "integrity" "sha512-1qhlyPE357zS99lSSmeiWLnJe5wubXyX9RiNjKD9N47UeiNXvkFQREfEsKPd6jDn+xQdcY8H8GL62Y9xSkSwuQ=="
   "resolved" "https://registry.npmjs.org/@mantine/core/-/core-5.2.3.tgz"
   "version" "5.2.3"
@@ -701,15 +701,23 @@
     "@radix-ui/react-scroll-area" "1.0.0"
     "react-textarea-autosize" "8.3.4"
 
-"@mantine/dropzone@^5.2.3":
-  "integrity" "sha512-tJ1G0Wv5xVwtz4zwmunwyPTIXu86fxVwfgsVz7Oofb/cTvzBUyM/LeX48su7tOtUhX4iLgFQZ7/pU3qohRQOEQ=="
-  "resolved" "https://registry.npmjs.org/@mantine/dropzone/-/dropzone-5.2.3.tgz"
-  "version" "5.2.3"
+"@mantine/dropzone@^5.8.3":
+  "integrity" "sha512-st5bhc4FdkXDvVf9R2/QAP/5M5fUZAXwye/VWHCEpYkFTYw84eNySxoZj67WV56M3lyXiF0JIMMbtn3BaV+Edw=="
+  "resolved" "https://registry.npmjs.org/@mantine/dropzone/-/dropzone-5.8.3.tgz"
+  "version" "5.8.3"
   dependencies:
-    "@mantine/utils" "5.2.3"
-    "react-dropzone" "14.2.1"
+    "@mantine/utils" "5.8.3"
+    "react-dropzone" "14.2.3"
 
-"@mantine/hooks@^5.2.3", "@mantine/hooks@5.2.3":
+"@mantine/form@^5.9.0":
+  "integrity" "sha512-7Wngy3AvckDNrMql0ObbmIb8Fx1JNx1JLaD4WGAoF2OSRhiIyyjff1fyNWFsLk63XZA1W8fTJSUYgUdJwpSHeQ=="
+  "resolved" "https://registry.npmjs.org/@mantine/form/-/form-5.9.0.tgz"
+  "version" "5.9.0"
+  dependencies:
+    "fast-deep-equal" "^3.1.3"
+    "klona" "^2.0.5"
+
+"@mantine/hooks@^5.2.3", "@mantine/hooks@5.2.3", "@mantine/hooks@5.8.3":
   "integrity" "sha512-8JuNVnC9Df1MsbQLbRxp6PakwakM2O+P6zXYYfFQNUmsHqBzvU8u7fzeiRVCefW7rP3o1+39Qpm3pkQUz+T90w=="
   "resolved" "https://registry.npmjs.org/@mantine/hooks/-/hooks-5.2.3.tgz"
   "version" "5.2.3"
@@ -750,6 +758,11 @@
   "resolved" "https://registry.npmjs.org/@mantine/utils/-/utils-5.2.3.tgz"
   "version" "5.2.3"
 
+"@mantine/utils@5.8.3":
+  "integrity" "sha512-MprJbMh/z3TbC8yPF2PQftitRwl58w7hvhp7O9fT+9jrvJHKM8V7r15iHMwBw2jgX6zmlksstO7QfhENc0vMHQ=="
+  "resolved" "https://registry.npmjs.org/@mantine/utils/-/utils-5.8.3.tgz"
+  "version" "5.8.3"
+
 "@next/env@12.2.5":
   "integrity" "sha512-vLPLV3cpPGjUPT3PjgRj7e3nio9t6USkuew3JE/jMeon/9Mvp1WyR18v3iwnCuX7eUAm1HmAbJHHLAbcu/EJcw=="
   "resolved" "https://registry.npmjs.org/@next/env/-/env-12.2.5.tgz"
@@ -762,9 +775,9 @@
   dependencies:
     "glob" "7.1.7"
 
-"@next/swc-win32-x64-msvc@12.2.5":
-  "integrity" "sha512-7h5/ahY7NeaO2xygqVrSG/Y8Vs4cdjxIjowTZ5W6CKoTKn7tmnuxlUc2h74x06FKmbhAd9agOjr/AOKyxYYm9Q=="
-  "resolved" "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-12.2.5.tgz"
+"@next/swc-darwin-arm64@12.2.5":
+  "integrity" "sha512-VOPWbO5EFr6snla/WcxUKtvzGVShfs302TEMOtzYyWni6f9zuOetijJvVh9CCTzInnXAZMtHyNhefijA4HMYLg=="
+  "resolved" "https://registry.npmjs.org/@next/swc-darwin-arm64/-/swc-darwin-arm64-12.2.5.tgz"
   "version" "12.2.5"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -2382,6 +2395,11 @@
   "resolved" "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
   "version" "1.0.0"
 
+"fsevents@~2.3.2":
+  "integrity" "sha512-xiqMQR4xAeHTuB9uWm+fFRcIOgKBMiOBP+eXiyT7jsgVCq1bkVygt00oASowB7EdtpOHaaPgKt812P9ab+DDKA=="
+  "resolved" "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz"
+  "version" "2.3.2"
+
 "function-bind@^1.1.1":
   "integrity" "sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A=="
   "resolved" "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz"
@@ -3091,6 +3109,11 @@
     "jwa" "^2.0.0"
     "safe-buffer" "^5.0.1"
 
+"klona@^2.0.5":
+  "integrity" "sha512-pJiBpiXMbt7dkzXe8Ghj/u4FfXOOa98fPW+bihOJ4SjnoijweJrNThJfd3ifXpXhREjpoF2mZVH1GfS9LV3kHQ=="
+  "resolved" "https://registry.npmjs.org/klona/-/klona-2.0.5.tgz"
+  "version" "2.0.5"
+
 "language-subtag-registry@~0.3.2":
   "integrity" "sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w=="
   "resolved" "https://registry.npmjs.org/language-subtag-registry/-/language-subtag-registry-0.3.22.tgz"
@@ -3789,10 +3812,10 @@
     "loose-envify" "^1.1.0"
     "scheduler" "^0.23.0"
 
-"react-dropzone@14.2.1":
-  "integrity" "sha512-jzX6wDtAjlfwZ+Fbg+G17EszWUkQVxhMTWMfAC9qSUq7II2pKglHA8aarbFKl0mLpRPDaNUcy+HD/Sf4gkf76Q=="
-  "resolved" "https://registry.npmjs.org/react-dropzone/-/react-dropzone-14.2.1.tgz"
-  "version" "14.2.1"
+"react-dropzone@14.2.3":
+  "integrity" "sha512-O3om8I+PkFKbxCukfIR3QAGftYXDZfOE2N1mr/7qebQJHs7U+/RSL/9xomJNpRg9kM5h9soQSdf0Gc7OHF5Fug=="
+  "resolved" "https://registry.npmjs.org/react-dropzone/-/react-dropzone-14.2.3.tgz"
+  "version" "14.2.3"
   dependencies:
     "attr-accept" "^2.2.2"
     "file-selector" "^0.6.0"

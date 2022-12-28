@@ -116,7 +116,7 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
         </div>
       </div>
       <div className="relative p-8 px-2 flex flex-col justify-around items-center antialiased">
-        <h2 className="w-52 mb-5 overflow-hidden text-ellipsis whitespace-nowrap text-2xl hover:text-accent transition-all cursor-pointer">
+        <h2 className="md:w-52 mb-5 overflow-hidden text-xs md:text-2xl text-ellipsis whitespace-nowrap  hover:text-accent transition-all cursor-pointer">
           {property.title}
         </h2>
         <div className="w-full text-center mb-6">

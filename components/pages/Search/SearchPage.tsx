@@ -56,11 +56,11 @@ const SearchPage: FC = memo(() => {
   
   return (
     <div className="container !pl-0">
-      <div className="relative min-h-[80vh] grid grid-cols-8 gap-3">
-      <div className="col-span-2  rounded-xl">
+      <div className="relative min-h-[80vh] grid md:grid-cols-8 gap-3 px-4 md:px-0">
+      <div className="col-span-2  rounded-xl hidden md:inline-block">
         <Filters />
       </div>
-        <div className="col-span-6 grid grid-cols-4 gap-4">
+        <div className="col-span-6 grid grid-cols-2 md:grid-cols-4 gap-4">
           {
             fetchedProperties && (
               fetchedProperties.map(property => (<PropertyCard key={property.id} property={property} />))
