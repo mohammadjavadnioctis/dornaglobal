@@ -163,10 +163,10 @@ const UploadMediaStep: FC = memo(
             </UiDropzone.Idle>
 
             <div>
-              <UiText size="xl" inline>
+              <UiText size="xl" inline className='text-center'>
                 Drag images here or click to select files
               </UiText>
-              <UiText size="sm" color="dimmed" inline mt={7}>
+              <UiText size="sm" color="dimmed" inline mt={7} className='text-center'>
                 Attach as many files as you like, each file should not exceed 5mb
               </UiText>
             </div>
