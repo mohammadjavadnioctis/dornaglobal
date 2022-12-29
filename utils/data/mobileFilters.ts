@@ -1,6 +1,7 @@
 import { MultiLevelMenuItemType, MultiLevelMenuType } from "~/components/MultiLevelMenu/MultiLevelMenu"
 import AddressInput from "~/components/pages/Search/Partials/AddressInput/AddressInput"
 import MinMaxPrice from "~/components/pages/Search/Partials/Filters/Partials/MinMaxPrice"
+import NoOfBathRoomsFilterInput from "~/components/pages/Search/Partials/Filters/Partials/NoOfBathRoomsFilterInput"
 import NoOfBeroomsFilterInput from "~/components/pages/Search/Partials/Filters/Partials/NoOfBeroomsFilterInput"
 
 const MobileFiltersData: MultiLevelMenuItemType[] = [
@@ -27,6 +28,12 @@ const MobileFiltersData: MultiLevelMenuItemType[] = [
                 goToMenu: 'bedroomCountFilter',
                 parent: 'main'
             },
+            {
+                id: 'bathroomCount',
+                label: 'Bathroom count',
+                goToMenu: 'bathroomCountFilter',
+                parent: 'main'
+            },
         ],
         component: null
     },
@@ -47,6 +54,12 @@ const MobileFiltersData: MultiLevelMenuItemType[] = [
         label: 'Bedroom count',
         goToMenu: '',
         component: NoOfBeroomsFilterInput
+   },
+    {
+        id: 'bathroomCountFilter',
+        label: 'Bathrooms count',
+        goToMenu: '',
+        component: NoOfBathRoomsFilterInput
    },
 
 ]

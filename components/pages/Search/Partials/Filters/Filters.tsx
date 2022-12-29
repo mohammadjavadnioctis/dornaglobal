@@ -8,6 +8,7 @@ import { isDev } from "~/utils/helpers";
 import { FiltersType } from "~/utils/types";
 import AddressInput from "../AddressInput/AddressInput";
 import MinMaxPrice from "./Partials/MinMaxPrice";
+import NoOfBathRoomsFilterInput from "./Partials/NoOfBathRoomsFilterInput";
 import NoOfBeroomsFilterInput from "./Partials/NoOfBeroomsFilterInput";
 
 const Filters: FC = memo(() => {
@@ -73,16 +74,7 @@ const Filters: FC = memo(() => {
 
          <MinMaxPrice />
          <NoOfBeroomsFilterInput />
-          <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
-            <label className="text-xs">Number of bathrooms :</label>
-
-            <UiNumberInput
-              // label="Price"
-              defaultValue={undefined}
-              value={filters.noOfBathRooms as number}
-              onChange={(e) => handleFilterchange("noOfBathRooms", e)}
-            />
-          </div>
+         <NoOfBathRoomsFilterInput />
           <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
             <label className="text-xs">Floor no :</label>
 
