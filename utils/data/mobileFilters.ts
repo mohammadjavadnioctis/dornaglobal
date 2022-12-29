@@ -4,6 +4,7 @@ import FloorNoFilterInput from "~/components/pages/Search/Partials/Filters/Parti
 import MinMaxPrice from "~/components/pages/Search/Partials/Filters/Partials/MinMaxPrice"
 import NoOfBathRoomsFilterInput from "~/components/pages/Search/Partials/Filters/Partials/NoOfBathRoomsFilterInput"
 import NoOfBeroomsFilterInput from "~/components/pages/Search/Partials/Filters/Partials/NoOfBeroomsFilterInput"
+import TitleDeedStatusFilterInput from "~/components/pages/Search/Partials/Filters/Partials/TitleDeedStatusFilterInput"
 
 const MobileFiltersData: MultiLevelMenuItemType[] = [
     {
@@ -41,6 +42,12 @@ const MobileFiltersData: MultiLevelMenuItemType[] = [
                 goToMenu: 'floorNoFilter',
                 parent: 'main'
             },
+            {
+                id: 'titleDeedStatusMenuItem',
+                label: 'Title Deed Status',
+                goToMenu: 'titleDeedStatusFilter',
+                parent: 'main'
+            },
         ],
         component: null
     },
@@ -73,6 +80,12 @@ const MobileFiltersData: MultiLevelMenuItemType[] = [
         label: 'Floor Number',
         goToMenu: '',
         component: FloorNoFilterInput
+   },
+    {
+        id: 'titleDeedStatusFilter',
+        label: 'Title Deed Status',
+        goToMenu: '',
+        component: TitleDeedStatusFilterInput
    },
 
 ]

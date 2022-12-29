@@ -11,6 +11,7 @@ import FloorNoFilterInput from "./Partials/FloorNoFilterInput";
 import MinMaxPrice from "./Partials/MinMaxPrice";
 import NoOfBathRoomsFilterInput from "./Partials/NoOfBathRoomsFilterInput";
 import NoOfBeroomsFilterInput from "./Partials/NoOfBeroomsFilterInput";
+import TitleDeedStatusFilterInput from "./Partials/TitleDeedStatusFilterInput";
 
 const Filters: FC = memo(() => {
 
@@ -77,20 +78,7 @@ const Filters: FC = memo(() => {
           <NoOfBeroomsFilterInput />
           <NoOfBathRoomsFilterInput />
           <FloorNoFilterInput />
-          <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
-            <label className="text-xs"> :</label>
-
-            <div className="form_input_section ">
-              <label className="text-xs">Title deed status:</label>
-              <UiSelect
-                defaultValue={undefined}
-                value={filters.titleDeedStatus}
-                name="titleDeed"
-                onChange={(event) => handleFilterchange("titleDeedStatus", event)}
-                data={TitleDeedTypes}
-              />
-            </div>
-          </div>
+         <TitleDeedStatusFilterInput />
           <button type="submit" className="w-full sticky bottom-0  border bg-accent p-4 ">Apply</button>
         </form>
       </div>
