@@ -5,6 +5,7 @@ import MultiLevelMenu from '~/components/MultiLevelMenu/MultiLevelMenu'
 import { useSearchProperties } from '~/contexts/SearchPropertiesContext'
 import { UiModal } from '~/lib'
 import { MobileFiltersData } from '~/utils/data'
+import { isDev } from '~/utils/helpers'
 
 
 const useStyles = createStyles((theme) => ({
@@ -48,5 +49,11 @@ const MobileFilters: FC = memo(
     }
 
 )
+
+
+if(isDev){
+    MobileFilters.displayName = 'MobileFilters'
+}
+
 
 export default MobileFilters
