@@ -53,7 +53,7 @@ const MultiLevelMenu: FC<MultiLevelMenuType> = (props) => {
         <div className={`main_container px-2`} style={{ height: (menuHeight && menuHeight + 100) ?? '', border: '1px solid orange' }} ref={dropdownRef}>
             {
                 structure.map((menuItem) => {
-                    const {id, component: Component} = menuItem
+                    const {id, component: Component, goToMenu} = menuItem
                     return (
 <CSSTransition
                 in={activeMenu === id}
@@ -68,8 +68,8 @@ const MultiLevelMenu: FC<MultiLevelMenuType> = (props) => {
                     {
                         menuItem?.menuItems?.map((subMenuItem) => 
                         {
-                            const {id, label} = subMenuItem
-                            return (<DropdownItem goToMenu={id} >{label}</DropdownItem>)
+                            const {id, label, goToMenu} = subMenuItem
+                            return (<DropdownItem goToMenu={goToMenu} >{label}</DropdownItem>)
                         })
                     }
                     {

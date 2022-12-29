@@ -1,6 +1,7 @@
 import { MultiLevelMenuItemType, MultiLevelMenuType } from "~/components/MultiLevelMenu/MultiLevelMenu"
 import AddressInput from "~/components/pages/Search/Partials/AddressInput/AddressInput"
 import MinMaxPrice from "~/components/pages/Search/Partials/Filters/Partials/MinMaxPrice"
+import NoOfBeroomsFilterInput from "~/components/pages/Search/Partials/Filters/Partials/NoOfBeroomsFilterInput"
 
 const MobileFiltersData: MultiLevelMenuItemType[] = [
     {
@@ -10,8 +11,8 @@ const MobileFiltersData: MultiLevelMenuItemType[] = [
         menuItems: [
             {
                 id: 'address',
-                label: 'address',
-                goToMenu: 'adress',
+                label: 'Address',
+                goToMenu: 'address',
                 parent: 'main'
             },
             {
@@ -21,9 +22,9 @@ const MobileFiltersData: MultiLevelMenuItemType[] = [
                 parent: 'main'
             },
             {
-                id: 'address',
-                label: 'address',
-                goToMenu: 'adress',
+                id: 'bedroomCountFilter',
+                label: 'Bedroom count',
+                goToMenu: 'bedroomCountFilter',
                 parent: 'main'
             },
         ],
@@ -40,7 +41,12 @@ const MobileFiltersData: MultiLevelMenuItemType[] = [
         label: 'Price',
         goToMenu: '',
         component: MinMaxPrice
-        
+   },
+    {
+        id: 'bedroomCountFilter',
+        label: 'Bedroom count',
+        goToMenu: '',
+        component: NoOfBeroomsFilterInput
    },
 
 ]
