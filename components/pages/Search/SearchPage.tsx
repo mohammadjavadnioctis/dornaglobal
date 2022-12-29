@@ -6,9 +6,19 @@ import { FiltersType } from "~/utils/types";
 import Filters from "./Partials/Filters/Filters";
 import PropertyCard from "~/components/PropertyCard/PropertyCard";
 import { useSearchProperties } from "~/contexts/SearchPropertiesContext";
+import useIsMobile from "~/utils/hooks/isMobile";
+import { MdFilterList } from "react-icons/md";
+import MobileFilters from "./Partials/MobileFilters/MobileFilters";
 
 const SearchPage: FC = memo(() => {
   const {fetchedProperties} = useSearchProperties()
+  let isMobile = useIsMobile()
+
+  const [domLoaded, setDomLoaded] = useState(false);
+
+  useEffect(() => {
+    setDomLoaded(true);
+  }, []);
 
 
   // const fetchBasedOnFilters: any = async () => {
@@ -56,10 +66,13 @@ const SearchPage: FC = memo(() => {
   
   return (
     <div className="container !pl-0">
-      <div className="relative min-h-[80vh] grid md:grid-cols-8 gap-3 px-4 md:px-0">
+      <div className="relative min-h-[80vh] md:grid md:grid-cols-8 gap-3 px-4 md:px-0">
       <div className="col-span-2  rounded-xl hidden md:inline-block">
         <Filters />
       </div>
+      {
+        isMobile && domLoaded && <MobileFilters />
+      }
         <div className="col-span-6 grid grid-cols-2 md:grid-cols-4 gap-4">
           {
             fetchedProperties && (
