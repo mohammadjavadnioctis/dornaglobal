@@ -7,14 +7,15 @@ import { IstanbulDistricts, TitleDeedTypes } from "~/utils/data";
 import { isDev } from "~/utils/helpers";
 import { FiltersType } from "~/utils/types";
 import AddressInput from "../AddressInput/AddressInput";
+import FloorNoFilterInput from "./Partials/FloorNoFilterInput";
 import MinMaxPrice from "./Partials/MinMaxPrice";
 import NoOfBathRoomsFilterInput from "./Partials/NoOfBathRoomsFilterInput";
 import NoOfBeroomsFilterInput from "./Partials/NoOfBeroomsFilterInput";
 
 const Filters: FC = memo(() => {
- 
-  const {filters, setFilters, fetchBasedOnFilters, handleFilterchange}  =  useSearchProperties()
-  
+
+  const { filters, setFilters, fetchBasedOnFilters, handleFilterchange } = useSearchProperties()
+
   // const handleFilterchange = (name: string, e: any) => {
   //   // TODO : refactor this part
   //   switch (name) {
@@ -41,7 +42,7 @@ const Filters: FC = memo(() => {
   //   // setFilters(prevState => ( { ...prevState } ))
   // };
 
-  const handleFiltersSubmit = (e:  React.FormEvent<HTMLFormElement>) => {
+  const handleFiltersSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     fetchBasedOnFilters()
   }
@@ -72,19 +73,10 @@ const Filters: FC = memo(() => {
             </div>
           </div>
 
-         <MinMaxPrice />
-         <NoOfBeroomsFilterInput />
-         <NoOfBathRoomsFilterInput />
-          <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
-            <label className="text-xs">Floor no :</label>
-
-            <UiNumberInput
-              // label="Price"
-              defaultValue={undefined}
-              value={filters.floor as number}
-              onChange={(e) => handleFilterchange("floorNo", e)}
-            />
-          </div>
+          <MinMaxPrice />
+          <NoOfBeroomsFilterInput />
+          <NoOfBathRoomsFilterInput />
+          <FloorNoFilterInput />
           <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
             <label className="text-xs"> :</label>
 
