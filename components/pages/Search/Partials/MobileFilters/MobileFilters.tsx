@@ -29,7 +29,7 @@ const MobileFilters: FC = memo(
 
         return (
             <div>
-                <div onClick={() => { setOpened(prevState => !prevState) }} className="w-full flex justify-between items-center py-2 px-2 bg-white rounded-lg  border border-accent my-4"><MdFilterList /> Filters</div>
+                <div onClick={() => { setOpened(prevState => !prevState) }} className="w-full flex justify-between items-center py-2 px-2 bg-white rounded-lg  border border-accent my-4">Filters <MdFilterList /></div>
                 <UiModal
                     opened={opened}
                     onClose={() => setOpened(false)}
