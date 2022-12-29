@@ -7,6 +7,7 @@ import { IstanbulDistricts, TitleDeedTypes } from "~/utils/data";
 import { isDev } from "~/utils/helpers";
 import { FiltersType } from "~/utils/types";
 import AddressInput from "../AddressInput/AddressInput";
+import MinMaxPrice from "./Partials/MinMaxPrice";
 
 const Filters: FC = memo(() => {
  
@@ -69,38 +70,7 @@ const Filters: FC = memo(() => {
             </div>
           </div>
 
-          <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
-            <div className="form_input_section">
-              <label className="text-xs">Min price :</label>
-              <UiNumberInput
-                // label="Price"
-                defaultValue={undefined}
-                value={filters.price?.minPrice as number}
-                onChange={(e) => handleFilterchange("minPrice", e)}
-                parser={(value) => value?.replace(/\₺\s?|(,*)/g, "")}
-                formatter={(value) =>
-                  !Number.isNaN(parseFloat(value as string))
-                    ? `${defaultCurrency.symbol} ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                    : `${defaultCurrency.symbol} `
-                }
-              />
-            </div>
-            <div className="form_input_section">
-              <label className="text-xs">Max price :</label>
-              <UiNumberInput
-                // label="Price"
-                defaultValue={undefined}
-                value={filters.price?.maxPrice as number}
-                onChange={(e) => handleFilterchange("maxPrice", e)}
-                parser={(value) => value?.replace(/\₺\s?|(,*)/g, "")}
-                formatter={(value) =>
-                  !Number.isNaN(parseFloat(value as string))
-                    ? `${defaultCurrency.symbol} ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-                    : `${defaultCurrency.symbol} `
-                }
-              />
-            </div>
-          </div>
+         <MinMaxPrice />
           <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
             <label className="text-xs">Number of bedrooms :</label>
 

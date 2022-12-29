@@ -1,5 +1,6 @@
 import { MultiLevelMenuItemType, MultiLevelMenuType } from "~/components/MultiLevelMenu/MultiLevelMenu"
 import AddressInput from "~/components/pages/Search/Partials/AddressInput/AddressInput"
+import MinMaxPrice from "~/components/pages/Search/Partials/Filters/Partials/MinMaxPrice"
 
 const MobileFiltersData: MultiLevelMenuItemType[] = [
     {
@@ -38,6 +39,7 @@ const MobileFiltersData: MultiLevelMenuItemType[] = [
         id: 'price',
         label: 'Price',
         goToMenu: '',
+        component: MinMaxPrice
         
    },
 
