@@ -20,7 +20,7 @@ const Stepper = memo(() => {
   const {activeStep, setActiveStep, prevStep, nextStep} = usePropertyContext()
 
   return (
-    <div className="contianer px-11">
+    <div className="contianer px-4 md:px-11">
       <UIStepper
         active={activeStep}
         onStepClick={setActiveStep}

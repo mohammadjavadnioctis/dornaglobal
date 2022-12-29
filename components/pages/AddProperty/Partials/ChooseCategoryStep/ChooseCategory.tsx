@@ -233,10 +233,10 @@ const ChooseCategory: FC = memo(() => {
   }
 
   return (
-    <div className="h-full">
+    <div className="h-full overflow-x-scroll md:overflow-x-auto">
       <h2 className="mb-8">Choose Category</h2>
-      <div className="steps-container flex space-x-4 h-80 px-24 min-h-full">
-        <div className="first-step h-full w-56 min-h-full">
+      <div className="steps-container flex space-x-4 h-60 md:h-80 md:px-24 min-h-full">
+        <div className="first-step h-full min-w-[150px] w-56 min-h-full">
           <ul className="pl-4 border-2 border-accent-300 bg-accent-100 rounded-xl min-h-full">
             {ChooseCategorySteps.map((category) => {
               const { categoryLabel, id, categoryName } = category;
@@ -263,7 +263,7 @@ const ChooseCategory: FC = memo(() => {
         {chosenCategoryInfo.category &&
           Array.isArray(dealTypes) &&
           dealTypes.length > 0 && (
-            <div className="second-step h-full w-56 min-h-full">
+            <div className="second-step h-full min-w-[150px] w-56 min-h-full">
               <ul className="pl-4 border-2 border-accent-300 bg-accent-100 rounded-xl min-h-full">
                 {dealTypes.map((deal) => {
                   const { id, dealName, dealLable } = deal;
@@ -287,7 +287,7 @@ const ChooseCategory: FC = memo(() => {
             </div>
           )}
         {chosenCategoryInfo.category && (chosenCategoryInfo.category == 'residential' || chosenCategoryInfo.category == 'commercial') && chosenCategoryInfo.dealType && (
-          <div className="third-step h-full w-56 min-h-full">
+          <div className="third-step h-full min-w-[150px] w-56 min-h-full">
             <ul className="pl-4 border-2 border-accent-300 bg-accent-100 rounded-xl min-h-full">
               {correspondingPropertyTypesToChosenDealType &&
                 correspondingPropertyTypesToChosenDealType.map(
@@ -319,10 +319,10 @@ const ChooseCategory: FC = memo(() => {
         )}
         {
           isCategoryChosen && 
-          <div className="is-catagory-chosen flex flex-col items-center justify-center w-56 min-h-full pl-4 border-2 border-accent-300 bg-accent-100 rounded-xl min-h-ful">
-              <IoCheckmarkCircleOutline className="w-24 h-24 text-accent" />
-              <span className="text-sm ">Category is chosen</span>
-              <UIButton onClick={handleNextStep} className={'border border-accent bg-accent text-white hover:bg-white hover:text-accent mt-4'}>Next step</UIButton>
+          <div className="is-catagory-chosen flex flex-col items-center justify-between md:justify-center w-56 min-h-full py-3 px-2 md:pl-4 border-2 border-accent-300 bg-accent-100 rounded-xl min-h-ful">
+              <IoCheckmarkCircleOutline className="w-16 h-16  md:w-24 md:h-24 text-accent" />
+              <span className="text-base text-center ">Category is chosen</span>
+              <UIButton onClick={handleNextStep} className={'text-sm md:text-base  border border-accent bg-accent text-white hover:bg-white hover:text-accent mt-4'}>Next step</UIButton>
 
             </div>
         }

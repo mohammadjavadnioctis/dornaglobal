@@ -238,8 +238,8 @@ const {wrapperClassNames, cityErrorHandlingProps, districtErrorHandlingProps, ne
 
   return (
     <div className={`${wrapperClassNames}`}>
-      <h4 className="mb-4">AddressInput</h4>
-      <div className={`form_container grid grid-cols-3 gap-4`}>
+      <h4 className="mb-4">Address Info</h4>
+      <div className={`form_container grid grid-cols-1 md:grid-cols-3 gap-4`}>
         {/* <UiNativeSelect
           value={address?.city}
           onChange={(event) => handleChange(event)}
