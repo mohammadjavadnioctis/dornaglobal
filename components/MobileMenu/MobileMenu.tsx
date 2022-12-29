@@ -95,7 +95,7 @@ const MobileMenu: FC = () => {
           </ul>
           <div className="w-[calc(100%_-_24px)] min-h-[48px]  text-sm border-accent dark:!border-white border rounded-lg bg-white 
                                 dark:bg-transparent text-accent  my-4 flex justify-center items-center"
-            onClick={() => { setOpened(false); history.push('add-property') }}
+            onClick={() => { setOpened(false); history.push('/add-property') }}
           >
             <span className="w-[2px] h-[5px] mr-4 bg-accent text- dark:bg-white "></span>
             {/* {route()} */}

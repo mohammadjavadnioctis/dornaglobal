@@ -39,7 +39,7 @@ const MobileFilters: FC = memo(
 
                     <MultiLevelMenu structure={MobileFiltersData} />
                 <div className='absolute bottom-8 w-full '>
-                    <button onClick={()=> {fetchBasedOnFilters()}} className="w-full border bg-accent py-4">Apply</button>
+                    <button onClick={()=> {fetchBasedOnFilters(); setOpened(false)}} className="w-full border bg-accent py-4">Apply</button>
                     
                 </div>
                 </UiModal>
