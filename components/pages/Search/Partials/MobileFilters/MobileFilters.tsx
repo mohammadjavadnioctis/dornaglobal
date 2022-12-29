@@ -1,14 +1,16 @@
 import { createStyles } from '@mantine/core'
 import React, {FC, memo, useState} from 'react'
 import { MdFilterList } from 'react-icons/md'
+import MultiLevelMenu from '~/components/MultiLevelMenu/MultiLevelMenu'
 import { UiModal } from '~/lib'
+import { MobileFiltersData } from '~/utils/data'
 
 
 const useStyles = createStyles((theme) => ({
     modal: {
-        width: '80vw',
-        paddingBottom: '5rem !important'
-
+        width: '100vw',
+        height: '100vh',
+        
     }
 }))
 
@@ -27,6 +29,9 @@ const MobileFilters: FC = memo(
             classNames={{modal: classes.modal}}
             centered>
                 
+
+        <MultiLevelMenu structure={MobileFiltersData} />
+
             </UiModal>
         </div>
      )

@@ -5,4 +5,5 @@ export { default as NeightBourHoodSampleData } from "./SampleDeightBourHoodData"
 export { default as IstanbulDistricts } from "./istanbulDistricts";
 export { default as TitleDeedTypes } from "./titleDeedTypes";
 export { default as formFiledsAlias } from "./FormFieldsAlias";
+export { default as MobileFiltersData } from "./mobileFilters";
 export * as AddressSampleData from './AddressSampleData'
