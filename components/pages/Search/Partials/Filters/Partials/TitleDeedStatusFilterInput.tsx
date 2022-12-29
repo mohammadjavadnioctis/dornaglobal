@@ -10,7 +10,7 @@ const TitleDeedStatusFilterInput: FC = memo(
 
       return (
         <div className="form-input-wrapper p-4 bg-white rounded-lg border border-accent-200 mb-3">
-        <label className="text-xs"> :</label>
+        <label className="text-xs"> </label>
     
         <div className="form_input_section ">
           <label className="text-xs">Title deed status:</label>

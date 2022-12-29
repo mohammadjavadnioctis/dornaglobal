@@ -6,6 +6,7 @@ import CogIcon from './cog.svg';
 import ChevronIcon from './chevron.svg';
 import ArrowIcon from './arrow.svg';
 import BoltIcon from './bolt.svg';
+import { BiChevronLeft, BiChevronRightCircle } from 'react-icons/bi';
 
 
 export interface MultiLevelMenuItemType {
@@ -19,12 +20,12 @@ export interface MultiLevelMenuItemType {
 
 
 export interface MultiLevelMenuType {
-   structure: MultiLevelMenuItemType[]
+    structure: MultiLevelMenuItemType[]
 }
 
 
 const MultiLevelMenu: FC<MultiLevelMenuType> = (props) => {
-    const {structure} = props
+    const { structure } = props
     const [activeMenu, setActiveMenu] = useState('main');
     const [menuHeight, setMenuHeight] = useState<number | null>(null);
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -40,9 +41,13 @@ const MultiLevelMenu: FC<MultiLevelMenuType> = (props) => {
     }
 
     const DropdownItem = (props: any) => {
+        const {showIconLeft = false} = props
         return (
-            <a href="#" className="menu-item" onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+            <a href="#" className={`menu-item ${props?.wrapperClassName}`} onClick={() => props.goToMenu && setActiveMenu(props.goToMenu)}>
+                {
+                showIconLeft &&
                 <span className="icon-button">{props.leftIcon}</span>
+                }
                 {props.children}
                 <span className="icon-right">{props.rightIcon}</span>
             </a>
@@ -50,35 +55,36 @@ const MultiLevelMenu: FC<MultiLevelMenuType> = (props) => {
     }
 
     return (
-        <div className={`main_container px-2`} style={{ height: (menuHeight && menuHeight + 100) ?? '', border: '1px solid orange' }} ref={dropdownRef}>
+        <div className={`main_container px-2 `} ref={dropdownRef}>
             {
                 structure.map((menuItem) => {
-                    const {id, component: Component, goToMenu} = menuItem
+                    const { id, component: Component, goToMenu } = menuItem
                     return (
-<CSSTransition
-                in={activeMenu === id}
-                timeout={500}
-                classNames={`menu-primary`}
-                unmountOnExit
-                // @ts-ignore
-                onEnter={calcHeight}
-            >
-                <div className={`menu flex flex-col space-y-3`}>
-                <DropdownItem goToMenu={'main'} >main menu</DropdownItem>
-                    {
-                        menuItem?.menuItems?.map((subMenuItem) => 
-                        {
-                            const {id, label, goToMenu} = subMenuItem
-                            return (<DropdownItem goToMenu={goToMenu} >{label}</DropdownItem>)
-                        })
-                    }
-                    {
-                        Component && <>
-                         hi
-                         <Component />
-                        </>
-                    }
-                    {/* <DropdownItem>My Profile</DropdownItem>
+                        <CSSTransition
+                            in={activeMenu === id}
+                            timeout={0}
+                            classNames={`menu-primary`}
+                            unmountOnExit
+                            // @ts-ignore
+                            onEnter={calcHeight}
+                        >
+                            <div className={`menu flex flex-col border-b`}>
+                                { id !== 'main' && <DropdownItem goToMenu={'main'} wrapperClassName='mb-8 border-t border-b w-full flex items-center' showIconLeft leftIcon={<BiChevronLeft className='mr-4 w-8 h-8 text-accent'/>}>  Filters</DropdownItem> }
+                                {
+                                    menuItem?.menuItems?.map((subMenuItem) => {
+                                        const { id, label, goToMenu } = subMenuItem
+                                        return (<DropdownItem goToMenu={goToMenu}
+                                                    wrapperClassName='w-full py-4 border-b flex justify-between items-center'
+                                                    rightIcon={<BiChevronRightCircle className='w-6 h-6 text-accent' />}>
+                                                    {label}
+                                                </DropdownItem>)
+                                    })
+                                }
+                                {
+                                    Component &&
+                                    <Component />
+                                }
+                                {/* <DropdownItem>My Profile</DropdownItem>
                     <DropdownItem
                         // leftIcon={<CogIcon />}
                         // rightIcon={<ChevronIcon />}
@@ -98,13 +104,13 @@ const MultiLevelMenu: FC<MultiLevelMenuType> = (props) => {
                         test
                     </DropdownItem> */}
 
-                </div>
-                {/* <p>hi</p> */}
-            </CSSTransition>
+                            </div>
+                            {/* <p>hi</p> */}
+                        </CSSTransition>
                     )
                 })
             }
-            
+
 
             {/* <CSSTransition
                 in={activeMenu === 'main'}
@@ -137,7 +143,7 @@ const MultiLevelMenu: FC<MultiLevelMenuType> = (props) => {
 
                 </div>
                 {/* <p>hi</p> */}
-           {/* </CSSTransition>
+            {/* </CSSTransition>
 
             <CSSTransition
                 in={activeMenu === 'settings'}
