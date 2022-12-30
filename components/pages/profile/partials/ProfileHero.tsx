@@ -17,9 +17,13 @@ const ProfileHero: FC = memo(() => {
           objectFit="cover"
         />
       </div>
-      <div className="contents_ absolute w-full h-full top-0 left-0 flex items-end pb-7 bg-black bg-opacity-[0.5] z-10 text-white">
+      <div className="contents_ absolute w-full h-full top-0 left-0 flex flex-col md:flex-row justify-end md:justify-start items-center md:items-end pb-7 bg-black bg-opacity-[0.5] z-10 text-white">
+      <div className="flex md:hidden flex-col items-center justify-center mb-4 md:mb-0">
+            <h2 className="text-2xl font-bold">{user?.displayName}</h2>
+            <h3 className="text-xl">{user?.email}</h3>
+          </div>
         <div className="info_container container !my-0 w-full flex justify-between flex-wrap">
-          <div className="flex flex-col items-center justify-center">
+          <div className="hidden md:flex flex-col items-center justify-center">
             <h2 className="text-2xl font-bold">{user?.displayName}</h2>
             <h3>{user?.email}</h3>
           </div>
