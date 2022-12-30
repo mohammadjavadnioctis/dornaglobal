@@ -16,8 +16,8 @@ interface MyListingsType {
 const MyListingsTab: FC<MyListingsType> = memo((props) => {
   const { listedProperties } = props
   return (
-    <div className="w-full h-full p-4">
-      <div className="w-full flex justify-between">
+    <div className="w-full h-full md:p-4 py-4">
+      <div className="w-full flex justify-between px-4">
         <div>
           <h2 className="text-accent-600">My Listings</h2>
           <h3 className="text-sm opacity-60"> all Listings </h3>
