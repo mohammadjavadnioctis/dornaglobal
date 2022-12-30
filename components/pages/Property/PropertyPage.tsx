@@ -236,7 +236,7 @@ const getTheDownLoadURL = (path: string) => {
             />
           )}
         </div>
-        <div className="hidden md:inline-block w-1/4 bg-white rounded-xl h-[50vh] sticky top-[90px] right-0">
+        <div className="hidden md:inline-block w-1/4 bg-white rounded-xl h-min sticky top-[90px] right-0">
           <SidebarAgentCard agent={agent} />
         </div>
       </div>
