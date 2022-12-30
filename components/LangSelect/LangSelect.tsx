@@ -4,6 +4,7 @@ import { Group, Avatar, Text, Select, createStyles } from "@mantine/core";
 import { IconChevronDown } from "@tabler/icons";
 import turkeyFlag from "~/public/icons/countryFlags/turkey.svg";
 import { useRouter } from "next/router";
+import { BiChevronDown } from "react-icons/bi";
 
 interface ItemProps extends React.ComponentPropsWithoutRef<"div"> {
   image: string;
@@ -75,6 +76,7 @@ const LangSelect: FC = () => {
         // searchable
         maxDropdownHeight={400}
         nothingFound=""
+        rightSection={<BiChevronDown />}
         // filter={(value, item) =>
         //   item?.label.toLowerCase().includes(value.toLowerCase().trim()) ||
         //   item.description.toLowerCase().includes(value.toLowerCase().trim())

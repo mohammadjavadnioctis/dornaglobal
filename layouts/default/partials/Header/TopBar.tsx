@@ -29,7 +29,7 @@ const TopBar = () => {
             <span className="text-black">{config.supportMail}</span>
           </a>
         </div>
-        <div className="inline-block">
+        <div className="inline-block w-[80%] md:w-auto">
           <LangSelect />
         </div>
       </div>
