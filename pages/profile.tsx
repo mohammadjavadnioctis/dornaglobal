@@ -20,15 +20,15 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   try {
     const cookies = nookies.get(ctx);
     propsCookies = cookies
-    const token = await admin.auth().verifyIdToken(cookies.token);
+    // const token = await admin.auth().verifyIdToken(cookies.token);
 
     // the user is authenticated!
-    const { uid, email } = token;
+    // const { uid, email } = token;
 
     // FETCH STUFF HERE!! 🚀
     const q = query(
       collection(db, "testproperties"),
-      where("user.email", "==", email)
+      // where("user.email", "==", email)
     );
 
     const querySnapshot = await getDocs(q);
