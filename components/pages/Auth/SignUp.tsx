@@ -6,7 +6,7 @@ import { isDev } from "~/utils/helpers";
 
 const SignUpComp: FC = memo(() => {
   return (
-    <div className="container h-screen grid grid-cols-2 ">
+    <div className="container h-screen max-h-[800px] grid grid-cols-2 ">
       <div className="relative">
         <UiImage
           src={
