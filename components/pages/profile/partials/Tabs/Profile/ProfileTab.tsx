@@ -49,7 +49,7 @@ const userData: Record<string, any> = [
             const {Img, field, value} = data
             return (
 
-           <div className='w-full min-h-[60px] py-2 mt-4 flex flex-col md:flex-row justify-between items-center border-b border-[#DADBE8]'>
+           <div className='w-full min-h-[60px] py-2 mt-4 flex flex-col md:flex-row justify-between items-center border-b border-[#DADBE8] space-y-3 md:space-y-0'>
              <div className='min-w-14 min-h-14 flex items-center'>
               <Img className='w-7 h-7'/>
                <span className='ml-2 whitespace-nowrap'>{data.field}</span>
