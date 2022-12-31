@@ -1,3 +1,4 @@
+import { truncateSync } from "fs";
 import React, { FC, memo, useState } from "react";
 import { usePropertyContext } from "~/contexts/AddPropertyContext";
 import { UIButton, UIGroup, UIStepper } from "~/lib";
@@ -27,35 +28,35 @@ const Stepper = memo(() => {
         breakpoint="sm"
         className="min-h-[300px]"
       >
-        <UIStepper.Step label="First step" description="Choose category" allowStepSelect={false}>
+        <UIStepper.Step label="First step" description="Choose category" allowStepSelect={true}>
           <ChooseCategory />
         </UIStepper.Step>
         <UIStepper.Step
           label="Second step"
           description="Enter property details"
-          allowStepSelect={false}
+          allowStepSelect={true}
         >
           <PropertyDetailsForm />
         </UIStepper.Step>
         <UIStepper.Step
           label="Third step"
           description="Upload Images and videos"
-          allowStepSelect={false}
+          allowStepSelect={true}
         >
           <UploadMediaStep />
         </UIStepper.Step>
         <UIStepper.Step
           label="Fourth step"
           description="Review"
-          allowStepSelect={false}
+          allowStepSelect={true}
         >
           <ReviewStep />
         </UIStepper.Step>
-        <UIStepper.Step label="Fifth step" description="Property Listed" allowStepSelect={false}>
+        <UIStepper.Step label="Fifth step" description="Property Listed" allowStepSelect={true}>
           {/* Step 3 content: Get full access */}
           <PropertyListedStep />
         </UIStepper.Step>
-        <UIStepper.Step label="Final step" description="congratulation" allowStepSelect={false}>
+        <UIStepper.Step label="Final step" description="congratulation" allowStepSelect={true}>
           {/* Step 3 content: Get full access */}
         </UIStepper.Step>
         <UIStepper.Completed>

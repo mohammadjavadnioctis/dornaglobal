@@ -14,22 +14,22 @@ const ChooseCategorySteps = [
         rentalPropertyTypes: [
             {
                 propertyTypeName: 'apt', propertyTypeLabel: 'Apartment', id: '1',
-                formFields: ['residential apt rental', formFiledsAlias.price, formFiledsAlias.livingArea, formFiledsAlias.totalArea, formFiledsAlias.noOfBedRooms, formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, formFiledsAlias.noOfEntrance, formFiledsAlias.deposit, formFiledsAlias.preRent, { name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+                formFields: ['residential apt rental', formFiledsAlias.price, formFiledsAlias.livingArea, formFiledsAlias.totalArea, formFiledsAlias.noOfBedRooms,formFiledsAlias.noOfBathrooms , formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.aidat, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.noOfEntrance, formFiledsAlias.deposit, formFiledsAlias.preRent, { name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
 
             },
             {
                 propertyTypeName: 'residence', propertyTypeLabel: 'Residence', id: '2',
-                formFields: ['residential residence rental', formFiledsAlias.price, formFiledsAlias.livingArea, formFiledsAlias.totalArea, formFiledsAlias.noOfBedRooms, formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, formFiledsAlias.deposit, formFiledsAlias.usageStatus, { name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+                formFields: ['residential residence rental', formFiledsAlias.price, formFiledsAlias.livingArea, formFiledsAlias.totalArea, formFiledsAlias.noOfBedRooms, formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.aidat, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, formFiledsAlias.deposit, formFiledsAlias.usageStatus, { name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
 
             },
             {
                 propertyTypeName: 'detachedHouse', propertyTypeLabel: 'Detached House', id: '3',
-                formFields: ['residential detahed rental', formFiledsAlias.price, formFiledsAlias.livingArea, formFiledsAlias.totalArea, formFiledsAlias.noOfBedRooms, formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, { name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+                formFields: ['residential detahed rental', formFiledsAlias.price, formFiledsAlias.livingArea, formFiledsAlias.totalArea, formFiledsAlias.noOfBedRooms, formFiledsAlias.noOfBathrooms, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.aidat, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, { name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
 
             },
             {
                 propertyTypeName: 'villa', propertyTypeLabel: 'Villa', id: '4',
-                formFields: ['residential villa rental', formFiledsAlias.price, formFiledsAlias.livingArea, formFiledsAlias.totalArea, formFiledsAlias.noOfBedRooms, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.heatingModel, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.usageStatus, formFiledsAlias.withinResidence, formFiledsAlias.facing, formFiledsAlias.residenceName, avilableForCreditUsage, { name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+                formFields: ['residential villa rental', formFiledsAlias.price, formFiledsAlias.livingArea, formFiledsAlias.totalArea, formFiledsAlias.noOfBedRooms, formFiledsAlias.noOfBathrooms, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.aidat, formFiledsAlias.heatingModel, formFiledsAlias.address, formFiledsAlias.usageStatus, formFiledsAlias.withinResidence, formFiledsAlias.facing, formFiledsAlias.residenceName, avilableForCreditUsage, { name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
 
             },
             // {propertyTypeName: 'residentialRentalspecific', propertyTypeLabel: 'residentialRentalspecific', id: '4'},
@@ -46,7 +46,7 @@ const ChooseCategorySteps = [
             },
             {
                 propertyTypeName: 'detachedHouse', propertyTypeLabel: 'Detached House', id: '3',
-                formFields: ['forsale detached residential', formFiledsAlias.price, formFiledsAlias.livingArea, formFiledsAlias.totalArea, formFiledsAlias.noOfBedRooms, formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, formFiledsAlias.residenceName, { name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
+                formFields: ['forsale detached residential', formFiledsAlias.price, formFiledsAlias.livingArea, formFiledsAlias.totalArea, formFiledsAlias.noOfBedRooms, formFiledsAlias.floor, formFiledsAlias.totalFloorCount, formFiledsAlias.buildingAge, formFiledsAlias.noOfBathrooms, formFiledsAlias.aidat, formFiledsAlias.titleDeedStatus, formFiledsAlias.address, formFiledsAlias.facing, { name: 'features', values: [formFiledsAlias.balcony, formFiledsAlias.furnished] }],
 
 
             },
