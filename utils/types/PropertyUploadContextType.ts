@@ -24,7 +24,7 @@ interface PropertyUploadContextType {
         totalArea?: number | undefined,
         totalFloorCount?: number | undefined | null,
         aydat?: number | undefined,
-        buildingAge: number | null,
+        buildingAge?: number | null,
         id: string | undefined,
         isVarified?: boolean
         timestamp?: FieldValue;

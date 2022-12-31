@@ -2,7 +2,7 @@ const formFiledsAlias = {
     price: 'price',
     livingArea: 'livingArea',
     totalArea: 'totalArea',
-    noOfRooms: 'noOfRooms',
+    noOfBedRooms: 'noOfBedRooms',
     noOfBathrooms: 'noOfBathrooms',
     floor: 'floor',
     totalFloorCount: 'totalFloorCount',

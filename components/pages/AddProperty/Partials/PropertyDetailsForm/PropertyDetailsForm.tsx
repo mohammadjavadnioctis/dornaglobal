@@ -27,7 +27,7 @@ interface PropertyDetailsFormType {
   // ref: DocumentReference
 }
 
-const { address: addressAlias, aidat: aidatAlias, balcony: balconyAlias, buildingAge: buildingAgeAlias, deposit: depositAlias, facing: facingAlias, floor: floorAlias, furnished: furnishedAlias, heatingModel: heatingModelAlias, livingArea: livingAreaAlias, noOfBathrooms: noOfBathRoomsAlias, noOfEntrance: noOfEntranceAlias, noOfRooms: noOfRoomsAlias, preRent: preRentAlias, price: priceAlias, residenceName: residenceNameAlias, titleDeedStatus: titleDeedStatusAlias, totalArea: totalAreaAlias, totalFloorCount: totalFloorCountAlias, usageStatus: usageStatusAlias, view: viewAlias, withinResidence: withinResidenceAlias, avilableForCreditUsage: avilableForCreditUsageAlias, imarStatus: imarStatusAlias, adaNo: adaNoAlias, parselNo: parselNoAlias, gaba: gabaAlias, kaks: kaksAlias, floorReturn: floorReturnAlias, theUnitOntheFirstFloor: theUnitOntheFirstFloorAlias, alchoholUsagePremission: alchoholUsagePremissionAlias, zeminEtudu: zeminEtuduAlias, elevatorCount: elevatorCountAlias } = formFiledsAlias
+const { address: addressAlias, aidat: aidatAlias, balcony: balconyAlias, buildingAge: buildingAgeAlias, deposit: depositAlias, facing: facingAlias, floor: floorAlias, furnished: furnishedAlias, heatingModel: heatingModelAlias, livingArea: livingAreaAlias, noOfBathrooms: noOfBathRoomsAlias, noOfEntrance: noOfEntranceAlias, noOfBedRooms: noOfRoomsAlias, preRent: preRentAlias, price: priceAlias, residenceName: residenceNameAlias, titleDeedStatus: titleDeedStatusAlias, totalArea: totalAreaAlias, totalFloorCount: totalFloorCountAlias, usageStatus: usageStatusAlias, view: viewAlias, withinResidence: withinResidenceAlias, avilableForCreditUsage: avilableForCreditUsageAlias, imarStatus: imarStatusAlias, adaNo: adaNoAlias, parselNo: parselNoAlias, gaba: gabaAlias, kaks: kaksAlias, floorReturn: floorReturnAlias, theUnitOntheFirstFloor: theUnitOntheFirstFloorAlias, alchoholUsagePremission: alchoholUsagePremissionAlias, zeminEtudu: zeminEtuduAlias, elevatorCount: elevatorCountAlias } = formFiledsAlias
 
 // const renderValidation = (inputName: string) => {
 //   if (typeof inputName == 'string') {
@@ -105,7 +105,7 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
     buildingAge: (value: any) => ((value >= 0 && value !== null) ? null : 'please provide the age of the building'),
     city: (value: any) => ((value && value.length > 2) ? null : 'please select a city'),
     noOfBathRooms: (value: any) => { console.log('dynamic error handling: this is the bathrooms count: ', value) ;return ((value >= 0 && value !== null) ? null : 'please provide the battroms count')},
-    noOfRooms: (value: any) => { console.log('dynamic error handling: this is the bathrooms count: ', value) ;return ((value >= 0 && value !== null) ? null : 'please provide the bedroom count')},
+    noOfBedRooms: (value: any) => { console.log('dynamic error handling: this is the bedrooms count: ', value) ;return ((value >= 0 && value !== null) ? null : 'please provide the bedroom count')},
     deposit: (value: any) => { console.log('dynamic error handling: this is amount of: deposit', value) ;return ((value >= 0) ? null : 'please provide the amount of deposit')}
 
   }
@@ -151,7 +151,7 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
         return validationFunctions.deposit
         
         case `${noOfRoomsAlias}`:
-        return validationFunctions.noOfRooms
+        return validationFunctions.noOfBedRooms
       // default: return undefined
       default: return inputName
 
@@ -195,7 +195,7 @@ const PropertyDetailsForm: FC<PropertyDetailsFormType> = (props) => {
         case `${depositAlias}`:
         return deposit
        
-        case `${noOfBathRoomsAlias}`:
+        case `${noOfRoomsAlias}`:
         return noOfBedRooms
       default: return inputName
       // default: return inputName
@@ -266,8 +266,9 @@ useEffect(() => {
     // e.preventDefault()
 
     // UploadProperty()
+    console.log('this is the handleSubmit: ', e)
     // @ts-ignore
-    setDetails(prevState => ({ ...prevState, ...e }))
+    setDetails(prevState => ({...prevState, ...e }))
     nextStep()
     // UploadProperty()
 
@@ -288,7 +289,7 @@ useEffect(() => {
           return <TotalAreaInput errorHandlingProp={{ ...formErrorHandling.getInputProps('totalArea') }} />
           break;
         case `${noOfRoomsAlias}`:
-          return <NoOfRoomsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('noOfRooms') }} />
+          return <NoOfRoomsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('noOfBedRooms') }} />
           break;
         case `${noOfBathRoomsAlias}`:
           return <NoOfBathroomsInput errorHandlingProp={{ ...formErrorHandling.getInputProps('noOfBathrooms') }} />
