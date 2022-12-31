@@ -69,7 +69,7 @@ const SignUpForm: FC<SignUpFormType> = memo((props) => {
     try {
       console.log('this is values: ', values)
       // await signUp(values.email, values.password);
-       await signUp(values.email, values.password, values.NameSurname);
+       await signUp(values?.email, values?.password, values?.NameSurname, values?.phone);
       
       // router.push("/");
     } catch (err) {

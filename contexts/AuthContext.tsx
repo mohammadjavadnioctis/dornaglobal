@@ -5,7 +5,7 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import { getDocs, query, where, collection, doc, updateDoc } from "firebase/firestore";
+import { getDocs, query, where, collection, doc, updateDoc, setDoc } from "firebase/firestore";
 import nookies from "nookies";
 import { createContext, useEffect, useState, useContext } from "react";
 import { auth, db } from "~/utils/config/firebase";
@@ -16,7 +16,7 @@ interface AuthContextType {
   user: User | null;
   userFromFirebase: UserType | null;
   signIn: (email: string, password: string) => void;
-  signUp: (email: string, password: string, NameSurname: string) => void;
+  signUp: (email: string, password: string, NameSurname: string, phoneNo: string) => void;
   logout: () => void;
   loading: boolean
 }
@@ -39,15 +39,30 @@ export function AuthProvider({ children }: any) {
   const [ userFromFirebase, setUserFromFirebase ] = useState(null)
   const [loading, setLoading] = useState(true);
 
-  const signUp = async (email: string, password: string, NameSurname: string) => {
-    const userCreatesReponse = await createUserWithEmailAndPassword(auth, email, password);
-    console.log('this is userCreatesReponse', userCreatesReponse)
-     await updateProfile(userCreatesReponse.user, {
-        displayName: NameSurname})
-        const propertyRef = doc(db, `users/${userCreatesReponse.user.uid}`);
-                          const response = await updateDoc(propertyRef, {
-                            displayName: NameSurname
-                          })
+  const signUp = async (email: string, password: string, NameSurname: string, phoneNo: string) => {
+    try{
+
+      const userCreatesReponse = await createUserWithEmailAndPassword(auth, email, password);
+      // updating the user's name on the authentication module of the firebase
+       await updateProfile(userCreatesReponse.user, {
+          displayName: NameSurname})
+          // adding the user to the firestore
+          const userRef = doc(db, `users/${userCreatesReponse.user.uid}`);
+          const response = await setDoc(userRef, {
+            email: email,
+            emailVarified: userCreatesReponse.user?.emailVerified ?? null,
+            isAnonymous: false,
+            photoURL: null,
+            providerData: userCreatesReponse.user?.providerData ?? null,
+            providerId: userCreatesReponse.user?.providerId ?? null,
+            uid: userCreatesReponse.user?.uid ?? null,
+            displayName: NameSurname,
+            phoneNo,
+            isPhoneNoVarified: false
+          })
+    }catch (err) {
+      console.error('error from registering', err)
+    }
   };
 
 
