@@ -24,10 +24,16 @@ const useStyles = createStyles((theme) => ({
 }));
 
 const SelectItem = forwardRef<HTMLDivElement, ItemProps>(
-  ({ image, label, description, ...others }: ItemProps, ref) => (
+  ({ image, label, description, ...others }: ItemProps, ref) => {
+    console.log('the image: ', image)
+    return (
     <div ref={ref} {...others}>
       <Group noWrap>
-        <Avatar src={image} />
+        {/* <Avatar src={image} /> */}
+        <img src={image} className='w-8 h-6'
+        // @ts-ignore
+        crossorigin="anonymous"
+         />
 
         <div>
           <Text size="sm">{label}</Text>
@@ -37,7 +43,7 @@ const SelectItem = forwardRef<HTMLDivElement, ItemProps>(
         </div>
       </Group>
     </div>
-  )
+  )}
 );
 
 if (isDev) {
