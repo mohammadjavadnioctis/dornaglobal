@@ -4,6 +4,7 @@ import SwiperClass, { FreeMode, Navigation, Thumbs } from "swiper";
 import { isDev } from "~/utils/helpers";
 import UiImage from "~/lib/Image";
 import { AiOutlineRight } from "react-icons/ai";
+import useTrans from "~/lib/useTranslate";
 
 const sampleData = [
   {
@@ -71,6 +72,7 @@ const Promotions: FC = () => {
         >
           {sampleData.map((data) => {
             const { img, label, name, id } = data;
+            const t = useTrans()
             return (
               <UiSlider.Slide className=" cursor-pointer my-4 hover:shadow-[0_10px_40px_-30px_rgba(0,0,255,0.9)]">
                 <div className="aspect-w-16 aspect-h-9 hover:shadow-[0_10px_40px_-30px_rgba(0,0,255,0.9)] group">
@@ -80,7 +82,7 @@ const Promotions: FC = () => {
                       <div className="content  relative z-10 h-full flex items-end pb-3 px-3 text-white">
                         <div className="w-full flex items-center justify-between group-hover:text-accent">
 
-                            {label}
+                            {t(label)}
                             <AiOutlineRight className="w-8 h-8" />
                         </div>
                       </div>

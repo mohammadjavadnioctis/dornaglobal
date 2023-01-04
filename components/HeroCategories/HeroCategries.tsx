@@ -1,6 +1,8 @@
 import Link from "next/link";
 import React from "react";
 import { BiBuildingHouse } from "react-icons/bi";
+import { UiI18n } from "~/lib";
+import useTrans from "~/lib/useTranslate";
 
 const SampleCatetgories = [
   {
@@ -26,6 +28,8 @@ const SampleCatetgories = [
 ];
 
 const HeroCategries = () => {
+  const t = useTrans()
+  const i18n = UiI18n()
   return (
     <ul className="flex justify-center text-white mt-12">
       {SampleCatetgories.map((category) => (
@@ -34,7 +38,12 @@ const HeroCategries = () => {
             {" "}
             <BiBuildingHouse className="w-7 h-7" />{" "}
             <span className=" px-4 pt-1 pb-2 font-[Roboto,sans-serif] text-base font-semibold">
-              {category.name}{" "}
+              {/* {
+              i18n?.exists(t(`HERO_CATEGORIES.${category.name.toUpperCase()}`)) 
+                ? t(`HERO_CATEGORIES.${category.name.toUpperCase()}`) 
+                : t(category.name.toUpperCase() + 'hi') 
+              } */}
+              {t(category.name.toUpperCase())}
             </span>
           </li>
         </Link>

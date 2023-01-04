@@ -28,7 +28,7 @@ const HomeSlider = () => {
             <HeroCategries />
           </div>
           <div className="more  absolute bottom-4 text-white flex flex-col justify-center items-center ">
-            <span className="text-sm text-white">Scroll for more</span>
+            <span className="text-sm text-white">{t('SCROLL FOR MORE')}</span>
             <BiChevronDown className="w-10 h-10" />
           </div>
         </div>

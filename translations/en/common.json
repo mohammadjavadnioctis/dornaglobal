@@ -1,4 +1,16 @@
 {
     "DISCOVER YOUR PLACE TO LIVE..." : "Discover Your Place To Live",
-    "SEARCH FOR LISTING NO , TITLE ETC" : "Search for listing no, title etc..."
+    "SEARCH FOR LISTING NO , TITLE ETC" : "Search for listing no, title etc...",
+    "SCROLL FOR MORE":"Scroll for more",
+    "HERO_CATEGORIES": {
+        "SALE": "Sales",
+        "RENTAL": "Rentals",
+        "DAILY RENTAL": "Daily Rentals",
+        "PROJECTS": "Projectss"
+
+    },
+    "SALE": "sale",
+    "RENTAL":"Rental",
+    "DAILY RENTAL":"Daily rental",
+    "PROJECTS":"Projects"
 }
