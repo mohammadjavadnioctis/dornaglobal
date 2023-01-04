@@ -3,6 +3,7 @@ import Link from "next/link";
 import React, { FC } from "react";
 import { FaRegHandshake } from "react-icons/fa";
 import { useRouter } from "next/router";
+import useTrans from "~/lib/useTranslate";
 
 const Icon: FC = () => {
   const router = useRouter();
@@ -31,7 +32,7 @@ const ListyourPropertyButton = () => {
       color: `${isHomePage ? "white" : "black"}`,
     },
   }));
-
+  const t = useTrans()
   const { classes } = useStyles();
   return (
     <Link href="/add-property" className="cursor-pointer">
@@ -41,7 +42,7 @@ const ListyourPropertyButton = () => {
         classNames={{ inner: classes.inner, root: classes.root }}
       >
         {" "}
-        List your Property{" "}
+        {t('LIST YOUR PROPERTY')}{" "}
       </Button>
     </Link>
   );

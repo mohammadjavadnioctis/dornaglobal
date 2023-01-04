@@ -1,5 +1,6 @@
 import React, { FC, memo } from "react";
 import UiImage from "~/lib/Image";
+import useTrans from "~/lib/useTranslate";
 import { isDev } from "~/utils/helpers";
 
 interface category {
@@ -17,6 +18,7 @@ interface CardProps {
 const Card: FC<CardProps> = memo((props) => {
   const { category, size } = props;
   const { image, subtitle, id, title } = category;
+  const t = useTrans()
 
   let cardSize = (() => {
     switch (size) {
@@ -46,9 +48,9 @@ const Card: FC<CardProps> = memo((props) => {
       </div>
       <div className="absolute top-0 left-0 w-full h-full font-[Dosis_sans-serif] p-4 bg-black bg-opacity-30 group-hover:bg-opacity-0 transition-all">
         <span className="block text-white text-xs font-semibold">
-          {subtitle}
+          {t(subtitle.toUpperCase())}
         </span>
-        <span className="text-white text-xl font-semibold">{title}</span>
+        <span className="text-white text-xl font-semibold">{t(title.toUpperCase())}</span>
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ import { PropertyType } from "~/utils/types";
 import NeightBourHoodSlider from "./Partials/NeightBourHoodSlider/NeightBourHoodSlider";
 import useScrollSnap from "react-use-scroll-snap";
 import Promotions from "./Partials/Promotions/Promotions";
+import useTrans from "~/lib/useTranslate";
 
 // TODO: hide the environment variable inside the image tag url
 interface HomepageType {
@@ -18,6 +19,7 @@ interface HomepageType {
 const Home: FC<HomepageType> = memo((props) => {
   const { properties } = props;
   const scrollRef = useRef(null);
+  const t = useTrans()
   // useScrollSnap({ ref: scrollRef, duration: 100, delay: 50 });
   return (
     <>
@@ -27,14 +29,14 @@ const Home: FC<HomepageType> = memo((props) => {
           <Promotions />
           <FeaturedExclusives
             properties={properties}
-            title="Top Projects"
+            title={t("TOP PROJECTS")}
             ref={scrollRef}
             titleClassNames='text-[25px] md:text-[40px]'
             subtitleClassNames="text-sm"
           />
           <FeaturedExclusives
             properties={properties}
-            title="Latest Properties"
+            title={t("LATEST PROPERTIES")}
             titleClassNames='text-[25px] md:text-[40px]'
             subtitleClassNames="text-sm"
           />

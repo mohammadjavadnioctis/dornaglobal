@@ -9,8 +9,26 @@
         "PROJECTS": "Projectss"
 
     },
-    "SALE": "sale",
+    "SALE": "Sale",
     "RENTAL":"Rental",
     "DAILY RENTAL":"Daily rental",
-    "PROJECTS":"Projects"
+    "PROJECTS":"Projects",
+    "TOP PROJECTS":"Top Projects",
+    "LATEST PROPERTIES": "Latest Properties",
+    "BROWSE BY CITY AND NEIGHBOURHOOD": "Browse By City and Neighbourhood",
+    "SELL YOUR PROPERTY": "Sell your Property",
+    "AT THE COMFORT OF YOUR COUCH": "At the comfort of your couch",
+    "ADD YOUR PROPERTY TO THE LISTINGS OF": "Add your property to the listings of ",
+    "DORNA GLOBAL": "Dorna Global",
+    "IN A MATTER OF MINUTES" : "in a matter of minutes.",
+    "LIST YOUR PROPERTY": "List your Property",
+    "DORNA GLOBAL ACTIVITIES": "Dorna Global ActivitesS",
+    "WORLD-WIDE": "World-wide",
+    "CITIZENSHIP": "Citizenship",
+    "MONEY TRANSFER": "Money Transfer",
+    "REAL ESTATE": "Real Estate",
+    "TOURISM": "Tourism",
+    "BUSINESS": "Business",
+    "MONEY": "Money"
+    
 }

@@ -6,6 +6,7 @@ import UiLink from "~/lib/UiLink";
 import UiImage from "~/lib/Image";
 import { Button } from "@mantine/core";
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
+import useTrans from "~/lib/useTranslate";
 
 export interface CircleSlideItem {
   img: string;
@@ -23,7 +24,7 @@ const CircleSlider: FC<CircleSliderProps> = memo((props) => {
   const { slides, showButtons = true } = props;
   const [swiperRef, setSwiperRef] = useState<SwiperClass>();
   const [isImageLoading, setIsImageLoading] = useState<boolean>(false);
-
+  const t = useTrans()
   const handleLeftClick = useCallback(() => {
     if (!swiperRef) return;
     swiperRef.slidePrev();
@@ -36,7 +37,7 @@ const CircleSlider: FC<CircleSliderProps> = memo((props) => {
 
   return (
     <div className="container relative ">
-      <div className="!pl-8">Browse By City and Neightbour hood</div>
+      <div className="!pl-8">{t('BROWSE BY CITY AND NEIGHBOURHOOD')}</div>
       <div className=" w-[95%] mx-auto   shadow-card rounded-lg xl:my-5 mb-5 select-none swiper-padding">
         {showButtons && (
           <Button

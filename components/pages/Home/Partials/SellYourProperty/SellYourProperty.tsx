@@ -1,9 +1,11 @@
 import React from "react";
 import ListyourPropertyButton from "~/components/ListYourPropertyButton/ListyourPropertyButton";
 import UiImage from "~/lib/Image";
+import useTrans from "~/lib/useTranslate";
 // TODO: remove the api key from the image src
 
 const SellYourProperty = () => {
+  const t = useTrans()
   return (
     <div className="w-full relative my-16">
       {/* The Image */}
@@ -23,13 +25,14 @@ const SellYourProperty = () => {
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
         <div className="h-full w-full md:w-1/3 bg-white bg-opacity-60 flex items-center">
           <div className="w-full max-h-full md:max-h-[auto] translate-x-0 md:translate-x-1/2 flex flex-col bg-accent-600 bg-opacity-80 p-4 md:p-12 text-white">
-            <h2 className="text-[40px]">Sell your Property</h2>
+            <h2 className="text-[40px]">{t('SELL YOUR PROPERTY')}</h2>
             <p className="text-base text-medium  mb-5">
-              At the comfort of your couch
+              {t('AT THE COMFORT OF YOUR COUCH')}
             </p>
             <p className="mb-5">
-              Add your property to the listings of <strong>Dorna Global</strong>{" "}
-              in a matter of minutes.
+              {t('ADD YOUR PROPERTY TO THE LISTINGS OF')} 
+              <strong>{t('DORNA GLOBAL')}</strong>{" "}
+              {t('IN A MATTER OF MINUTES')}
             </p>
             <ListyourPropertyButton />
           </div>

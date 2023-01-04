@@ -3,12 +3,14 @@ import Head from "~/components/Head/Head";
 import Card from "./Card";
 import neightbourhoods from "~/utils/data/neightbours.json";
 import { isDev } from "~/utils/helpers";
+import useTrans from "~/lib/useTranslate";
 
 const ExploreByNeighrbourhood: FC = memo(() => {
+  const t = useTrans()
   return (
     <div className="container">
       <Head
-        title="Dorna Global Activites"
+        title={t("DORNA GLOBAL ACTIVITIES")}
         subtitle="You can count on Dorna Global for all of your Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias, commodi!​"
         subtitleClassNames="text-subtitleColor tracking-[1px] font-medium leading-[1.5rem] font-[Dosis,_sans-serif]"
         containerClassNames="max-w-[600px] mx-auto my-[60px]"

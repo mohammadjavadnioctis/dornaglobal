@@ -2,6 +2,7 @@ import React, { FC, forwardRef, memo } from "react";
 import Head from "~/components/Head/Head";
 import PropertiesSlider from "~/components/PropertiesSlider/PropertiesSlider";
 import PropertyCard from "~/components/PropertyCard/PropertyCard";
+import useTrans from "~/lib/useTranslate";
 import SamplePropertiesData from "~/utils/data/SampleProperties";
 import { isDev } from "~/utils/helpers";
 import { PropertyType } from "~/utils/types";
@@ -36,12 +37,13 @@ const FeaturedExclusives: FC<FeaturedExclusivesType> = forwardRef<
     titleContainerClassNames,
     showSliderButtons = true,
   } = props;
+  const t = useTrans()
   return (
     <section className={`container ${wrapperClassNames}`} ref={ref}>
       <div></div>
       <Head
         title={title}
-        subtitle={subtitle}
+        subtitle={t(subtitle)}
         subtitleClassNames={`text-subtitleColor tracking-[1px] font-medium leading-[1.5rem] font-[Dosis,_sans-serif] ${subtitleClassNames}`}
         containerClassNames={`max-w-[600px] mx-auto my-[60px] ${titleContainerClassNames}`}
         titleClassnames={`${titleClassNames}`}
