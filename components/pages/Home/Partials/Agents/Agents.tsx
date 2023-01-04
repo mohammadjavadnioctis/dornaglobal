@@ -1,6 +1,7 @@
 import React, { FC, memo } from "react";
 import AgentCard from "~/components/AgentCard.tsx/AgentCard";
 import Head from "~/components/Head/Head";
+import useTrans from "~/lib/useTranslate";
 import { isDev } from "~/utils/helpers";
 import { AgentType } from "~/utils/types";
 
@@ -38,10 +39,11 @@ const AgentsSampleData: AgentType[] = [
 ];
 
 const Agents: FC = memo(() => {
+  const t = useTrans()
   return (
     <div className="w-full bg-[#f7f7f7]">
       <Head
-        title="Meet Our Agents"
+        title={t("Meet Our Agents")}
         subtitle="CHOOSE FROM DIFFERENT LISTING TEMPLATES AND LAY THEM OUT AS LISTS OR GRIDS, FULL-WIDTH OR BOXED ​"
       />
       <div className="flex justify-center items-center flex-wrap">
