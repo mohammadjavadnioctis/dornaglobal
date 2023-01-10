@@ -34,7 +34,7 @@ const MainMenu: FC<MainMenuType> = (props) => {
           className={`${ItemsClassNames} w-full h-full flex items-center`}
         >
           <Link href={"/signin"} passHref>
-            <a className="h-full flex items-center">Login</a>
+            <a className="h-full flex items-center">{t("LOGIN")}</a>
           </Link>
         </li>
       )}
