@@ -2,6 +2,7 @@ import Link from "next/link";
 import React, { FC, useEffect } from "react";
 import { mainMenuData } from "utils/data/menus";
 import { useAuth } from "~/contexts/AuthContext";
+import useTrans from "~/lib/useTranslate";
 
 interface MainMenuType {
   ItemsContainerClassNames?: string;
@@ -11,7 +12,7 @@ interface MainMenuType {
 const MainMenu: FC<MainMenuType> = (props) => {
   const { ItemsContainerClassNames = "flex ", ItemsClassNames } = props;
   const { user, loading  } = useAuth();
-
+  const t = useTrans()
   return (
     <ul className={`${ItemsContainerClassNames}`}>
       {mainMenuData.map((menuItem) => {
@@ -22,7 +23,7 @@ const MainMenu: FC<MainMenuType> = (props) => {
             className={`${ItemsClassNames} w-full h-full flex items-center`}
           >
             <Link href={menuItem.href} passHref>
-              <a className="h-full flex items-center">{menuItem.name}</a>
+              <a className="h-full flex items-center">{t(menuItem.name.toUpperCase())}</a>
             </Link>
           </li>
         );

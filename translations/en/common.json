@@ -2,6 +2,13 @@
     "DISCOVER YOUR PLACE TO LIVE..." : "Discover Your Place To Live",
     "SEARCH FOR LISTING NO , TITLE ETC" : "Search for listing no, title etc...",
     "SCROLL FOR MORE":"Scroll for more",
+    "HOME":"Home",
+    "PROPERTIES":"Properties",
+    "FOR RENT":"For Rent",
+    "FOR SALE":"For Sale",
+    "ABOUT":"About",
+    "PROFILE": "Profile",
+
     "HERO_CATEGORIES": {
         "SALE": "Sales",
         "RENTAL": "Rentals",
