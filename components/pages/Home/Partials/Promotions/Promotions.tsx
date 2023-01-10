@@ -38,6 +38,7 @@ const sampleData = [
 ];
 
 const Promotions: FC = () => {
+  const t = useTrans()
   return (
     <div className="my-16">
       <div className="container  ">
@@ -72,7 +73,6 @@ const Promotions: FC = () => {
         >
           {sampleData.map((data) => {
             const { img, label, name, id } = data;
-            const t = useTrans()
             return (
               <UiSlider.Slide className=" cursor-pointer my-4 hover:shadow-[0_10px_40px_-30px_rgba(0,0,255,0.9)]">
                 <div className="aspect-w-16 aspect-h-9 hover:shadow-[0_10px_40px_-30px_rgba(0,0,255,0.9)] group">
