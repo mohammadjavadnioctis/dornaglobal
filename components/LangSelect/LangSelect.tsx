@@ -32,7 +32,7 @@ const SelectItem = forwardRef<HTMLDivElement, ItemProps>(
         {/* <Avatar src={image} /> */}
         <img src={image} className='w-8 h-6'
         // @ts-ignore
-        crossorigin="anonymous"
+        crossorigin="crossOrigin"
          />
 
         <div>
