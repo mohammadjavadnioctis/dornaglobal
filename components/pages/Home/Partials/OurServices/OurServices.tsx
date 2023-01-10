@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import Head from "~/components/Head/Head";
+import useTrans from "~/lib/useTranslate";
 import { isDev } from "~/utils/helpers";
 import ServiceCard from "./ServiceCard";
 
@@ -55,10 +56,11 @@ const SampleServiceData = [
 ];
 
 const OurServices: FC = () => {
+  const t = useTrans()
   return (
     <section className="container">
       <div className="flex flex-col">
-        <Head title="Services of Dorna Global" />
+        <Head title={t("SERVICES OF DORNA GLOBAL")} />
         <div className="flex justify-center items-center flex-wrap">
           {SampleServiceData.map((service) => {
             return <ServiceCard key={service.id} {...service} />;
