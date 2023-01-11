@@ -8,6 +8,7 @@ import { db } from "~/utils/config/firebase";
 import { CityType, DistrictType, NeighbourHoodType } from "~/utils/types";
 import { createStyles } from "@mantine/core";
 import { useSearchProperties } from "~/contexts/SearchPropertiesContext";
+import useTrans from "~/lib/useTranslate";
 
 
 
@@ -68,6 +69,7 @@ const {wrapperClassNames} = props
   const [fetchedNeighbourHoods, setFetchedNeghbourHoods ] = useState<NeighbourHoodType[]>()
   const [neighbourhoodsForSelectComp, setNeighbourhoodsForSelectComp] = useState<NeighbourHoodType[]>()
 
+  const t = useTrans()
     const handleChangeForCityInput = (value: string) => {
      
       // const value = event.currentTarget.value
@@ -194,7 +196,7 @@ const {wrapperClassNames} = props
 
   return (
     <div className={`${wrapperClassNames}`}>
-      <h4>AddressInput</h4>
+      <h4>{t('ADDRESS_INPUT')}</h4>
       <div className={`form_container flex flex-col space-y-6 mt-3`}>
         {/* <UiNativeSelect
           value={address?.city}
