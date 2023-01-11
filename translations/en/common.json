@@ -46,5 +46,6 @@
     "MIN PRICE": "Min price",
     "MAX PRICE": "Max price",
     "BEDROOM COUNT":"Bedroom count",
-    "BATHROOM COUNT": "Bathroom count"
+    "BATHROOM COUNT": "Bathroom count",
+    "FLOOR NUMBER": "Floor number"
 }
