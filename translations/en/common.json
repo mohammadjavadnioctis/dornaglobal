@@ -49,5 +49,9 @@
     "BATHROOM COUNT": "Bathroom count",
     "FLOOR NUMBER": "Floor number",
     "TITLE DEED STATUS":"Title deed status",
-    "APPLY": "Apply"
+    "APPLY": "Apply",
+    "BEDROOMS":"Bedrooms",
+    "BATHROOMS":"Bathrooms",
+    "AREA": "Area"
+
 }

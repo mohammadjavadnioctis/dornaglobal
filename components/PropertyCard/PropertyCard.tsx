@@ -11,6 +11,7 @@ import fetchImages from "~/utils/helpers/firebase/fetchImages";
 import { getDownloadURL, listAll, ref } from "firebase/storage";
 import { storage } from "~/utils/config/firebase";
 import NoImage from '~/public/images/no-image.png'
+import useTrans from "~/lib/useTranslate";
 interface PropertyCardProps {
   property: PropertyType;
   similar?: boolean;
@@ -41,7 +42,7 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
   const [images, setImages] = useState<string[]>([])
   const [isImageLoaded, setIsImageLoaded] = useState(false)
   const [imagesAreFetched,setImagesAreFetched] = useState(false)
-
+  const t = useTrans()
   const getTheDownLoadURL = (path: string) => {
     getDownloadURL(ref(storage, path))
     .then((url) => {
@@ -133,14 +134,14 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
               <BiBed className="mr-1" />
               {bedrooms}
             </span>
-            <span className="text-xs">Beedrooms</span>
+            <span className="text-xs">{t('BEDROOMS')}</span>
           </div>
           <div className="flex flex-col justify-between">
             <span className="inline-flex mx-2 items-center justify-center">
               <FaBath className="mr-1" />
               <span>{bathrooms}</span>
             </span>
-            <span className="text-xs">Bathrooms</span>
+            <span className="text-xs">{t("BATHROOMS")}</span>
           </div>
 
           <div className="flex flex-col justify-between">
@@ -148,7 +149,7 @@ const PropertyCard: FC<PropertyCardProps> = memo(({ property, similar }) => {
               <TfiRulerAlt2 className="mr-1" />
               <span className="text-sm">{livingArea}</span>
             </span>
-            <span className="text-xs text-center">Area</span>
+            <span className="text-xs text-center">{t("AREA")}</span>
           </div>
         </div>
       </div>
