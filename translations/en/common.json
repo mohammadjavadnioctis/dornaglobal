@@ -45,5 +45,6 @@
     "ADDRESS_INPUT":"Address Input",
     "MIN PRICE": "Min price",
     "MAX PRICE": "Max price",
-    "BEDROOM COUNT":"Bedroom count"
+    "BEDROOM COUNT":"Bedroom count",
+    "BATHROOM COUNT": "Bathroom count"
 }
