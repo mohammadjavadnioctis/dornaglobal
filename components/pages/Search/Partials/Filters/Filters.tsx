@@ -3,6 +3,7 @@ import { DefinedStringSchema } from "yup/lib/string";
 import { defaultCurrency } from "~/app.config";
 import { useSearchProperties } from "~/contexts/SearchPropertiesContext";
 import { UiNativeSelect, UiNumberInput, UiSelect } from "~/lib";
+import useTrans from "~/lib/useTranslate";
 import { IstanbulDistricts, TitleDeedTypes } from "~/utils/data";
 import { isDev } from "~/utils/helpers";
 import { FiltersType } from "~/utils/types";
@@ -16,7 +17,7 @@ import TitleDeedStatusFilterInput from "./Partials/TitleDeedStatusFilterInput";
 const Filters: FC = memo(() => {
 
   const { filters, setFilters, fetchBasedOnFilters, handleFilterchange } = useSearchProperties()
-
+  const t = useTrans()
   // const handleFilterchange = (name: string, e: any) => {
   //   // TODO : refactor this part
   //   switch (name) {
@@ -79,7 +80,7 @@ const Filters: FC = memo(() => {
           <NoOfBathRoomsFilterInput />
           <FloorNoFilterInput />
          <TitleDeedStatusFilterInput />
-          <button type="submit" className="w-full sticky bottom-0  border bg-accent p-4 ">Apply</button>
+          <button type="submit" className="w-full sticky bottom-0  border bg-accent p-4 ">{t("APPLY")}</button>
         </form>
       </div>
     </div>
