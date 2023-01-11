@@ -42,5 +42,7 @@
     "VIEW MORE": "View More",
     "PROPERTY MANAGEMENT" : "Property Management",
     "SERVICES OF DORNA GLOBAL" :"Services of Dorna Global",
-    "ADDRESS_INPUT":"Address Input"
+    "ADDRESS_INPUT":"Address Input",
+    "MIN PRICE": "Min price",
+    "MAX PRICE": "Max price"
 }
