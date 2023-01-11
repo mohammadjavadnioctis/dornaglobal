@@ -8,8 +8,10 @@ import {
   SearchPropertiesContext,
   SearchPropertiesProvider,
 } from "~/contexts/SearchPropertiesContext";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const {locale} = context
   // let pageCount = false
   // const q = query(collection(db, "properties"), where("agentId", "==", 'Zd58oroNdd7pC5kuKT4C'),
 
@@ -30,7 +32,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   //   console.log("No such agent document!");
   // }
   let data = {};
-  return { props: { data } };
+  return { props: { data, ...(await serverSideTranslations(locale as string, ['common'])) } };
 };
 
 const Search: FC = memo((props: any) => {
